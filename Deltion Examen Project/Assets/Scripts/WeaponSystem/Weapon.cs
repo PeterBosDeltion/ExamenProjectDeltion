@@ -17,6 +17,8 @@ public class Weapon : MonoBehaviour
     public AudioClip reload;
 
     private bool reloading;
+    private int shotsFired;
+    public int ammoSpreadDivision = 5;
     private void Awake()
     {
         Initialize();
@@ -33,7 +35,14 @@ public class Weapon : MonoBehaviour
     {
         if(magazineAmmo > 0 && !reloading && canShoot)
         {
+            shotsFired++;
+            float offset = 0;
+            if(shotsFired >= totalAmmo / ammoSpreadDivision)
+            {
+                offset = Random.Range(-myWeapon.maxSpreadAngle, myWeapon.maxSpreadAngle);
+            }
             GameObject bul = Instantiate(bullet, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
+            bul.transform.eulerAngles += new Vector3(0, offset, 0);
             Rigidbody rb = bul.GetComponent<Rigidbody>();
             bul.GetComponent<Bullet>().Initialize(myWeapon.damage, myWeapon.minFallOff, myWeapon.maxFallOff, bulletSpawn.transform.position);
             rb.AddForce(bul.transform.forward * myWeapon.projectileVelocity);
@@ -77,6 +86,10 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    protected void ResetShotsFired()
+    {
+        shotsFired = 0;
+    }
     private IEnumerator LimitFireRate(float refireTime)
     {
         canShoot = false;
@@ -89,6 +102,7 @@ public class Weapon : MonoBehaviour
         reloading = true;
         Debug.Log("Start reload");
         yield return new WaitForSeconds(seconds);
+        shotsFired = 0;
         magazineAmmo = totalAmmo;
         Debug.Log("Reloaded");
         reloading = false;

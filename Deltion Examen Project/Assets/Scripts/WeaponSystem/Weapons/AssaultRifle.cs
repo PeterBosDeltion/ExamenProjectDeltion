@@ -10,6 +10,10 @@ public class AssaultRifle : Weapon
         {
            Shoot();
         }
+        if (Input.GetMouseButtonUp(0))
+        {
+            ResetShotsFired();
+        }
         if (Input.GetKeyDown("r"))
         {
             Reload();
