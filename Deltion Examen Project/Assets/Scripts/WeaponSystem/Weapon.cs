@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour
     public GameObject bulletSpawn;
     protected float totalAmmo;
     protected float magazineAmmo;
+    protected bool canShoot = true;
     private AudioSource audioSource;
 
     public AudioClip gunShot;
@@ -26,10 +27,11 @@ public class Weapon : MonoBehaviour
         totalAmmo = myWeapon.totalAmmo;
         magazineAmmo = totalAmmo;
         audioSource = GetComponent<AudioSource>();
+        canShoot = true;
     }
     protected virtual void Shoot()
     {
-        if(magazineAmmo > 0 && !reloading)
+        if(magazineAmmo > 0 && !reloading && canShoot)
         {
             GameObject bul = Instantiate(bullet, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
             Rigidbody rb = bul.GetComponent<Rigidbody>();
@@ -38,12 +40,12 @@ public class Weapon : MonoBehaviour
             Destroy(bul, 3.0F);
             DrainAmmo();
         }
-        else if(magazineAmmo < 0 && !reloading)
+        if(magazineAmmo < 0 && !reloading)
         {
             magazineAmmo = 0;
         }
 
-        if(magazineAmmo <= 0)
+        if(magazineAmmo <= 0 && !reloading)
         {
             audioSource.clip = emptyMagazine;
             if (!audioSource.isPlaying)
@@ -58,6 +60,10 @@ public class Weapon : MonoBehaviour
         magazineAmmo -= myWeapon.ammoDrain;
         audioSource.clip = gunShot;
         audioSource.PlayOneShot(gunShot);
+        if (canShoot)
+        {
+            StartCoroutine(LimitFireRate(myWeapon.refireTime));
+        }
     }
 
     protected virtual void Reload()
@@ -68,6 +74,13 @@ public class Weapon : MonoBehaviour
             audioSource.clip = reload;
             audioSource.Play();
         }
+    }
+
+    private IEnumerator LimitFireRate(float refireTime)
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(refireTime);
+        canShoot = true;
     }
 
     private IEnumerator ReloadInSeconds(float seconds)
