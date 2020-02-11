@@ -17,7 +17,7 @@ MonoBehaviour:
   maxFallOff: 60
   projectileVelocity: 1500
   damage: 20
-  refireTime: 0.1
+  firerate: 360
   totalAmmo: 80
   ammoDrain: 1
   reloadSpeed: 3

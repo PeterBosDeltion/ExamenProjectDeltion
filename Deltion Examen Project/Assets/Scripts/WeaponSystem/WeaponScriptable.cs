@@ -9,7 +9,7 @@ public class WeaponScriptable : ScriptableObject
     public float maxFallOff;
     public float projectileVelocity;
     public float damage;
-    public float refireTime;
+    public float firerate;
     public float totalAmmo;
     public float ammoDrain;
     //public enum FireType

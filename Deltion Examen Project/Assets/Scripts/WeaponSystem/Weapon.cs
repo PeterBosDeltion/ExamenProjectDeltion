@@ -62,7 +62,8 @@ public class Weapon : MonoBehaviour
         audioSource.PlayOneShot(gunShot);
         if (canShoot)
         {
-            StartCoroutine(LimitFireRate(myWeapon.refireTime));
+            float refireTime = myWeapon.firerate / 3600;
+            StartCoroutine(LimitFireRate(refireTime));
         }
     }
 
