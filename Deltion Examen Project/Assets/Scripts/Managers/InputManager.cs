@@ -7,7 +7,9 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    //Input Delegates
+    public static InputManager Instance;
+
+    //Input Delegates. subscribe a function to trigger its contents on input.
     public delegate void BaseInput();
     public delegate void FloatInput(float value);
     public delegate void AxisInput(float xAxis, float yAxis);
@@ -18,22 +20,20 @@ public class InputManager : MonoBehaviour
     public BaseInput interactEvent;
     public FloatInput abilityEvent;
     public FloatInput scrollEvent;
-    public AxisInput Moving;
-
-    //Movement input values
-    private float xAxis;
-    private float yAxis;
+    public AxisInput MovingEvent;
 
     //Asigning empty functions to the delegates to avoid Errors
     private void Awake()
     {
+        Instance = this;
+
         leftMouseButtonEvent += Empty;
         rightMouseButtonEvent += Empty;
         reloadEvent += Empty;
         interactEvent += Empty;
         abilityEvent += EmptyFloat;
         scrollEvent += EmptyFloat;
-        Moving += EmptyAxis;
+        MovingEvent += EmptyAxis;
     }
 
     private void Update()
@@ -59,10 +59,8 @@ public class InputManager : MonoBehaviour
             SwitchWeapon(Input.GetAxis("Mouse ScrollWheel"));
 
         //Movement input
-        if (Input.GetAxis("Horizontal") > 0f || Input.GetAxis("Horizontal") < 0f)
-            MovingHorizontal(Input.GetAxis("Horizontal"));
-        if (Input.GetAxis("Vertical") > 0f || Input.GetAxis("Vertical") < 0f)
-            MovingVertical(Input.GetAxis("Vertical"));
+        if (Input.GetAxis("Horizontal") > 0f || Input.GetAxis("Horizontal") < 0f || Input.GetAxis("Vertical") > 0f || Input.GetAxis("Vertical") < 0f)
+            Moving(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
     }
 
     //All functions related to the inputs
@@ -100,17 +98,11 @@ public class InputManager : MonoBehaviour
         }
 
         //Movement input
-        private void MovingHorizontal(float x)
+        private void Moving(float x, float y)
         {
             Debug.Log(x);
-            xAxis = x;
-            Moving.Invoke(x, yAxis);
-        }
-        private void MovingVertical(float y)
-        {
             Debug.Log(y);
-            yAxis = y;
-            Moving.Invoke(xAxis, y);
+            MovingEvent.Invoke(x, y);
         }
     #endregion
 
