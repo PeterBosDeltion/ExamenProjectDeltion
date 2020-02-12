@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Ability : MonoBehaviour
 {
+    protected TestPlayer myPlayer;
     private int requiredLevel;
     public bool ultimate;
     protected bool onCooldown;
@@ -19,28 +20,48 @@ public abstract class Ability : MonoBehaviour
     }
     public DeployType myDeployType;
 
+    private void Awake()
+    {
+        myPlayer = GetComponent<TestPlayer>();
+    }
     public void UseAbility()
     {
-        switch (myDeployType)
+        if (!onCooldown)
         {
-            case DeployType.Instant:
-                AbilityMechanic();
-                break;
-            case DeployType.Deployed:
-                RaycastHit hit;
-                if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
-                {
-                    Vector3 mPos = hit.point;
-                    if (Vector3.Distance(transform.position, mPos) <= maxDeployableDistance)
+            switch (myDeployType)
+            {
+                case DeployType.Instant:
+                    AbilityMechanic();
+                    break;
+                case DeployType.Deployed:
+                    RaycastHit hit;
+                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
                     {
-                        AbilityMechanic();
+                        Vector3 mPos = hit.point;
+                        if (Vector3.Distance(transform.position, mPos) <= maxDeployableDistance)
+                        {
+                            AbilityMechanic();
+                        }
                     }
-                }
-                break;
-            case DeployType.LaserTarget:
-                break;
+                    break;
+                case DeployType.LaserTarget:
+                    break;
+            }
+
+            StartCoroutine(Cooldown(cooldownTime));
+            StartCoroutine(AfterDuration());
         }
+       
     }
 
     protected abstract void AbilityMechanic();
+
+    private IEnumerator Cooldown(float seconds)
+    {
+        onCooldown = true;
+        yield return new WaitForSeconds(seconds);
+        onCooldown = false;
+    }
+
+    protected abstract IEnumerator AfterDuration();
 }
