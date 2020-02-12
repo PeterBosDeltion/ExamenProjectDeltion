@@ -115,9 +115,6 @@ public class InputManager : MonoBehaviour
     //Rotate input
     private void Rotating(float x, float y)
     {
-        Debug.Log(x);
-        Debug.Log(y);
-
         RotatingEvent.Invoke(x, y);
     }
     #endregion
