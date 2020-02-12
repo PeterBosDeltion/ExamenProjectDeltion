@@ -137,7 +137,7 @@ Transform:
   m_GameObject: {fileID: 2737896968927420187}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.49, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 2258567668155989039}
   - {fileID: 8245719833527162410}
@@ -162,6 +162,7 @@ MonoBehaviour:
   gunShot: {fileID: 8300000, guid: 61e93b9ff30545c4fb724bb7ccb41973, type: 3}
   emptyMagazine: {fileID: 8300000, guid: 141f25fdadfd5c649b8b5c6376cc086b, type: 3}
   reload: {fileID: 8300000, guid: 1211495b486c6374f8ba736ecea163f6, type: 3}
+  ammoSpreadDivision: 5
 --- !u!82 &1148044120603355406
 AudioSource:
   m_ObjectHideFlags: 0
