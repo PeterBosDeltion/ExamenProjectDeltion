@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
         InputManager.Instance.reloadEvent += Reload;
         InputManager.Instance.abilityEvent += TriggerAbility;
         InputManager.Instance.MovingEvent += Move;
+        InputManager.Instance.RotatingEvent += Rotate;
     }
 
     //Unsubscribe Input functions for safety
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour
         InputManager.Instance.reloadEvent -= Reload;
         InputManager.Instance.abilityEvent -= TriggerAbility;
         InputManager.Instance.MovingEvent -= Move;
+        InputManager.Instance.RotatingEvent -= Rotate;
     }
 
     public void Reload()
@@ -52,5 +54,10 @@ public class PlayerController : MonoBehaviour
     public void Move(float xAxis, float yAxis)
     {
         movement.Move(xAxis, yAxis);
+    }
+
+    public void Rotate(float xAxis, float zAxis)
+    {
+        movement.Rotate(xAxis, zAxis);
     }
 }
