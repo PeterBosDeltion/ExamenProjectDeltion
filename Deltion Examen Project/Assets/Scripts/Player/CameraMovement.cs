@@ -17,7 +17,7 @@ public class CameraMovement : MonoBehaviour
     }
 
     //Either late or fixed update CAN work with this.
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         if (focusOnPlayer)
         {

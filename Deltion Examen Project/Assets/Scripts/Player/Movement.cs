@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour
     private Vector3 forward;
     private Vector3 right;
 
-    void Awake()
+    private void Awake()
     {
         forward = Camera.main.transform.forward;
         forward.y = 0;
