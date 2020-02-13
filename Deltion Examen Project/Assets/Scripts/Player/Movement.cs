@@ -7,6 +7,13 @@ public class Movement : MonoBehaviour
     public float movementSpeed;
     public float rotationSpeed;
 
+    public Vector3 forward;
+
+    void Awake()
+    {
+        forward = Camera.main.transform.forward;
+    }
+
     public void Move(float xAxis, float yAxis)
     {
         Vector3 toMove = new Vector3(xAxis, 0, yAxis);
