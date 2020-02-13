@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Ability : MonoBehaviour
 {
-    protected TestPlayer myPlayer;
+    protected Player myPlayer;
     private int requiredLevel;
     public bool ultimate;
     protected bool onCooldown;
@@ -20,9 +20,11 @@ public abstract class Ability : MonoBehaviour
     }
     public DeployType myDeployType;
 
+    protected Coroutine afterDurCoroutine;
+
     private void Awake()
     {
-        myPlayer = GetComponent<TestPlayer>();
+        myPlayer = GetComponent<Player>();
     }
     public void UseAbility()
     {
@@ -49,7 +51,7 @@ public abstract class Ability : MonoBehaviour
             }
 
             StartCoroutine(Cooldown(cooldownTime));
-            StartCoroutine(AfterDuration());
+            afterDurCoroutine = StartCoroutine(AfterDuration());
         }
        
     }

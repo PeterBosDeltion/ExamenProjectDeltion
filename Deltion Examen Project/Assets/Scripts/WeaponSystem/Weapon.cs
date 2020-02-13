@@ -18,8 +18,8 @@ public class Weapon : MonoBehaviour
 
     private bool reloading;
     private int shotsFired;
-    public int ammoSpreadDivision = 5;
-    private void Awake()
+    public int amountAccurateBullets;
+    private void Start()
     {
         Initialize();
     }
@@ -30,6 +30,28 @@ public class Weapon : MonoBehaviour
         magazineAmmo = totalAmmo;
         audioSource = GetComponent<AudioSource>();
         canShoot = true;
+        switch (myWeapon.myFireType)
+        {
+            case WeaponScriptable.FireType.Auto:
+                InputManager.Instance.leftMouseButtonHoldEvent += Shoot;
+                break;
+            case WeaponScriptable.FireType.Semi:
+                InputManager.Instance.leftMouseButtonEvent += Shoot;
+                break;
+            case WeaponScriptable.FireType.Bolt:
+                InputManager.Instance.leftMouseButtonEvent += Shoot;
+                break;
+        }
+        InputManager.Instance.leftMouseButtonUpEvent += ResetShotsFired;
+        InputManager.Instance.reloadEvent += Reload;
+    }
+
+    private void OnDestroy()
+    {
+        InputManager.Instance.leftMouseButtonEvent -= Shoot;
+        InputManager.Instance.leftMouseButtonHoldEvent -= Shoot;
+        InputManager.Instance.leftMouseButtonUpEvent -= ResetShotsFired;
+        InputManager.Instance.reloadEvent -= Reload;
     }
     protected virtual void Shoot()
     {
@@ -37,9 +59,9 @@ public class Weapon : MonoBehaviour
         {
             shotsFired++;
             float offset = 0;
-            if(shotsFired >= totalAmmo / ammoSpreadDivision)
+            if(shotsFired >= amountAccurateBullets)
             {
-                offset = Random.Range(-myWeapon.maxSpreadAngle, myWeapon.maxSpreadAngle);
+                offset = Random.Range(myWeapon.minSpreadAngle, myWeapon.maxSpreadAngle);
             }
             GameObject bul = Instantiate(bullet, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
             bul.transform.eulerAngles += new Vector3(0, offset, 0);
@@ -71,7 +93,7 @@ public class Weapon : MonoBehaviour
         audioSource.PlayOneShot(gunShot);
         if (canShoot)
         {
-            float refireTime = myWeapon.firerate / 3600;
+            float refireTime = 60 / myWeapon.firerate;
             StartCoroutine(LimitFireRate(refireTime));
         }
     }

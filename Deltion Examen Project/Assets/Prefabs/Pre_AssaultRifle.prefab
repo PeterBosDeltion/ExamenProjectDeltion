@@ -657,9 +657,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2363066780894296142}
-  m_LocalRotation: {x: -0, y: -0.38268322, z: -0, w: 0.9238797}
+  m_LocalRotation: {x: 0, y: -0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 21.018, y: 2.462, z: -19.226}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
   m_Children:
   - {fileID: 8178823729163595360}
   - {fileID: 4259608304947107937}
@@ -684,7 +684,7 @@ MonoBehaviour:
   gunShot: {fileID: 8300000, guid: 61e93b9ff30545c4fb724bb7ccb41973, type: 3}
   emptyMagazine: {fileID: 8300000, guid: 141f25fdadfd5c649b8b5c6376cc086b, type: 3}
   reload: {fileID: 8300000, guid: 1211495b486c6374f8ba736ecea163f6, type: 3}
-  ammoSpreadDivision: 5
+  amountAccurateBullets: 5
 --- !u!82 &4397667167730644312
 AudioSource:
   m_ObjectHideFlags: 0
