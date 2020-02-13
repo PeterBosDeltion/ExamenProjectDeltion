@@ -15,9 +15,9 @@ public class InputManager : MonoBehaviour
     public delegate void AxisInput(float xAxis, float yAxis);
 
     public BaseInput leftMouseButtonEvent;
-    public BaseInput rightMouseButtonEvent;
     public BaseInput leftMouseButtonHoldEvent;
     public BaseInput leftMouseButtonUpEvent;
+    public BaseInput rightMouseButtonEvent;
     public BaseInput reloadEvent;
     public BaseInput interactEvent;
     public FloatInput abilityEvent;
@@ -92,7 +92,7 @@ public class InputManager : MonoBehaviour
     private void LeftMouseUp()
     {
         Debug.Log("Left mouse Up");
-        leftMouseButtonEvent.Invoke();
+        leftMouseButtonUpEvent.Invoke();
     }
     private void LeftMouseHold()
     {
