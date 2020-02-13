@@ -16,6 +16,8 @@ public class InputManager : MonoBehaviour
 
     public BaseInput leftMouseButtonEvent;
     public BaseInput rightMouseButtonEvent;
+    public BaseInput leftMouseButtonHoldEvent;
+    public BaseInput leftMouseButtonUpEvent;
     public BaseInput reloadEvent;
     public BaseInput interactEvent;
     public FloatInput abilityEvent;
@@ -33,6 +35,8 @@ public class InputManager : MonoBehaviour
         Instance = this;
 
         leftMouseButtonEvent += Empty;
+        leftMouseButtonHoldEvent += Empty;
+        leftMouseButtonUpEvent += Empty;
         rightMouseButtonEvent += Empty;
         reloadEvent += Empty;
         interactEvent += Empty;
@@ -47,6 +51,10 @@ public class InputManager : MonoBehaviour
         //Generic input
         if (Input.GetMouseButtonDown(0))
             LeftMouse();
+        if (Input.GetMouseButtonUp(0))
+            LeftMouseUp();
+        if (Input.GetMouseButton(0))
+            LeftMouseHold();
         if (Input.GetMouseButtonDown(1))
             RightMouse();
         if (Input.GetButtonDown("Reload"))
@@ -80,6 +88,16 @@ public class InputManager : MonoBehaviour
     {
         Debug.Log("Left mouse");
         leftMouseButtonEvent.Invoke();
+    }
+    private void LeftMouseUp()
+    {
+        Debug.Log("Left mouse Up");
+        leftMouseButtonEvent.Invoke();
+    }
+    private void LeftMouseHold()
+    {
+        Debug.Log("Left mouse Hold");
+        leftMouseButtonHoldEvent.Invoke();
     }
     private void RightMouse()
     {
