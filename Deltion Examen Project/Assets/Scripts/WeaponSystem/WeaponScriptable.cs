@@ -14,13 +14,13 @@ public class WeaponScriptable : ScriptableObject
     public float maxSpreadAngle;
     public float totalAmmo;
     public float ammoDrain;
-    //public enum FireType
-    //{
-    //    Auto,
-    //    Semi,
-    //    Bolt,
-    //}
+    public enum FireType
+    {
+        Auto,
+        Semi,
+        Bolt,
+    }
 
-    //public FireType myFireType;
+    public FireType myFireType;
     public float reloadSpeed;
 }

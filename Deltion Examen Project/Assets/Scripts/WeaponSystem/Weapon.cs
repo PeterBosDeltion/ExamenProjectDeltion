@@ -19,7 +19,7 @@ public class Weapon : MonoBehaviour
     private bool reloading;
     private int shotsFired;
     public int amountAccurateBullets;
-    private void Awake()
+    private void Start()
     {
         Initialize();
     }
@@ -30,7 +30,18 @@ public class Weapon : MonoBehaviour
         magazineAmmo = totalAmmo;
         audioSource = GetComponent<AudioSource>();
         canShoot = true;
-        InputManager.Instance.leftMouseButtonHoldEvent += Shoot;
+        switch (myWeapon.myFireType)
+        {
+            case WeaponScriptable.FireType.Auto:
+                InputManager.Instance.leftMouseButtonHoldEvent += Shoot;
+                break;
+            case WeaponScriptable.FireType.Semi:
+                InputManager.Instance.leftMouseButtonEvent += Shoot;
+                break;
+            case WeaponScriptable.FireType.Bolt:
+                InputManager.Instance.leftMouseButtonEvent += Shoot;
+                break;
+        }
         InputManager.Instance.leftMouseButtonUpEvent += ResetShotsFired;
         InputManager.Instance.reloadEvent += Reload;
     }
@@ -38,6 +49,7 @@ public class Weapon : MonoBehaviour
     private void OnDestroy()
     {
         InputManager.Instance.leftMouseButtonEvent -= Shoot;
+        InputManager.Instance.leftMouseButtonHoldEvent -= Shoot;
         InputManager.Instance.leftMouseButtonUpEvent -= ResetShotsFired;
         InputManager.Instance.reloadEvent -= Reload;
     }
@@ -81,7 +93,7 @@ public class Weapon : MonoBehaviour
         audioSource.PlayOneShot(gunShot);
         if (canShoot)
         {
-            float refireTime = myWeapon.firerate / 3600;
+            float refireTime = 60 / myWeapon.firerate;
             StartCoroutine(LimitFireRate(refireTime));
         }
     }
