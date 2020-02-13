@@ -8,8 +8,6 @@ public class CameraMovement : MonoBehaviour
     Transform target;
     [Tooltip("Use this offset to apply a distance between the player and the camera (this has the same effect as applying the same value in all axises of the position offset)")]
     public float distanceOffset;
-    [Tooltip("Use this offset to apply slight changes to the camera's position above the player")]
-    public Vector3 positionOffset;
     [Tooltip("The lower the value the slower/smoother the camera will follow the player")]
     public float Smoothness = 5;
 
@@ -24,15 +22,15 @@ public class CameraMovement : MonoBehaviour
         if (focusOnPlayer)
         {
             MoveAfterPlayer();
-            LookAtPlayer();
+            //LookAtPlayer();
         }
     }
 
     //Camera follows player
     void MoveAfterPlayer()
     {
-        Vector3 newOffset = new Vector3(distanceOffset, distanceOffset, distanceOffset);
-        Vector3 targetPos = target.position + newOffset + positionOffset;
+        Vector3 newOffset = new Vector3(distanceOffset, distanceOffset, 0);
+        Vector3 targetPos = target.position + newOffset;
         Vector3 smoothedPos = Vector3.Lerp(transform.position, targetPos, Smoothness * Time.deltaTime);
 
         transform.position = smoothedPos;
