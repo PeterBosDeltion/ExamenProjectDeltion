@@ -22,7 +22,6 @@ public class CameraMovement : MonoBehaviour
         if (focusOnPlayer)
         {
             MoveAfterPlayer();
-            //LookAtPlayer();
         }
     }
 
@@ -34,11 +33,5 @@ public class CameraMovement : MonoBehaviour
         Vector3 smoothedPos = Vector3.Lerp(transform.position, targetPos, Smoothness * Time.deltaTime);
 
         transform.position = smoothedPos;
-    }
-
-    //Keep the focus on the player
-    void LookAtPlayer()
-    {
-        transform.LookAt(target);
     }
 }
