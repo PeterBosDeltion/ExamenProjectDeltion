@@ -10,10 +10,5 @@ public class AssaultRifle : Weapon
         {
             ResetShotsFired();
         }
-
-        if (Input.GetMouseButton(0))
-        {
-            Shoot();
-        }
     }
 }

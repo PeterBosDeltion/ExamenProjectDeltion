@@ -18,7 +18,9 @@ MonoBehaviour:
   projectileVelocity: 1500
   damage: 20
   firerate: 360
+  minSpreadAngle: -10
   maxSpreadAngle: 10
+  spreadGrowthSpeed: 0.5
   totalAmmo: 80
   ammoDrain: 1
   reloadSpeed: 3

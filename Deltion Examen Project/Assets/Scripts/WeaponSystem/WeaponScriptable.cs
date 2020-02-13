@@ -12,7 +12,6 @@ public class WeaponScriptable : ScriptableObject
     public float firerate;
     public float minSpreadAngle;
     public float maxSpreadAngle;
-    public float spreadGrowthSpeed;
     public float totalAmmo;
     public float ammoDrain;
     //public enum FireType

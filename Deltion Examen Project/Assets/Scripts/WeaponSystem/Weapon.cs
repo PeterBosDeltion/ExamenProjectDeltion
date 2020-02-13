@@ -30,13 +30,16 @@ public class Weapon : MonoBehaviour
         magazineAmmo = totalAmmo;
         audioSource = GetComponent<AudioSource>();
         canShoot = true;
-        //InputManager.Instance.leftMouseButtonEvent += Shoot;
+        InputManager.Instance.leftMouseButtonHoldEvent += Shoot;
+        InputManager.Instance.leftMouseButtonUpEvent += ResetShotsFired;
         InputManager.Instance.reloadEvent += Reload;
     }
 
     private void OnDestroy()
     {
         InputManager.Instance.leftMouseButtonEvent -= Shoot;
+        InputManager.Instance.leftMouseButtonUpEvent -= ResetShotsFired;
+        InputManager.Instance.reloadEvent -= Reload;
     }
     protected virtual void Shoot()
     {
