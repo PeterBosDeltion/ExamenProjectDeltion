@@ -750,6 +750,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pre_PersonalShield
       objectReference: {fileID: 0}
+    - target: {fileID: 1246149216655738807, guid: ffb7a5254255d37408fd2aff453840f1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5173526063673709140, guid: ffb7a5254255d37408fd2aff453840f1,
         type: 3}
       propertyPath: m_LocalPosition.x
