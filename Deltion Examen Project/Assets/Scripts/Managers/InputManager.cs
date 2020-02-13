@@ -86,17 +86,14 @@ public class InputManager : MonoBehaviour
     //Generic input
     private void LeftMouse()
     {
-        Debug.Log("Left mouse");
         leftMouseButtonEvent.Invoke();
     }
     private void LeftMouseUp()
     {
-        Debug.Log("Left mouse Up");
         leftMouseButtonUpEvent.Invoke();
     }
     private void LeftMouseHold()
     {
-        Debug.Log("Left mouse Hold");
         leftMouseButtonHoldEvent.Invoke();
     }
     private void RightMouse()
