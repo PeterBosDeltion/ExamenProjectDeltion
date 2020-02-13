@@ -18,7 +18,7 @@ public class Weapon : MonoBehaviour
 
     private bool reloading;
     private int shotsFired;
-    public int ammoSpreadDivision = 5;
+    public int amountAccurateBullets;
     private void Awake()
     {
         Initialize();
@@ -30,6 +30,13 @@ public class Weapon : MonoBehaviour
         magazineAmmo = totalAmmo;
         audioSource = GetComponent<AudioSource>();
         canShoot = true;
+        //InputManager.Instance.leftMouseButtonEvent += Shoot;
+        InputManager.Instance.reloadEvent += Reload;
+    }
+
+    private void OnDestroy()
+    {
+        InputManager.Instance.leftMouseButtonEvent -= Shoot;
     }
     protected virtual void Shoot()
     {
@@ -37,9 +44,9 @@ public class Weapon : MonoBehaviour
         {
             shotsFired++;
             float offset = 0;
-            if(shotsFired >= totalAmmo / ammoSpreadDivision)
+            if(shotsFired >= amountAccurateBullets)
             {
-                offset = Random.Range(-myWeapon.maxSpreadAngle, myWeapon.maxSpreadAngle);
+                offset = Random.Range(myWeapon.minSpreadAngle, myWeapon.maxSpreadAngle);
             }
             GameObject bul = Instantiate(bullet, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
             bul.transform.eulerAngles += new Vector3(0, offset, 0);
