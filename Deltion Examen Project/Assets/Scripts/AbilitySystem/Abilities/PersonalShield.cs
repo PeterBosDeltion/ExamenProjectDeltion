@@ -39,6 +39,7 @@ public class PersonalShield : Ability
                 activeShields.Clear();
                 Destroy(shieldObject);
                 myPlayer.tempHp = 0;
+                StartCooldown();
                 activeShield = false;
             }
         }
@@ -50,6 +51,7 @@ public class PersonalShield : Ability
         activeShields.Clear();
         Destroy(shieldObject);
         myPlayer.tempHp = 0;
+        StartCooldown();
         activeShield = false;
     }
 }

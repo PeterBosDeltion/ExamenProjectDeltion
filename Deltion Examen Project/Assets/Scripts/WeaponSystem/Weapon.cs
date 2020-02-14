@@ -7,8 +7,8 @@ public class Weapon : MonoBehaviour
     public WeaponScriptable myWeapon; //Probably going te be initialized by IDmanager later
     public GameObject bullet; //Might need to be changed if guns fire different projectiles
     public GameObject bulletSpawn;
-    protected float totalAmmo;
-    protected float magazineAmmo;
+    public float totalAmmo;
+    public float magazineAmmo;
     protected bool canShoot = true;
     private AudioSource audioSource;
 
