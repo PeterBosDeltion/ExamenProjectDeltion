@@ -20,7 +20,6 @@ public class Movement : MonoBehaviour
 
     public void Move(float xAxis, float yAxis)
     {
-        Vector3 direction = new Vector3(xAxis, 0, yAxis);
         Vector3 rightMovement = right * movementSpeed * Time.deltaTime * xAxis;
         Vector3 upMovement = forward * movementSpeed * Time.deltaTime * yAxis;
 
