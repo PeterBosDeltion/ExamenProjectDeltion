@@ -71,13 +71,17 @@ public class InputManager : MonoBehaviour
             AbilityHotkeys(3);
         if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetAxis("Mouse ScrollWheel") < 0f)
             SwitchWeapon(Input.GetAxis("Mouse ScrollWheel"));
+    }
 
+    //Fixed update for movementbased input to avoid physics problems
+    private void FixedUpdate()
+    {
         //Movement input
         if (Input.GetAxis("Horizontal") > 0f || Input.GetAxis("Horizontal") < 0f || Input.GetAxis("Vertical") > 0f || Input.GetAxis("Vertical") < 0f)
             Moving(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         //Rotation input
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if(Physics.Raycast(ray , out hit , floor))
+        if (Physics.Raycast(ray, out hit, floor))
             Rotating(hit.point.x, hit.point.z);
     }
 
@@ -86,17 +90,14 @@ public class InputManager : MonoBehaviour
     //Generic input
     private void LeftMouse()
     {
-        Debug.Log("Left mouse");
         leftMouseButtonEvent.Invoke();
     }
     private void LeftMouseUp()
     {
-        Debug.Log("Left mouse Up");
         leftMouseButtonUpEvent.Invoke();
     }
     private void LeftMouseHold()
     {
-        Debug.Log("Left mouse Hold");
         leftMouseButtonHoldEvent.Invoke();
     }
     private void RightMouse()
