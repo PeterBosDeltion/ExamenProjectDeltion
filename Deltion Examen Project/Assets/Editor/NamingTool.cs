@@ -19,7 +19,7 @@ public class NamingTool : EditorWindow
     int stepValue;
     Vector2 scrollPos = new Vector2();
 
-    [MenuItem("Movares/RenameTool")]
+    [MenuItem("Tools/RenameTool")]
     public static void ShowWindow()
     {
         EditorWindow.GetWindow(typeof(NamingTool));

@@ -27,13 +27,11 @@ public class Bullet : MonoBehaviour
             if (distanceTraveled >= minFalloff)
             {
                 damage = startDamage / 1.5F;
-                Debug.Log("Min");
             }
         }
         else if(distanceTraveled >= maxFalloff)
         {
             damage = startDamage / 3F;
-            Debug.Log("Max");
         }
 
     }

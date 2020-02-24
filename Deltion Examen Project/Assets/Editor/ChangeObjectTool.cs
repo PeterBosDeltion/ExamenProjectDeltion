@@ -41,7 +41,7 @@ public class ChangeObjectTool : EditorWindow
 
     Vector2 scrollPos = new Vector2();
 
-    [MenuItem("Movares/ChangeObjectsTool")]
+    [MenuItem("Tools/ChangeObjectsTool")]
     public static void ShowWindow()
     {
         EditorWindow.GetWindow(typeof(ChangeObjectTool));

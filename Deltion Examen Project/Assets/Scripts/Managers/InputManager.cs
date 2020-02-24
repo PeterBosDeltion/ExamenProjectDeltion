@@ -122,7 +122,6 @@ public class InputManager : MonoBehaviour
     }
     private void SwitchWeapon(float inputScroll)
     {
-        Debug.Log(inputScroll);
         scrollEvent(inputScroll);
     }
 

@@ -51,13 +51,14 @@ public class PlayerController : MonoBehaviour
     public void Move(float xAxis, float yAxis)
     {
         movement.Move(xAxis, yAxis);
-        ManageAnimations(false, xAxis, yAxis);
+        Quaternion diffrence = transform.rotation * Quaternion.Inverse(Camera.main.transform.rotation);
+        Vector3 animatedAxis = diffrence * new Vector3(xAxis, 0, yAxis);
+        ManageAnimations(false, -animatedAxis.x, animatedAxis.z);
     }
 
     public void Rotate(float xAxis, float zAxis)
     {
         movement.Rotate(xAxis, zAxis);
-        Debug.Log("Rotating");
     }
 
     public void Shoot()
