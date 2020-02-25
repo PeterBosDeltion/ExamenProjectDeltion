@@ -906,12 +906,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 3292203082460661233, guid: ab953951a47a4de4f871b6f5ecbb0c14,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 88b7d87f1b9f46a4b8270c93bb19e83f,
-        type: 3}
     - target: {fileID: 3292203082533498721, guid: ab953951a47a4de4f871b6f5ecbb0c14,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -972,12 +966,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3292203083493763037, guid: ab953951a47a4de4f871b6f5ecbb0c14,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 88b7d87f1b9f46a4b8270c93bb19e83f,
-        type: 3}
     - target: {fileID: 6123339696123500213, guid: ab953951a47a4de4f871b6f5ecbb0c14,
         type: 3}
       propertyPath: m_AnchorMin.y
