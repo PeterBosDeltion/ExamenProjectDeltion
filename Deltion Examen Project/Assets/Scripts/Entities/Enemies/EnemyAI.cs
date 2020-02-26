@@ -32,6 +32,7 @@ public abstract class EnemyAI : MonoBehaviour
         entityManager = EntityManager.instance;
         entityManager.AddEnemy(myStats);
         SetTarget();
+        //Set target seems to happen to early
     }
 
     protected void SetTarget(Entity Attacker = null)
