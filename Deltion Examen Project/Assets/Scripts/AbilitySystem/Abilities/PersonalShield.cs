@@ -9,7 +9,12 @@ public class PersonalShield : Ability
     private GameObject shieldObject;
     private List<GameObject> activeShields = new List<GameObject>();
     public Vector3 spawnOffset;
-    private bool activeShield;
+
+    public void Start()
+    {
+        myPlayer.zeroTempHp += ResetCoroutine;
+    }
+
     protected override void AbilityMechanic()
     {
         if(activeShields.Count > 0)
@@ -21,27 +26,18 @@ public class PersonalShield : Ability
 
             activeShields.Clear();
         }
-        myPlayer.tempHp = tempHP;
+        myPlayer.Heal(0, tempHP);
         shieldObject = Instantiate(shieldEffectPrefab);
         shieldObject.transform.SetParent(myPlayer.transform);
         shieldObject.transform.localPosition = Vector3.zero  + spawnOffset;
         activeShields.Add(shieldObject);
-        activeShield = true;
     }
 
-    private void Update()
+    protected void ResetCoroutine(Entity Attacker)
     {
-        if (activeShield)
-        {
-            if(myPlayer.tempHp <= 0)
-            {
-                StopCoroutine(afterDurCoroutine);
-                activeShields.Clear();
-                Destroy(shieldObject);
-                myPlayer.tempHp = 0;
-                activeShield = false;
-            }
-        }
+        StopCoroutine(afterDurCoroutine);
+        activeShields.Clear();
+        Destroy(shieldObject);
     }
 
     protected override IEnumerator AfterDuration()
@@ -49,7 +45,6 @@ public class PersonalShield : Ability
         yield return new WaitForSeconds(duration);
         activeShields.Clear();
         Destroy(shieldObject);
-        myPlayer.tempHp = 0;
-        activeShield = false;
+        myPlayer.RemoveTempHP();
     }
 }
