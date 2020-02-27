@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(fileName = "Gun", menuName = "Weapon", order = 1)]
+[CreateAssetMenu(fileName = "Gun", menuName = "Gameplay/Weapon", order = 1)]
 public class WeaponScriptable : ScriptableObject
 {
     public float requiredLevel;

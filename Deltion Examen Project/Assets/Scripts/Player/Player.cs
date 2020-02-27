@@ -39,21 +39,34 @@ public class Player : MonoBehaviour
             if (!abilities[3].onCooldown)
                     abilities[3].UseAbility();
         }
+
+        if (Input.GetKeyDown("f"))
+        {
+            TakeDamage(10);
+        }
         //[PH]
     }
 
     private void Initialize()
     {
-        //for (int i = 0; i < abilities.Count -1; i++)
-        //{
-        //    InputManager.Instance.abilityEvent += abilities[i].UseAbility;
-        //}
+        foreach (Ability ability in abilities)
+        {
+            Instantiate(ability, transform);
+        }
+
+        abilities.Clear();
+        Ability[] abs = GetComponentsInChildren<Ability>();
+        foreach (Ability a in abs)
+        {
+            a.myPlayer = this;
+            abilities.Add(a);
+        }
 
         hp = maxHp;
     }
     public void TakeDamage(float amount)
     {
-        if (hp > 0)
+        if (hp > 0 && tempHp <= 0)
         {
             hp -= amount;
         }

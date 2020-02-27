@@ -27,6 +27,7 @@ public class PersonalShield : Ability
         shieldObject.transform.localPosition = Vector3.zero  + spawnOffset;
         activeShields.Add(shieldObject);
         activeShield = true;
+        active = true;
     }
 
     private void Update()
