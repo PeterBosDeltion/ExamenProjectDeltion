@@ -38,6 +38,9 @@ public class PersonalShield : Ability
         StopCoroutine(afterDurCoroutine);
         activeShields.Clear();
         Destroy(shieldObject);
+        
+        //kwam er bij met merge conflict. Is dit nodig?
+        StartCooldown();
     }
 
     protected override IEnumerator AfterDuration()
@@ -46,5 +49,8 @@ public class PersonalShield : Ability
         activeShields.Clear();
         Destroy(shieldObject);
         myPlayer.RemoveTempHP();
+
+        //kwam er bij met merge conflict. Is dit nodig?
+        StartCooldown();
     }
 }

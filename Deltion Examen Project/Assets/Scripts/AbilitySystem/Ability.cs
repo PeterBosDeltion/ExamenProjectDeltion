@@ -7,7 +7,7 @@ public abstract class Ability : MonoBehaviour
     protected Player myPlayer;
     private int requiredLevel;
     public bool ultimate;
-    protected bool onCooldown;
+    public bool onCooldown;
     public float cooldownTime;
     public float duration;
     protected float currentUltCharge;
@@ -50,7 +50,6 @@ public abstract class Ability : MonoBehaviour
                     break;
             }
 
-            StartCoroutine(Cooldown(cooldownTime));
             afterDurCoroutine = StartCoroutine(AfterDuration());
         }
        
@@ -63,6 +62,14 @@ public abstract class Ability : MonoBehaviour
         onCooldown = true;
         yield return new WaitForSeconds(seconds);
         onCooldown = false;
+    }
+
+    protected void StartCooldown()
+    {
+        if (!this.onCooldown)
+        {
+            StartCoroutine(Cooldown(cooldownTime));
+        }
     }
 
     protected abstract IEnumerator AfterDuration();
