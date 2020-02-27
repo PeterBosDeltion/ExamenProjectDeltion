@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour
     private TriggerAbility triggerAbility;
     private Animator playerAnimator;
 
+    public List<Ability> abilities = new List<Ability>();
+
+    public Weapon primary; //[PH]
+
     //Assigning the Player scripts to the controller(There is no reason for the PlayerController to be anywhere else than on the Player so no need for a Gameobject reference)
     private void Awake()
     {
@@ -28,24 +32,69 @@ public class PlayerController : MonoBehaviour
     //Subscribe Input functions to their Input
     public void Start()
     {
-        InputManager.Instance.abilityEvent += TriggerAbility;
-        InputManager.Instance.MovingEvent += Move;
-        InputManager.Instance.RotatingEvent += Rotate;
-        InputManager.Instance.leftMouseButtonEvent += Shoot;
+        InputManager.abilityEvent += TriggerAbility;
+        InputManager.MovingEvent += Move;
+        InputManager.RotatingEvent += Rotate;
+        InputManager.leftMouseButtonEvent += Shoot;
+        Initialize();
+    }
+    private void Update() //[PH]
+    {
+        if (Input.GetKeyDown("f"))
+        {
+            player.TakeDamage(10, player);
+        }
+        //[PH]
+    }
+
+    private void Initialize()
+    {
+        foreach (Ability ability in abilities)
+        {
+            Instantiate(ability, transform);
+        }
+
+        abilities.Clear();
+        Ability[] abs = GetComponentsInChildren<Ability>();
+
+        foreach (Ability a in abs)
+        {
+            a.myPlayer = player;
+            abilities.Add(a);
+        }
     }
 
     //Unsubscribe Input functions for safety
     public void OnDestroy()
     {
-        InputManager.Instance.abilityEvent -= TriggerAbility;
-        InputManager.Instance.MovingEvent -= Move;
-        InputManager.Instance.RotatingEvent -= Rotate;
-        InputManager.Instance.leftMouseButtonEvent -= Shoot;
+        InputManager.abilityEvent -= TriggerAbility;
+        InputManager.MovingEvent -= Move;
+        InputManager.RotatingEvent -= Rotate;
+        InputManager.leftMouseButtonEvent -= Shoot;
     }
 
-    public void TriggerAbility(float value)
+    //Player GetValue functions
+    #region
+    public float GetHp()
     {
+        return player.GetHp();
+    }
+    public float GetTempHp()
+    {
+        return player.GetTempHp();
+    }
+    public float GetMaxHp()
+    {
+        return player.maxHp;
+    }
+    #endregion
 
+    //Input related functions
+    #region
+    public void TriggerAbility(int value)
+    {
+        if (!abilities[value].onCooldown)
+            abilities[value].UseAbility();
     }
 
     public void Move(float xAxis, float yAxis)
@@ -71,4 +120,5 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetFloat("PosY", yAxis);
         playerAnimator.SetBool("Shoot", shot);
     }
+    #endregion
 }

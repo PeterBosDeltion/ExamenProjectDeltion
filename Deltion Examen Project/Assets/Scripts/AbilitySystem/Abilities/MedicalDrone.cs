@@ -61,7 +61,7 @@ public class MedicalDrone : MonoBehaviour
 
     private void Update()
     {
-        if(myPlayer.hp < myPlayer.maxHp)
+        if(myPlayer.GetHp() < myPlayer.maxHp)
         {
             Heal();
         }
@@ -98,7 +98,7 @@ public class MedicalDrone : MonoBehaviour
         if(myHealpool > 0)
         {
             myHealpool -= healRate;
-            myPlayer.hp += healRate;
+            myPlayer.Heal(healRate,0);
             Debug.Log(myHealpool);
         }
 

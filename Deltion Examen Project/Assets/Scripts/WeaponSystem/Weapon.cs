@@ -33,25 +33,25 @@ public class Weapon : MonoBehaviour
         switch (myWeapon.myFireType)
         {
             case WeaponScriptable.FireType.Auto:
-                InputManager.Instance.leftMouseButtonHoldEvent += Shoot;
+                InputManager.leftMouseButtonHoldEvent += Shoot;
                 break;
             case WeaponScriptable.FireType.Semi:
-                InputManager.Instance.leftMouseButtonEvent += Shoot;
+                InputManager.leftMouseButtonEvent += Shoot;
                 break;
             case WeaponScriptable.FireType.Bolt:
-                InputManager.Instance.leftMouseButtonEvent += Shoot;
+                InputManager.leftMouseButtonEvent += Shoot;
                 break;
         }
-        InputManager.Instance.leftMouseButtonUpEvent += ResetShotsFired;
-        InputManager.Instance.reloadEvent += Reload;
+        InputManager.leftMouseButtonUpEvent += ResetShotsFired;
+        InputManager.reloadEvent += Reload;
     }
 
     private void OnDestroy()
     {
-        InputManager.Instance.leftMouseButtonEvent -= Shoot;
-        InputManager.Instance.leftMouseButtonHoldEvent -= Shoot;
-        InputManager.Instance.leftMouseButtonUpEvent -= ResetShotsFired;
-        InputManager.Instance.reloadEvent -= Reload;
+        InputManager.leftMouseButtonEvent -= Shoot;
+        InputManager.leftMouseButtonHoldEvent -= Shoot;
+        InputManager.leftMouseButtonUpEvent -= ResetShotsFired;
+        InputManager.reloadEvent -= Reload;
     }
     protected virtual void Shoot()
     {

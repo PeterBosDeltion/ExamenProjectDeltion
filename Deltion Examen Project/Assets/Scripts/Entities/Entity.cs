@@ -5,12 +5,24 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     public delegate void HpEvent(Entity Attacker = null);
-    public HpEvent hpDamaged;
-    public HpEvent tempHpDamaged;
+    public static HpEvent hpDamaged;
+    public static HpEvent tempHpDamaged;
 
-    public float hp;
+    protected float hp;
+    protected float tempHp;
     public float maxHp;
-    public float tempHp;
+
+    private void Awake()
+    {
+        hpDamaged += EmptyHpEvent;
+        tempHpDamaged += EmptyHpEvent;
+    }
+
+    private void OnDestroy()
+    {
+        hpDamaged -= EmptyHpEvent;
+        tempHpDamaged -= EmptyHpEvent;
+    }
 
     public void TakeDamage(float takenDamage, Entity Attacker)
     {
@@ -38,13 +50,6 @@ public class Entity : MonoBehaviour
             Death();
         }
     }
-
-    protected void Death()
-    {
-        Destroy(this.gameObject);
-        //Add score when script is made
-    }
-
     public void Heal(float healedHp, float AddedTempHP)
     {
         if(hp > 0)
@@ -59,8 +64,28 @@ public class Entity : MonoBehaviour
         }
     }
 
+    protected void Death()
+    {
+        Destroy(this.gameObject);
+        //Add score when script is made
+    }
+
     public void RemoveTempHP()
     {
         tempHp = 0;
+    }
+
+    public float GetHp()
+    {
+        return hp;
+    }
+
+    public float GetTempHp()
+    {
+        return tempHp;
+    }
+
+    public void EmptyHpEvent(Entity Attacker = null)
+    {
     }
 }

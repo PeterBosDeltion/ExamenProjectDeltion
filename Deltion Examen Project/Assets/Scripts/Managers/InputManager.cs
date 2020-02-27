@@ -12,18 +12,19 @@ public class InputManager : MonoBehaviour
     //Input Delegates. subscribe a function to trigger its contents on input.
     public delegate void BaseInput();
     public delegate void FloatInput(float value);
+    public delegate void IntInput(int value);
     public delegate void AxisInput(float xAxis, float yAxis);
 
-    public BaseInput leftMouseButtonEvent;
-    public BaseInput leftMouseButtonHoldEvent;
-    public BaseInput leftMouseButtonUpEvent;
-    public BaseInput rightMouseButtonEvent;
-    public BaseInput reloadEvent;
-    public BaseInput interactEvent;
-    public FloatInput abilityEvent;
-    public FloatInput scrollEvent;
-    public AxisInput MovingEvent;
-    public AxisInput RotatingEvent;
+    public static BaseInput leftMouseButtonEvent;
+    public static BaseInput leftMouseButtonHoldEvent;
+    public static BaseInput leftMouseButtonUpEvent;
+    public static BaseInput rightMouseButtonEvent;
+    public static BaseInput reloadEvent;
+    public static BaseInput interactEvent;
+    public static IntInput abilityEvent;
+    public static FloatInput scrollEvent;
+    public static AxisInput MovingEvent;
+    public static AxisInput RotatingEvent;
 
     //Rotation related values
     private RaycastHit hit;
@@ -40,10 +41,24 @@ public class InputManager : MonoBehaviour
         rightMouseButtonEvent += Empty;
         reloadEvent += Empty;
         interactEvent += Empty;
-        abilityEvent += EmptyFloat;
+        abilityEvent += EmptyInt;
         scrollEvent += EmptyFloat;
         MovingEvent += EmptyAxis;
         RotatingEvent += EmptyAxis;
+    }
+
+    private void OnDestroy()
+    {
+        leftMouseButtonEvent -= Empty;
+        leftMouseButtonHoldEvent -= Empty;
+        leftMouseButtonUpEvent -= Empty;
+        rightMouseButtonEvent -= Empty;
+        reloadEvent -= Empty;
+        interactEvent -= Empty;
+        abilityEvent -= EmptyInt;
+        scrollEvent -= EmptyFloat;
+        MovingEvent -= EmptyAxis;
+        RotatingEvent -= EmptyAxis;
     }
 
     private void Update()
@@ -143,6 +158,9 @@ public class InputManager : MonoBehaviour
     {
     }
     public void EmptyFloat(float value)
+    {
+    }
+    public void EmptyInt(int value)
     {
     }
     public void EmptyAxis(float xAxis, float yAxis)
