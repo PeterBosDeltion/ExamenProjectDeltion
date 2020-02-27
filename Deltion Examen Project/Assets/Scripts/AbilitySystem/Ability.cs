@@ -4,10 +4,11 @@ using UnityEngine;
 
 public abstract class Ability : MonoBehaviour
 {
-    protected Player myPlayer;
+    public Player myPlayer;
     private int requiredLevel;
     public bool ultimate;
     public bool onCooldown;
+    public bool active = false;
     public float cooldownTime;
     public float duration;
     protected float currentUltCharge;
@@ -22,13 +23,9 @@ public abstract class Ability : MonoBehaviour
 
     protected Coroutine afterDurCoroutine;
 
-    private void Awake()
-    {
-        myPlayer = GetComponent<Player>();
-    }
     public void UseAbility()
     {
-        if (!onCooldown)
+        if (!onCooldown && !active)
         {
             switch (myDeployType)
             {
@@ -68,6 +65,7 @@ public abstract class Ability : MonoBehaviour
     {
         if (!this.onCooldown)
         {
+            active = false;
             StartCoroutine(Cooldown(cooldownTime));
         }
     }

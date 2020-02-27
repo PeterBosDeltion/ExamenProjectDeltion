@@ -18,6 +18,8 @@ public class Player : Entity
     {
         EntityManager.instance.AddPlayerOrAbility(this);
         hp = maxHp;
+
+        Initialize();
     }
 
     public void CheckTempHp(Entity Attacker)
@@ -50,6 +52,49 @@ public class Player : Entity
             if (!abilities[3].onCooldown)
                     abilities[3].UseAbility();
         }
+
+        if (Input.GetKeyDown("f"))
+        {
+            TakeDamage(10);
+        }
         //[PH]
+    }
+
+    private void Initialize()
+    {
+        foreach (Ability ability in abilities)
+        {
+            Instantiate(ability, transform);
+        }
+
+        abilities.Clear();
+        Ability[] abs = GetComponentsInChildren<Ability>();
+        foreach (Ability a in abs)
+        {
+            a.myPlayer = this;
+            abilities.Add(a);
+        }
+
+        hp = maxHp;
+    }
+    public void TakeDamage(float amount)
+    {
+        if (hp > 0 && tempHp <= 0)
+        {
+            hp -= amount;
+        }
+        else if (tempHp > 0)
+        {
+            tempHp -= amount;
+        }
+
+        if (tempHp < 0)
+        {
+            tempHp = 0;
+        }
+        if (hp < 0)
+        {
+            hp = 0;
+        }
     }
 }

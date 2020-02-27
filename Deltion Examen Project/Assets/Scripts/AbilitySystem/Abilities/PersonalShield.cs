@@ -9,12 +9,7 @@ public class PersonalShield : Ability
     private GameObject shieldObject;
     private List<GameObject> activeShields = new List<GameObject>();
     public Vector3 spawnOffset;
-
-    public void Start()
-    {
-        myPlayer.zeroTempHp += ResetCoroutine;
-    }
-
+    private bool activeShield;
     protected override void AbilityMechanic()
     {
         if(activeShields.Count > 0)
@@ -26,21 +21,29 @@ public class PersonalShield : Ability
 
             activeShields.Clear();
         }
-        myPlayer.Heal(0, tempHP);
+        myPlayer.tempHp = tempHP;
         shieldObject = Instantiate(shieldEffectPrefab);
         shieldObject.transform.SetParent(myPlayer.transform);
         shieldObject.transform.localPosition = Vector3.zero  + spawnOffset;
         activeShields.Add(shieldObject);
+        activeShield = true;
+        active = true;
     }
 
-    protected void ResetCoroutine(Entity Attacker)
+    private void Update()
     {
-        StopCoroutine(afterDurCoroutine);
-        activeShields.Clear();
-        Destroy(shieldObject);
-        
-        //kwam er bij met merge conflict. Is dit nodig?
-        StartCooldown();
+        if (activeShield)
+        {
+            if(myPlayer.tempHp <= 0)
+            {
+                StopCoroutine(afterDurCoroutine);
+                activeShields.Clear();
+                Destroy(shieldObject);
+                myPlayer.tempHp = 0;
+                StartCooldown();
+                activeShield = false;
+            }
+        }
     }
 
     protected override IEnumerator AfterDuration()
@@ -48,9 +51,8 @@ public class PersonalShield : Ability
         yield return new WaitForSeconds(duration);
         activeShields.Clear();
         Destroy(shieldObject);
-        myPlayer.RemoveTempHP();
-
-        //kwam er bij met merge conflict. Is dit nodig?
+        myPlayer.tempHp = 0;
         StartCooldown();
+        activeShield = false;
     }
 }

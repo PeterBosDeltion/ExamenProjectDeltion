@@ -16,6 +16,8 @@ public class PlayerUI : MonoBehaviour
     public Image abilityFourCDImg;
 
     public Image healthBar;
+    public GameObject tempHealthbar;
+    public Image tempHealthbarFilled;
 
     //private bool waiting;
     private void Start()
@@ -56,25 +58,58 @@ public class PlayerUI : MonoBehaviour
 
     private void Update()
     {
-        if (myPlayer.abilities[0].onCooldown)
+        if(myPlayer.abilities.Count > 0)
         {
-            abilityOneCDImg.fillAmount -= Time.deltaTime / myPlayer.abilities[0].cooldownTime;
-        }
-        if (myPlayer.abilities[1].onCooldown)
-        {
-            abilityTwoCDImg.fillAmount -= Time.deltaTime / myPlayer.abilities[1].cooldownTime;
-        }
-        if (myPlayer.abilities[2].onCooldown)
-        {
-            abilityThreeCDImg.fillAmount -= Time.deltaTime / myPlayer.abilities[2].cooldownTime;
-        }
-        if (myPlayer.abilities[3].onCooldown)
-        {
-            abilityFourCDImg.fillAmount -= Time.deltaTime / myPlayer.abilities[3].cooldownTime;
+            if(myPlayer.abilities[0] != null)
+            {
+                if (myPlayer.abilities[0].onCooldown)
+                {
+                    abilityOneCDImg.fillAmount -= Time.deltaTime / myPlayer.abilities[0].cooldownTime;
+                }
+            }
+            if (myPlayer.abilities[1] != null)
+            {
+                if (myPlayer.abilities[1].onCooldown)
+                {
+                    abilityTwoCDImg.fillAmount -= Time.deltaTime / myPlayer.abilities[1].cooldownTime;
+                }
+            }
+            if (myPlayer.abilities[2] != null)
+            {
+                if (myPlayer.abilities[2].onCooldown)
+                {
+                    abilityThreeCDImg.fillAmount -= Time.deltaTime / myPlayer.abilities[2].cooldownTime;
+                }
+            }
+            if (myPlayer.abilities[3] != null)
+            {
+                if (myPlayer.abilities[3].onCooldown)
+                {
+                    abilityFourCDImg.fillAmount -= Time.deltaTime / myPlayer.abilities[3].cooldownTime;
+                }
+            }
+               
         }
 
         weaponImage.fillAmount =  myPlayer.primary.magazineAmmo / myPlayer.primary.totalAmmo;
-        //healthBar.fillAmount = myPlayer.hp / myPlayer.maxHp;
+        healthBar.fillAmount = myPlayer.hp / myPlayer.maxHp;
+
+        if(myPlayer.tempHp > 0)
+        {
+            if (!tempHealthbar.activeSelf)
+            {
+                tempHealthbar.SetActive(true);
+            }
+
+            tempHealthbarFilled.fillAmount = myPlayer.tempHp / myPlayer.maxHp;
+        }
+        else
+        {
+            if (tempHealthbar.activeSelf)
+            {
+                tempHealthbar.SetActive(false);
+            }
+        }
     }
     //private IEnumerator AbilityCooldown(Image abilityCDImg, float seconds)
     //{

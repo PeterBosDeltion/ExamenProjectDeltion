@@ -8,9 +8,9 @@ public class Entity : MonoBehaviour
     public HpEvent hpDamaged;
     public HpEvent tempHpDamaged;
 
-    protected float hp;
+    public float hp;
     public float maxHp;
-    protected float tempHp;
+    public float tempHp;
 
     public void TakeDamage(float takenDamage, Entity Attacker)
     {
