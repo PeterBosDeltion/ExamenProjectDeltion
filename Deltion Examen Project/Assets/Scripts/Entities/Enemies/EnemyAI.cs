@@ -24,7 +24,7 @@ public abstract class EnemyAI : MonoBehaviour
     private void Awake()
     {
         myStats = GetComponent<Enemy>();
-        myStats.hpDamaged += SetTarget;
+        Entity.hpDamaged += SetTarget;
     }
 
     private void Start()

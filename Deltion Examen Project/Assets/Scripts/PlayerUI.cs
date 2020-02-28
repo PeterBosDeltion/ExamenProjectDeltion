@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 public class PlayerUI : MonoBehaviour
 {
-    public Player myPlayer;
+    public PlayerController myPlayer;
 
     public TextMeshProUGUI ultCharge;
     public Image weaponImage;
@@ -27,10 +27,10 @@ public class PlayerUI : MonoBehaviour
 
     private void Initialize()
     {
-        InputManager.Instance.abilityEvent += AbilityUsed;
+        InputManager.abilityEvent += AbilityUsed;
     }
 
-    public void AbilityUsed(float f)
+    public void AbilityUsed(int f)
     {
             switch (f)
             {
@@ -92,16 +92,16 @@ public class PlayerUI : MonoBehaviour
         }
 
         weaponImage.fillAmount =  myPlayer.primary.magazineAmmo / myPlayer.primary.totalAmmo;
-        healthBar.fillAmount = myPlayer.hp / myPlayer.maxHp;
+        healthBar.fillAmount = myPlayer.GetHp() / myPlayer.GetMaxHp();
 
-        if(myPlayer.tempHp > 0)
+        if(myPlayer.GetTempHp() > 0)
         {
             if (!tempHealthbar.activeSelf)
             {
                 tempHealthbar.SetActive(true);
             }
 
-            tempHealthbarFilled.fillAmount = myPlayer.tempHp / myPlayer.maxHp;
+            tempHealthbarFilled.fillAmount = myPlayer.GetTempHp() / myPlayer.GetMaxHp();
         }
         else
         {

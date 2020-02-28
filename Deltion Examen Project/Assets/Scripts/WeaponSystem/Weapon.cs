@@ -19,6 +19,9 @@ public class Weapon : MonoBehaviour
     private bool reloading;
     private int shotsFired;
     public int amountAccurateBullets;
+
+    public Player myPlayer;
+
     private void Start()
     {
         Initialize();
@@ -33,25 +36,25 @@ public class Weapon : MonoBehaviour
         switch (myWeapon.myFireType)
         {
             case WeaponScriptable.FireType.Auto:
-                InputManager.Instance.leftMouseButtonHoldEvent += Shoot;
+                InputManager.leftMouseButtonHoldEvent += Shoot;
                 break;
             case WeaponScriptable.FireType.Semi:
-                InputManager.Instance.leftMouseButtonEvent += Shoot;
+                InputManager.leftMouseButtonEvent += Shoot;
                 break;
             case WeaponScriptable.FireType.Bolt:
-                InputManager.Instance.leftMouseButtonEvent += Shoot;
+                InputManager.leftMouseButtonEvent += Shoot;
                 break;
         }
-        InputManager.Instance.leftMouseButtonUpEvent += ResetShotsFired;
-        InputManager.Instance.reloadEvent += Reload;
+        InputManager.leftMouseButtonUpEvent += ResetShotsFired;
+        InputManager.reloadEvent += Reload;
     }
 
     private void OnDestroy()
     {
-        InputManager.Instance.leftMouseButtonEvent -= Shoot;
-        InputManager.Instance.leftMouseButtonHoldEvent -= Shoot;
-        InputManager.Instance.leftMouseButtonUpEvent -= ResetShotsFired;
-        InputManager.Instance.reloadEvent -= Reload;
+        InputManager.leftMouseButtonEvent -= Shoot;
+        InputManager.leftMouseButtonHoldEvent -= Shoot;
+        InputManager.leftMouseButtonUpEvent -= ResetShotsFired;
+        InputManager.reloadEvent -= Reload;
     }
     protected virtual void Shoot()
     {
@@ -66,7 +69,7 @@ public class Weapon : MonoBehaviour
             GameObject bul = Instantiate(bullet, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
             bul.transform.eulerAngles += new Vector3(0, offset, 0);
             Rigidbody rb = bul.GetComponent<Rigidbody>();
-            bul.GetComponent<Bullet>().Initialize(myWeapon.damage, myWeapon.minFallOff, myWeapon.maxFallOff, bulletSpawn.transform.position);
+            bul.GetComponent<Bullet>().Initialize(myWeapon.damage, myWeapon.minFallOff, myWeapon.maxFallOff, bulletSpawn.transform.position,myPlayer);
             rb.AddForce(bul.transform.forward * myWeapon.projectileVelocity);
             Destroy(bul, 3.0F);
             DrainAmmo();
