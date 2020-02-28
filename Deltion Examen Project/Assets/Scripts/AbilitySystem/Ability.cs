@@ -13,6 +13,9 @@ public abstract class Ability : MonoBehaviour
     public float duration;
     protected float currentUltCharge;
     public float maxDeployableDistance = 15;
+
+    [HideInInspector]
+    public bool returned;
     public enum DeployType
     {
         Instant,
@@ -27,6 +30,7 @@ public abstract class Ability : MonoBehaviour
     {
         if (!onCooldown && !active)
         {
+            returned = false;
             switch (myDeployType)
             {
                 case DeployType.Instant:
@@ -34,13 +38,24 @@ public abstract class Ability : MonoBehaviour
                     break;
                 case DeployType.Deployed:
                     RaycastHit hit;
-                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
                     {
-                        Vector3 mPos = hit.point;
-                        if (Vector3.Distance(transform.position, mPos) <= maxDeployableDistance)
+                        Debug.Log(hit.transform.gameObject.layer);
+                        if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
                         {
-                            AbilityMechanic();
+                            Vector3 mPos = hit.point;
+                            if (Vector3.Distance(transform.position, mPos) <= maxDeployableDistance)
+                            {
+                                AbilityMechanic(mPos);
+                            }
                         }
+                        else
+                        {
+                            onCooldown = false;
+                            returned = true;
+                            return;
+                        }
+                       
                     }
                     break;
                 case DeployType.LaserTarget:
@@ -52,7 +67,7 @@ public abstract class Ability : MonoBehaviour
        
     }
 
-    protected abstract void AbilityMechanic();
+    protected abstract void AbilityMechanic(Vector3? mPos = null);
 
     private IEnumerator Cooldown(float seconds)
     {

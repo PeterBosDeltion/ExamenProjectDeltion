@@ -15,7 +15,7 @@ public class PersonalShield : Ability
         myPlayer.zeroTempHp += ResetCoroutine;
     }
 
-    protected override void AbilityMechanic()
+    protected override void AbilityMechanic(Vector3? mPos)
     {
         if(activeShields.Count > 0)
         {

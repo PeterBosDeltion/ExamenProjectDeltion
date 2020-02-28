@@ -7,7 +7,7 @@ public class MedicalDroneAbility : Ability
     public float healPool;
     public GameObject dronePrefab;
     private GameObject spawnedDrone;
-    protected override void AbilityMechanic()
+    protected override void AbilityMechanic(Vector3? mPos)
     {
         Vector3 spawnPos = myPlayer.transform.position + new Vector3(0, 0.5F, 0);
         spawnedDrone = Instantiate(dronePrefab, spawnPos, Quaternion.identity);

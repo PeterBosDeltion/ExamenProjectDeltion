@@ -35,19 +35,19 @@ public class PlayerUI : MonoBehaviour
             switch (f)
             {
                 case 0:
-                    if (abilityOneCDImg.fillAmount == 0)
+                    if (abilityOneCDImg.fillAmount == 0 && !myPlayer.abilities[0].returned)
                         abilityOneCDImg.fillAmount = 1;
                     break;
                 case 1:
-                    if (abilityTwoCDImg.fillAmount == 0)
+                    if (abilityTwoCDImg.fillAmount == 0 && !myPlayer.abilities[1].returned)
                         abilityTwoCDImg.fillAmount = 1;
                     break;
                 case 2:
-                    if (abilityThreeCDImg.fillAmount == 0)
+                    if (abilityThreeCDImg.fillAmount == 0 && !myPlayer.abilities[2].returned)
                         abilityThreeCDImg.fillAmount = 1;
                     break;
                 case 3:
-                    if (abilityFourCDImg.fillAmount == 0)
+                    if (abilityFourCDImg.fillAmount == 0 && !myPlayer.abilities[3].returned)
                         abilityFourCDImg.fillAmount = 1;
                     break;
                 default:
