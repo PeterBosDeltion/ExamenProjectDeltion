@@ -11,7 +11,7 @@ ModelImporter:
     second: Attack
   - first:
       74: 8925044659521273951
-    second: Defend
+    second: Death
   - first:
       74: -1610863427237328480
     second: Walking
@@ -105,7 +105,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Defend
+      name: Death
       takeName: Take 001
       internalID: 0
       firstFrame: 180

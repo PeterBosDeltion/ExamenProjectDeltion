@@ -101,7 +101,7 @@ public class PlayerUI : MonoBehaviour
                 tempHealthbar.SetActive(true);
             }
 
-            tempHealthbarFilled.fillAmount = myPlayer.GetTempHp() / myPlayer.GetMaxHp();
+            tempHealthbarFilled.fillAmount = myPlayer.GetTempHp() / myPlayer.GetMaxTempHp();
         }
         else
         {

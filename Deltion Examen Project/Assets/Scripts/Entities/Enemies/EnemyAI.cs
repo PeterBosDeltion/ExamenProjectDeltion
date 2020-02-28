@@ -24,7 +24,7 @@ public abstract class EnemyAI : MonoBehaviour
     private void Awake()
     {
         myStats = GetComponent<Enemy>();
-        Entity.hpDamaged += SetTarget;
+        myStats.myAI = this;
     }
 
     private void Start()
@@ -35,7 +35,7 @@ public abstract class EnemyAI : MonoBehaviour
         //Set target seems to happen to early
     }
 
-    protected void SetTarget(Entity Attacker = null)
+    public void SetTarget(Entity Attacker = null)
     {
         if (!Focused && Attacker)
         {

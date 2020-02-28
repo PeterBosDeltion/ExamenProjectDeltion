@@ -4,24 +4,29 @@ using UnityEngine;
 
 public class Player : Entity
 {
-    public HpEvent zeroHp;
+    public delegate void HpEvent();
+
     public HpEvent zeroTempHp;
 
-    public void Awake()
-    {
-        tempHpDamaged += CheckTempHp;
-    }
     public void Start()
     {
         EntityManager.instance.AddPlayerOrAbility(this);
         hp = maxHp;
+        zeroTempHp += EmptyHpEvent;
     }
 
-    public void CheckTempHp(Entity Attacker)
+    public void OnDestroy()
     {
-        if(tempHp <= 0)
-        {
+        zeroTempHp -= EmptyHpEvent;
+    }
+
+    public override void DamageEvent(Entity Attacker)
+    {
+        if (tempHp <= 0)
             zeroTempHp.Invoke();
-        }
+    }
+
+    public void EmptyHpEvent()
+    {
     }
 }
