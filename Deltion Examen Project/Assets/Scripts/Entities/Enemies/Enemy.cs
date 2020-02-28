@@ -24,6 +24,7 @@ public class Enemy : Entity
     protected override void Death()
     {
         anim.SetTrigger("Death");
+        GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<Rigidbody>().useGravity = false;
         GetComponent<Collider>().enabled = false;
         StartCoroutine(DestroyEnemy());

@@ -124,6 +124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e124a13f58a4144bb53ffac9447722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myPlayer: {fileID: 0}
+  bloodParticle: {fileID: 1816239454339412339, guid: 9a435218ade96b34392e8b450117f51a,
+    type: 3}
 --- !u!96 &3523682788062803738
 TrailRenderer:
   serializedVersion: 2
