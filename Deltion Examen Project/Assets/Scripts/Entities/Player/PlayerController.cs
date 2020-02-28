@@ -87,6 +87,11 @@ public class PlayerController : MonoBehaviour
     {
         return player.maxHp;
     }
+
+    public float GetMaxTempHp()
+    {
+        return player.maxTempHp;
+    }
     #endregion
 
     //Input related functions

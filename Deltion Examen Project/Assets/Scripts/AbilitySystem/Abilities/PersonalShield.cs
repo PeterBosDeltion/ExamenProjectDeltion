@@ -34,7 +34,7 @@ public class PersonalShield : Ability
         active = true;
     }
 
-    protected void ResetCoroutine(Entity Attacker)
+    protected void ResetCoroutine()
     {
         if(active)
         {

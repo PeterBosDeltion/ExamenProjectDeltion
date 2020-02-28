@@ -4,33 +4,17 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    public delegate void HpEvent(Entity Attacker = null);
-    public static HpEvent hpDamaged;
-    public static HpEvent tempHpDamaged;
-
     protected float hp;
     protected float tempHp;
+    [HideInInspector]
+    public float maxTempHp;
     public float maxHp;
-
-    private void Awake()
-    {
-        hpDamaged += EmptyHpEvent;
-        tempHpDamaged += EmptyHpEvent;
-    }
-
-    private void OnDestroy()
-    {
-        hpDamaged -= EmptyHpEvent;
-        tempHpDamaged -= EmptyHpEvent;
-    }
 
     public void TakeDamage(float takenDamage, Entity Attacker)
     {
         if (tempHp > 0)
         {
             tempHp -= takenDamage;
-
-            tempHpDamaged.Invoke(Attacker);
 
             if (tempHp < 0)
             {
@@ -43,12 +27,11 @@ public class Entity : MonoBehaviour
             hp -= takenDamage;
         }
 
-        hpDamaged.Invoke(Attacker);
-
         if (hp <= 0)
         {
             Death();
         }
+        DamageEvent(Attacker);
     }
     public void Heal(float healedHp, float AddedTempHP)
     {
@@ -61,10 +44,21 @@ public class Entity : MonoBehaviour
         if(AddedTempHP > 0)
         {
             tempHp = AddedTempHP;
+            maxTempHp = AddedTempHP;
         }
     }
 
-    protected void Death()
+    public virtual void DamageEvent(Entity Attacker)
+    {
+
+    }
+
+    public virtual void HealEvent()
+    {
+
+    }
+
+    protected virtual void Death()
     {
         Destroy(this.gameObject);
         //Add score when script is made
@@ -83,6 +77,11 @@ public class Entity : MonoBehaviour
     public float GetTempHp()
     {
         return tempHp;
+    }
+
+    public float GetMaxTempHp()
+    {
+        return maxTempHp;
     }
 
     public void EmptyHpEvent(Entity Attacker = null)
