@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SentryTurret : Entity
 {
@@ -25,6 +26,8 @@ public class SentryTurret : Entity
     private bool canShoot;
     private float myFirerate;
 
+    public Image healthBar;
+
     public void Initialize(float range, float damage, float aggroRadius, Player player, float bulletForce, float maxAmmo, float reloadTime, float firerate)
     {
         myRange = range;
@@ -36,7 +39,7 @@ public class SentryTurret : Entity
         currentAmmo = myMaxAmmo;
         myReloadTime = reloadTime;
         myFirerate = firerate;
-
+        hp = maxHp;
         canShoot = true;
 
     }
@@ -50,6 +53,8 @@ public class SentryTurret : Entity
     {
         FindTarget();
         Shoot();
+
+        healthBar.fillAmount = hp / maxHp;
     }
 
     private void Rotate()
@@ -90,40 +95,47 @@ public class SentryTurret : Entity
     {
         if (target)
         {
-            if(Vector3.Distance(transform.position, target.position) <= myRange)
+            if(target.GetComponent<Entity>().GetHp() > 0)
             {
-                if(currentAmmo > 0 && !reloading && canShoot)
+                if (Vector3.Distance(transform.position, target.position) <= myRange)
                 {
-                    GameObject bulletOne = Instantiate(bulletPrefab, bulletSpawnOne.transform.position, bulletSpawnOne.transform.rotation);
-                    GameObject bulletTwo = Instantiate(bulletPrefab, bulletSpawnTwo.transform.position, bulletSpawnTwo.transform.rotation);
-
-                    Rigidbody rbOne = bulletOne.GetComponent<Rigidbody>();
-                    Rigidbody rbTwo = bulletTwo.GetComponent<Rigidbody>();
-
-                    Bullet bOne = bulletOne.GetComponent<Bullet>();
-                    Bullet bTwo = bulletTwo.GetComponent<Bullet>();
-
-                    bOne.Initialize(myDamage, 20, 60, bulletSpawnOne.transform.position, myPlayer);
-                    bTwo.Initialize(myDamage, 20, 60, bulletSpawnTwo.transform.position, myPlayer);
-
-                    rbOne.AddForce(bulletSpawnOne.transform.forward * myBulletForce);
-                    rbTwo.AddForce(bulletSpawnTwo.transform.forward * myBulletForce);
-                    currentAmmo -= 2;
-
-                    if (canShoot)
+                    if (currentAmmo > 0 && !reloading && canShoot)
                     {
-                        float refireTime = 60 / myFirerate;
-                        StartCoroutine(LimitFireRate(refireTime));
+                        GameObject bulletOne = Instantiate(bulletPrefab, bulletSpawnOne.transform.position, bulletSpawnOne.transform.rotation);
+                        GameObject bulletTwo = Instantiate(bulletPrefab, bulletSpawnTwo.transform.position, bulletSpawnTwo.transform.rotation);
+
+                        Rigidbody rbOne = bulletOne.GetComponent<Rigidbody>();
+                        Rigidbody rbTwo = bulletTwo.GetComponent<Rigidbody>();
+
+                        Bullet bOne = bulletOne.GetComponent<Bullet>();
+                        Bullet bTwo = bulletTwo.GetComponent<Bullet>();
+
+                        bOne.Initialize(myDamage, 20, 60, bulletSpawnOne.transform.position, myPlayer);
+                        bTwo.Initialize(myDamage, 20, 60, bulletSpawnTwo.transform.position, myPlayer);
+
+                        rbOne.AddForce(bulletSpawnOne.transform.forward * myBulletForce);
+                        rbTwo.AddForce(bulletSpawnTwo.transform.forward * myBulletForce);
+                        currentAmmo -= 2;
+
+                        if (canShoot)
+                        {
+                            float refireTime = 60 / myFirerate;
+                            StartCoroutine(LimitFireRate(refireTime));
+                        }
                     }
+                    else if (currentAmmo <= 0)
+                    {
+                        if (!reloading)
+                        {
+                            StartCoroutine(Reload());
+                        }
+                    }
+
                 }
-                else if(currentAmmo <= 0)
+                else
                 {
-                    if (!reloading)
-                    {
-                        StartCoroutine(Reload());
-                    }
+                    target = null;
                 }
-               
             }
             else
             {

@@ -148,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3808075253828915295}
   m_LocalRotation: {x: 0.70710677, y: 0.70710677, z: -0.000000029802315, w: 0.000000029802315}
-  m_LocalPosition: {x: 0.014992661, y: 0, z: 0.0036939597}
+  m_LocalPosition: {x: 0.014992661, y: 0.0035, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 491531650481024888}
@@ -234,13 +234,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48eec2d642e847348a3ca0b36e882c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 0
+  maxTempHp: 0
+  maxHp: 300
   bulletPrefab: {fileID: 5131294813170692697, guid: 5e8b844857115c74bb70e6bf1d45be25,
     type: 3}
   rotatingBody: {fileID: 3808075253828915295}
   bulletSpawnOne: {fileID: 8457416206999500647}
   bulletSpawnTwo: {fileID: 6595884746344637219}
   RotSpeed: 20
+  healthBar: {fileID: 335460013100056993}
 --- !u!65 &2098321639
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -252,8 +254,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.25, y: 1, z: 1.25}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Size: {x: 1.25, y: 2, z: 1.25}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &5025985061193545524
 GameObject:
   m_ObjectHideFlags: 0
