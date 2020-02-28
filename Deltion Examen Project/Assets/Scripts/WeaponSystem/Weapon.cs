@@ -19,6 +19,9 @@ public class Weapon : MonoBehaviour
     private bool reloading;
     private int shotsFired;
     public int amountAccurateBullets;
+
+    public Player myPlayer;
+
     private void Start()
     {
         Initialize();
@@ -66,7 +69,7 @@ public class Weapon : MonoBehaviour
             GameObject bul = Instantiate(bullet, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
             bul.transform.eulerAngles += new Vector3(0, offset, 0);
             Rigidbody rb = bul.GetComponent<Rigidbody>();
-            bul.GetComponent<Bullet>().Initialize(myWeapon.damage, myWeapon.minFallOff, myWeapon.maxFallOff, bulletSpawn.transform.position);
+            bul.GetComponent<Bullet>().Initialize(myWeapon.damage, myWeapon.minFallOff, myWeapon.maxFallOff, bulletSpawn.transform.position,myPlayer);
             rb.AddForce(bul.transform.forward * myWeapon.projectileVelocity);
             Destroy(bul, 3.0F);
             DrainAmmo();

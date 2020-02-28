@@ -11,13 +11,16 @@ public class Bullet : MonoBehaviour
     private float distanceTraveled;
     private Vector3 originPos;
 
-    public void Initialize(float damage, float minDrop, float maxDrop, Vector3 originPosition)
+    public Player myPlayer;
+
+    public void Initialize(float newDamage, float minDrop, float maxDrop, Vector3 originPosition, Player player)
     {
-        startDamage = damage;
+        startDamage = newDamage;
         damage = startDamage;
         minFalloff = minDrop;
         maxFalloff = maxDrop;
         originPos = originPosition;
+        myPlayer = player;
     }
     private void Update()
     {
@@ -37,10 +40,10 @@ public class Bullet : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        //if (collision.transform.gameObject.GetComponent<Enemy>())
-        //{
-        //    Enemy emy = collision.transform.gameObject.GetComponent<Enemy>();
-        //    emy.TakeDamage(damage);
-        //}
+        if (collision.transform.gameObject.GetComponent<Entity>())
+        {
+            Entity entity = collision.transform.gameObject.GetComponent<Entity>();
+            entity.TakeDamage(damage, myPlayer);
+        }
     }
 }
