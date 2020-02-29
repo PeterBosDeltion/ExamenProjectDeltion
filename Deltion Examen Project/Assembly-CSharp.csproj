@@ -145,11 +145,7 @@
       <HintPath>D:/Projects/Repositories/Examen/Deltion Examen Project/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-<<<<<<< HEAD
       <HintPath>D:/Projects/Repositories/Examen/Deltion Examen Project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-=======
-      <HintPath>D:/Unity/Projects/Deltion Examen Project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
->>>>>>> develop
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Programs/Unity Editors/2019.3.0f3/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
