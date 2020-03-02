@@ -1,30 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-[RequireComponent(typeof(Enemy))]
+[RequireComponent(typeof(Enemy),typeof(NavMeshAgent))]
 public abstract class EnemyAI : MonoBehaviour
 {
-    protected enum AIState
+    public delegate void StateEvent();
+
+    public StateEvent StateChanged;
+
+    public enum AIState
     {
         Idle,
         ClosingIn,
         Attacking,
-        BackingOff
+        BackingOff,
+        Dead
     }
 
     protected AIState state;
 
     protected Enemy myStats;
     protected Entity myTarget;
-    public float AttantionTime;
+    protected NavMeshAgent agent;
     protected bool Focused;
+    protected bool Moving;
+    public float AttantionTime;
     private EntityManager entityManager;
 
     private void Awake()
     {
         myStats = GetComponent<Enemy>();
+        agent = GetComponent<NavMeshAgent>();
         myStats.myAI = this;
+        StateChanged += SetAnimation;
+        StateChanged += HandleAI;
     }
 
     private void Start()
@@ -32,34 +43,62 @@ public abstract class EnemyAI : MonoBehaviour
         entityManager = EntityManager.instance;
         entityManager.AddEnemy(myStats);
         SetTarget();
-        //Set target seems to happen to early
+    }
+
+    private void Update()
+    {
+        if(!agent.isStopped && myTarget)
+        {
+            UpdateDestination();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        entityManager.RemoveEnemy(myStats);
+        StateChanged -= SetAnimation;
+        StateChanged -= HandleAI;
     }
 
     public void SetTarget(Entity Attacker = null)
     {
-        if (!Focused && Attacker)
+        StopAllCoroutines();
+        if(state != AIState.Dead)
         {
-            myTarget = Attacker;
-            StartCoroutine(LockedOnTimer());
-        }
-        else
-        {
-            myTarget = GetClosestTarget();
-            if(myTarget = null)
+            if (!Focused && Attacker)
             {
-                //Posibly need to call this more than once before setting it to idle
-                state = AIState.Idle;
+                myTarget = Attacker;
+                SetState(AIState.ClosingIn);
+                StateChanged.Invoke();
+                StartCoroutine(LockedOnTimer());
+            }
+            else if(!myTarget)
+            {
+                myTarget = GetClosestTarget();
+                if(myTarget == null)
+                {
+                    //Posibly need to call this more than once before setting it to idle
+                    if(state != AIState.Idle)
+                    {
+                        SetState(AIState.Idle);
+                        StateChanged.Invoke();
+                    }
+                    StartCoroutine(ReTarget());
+                    return;
+                }
+                SetState(AIState.ClosingIn);
+                StateChanged.Invoke();
             }
         }
     }
 
     private Entity GetClosestTarget()
     {
-        if(entityManager.AllPlayersAndAbilitys.Count != 0)
+        if(entityManager.AllPlayersAndAbilities.Count != 0)
         {
             Entity closestEntity = null;
             float rangeToClosest = Mathf.Infinity;
-            foreach(Entity entity in entityManager.AllPlayersAndAbilitys)
+            foreach(Entity entity in entityManager.AllPlayersAndAbilities)
             {
                 float newDistance = Vector3.Distance(transform.position, entity.transform.position);
                 if(rangeToClosest > newDistance)
@@ -77,9 +116,48 @@ public abstract class EnemyAI : MonoBehaviour
         }
     }
 
+    public void SetState(AIState newState)
+    {
+        state = newState;
+    }
+
+    protected void SetAnimation()
+    {
+        switch (state)
+        {
+            case AIState.Idle:
+                myStats.anim.SetBool("Walking", false);
+                break;
+            case AIState.ClosingIn:
+                myStats.anim.SetBool("Walking", true);
+                break;
+            case AIState.Attacking:
+                myStats.anim.SetTrigger("Attack");
+                break;
+            case AIState.BackingOff:
+                myStats.anim.SetBool("Walking", true);
+                break;
+            case AIState.Dead:
+                myStats.anim.SetTrigger("Death");
+                break;
+        }
+    }
+
+    protected virtual void UpdateDestination()
+    {
+        agent.SetDestination(myTarget.transform.position);
+    }
+
     protected abstract void HandleAI();
 
     protected abstract void Attack();
+
+
+    private IEnumerator ReTarget()
+    {
+        yield return new WaitForSeconds(3);
+        SetTarget();
+    }
 
     private IEnumerator LockedOnTimer()
     {

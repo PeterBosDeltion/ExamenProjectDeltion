@@ -8,16 +8,21 @@ public class Player : Entity
 
     public HpEvent zeroTempHp;
 
-    public void Start()
+    private void Awake()
     {
-        EntityManager.instance.AddPlayerOrAbility(this);
         hp = maxHp;
         zeroTempHp += EmptyHpEvent;
+    }
+
+    private void Start()
+    {
+        EntityManager.instance.AddPlayerOrAbility(this);
     }
 
     public void OnDestroy()
     {
         zeroTempHp -= EmptyHpEvent;
+        EntityManager.instance.RemovePlayerOrAbility(this);
     }
 
     public override void DamageEvent(Entity Attacker)

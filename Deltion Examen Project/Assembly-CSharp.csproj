@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
     <Compile Include="Assets\Scripts\Managers\LoadSceneManager.cs" />
     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Misc\KillObjectAfterTime.cs" />
     <Compile Include="Assets\Scripts\PlayerUI.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\Bullet.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\Weapon.cs" />

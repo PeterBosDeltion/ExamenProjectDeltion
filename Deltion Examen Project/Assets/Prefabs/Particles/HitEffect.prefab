@@ -849,7 +849,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 5
+        scalar: 2
         minScalar: 20
         maxCurve:
           serializedVersion: 2
@@ -4571,6 +4571,7 @@ GameObject:
   - component: {fileID: 1810783162568466597}
   - component: {fileID: 2013368048729483743}
   - component: {fileID: 2015128993005050937}
+  - component: {fileID: 301591888950919740}
   m_Layer: 0
   m_Name: HitEffect
   m_TagString: Untagged
@@ -9379,6 +9380,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &301591888950919740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816239454339412339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5048975bbf7ca1a48a0159fc180ee15e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeTillDestroyed: 1
 --- !u!1 &1816452921102223189
 GameObject:
   m_ObjectHideFlags: 0
@@ -9529,8 +9543,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 5
-      minScalar: 2
+      scalar: 2
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -10318,7 +10332,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 10
+        scalar: 3
         minScalar: 10
         maxCurve:
           serializedVersion: 2

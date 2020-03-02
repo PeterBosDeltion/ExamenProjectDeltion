@@ -6,7 +6,7 @@ public class EntityManager : MonoBehaviour
 {
     public static EntityManager instance;
 
-    public List<Entity> AllPlayersAndAbilitys = new List<Entity>();
+    public List<Entity> AllPlayersAndAbilities = new List<Entity>();
     public List<Entity> AllEnemys = new List<Entity>();
 
     private void Awake()
@@ -27,6 +27,15 @@ public class EntityManager : MonoBehaviour
     }
     public void AddPlayerOrAbility(Entity toAdd)
     {
-        AllPlayersAndAbilitys.Add(toAdd);
+        AllPlayersAndAbilities.Add(toAdd);
+    }
+
+    public void RemoveEnemy(Entity toRemove)
+    {
+        AllEnemys.Remove(toRemove);
+    }
+    public void RemovePlayerOrAbility(Entity toRemove)
+    {
+        AllPlayersAndAbilities.Remove(toRemove);
     }
 }
