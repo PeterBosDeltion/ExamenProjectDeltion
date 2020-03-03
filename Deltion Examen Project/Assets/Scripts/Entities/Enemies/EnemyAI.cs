@@ -6,10 +6,6 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Enemy),typeof(NavMeshAgent))]
 public abstract class EnemyAI : MonoBehaviour
 {
-    public delegate void StateEvent();
-
-    public StateEvent StateChanged;
-
     public enum AIState
     {
         Idle,
@@ -29,13 +25,16 @@ public abstract class EnemyAI : MonoBehaviour
     public float AttantionTime;
     private EntityManager entityManager;
 
+    protected float distanceToTarget;
+    public float attackCooldown;
+    protected bool canAttack;
+
     private void Awake()
     {
         myStats = GetComponent<Enemy>();
         agent = GetComponent<NavMeshAgent>();
         myStats.myAI = this;
-        StateChanged += SetAnimation;
-        StateChanged += HandleAI;
+        canAttack = true;
     }
 
     private void Start()
@@ -51,15 +50,21 @@ public abstract class EnemyAI : MonoBehaviour
         {
             UpdateDestination();
         }
+        if(myTarget)
+        {
+            distanceToTarget = Vector3.Distance(transform.position, myTarget.transform.position);
+            Debug.Log(distanceToTarget);
+        }
+
+        HandelAI();
     }
 
     private void OnDestroy()
     {
         entityManager.RemoveEnemy(myStats);
-        StateChanged -= SetAnimation;
-        StateChanged -= HandleAI;
     }
 
+    //This function is used to set a new target
     public void SetTarget(Entity Attacker = null)
     {
         StopAllCoroutines();
@@ -69,7 +74,6 @@ public abstract class EnemyAI : MonoBehaviour
             {
                 myTarget = Attacker;
                 SetState(AIState.ClosingIn);
-                StateChanged.Invoke();
                 StartCoroutine(LockedOnTimer());
             }
             else if(!myTarget)
@@ -81,17 +85,16 @@ public abstract class EnemyAI : MonoBehaviour
                     if(state != AIState.Idle)
                     {
                         SetState(AIState.Idle);
-                        StateChanged.Invoke();
                     }
                     StartCoroutine(ReTarget());
                     return;
                 }
                 SetState(AIState.ClosingIn);
-                StateChanged.Invoke();
             }
         }
     }
 
+    //This function looks for the closest Entity within the EntityManagers "AllPlayersAndAbilities" list
     private Entity GetClosestTarget()
     {
         if(entityManager.AllPlayersAndAbilities.Count != 0)
@@ -116,11 +119,44 @@ public abstract class EnemyAI : MonoBehaviour
         }
     }
 
+    //This function is used to set the AIstate
     public void SetState(AIState newState)
     {
+        Debug.Log(state + "To" + newState);
         state = newState;
+        HandleAIStates();
     }
 
+    //This function hadels generic actions that need to happen on changing a state
+    protected virtual void HandleAIStates()
+    {
+        switch (state)
+        {
+            case AIState.Idle:
+                agent.isStopped = true;
+                break;
+            case AIState.ClosingIn:
+                agent.isStopped = false;
+                break;
+            case AIState.Attacking:
+                agent.isStopped = true;
+                if(canAttack)
+                {
+                    Attack();
+                    StartCoroutine(AttackCooldown());
+                }
+                break;
+            case AIState.BackingOff:
+                agent.isStopped = false;
+                break;
+            case AIState.Dead:
+                agent.isStopped = true;
+                break;
+        }
+        SetAnimation();
+    }
+
+    //This function sets the animation needed with the AIState
     protected void SetAnimation()
     {
         switch (state)
@@ -133,6 +169,7 @@ public abstract class EnemyAI : MonoBehaviour
                 break;
             case AIState.Attacking:
                 myStats.anim.SetTrigger("Attack");
+                myStats.anim.SetBool("Walking", false);
                 break;
             case AIState.BackingOff:
                 myStats.anim.SetBool("Walking", true);
@@ -142,27 +179,35 @@ public abstract class EnemyAI : MonoBehaviour
                 break;
         }
     }
-
+    
+    //This function is used to move the enemy towards it target if its not stopped and has a target
     protected virtual void UpdateDestination()
     {
         agent.SetDestination(myTarget.transform.position);
     }
 
-    protected abstract void HandleAI();
+    protected abstract void HandelAI();
 
     protected abstract void Attack();
 
-
+    //This Coroutine is used as a timer for when the enemy doesent have a taget and needs to rtetarget after being idle (incase this ever hapens)
     private IEnumerator ReTarget()
     {
         yield return new WaitForSeconds(3);
         SetTarget();
     }
 
+    //This Coroutine is used as a timer for when a enemy can change their taget if they get hit
     private IEnumerator LockedOnTimer()
     {
         Focused = true;
         yield return new WaitForSeconds(AttantionTime);
         Focused = false;
+    }
+
+    private IEnumerator AttackCooldown()
+    {
+        yield return new WaitForSeconds(attackCooldown);
+        canAttack = true;
     }
 }

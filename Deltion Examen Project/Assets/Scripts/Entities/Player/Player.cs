@@ -34,4 +34,9 @@ public class Player : Entity
     public void EmptyHpEvent()
     {
     }
+
+    protected override void Death()
+    {
+        
+    }
 }

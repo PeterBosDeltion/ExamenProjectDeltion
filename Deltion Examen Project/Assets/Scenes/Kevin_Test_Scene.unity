@@ -1312,6 +1312,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2038239845, guid: 2fb16e5a959a41844bc859c48f3e81cb, type: 3}
+      propertyPath: attackCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2038239846, guid: 2fb16e5a959a41844bc859c48f3e81cb, type: 3}
+      propertyPath: attackRange
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 227615046000823840, guid: 2fb16e5a959a41844bc859c48f3e81cb,
         type: 3}
       propertyPath: m_Name

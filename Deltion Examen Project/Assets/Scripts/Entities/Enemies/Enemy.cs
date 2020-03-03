@@ -6,9 +6,9 @@ public class Enemy : Entity
 {
     public EnemyAI myAI;
     public Animator anim;
-    protected float speed;
-    protected float damage;
-    protected float attackRange;
+    public float speed;
+    public float damage;
+    public float attackRange;
 
     private void Start()
     {
@@ -24,7 +24,6 @@ public class Enemy : Entity
     protected override void Death()
     {
         myAI.SetState(EnemyAI.AIState.Dead);
-        myAI.StateChanged.Invoke();
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<Rigidbody>().useGravity = false;
         GetComponent<Collider>().enabled = false;
