@@ -14,44 +14,46 @@ public class KamikazeDroneAbility : Ability
     public float aggroRadius;
     public float droneDelay;
 
-    public float droneSpawnY = 2.5F;
-    public float droneSpacingX = 0.5F;
-    public float droneSpacingZ = 0.25F;
+    public Vector3 droneSpawnOffset = new Vector3(0, 1.5F, 0);
 
     private List<KamikazeDrone> spawnedDrones = new List<KamikazeDrone>();
     private int explodedDrones;
+    private bool staggering;
     protected override void AbilityMechanic(Vector3? mPos = null)
     {
         spawnedDrones.Clear();
         explodedDrones = 0;
-        float newDelay = 0;
-        Vector3 spawnPos = myPlayer.transform.position + new Vector3(0, droneSpawnY, 0);
-        for (int i = 0; i < amountOfDrones; i++)
+        if (!staggering)
         {
-            if(i != 0)
-            {
-                newDelay = droneDelay + droneDelay * i;
-            }
-            float roundedHalf = Mathf.RoundToInt(amountOfDrones / 2);
-            if (i < amountOfDrones / 2 && i != 0)
-            {
-                spawnPos += new Vector3(droneSpacingX, 0, -droneSpacingZ);
-            }
-            else if(i == roundedHalf)
-            {
-                spawnPos = myPlayer.transform.position + new Vector3(-droneSpacingX, droneSpawnY, -droneSpacingZ);
-            }
-            else if(i > roundedHalf)
-            {
-                spawnPos += new Vector3(-droneSpacingX, 0, -droneSpacingZ);
-            }
-
-            GameObject drone = Instantiate(dronePrefab, spawnPos, Quaternion.identity);
-            drone.GetComponent<KamikazeDrone>().Initialize(range, damage, aggroRadius, aoeRadius, myPlayer, this, newDelay, droneSpeed);
-            spawnedDrones.Add(drone.GetComponent<KamikazeDrone>());
+            StartCoroutine(StaggerSpawns());
         }
 
         active = true;
+    }
+
+    private IEnumerator StaggerSpawns()
+    {
+        staggering = true;
+        for (int i = 0; i < amountOfDrones; i++)
+        {
+            if(i == 0)
+            {
+                yield return new WaitForSeconds(0);
+            }
+            else
+            {
+                yield return new WaitForSeconds(droneDelay);
+            }
+            Vector3 horOffset = myPlayer.transform.right * droneSpawnOffset.x;
+            Vector3 verOffset = myPlayer.transform.forward * droneSpawnOffset.z;
+            Vector3 spawnPos = new Vector3(horOffset.x, droneSpawnOffset.y, verOffset.z);
+            GameObject drone = Instantiate(dronePrefab, myPlayer.transform.position + spawnPos, myPlayer.transform.rotation);
+            drone.GetComponent<KamikazeDrone>().Initialize(damage, aggroRadius, aoeRadius, myPlayer, this, droneSpeed);
+            spawnedDrones.Add(drone.GetComponent<KamikazeDrone>());
+        }
+
+       
+        staggering = false;
     }
 
     protected override IEnumerator AfterDuration()
@@ -68,10 +70,11 @@ public class KamikazeDroneAbility : Ability
     public void CheckDrones()
     {
         explodedDrones++;
-        if(explodedDrones >= spawnedDrones.Count)
+        if(explodedDrones >= amountOfDrones)
         {
             StopCoroutine(afterDurCoroutine);
             StartCooldown();
         }
+        
     }
 }

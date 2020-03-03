@@ -56,11 +56,9 @@ MonoBehaviour:
     type: 3}
   amountOfDrones: 6
   damage: 250
-  aoeRadius: 10
-  droneSpeed: 4
+  aoeRadius: 3
+  droneSpeed: 10
   range: 20
   aggroRadius: 10
-  droneDelay: 0.4
-  droneSpawnY: 2.5
-  droneSpacingX: 0.5
-  droneSpacingZ: 0.25
+  droneDelay: 1.5
+  droneSpawnOffset: {x: 0, y: 2.5, z: -0.5}

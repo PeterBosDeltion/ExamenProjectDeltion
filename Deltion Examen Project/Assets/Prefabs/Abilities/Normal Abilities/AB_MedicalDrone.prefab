@@ -47,10 +47,13 @@ MonoBehaviour:
   ultimate: 0
   onCooldown: 0
   active: 0
-  cooldownTime: 10
-  duration: 20
+  cooldownTime: 20
+  duration: 25
   maxDeployableDistance: 15
+  returned: 0
   myDeployType: 0
-  healPool: 250
+  healPool: 300
+  reloadSpeed: 6
+  healRate: 1
   dronePrefab: {fileID: 3205243633361089554, guid: fed00dd1f0b2bbf4da2fa06d600f9156,
     type: 3}

@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\SentryTurret.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\SentryTurretAbility.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Ability.cs" />
+    <Compile Include="Assets\Scripts\CameraBillboard.cs" />
     <Compile Include="Assets\Scripts\Entities\Enemies\Enemy.cs" />
     <Compile Include="Assets\Scripts\Entities\Enemies\EnemyAI.cs" />
     <Compile Include="Assets\Scripts\Entities\Enemies\IndividualEnemyTypes\MeleeEnemy.cs" />

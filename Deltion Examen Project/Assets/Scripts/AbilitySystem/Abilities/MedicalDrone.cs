@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MedicalDrone : MonoBehaviour
 {
     private float myHealpool;
+    private float currentHealpool;
     private Player myPlayer;
     private Vector3 targetPos;
+    private float myReloadSpeed;
+    private bool reloading;
+    private float myHealrate;
 
     public float speed = 5;
     public float yOffset = 2.5F;
@@ -16,21 +21,26 @@ public class MedicalDrone : MonoBehaviour
     public float lineOffsetDrone;
     public Vector3 lineOffsetPlayer;
     public GameObject childDroneModel;
-
-    public float healRate = 0.5F;
-
     private bool shouldFollow;
-    private bool landed;
 
-    public void Initialize(float healpool, Player player)
+    public Color flashFrom;
+    public Color flashTo;
+
+    public Image batterImg;
+    private bool flashing;
+
+    public void Initialize(float healpool, Player player, float reloadSpeed, float healRate)
     {
-        landed = false;
         myHealpool = healpool;
+        currentHealpool = myHealpool;
         myPlayer = player;
+        myReloadSpeed = reloadSpeed;
+        myHealrate = healRate;
 
         lineRend = GetComponent<LineRenderer>();
         lineRend.enabled = false;
         shouldFollow = true;
+        batterImg.gameObject.SetActive(false);
 
         if (!childDroneModel)
         {
@@ -43,19 +53,6 @@ public class MedicalDrone : MonoBehaviour
         if (shouldFollow)
         {
             FollowPlayer();
-        }
-        else if(!shouldFollow && !landed)
-        {
-            RaycastHit hit;
-            if(Physics.Raycast(transform.position, Vector3.down, out hit))
-            {
-                transform.position = Vector3.Lerp(transform.position, hit.point, speed * Time.deltaTime);
-                if(Vector3.Distance(transform.position, hit.point) < .05F)
-                {
-                    landed = true;
-                    GetComponent<Animator>().enabled = false;
-                }
-            }
         }
     }
 
@@ -73,10 +70,13 @@ public class MedicalDrone : MonoBehaviour
             }
         }
 
-        if(myHealpool <= 0)
+        if(currentHealpool <= 0)
         {
             lineRend.enabled = false;
-            shouldFollow = false;
+            if (!reloading)
+            {
+                StartCoroutine(ReloadPool());
+            }
         }
     }
     private void FollowPlayer()
@@ -95,12 +95,33 @@ public class MedicalDrone : MonoBehaviour
         lineRend.SetPosition(1, myPlayer.transform.position + lineOffsetPlayer);
         lineRend.enabled = true;
 
-        if(myHealpool > 0)
+        if(currentHealpool > 0)
         {
-            myHealpool -= healRate;
-            myPlayer.Heal(healRate,0);
-            Debug.Log(myHealpool);
+            currentHealpool -= myHealrate;
+            myPlayer.Heal(myHealrate, 0);
         }
+    }
 
+    private IEnumerator ReloadPool()
+    {
+        reloading = true;
+        if (!flashing)
+        {
+            batterImg.gameObject.SetActive(true);
+            batterImg.color = flashFrom;
+            InvokeRepeating("FlashBattery", 0, 1);
+        }
+        yield return new WaitForSeconds(myReloadSpeed);
+        flashing = false;
+        CancelInvoke("FlashBattery");
+        batterImg.gameObject.SetActive(false);
+        currentHealpool = myHealpool;
+        reloading = false;
+    }
+
+    private void FlashBattery()
+    {
+        flashing = true;
+        batterImg.color = (batterImg.color == flashFrom) ? batterImg.color = flashTo : batterImg.color = flashFrom;
     }
 }
