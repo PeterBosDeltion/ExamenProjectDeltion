@@ -26,15 +26,13 @@ public abstract class EnemyAI : MonoBehaviour
     private EntityManager entityManager;
 
     protected float distanceToTarget;
-    public float attackCooldown;
-    protected bool canAttack;
+    public float TimeBetweenAttacks;
 
     private void Awake()
     {
         myStats = GetComponent<Enemy>();
         agent = GetComponent<NavMeshAgent>();
         myStats.myAI = this;
-        canAttack = true;
     }
 
     private void Start()
@@ -42,6 +40,7 @@ public abstract class EnemyAI : MonoBehaviour
         entityManager = EntityManager.instance;
         entityManager.AddEnemy(myStats);
         SetTarget();
+        agent.speed = myStats.speed;
     }
 
     private void Update()
@@ -53,7 +52,18 @@ public abstract class EnemyAI : MonoBehaviour
         if(myTarget)
         {
             distanceToTarget = Vector3.Distance(transform.position, myTarget.transform.position);
-            Debug.Log(distanceToTarget);
+            float distanceTillRotate = distanceToTarget - 1;
+            if (distanceTillRotate <= myStats.attackRange && state != AIState.Dead)
+            {
+                Debug.Log("Manualy rotating");
+                agent.updateRotation = false;
+                Quaternion targetRotation = Quaternion.LookRotation(myTarget.transform.position - transform.position, transform.up);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10 * Time.deltaTime);
+            }
+            else
+            {
+                agent.updateRotation = true;
+            }
         }
 
         HandelAI();
@@ -125,6 +135,7 @@ public abstract class EnemyAI : MonoBehaviour
         Debug.Log(state + "To" + newState);
         state = newState;
         HandleAIStates();
+        SetAnimation();
     }
 
     //This function hadels generic actions that need to happen on changing a state
@@ -140,11 +151,8 @@ public abstract class EnemyAI : MonoBehaviour
                 break;
             case AIState.Attacking:
                 agent.isStopped = true;
-                if(canAttack)
-                {
-                    Attack();
-                    StartCoroutine(AttackCooldown());
-                }
+                Attack();
+                GetComponent<NavMeshAgent>().velocity = Vector3.zero;
                 break;
             case AIState.BackingOff:
                 agent.isStopped = false;
@@ -153,7 +161,6 @@ public abstract class EnemyAI : MonoBehaviour
                 agent.isStopped = true;
                 break;
         }
-        SetAnimation();
     }
 
     //This function sets the animation needed with the AIState
@@ -203,11 +210,5 @@ public abstract class EnemyAI : MonoBehaviour
         Focused = true;
         yield return new WaitForSeconds(AttantionTime);
         Focused = false;
-    }
-
-    private IEnumerator AttackCooldown()
-    {
-        yield return new WaitForSeconds(attackCooldown);
-        canAttack = true;
     }
 }
