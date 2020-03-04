@@ -91,6 +91,7 @@
     <Compile Include="Assets\Scripts\WeaponSystem\Weapon.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\WeaponScriptable.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\Weapons\AssaultRifle.cs" />
+    <Compile Include="Assets\Scripts\WeaponSystem\Weapons\ExplosiveRifle.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\Weapons\SideArm.cs" />
     <Compile Include="Assets\Scripts\[PH]\Spiderspawner.cs" />
     <Compile Include="Assets\Scripts\[PH]\TestPlayer.cs" />

@@ -8,6 +8,8 @@ public class SentryTurret : Entity
     public GameObject bulletPrefab;
 
     public GameObject rotatingBody;
+    public GameObject leftArm;
+    public GameObject rightArm;
     public GameObject bulletSpawnOne;
     public GameObject bulletSpawnTwo;
     private float myBulletForce;
@@ -25,8 +27,14 @@ public class SentryTurret : Entity
     private float myReloadTime;
     private bool canShoot;
     private float myFirerate;
-
+    private float armSpeed;
     public Image healthBar;
+
+    public Color flashFrom;
+    public Color flashTo;
+
+    public Image ammoImg;
+    private bool flashing;
 
     public void Initialize(float range, float damage, float aggroRadius, Player player, float bulletForce, float maxAmmo, float reloadTime, float firerate)
     {
@@ -42,11 +50,27 @@ public class SentryTurret : Entity
         hp = maxHp;
         canShoot = true;
 
+        armSpeed = RotSpeed * 40000;
+        ammoImg.gameObject.SetActive(false);
+
     }
 
     private void FixedUpdate()
     {
         Rotate();
+
+        if (target)
+        {
+            if (target.GetComponent<Entity>().GetHp() > 0)
+            {
+                if (Vector3.Distance(transform.position, target.position) <= myRange && currentAmmo > 0)
+                {
+                    leftArm.transform.Rotate(Vector3.up * armSpeed * Time.deltaTime);
+                    rightArm.transform.Rotate(Vector3.up * armSpeed * Time.deltaTime);
+                }
+            }
+        }
+                   
     }
 
     private void Update()
@@ -122,6 +146,8 @@ public class SentryTurret : Entity
                             float refireTime = 60 / myFirerate;
                             StartCoroutine(LimitFireRate(refireTime));
                         }
+
+                       
                     }
                     else if (currentAmmo <= 0)
                     {
@@ -147,7 +173,16 @@ public class SentryTurret : Entity
     private IEnumerator Reload()
     {
         reloading = true;
+        if (!flashing)
+        {
+            ammoImg.gameObject.SetActive(true);
+            ammoImg.color = flashFrom;
+            InvokeRepeating("FlashAmmo", 0, 1);
+        }
         yield return new WaitForSeconds(myReloadTime);
+        CancelInvoke("FlashAmmo");
+        ammoImg.gameObject.SetActive(false);
+        flashing = false;
         currentAmmo = myMaxAmmo;
         reloading = false;
     }
@@ -157,5 +192,11 @@ public class SentryTurret : Entity
         canShoot = false;
         yield return new WaitForSeconds(refireTime);
         canShoot = true;
+    }
+
+    private void FlashAmmo()
+    {
+        flashing = true;
+        ammoImg.color = (ammoImg.color == flashFrom) ? ammoImg.color = flashTo : ammoImg.color = flashFrom;
     }
 }

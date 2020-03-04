@@ -9,13 +9,17 @@ public class Bullet : MonoBehaviour
     private float minFalloff;
     private float maxFalloff;
     private float distanceTraveled;
+    private float myAoeRadius;
+    private bool exploded;
     private Vector3 originPos;
 
     public Player myPlayer;
     private RaycastHit hit;
     public GameObject bloodParticle;
 
-    public void Initialize(float newDamage, float minDrop, float maxDrop, Vector3 originPosition, Player player)
+    public AudioClip impactSound;
+
+    public void Initialize(float newDamage, float minDrop, float maxDrop, Vector3 originPosition, Player player, float aoeRadius = 0)
     {
         startDamage = newDamage;
         damage = startDamage;
@@ -23,6 +27,11 @@ public class Bullet : MonoBehaviour
         maxFalloff = maxDrop;
         originPos = originPosition;
         myPlayer = player;
+
+        if(aoeRadius > 0)
+        {
+            myAoeRadius = aoeRadius;
+        }
     }
     private void Update()
     {
@@ -45,16 +54,60 @@ public class Bullet : MonoBehaviour
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         if (collision.transform.gameObject.GetComponent<Entity>())
         {
-            Entity entity = collision.transform.gameObject.GetComponent<Entity>();
-            entity.TakeDamage(damage, myPlayer);
-            Ray newRay = new Ray(collision.GetContact(0).point, collision.transform.position - collision.GetContact(0).point);
-
-            if(Physics.Raycast(newRay ,out hit))
+            if(myAoeRadius <= 0)
             {
-                Instantiate(bloodParticle, hit.point, Quaternion.LookRotation(collision.GetContact(0).point,transform.up - collision.transform.position));
+                Entity entity = collision.transform.gameObject.GetComponent<Entity>();
+                entity.TakeDamage(damage, myPlayer);
+                Ray newRay = new Ray(collision.GetContact(0).point, collision.transform.position - collision.GetContact(0).point);
+
+                if (Physics.Raycast(newRay, out hit))
+                {
+                    Instantiate(bloodParticle, hit.point, Quaternion.LookRotation(collision.GetContact(0).point, transform.up - collision.transform.position));
+                }
             }
+            else
+            {
+                if (!exploded)
+                {
+                    Explode();
+                }
+            }
+           
+        }
+
+        if (impactSound)
+        {
+            PlayImpactSound();
         }
 
         Destroy(this.gameObject);
+    }
+
+    private void PlayImpactSound()
+    {
+            AudioSource.PlayClipAtPoint(impactSound, transform.position);
+    }
+
+    private void Explode()
+    {
+        exploded = true;
+       
+        Collider[] overlaps = Physics.OverlapSphere(transform.position, myAoeRadius);
+        foreach (var col in overlaps)
+        {
+            if (col.GetComponent<Enemy>())
+            {
+                col.GetComponent<Enemy>().TakeDamage(damage, myPlayer);
+            }
+        }
+
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, Vector3.down, out hit))
+        {
+            GameObject expl = Instantiate(bloodParticle, hit.point, Quaternion.identity); //Blood particle is explosion in this case
+            Destroy(expl, 2F);
+        }
+     
+
     }
 }

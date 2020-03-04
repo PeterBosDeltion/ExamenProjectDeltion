@@ -10,14 +10,14 @@ public class Weapon : MonoBehaviour
     public float totalAmmo;
     public float magazineAmmo;
     protected bool canShoot = true;
-    private AudioSource audioSource;
+    protected AudioSource audioSource;
 
     public AudioClip gunShot;
     public AudioClip emptyMagazine;
     public AudioClip reload;
 
-    private bool reloading;
-    private int shotsFired;
+    protected bool reloading;
+    protected int shotsFired;
     public int amountAccurateBullets;
 
     public Player myPlayer;
@@ -89,7 +89,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    private void DrainAmmo()
+    protected void DrainAmmo()
     {
         magazineAmmo -= myWeapon.ammoDrain;
         audioSource.clip = gunShot;
