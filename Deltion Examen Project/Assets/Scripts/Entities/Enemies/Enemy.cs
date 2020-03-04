@@ -5,10 +5,10 @@ using UnityEngine;
 public class Enemy : Entity
 {
     public EnemyAI myAI;
-    protected Animator anim;
-    protected float speed;
-    protected float damage;
-    protected float attackRange;
+    public Animator anim;
+    public float speed;
+    public float damage;
+    public float attackRange;
 
     private void Start()
     {
@@ -23,7 +23,7 @@ public class Enemy : Entity
 
     protected override void Death()
     {
-        anim.SetTrigger("Death");
+        myAI.SetState(EnemyAI.AIState.Dead);
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<Rigidbody>().useGravity = false;
         GetComponent<Collider>().enabled = false;
