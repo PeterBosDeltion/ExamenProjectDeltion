@@ -15,6 +15,7 @@ public class Spiderspawner : MonoBehaviour
         if(currentAmountOfSpooders < desiredAmountOfSpooders)
         {
            GameObject spood = Instantiate(spooderPrefab, spawnPosses[Random.Range(0, spawnPosses.Count - 1)], Quaternion.identity);
+            spood.GetComponent<Enemy>().anim = spood.GetComponentInChildren<Animator>();
             currentAmountOfSpooders++;
             spooders.Add(spood);
         }

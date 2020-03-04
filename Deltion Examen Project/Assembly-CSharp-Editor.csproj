@@ -67,7 +67,6 @@
     <Compile Include="Assets\Editor\SceneGUIGenericMenu.cs" />
     <Compile Include="Assets\Editor\anchorToolEditor.cs" />
     <Reference Include="UnityEditor.TestRunner">
-<<<<<<< HEAD
       <HintPath>D:/Projects/Repositories/Examen/Deltion Examen Project/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
@@ -102,42 +101,6 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>D:/Projects/Repositories/Examen/Deltion Examen Project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-=======
-      <HintPath>D:/UnityProjects/ExamenDeltion/Deltion Examen Project/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TestRunner">
-      <HintPath>D:/UnityProjects/ExamenDeltion/Deltion Examen Project/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:/UnityProjects/ExamenDeltion/Deltion Examen Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>D:/UnityProjects/ExamenDeltion/Deltion Examen Project/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/UnityProjects/ExamenDeltion/Deltion Examen Project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>D:/UnityProjects/ExamenDeltion/Deltion Examen Project/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>D:/UnityProjects/ExamenDeltion/Deltion Examen Project/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/UnityProjects/ExamenDeltion/Deltion Examen Project/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>D:/UnityProjects/ExamenDeltion/Deltion Examen Project/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>D:/UnityProjects/ExamenDeltion/Deltion Examen Project/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/UnityProjects/ExamenDeltion/Deltion Examen Project/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>D:/UnityProjects/ExamenDeltion/Deltion Examen Project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
->>>>>>> feature/enemy's
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Programs/Unity Editors/2019.3.0f3/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -331,18 +294,11 @@
     <Reference Include="UnityEditor.UWP.Extensions">
       <HintPath>D:/Programs/Unity Editors/2019.3.0f3/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.WebGL.Extensions">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f3/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll</HintPath>
-    </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-<<<<<<< HEAD
       <HintPath>D:/Projects/Repositories/Examen/Deltion Examen Project/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
-=======
-      <HintPath>D:/UnityProjects/ExamenDeltion/Deltion Examen Project/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
->>>>>>> feature/enemy's
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>D:/Programs/Unity Editors/2019.3.0f3/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

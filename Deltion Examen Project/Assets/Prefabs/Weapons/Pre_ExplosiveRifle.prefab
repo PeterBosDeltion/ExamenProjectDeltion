@@ -56,7 +56,7 @@ MonoBehaviour:
   reload: {fileID: 8300000, guid: 1211495b486c6374f8ba736ecea163f6, type: 3}
   amountAccurateBullets: 5
   myPlayer: {fileID: 0}
-  explosionAOE: 1.5
+  explosionAOE: 3
   explosionParticle: {fileID: 1337198075554910, guid: 25c7aa9ad705fe143a4d71c1c8deb7d4,
     type: 3}
   explosionSfx: {fileID: 8300000, guid: e347d27a18e44c64d83a6312088e352d, type: 3}
