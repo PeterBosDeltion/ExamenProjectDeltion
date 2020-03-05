@@ -24,8 +24,6 @@ public class Enemy : Entity
     protected override void Death()
     {
         myAI.SetState(EnemyAI.AIState.Dead);
-        GetComponent<Rigidbody>().isKinematic = true;
-        GetComponent<Rigidbody>().useGravity = false;
         GetComponent<Collider>().enabled = false;
         StartCoroutine(DestroyEnemy());
     }

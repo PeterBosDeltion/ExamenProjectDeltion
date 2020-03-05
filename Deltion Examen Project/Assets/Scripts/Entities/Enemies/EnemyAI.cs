@@ -28,10 +28,14 @@ public abstract class EnemyAI : MonoBehaviour
     protected float distanceToTarget;
     public float TimeBetweenAttacks;
 
+    protected AudioSource mainAudioSource;
+    public AudioClip attackClip;
+
     private void Awake()
     {
         myStats = GetComponent<Enemy>();
         agent = GetComponent<NavMeshAgent>();
+        mainAudioSource = GetComponent<AudioSource>();
         myStats.myAI = this;
     }
 
@@ -55,7 +59,6 @@ public abstract class EnemyAI : MonoBehaviour
             float distanceTillRotate = distanceToTarget - 1;
             if (distanceTillRotate <= myStats.attackRange && state != AIState.Dead)
             {
-                Debug.Log("Manualy rotating");
                 agent.updateRotation = false;
                 Quaternion targetRotation = Quaternion.LookRotation(myTarget.transform.position - transform.position, transform.up);
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10 * Time.deltaTime);
@@ -69,6 +72,18 @@ public abstract class EnemyAI : MonoBehaviour
         HandelAI();
     }
 
+    private void SetAndPlayAudioClipOnce(AudioClip clip)
+    {
+        mainAudioSource.PlayOneShot(clip);
+    }
+    private void PlayAudioClipLoop(bool On)
+    {
+        mainAudioSource.loop = true;
+        if (On)
+            mainAudioSource.Play();
+        else
+            mainAudioSource.Stop();
+    }
     private void OnDestroy()
     {
         entityManager.RemoveEnemy(myStats);
@@ -132,7 +147,7 @@ public abstract class EnemyAI : MonoBehaviour
     //This function is used to set the AIstate
     public void SetState(AIState newState)
     {
-        Debug.Log(state + "To" + newState);
+        //Debug.Log(gameObject.name + " " + state + " To " + newState);
         state = newState;
         HandleAIStates();
         SetAnimation();
@@ -145,20 +160,26 @@ public abstract class EnemyAI : MonoBehaviour
         {
             case AIState.Idle:
                 agent.isStopped = true;
+                PlayAudioClipLoop(false);
                 break;
             case AIState.ClosingIn:
                 agent.isStopped = false;
+                PlayAudioClipLoop(true);
                 break;
             case AIState.Attacking:
                 agent.isStopped = true;
                 Attack();
                 GetComponent<NavMeshAgent>().velocity = Vector3.zero;
+                SetAndPlayAudioClipOnce(attackClip);
+                PlayAudioClipLoop(false);
                 break;
             case AIState.BackingOff:
                 agent.isStopped = false;
+                PlayAudioClipLoop(true);
                 break;
             case AIState.Dead:
                 agent.isStopped = true;
+                PlayAudioClipLoop(false);
                 break;
         }
     }
@@ -210,5 +231,10 @@ public abstract class EnemyAI : MonoBehaviour
         Focused = true;
         yield return new WaitForSeconds(AttantionTime);
         Focused = false;
+    }
+
+    private IEnumerator PlayBasicEnemyAudio()
+    {
+        yield return new WaitForSeconds(Random.Range(5, 10));
     }
 }
