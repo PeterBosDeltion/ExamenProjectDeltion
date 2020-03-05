@@ -44,6 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myPlayer: {fileID: 0}
+  name: Medical drone
+  description: 
+  uiIcon: {fileID: 21300000, guid: 660d1dd91f7fbbd48b51de9441c6296f, type: 3}
+  requiredLevel: 0
   ultimate: 0
   onCooldown: 0
   active: 0

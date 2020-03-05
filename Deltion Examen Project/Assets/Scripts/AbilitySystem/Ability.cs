@@ -5,7 +5,11 @@ using UnityEngine;
 public abstract class Ability : MonoBehaviour
 {
     public Player myPlayer;
-    private int requiredLevel;
+    public new string name;
+    [TextArea(15, 20)]
+    public  string description;
+    public Sprite uiIcon;
+    public int requiredLevel;
     public bool ultimate;
     public bool onCooldown;
     public bool active = false;

@@ -44,12 +44,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myPlayer: {fileID: 0}
+  name: Personal shield
+  description: Shieldy boi
+  uiIcon: {fileID: 21300000, guid: 7370fab89210e164997fcec293ae1f67, type: 3}
+  requiredLevel: 0
   ultimate: 0
   onCooldown: 0
   active: 0
   cooldownTime: 40
   duration: 20
   maxDeployableDistance: 0
+  returned: 0
   myDeployType: 0
   tempHP: 500
   shieldEffectPrefab: {fileID: 1246149216655738807, guid: ffb7a5254255d37408fd2aff453840f1,

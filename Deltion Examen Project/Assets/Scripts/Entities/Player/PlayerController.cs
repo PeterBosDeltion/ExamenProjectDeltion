@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour
     private Animator playerAnimator;
 
     public List<Ability> abilities = new List<Ability>();
-
-    public Weapon primary; //[PH]
+    public Loadout loadout;
+    public Weapon currentWeapon; //[PH]
 
     //Assigning the Player scripts to the controller(There is no reason for the PlayerController to be anywhere else than on the Player so no need for a Gameobject reference)
     private void Awake()
@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
         movement = GetComponent<Movement>();
         triggerAbility = GetComponent<TriggerAbility>();
         playerAnimator = GetComponentInChildren<Animator>();
+        loadout = GetComponent<Loadout>();
 
         if(!player || !movement || !triggerAbility)
         {
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
         InputManager.MovingEvent += Move;
         InputManager.RotatingEvent += Rotate;
         InputManager.leftMouseButtonEvent += Shoot;
+        InputManager.scrollEvent += SwitchWeapon;
         Initialize();
     }
     private void Update() //[PH]
@@ -64,6 +66,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void SwitchWeapon(float f)
+    {
+        currentWeapon.gameObject.SetActive(false);
+        currentWeapon.StopAllCoroutines();
+        currentWeapon = (currentWeapon == loadout.primary) ? currentWeapon = loadout.secondary : currentWeapon = loadout.primary;
+        currentWeapon.ResetValues();
+        currentWeapon.gameObject.SetActive(true);
+    }
+
     //Unsubscribe Input functions for safety
     public void OnDestroy()
     {
@@ -71,6 +82,7 @@ public class PlayerController : MonoBehaviour
         InputManager.MovingEvent -= Move;
         InputManager.RotatingEvent -= Rotate;
         InputManager.leftMouseButtonEvent -= Shoot;
+        InputManager.scrollEvent -= SwitchWeapon;
     }
 
     //Player GetValue functions

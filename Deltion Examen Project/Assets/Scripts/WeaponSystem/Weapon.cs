@@ -56,59 +56,78 @@ public class Weapon : MonoBehaviour
         InputManager.leftMouseButtonUpEvent -= ResetShotsFired;
         InputManager.reloadEvent -= Reload;
     }
+
     protected virtual void Shoot()
     {
-        if(magazineAmmo > 0 && !reloading && canShoot)
+        if (gameObject.activeSelf)
         {
-            shotsFired++;
-            float offset = 0;
-            if(shotsFired >= amountAccurateBullets)
+            if (magazineAmmo > 0 && !reloading && canShoot)
             {
-                offset = Random.Range(myWeapon.minSpreadAngle, myWeapon.maxSpreadAngle);
+                shotsFired++;
+                float offset = 0;
+                if (shotsFired >= amountAccurateBullets)
+                {
+                    offset = Random.Range(myWeapon.minSpreadAngle, myWeapon.maxSpreadAngle);
+                }
+                GameObject bul = Instantiate(bullet, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
+                bul.transform.eulerAngles += new Vector3(0, offset, 0);
+                Rigidbody rb = bul.GetComponent<Rigidbody>();
+                bul.GetComponent<Bullet>().Initialize(myWeapon.damage, myWeapon.minFallOff, myWeapon.maxFallOff, bulletSpawn.transform.position, myPlayer);
+                rb.AddForce(bul.transform.forward * myWeapon.projectileVelocity);
+                Destroy(bul, 3.0F);
+                DrainAmmo();
             }
-            GameObject bul = Instantiate(bullet, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
-            bul.transform.eulerAngles += new Vector3(0, offset, 0);
-            Rigidbody rb = bul.GetComponent<Rigidbody>();
-            bul.GetComponent<Bullet>().Initialize(myWeapon.damage, myWeapon.minFallOff, myWeapon.maxFallOff, bulletSpawn.transform.position,myPlayer);
-            rb.AddForce(bul.transform.forward * myWeapon.projectileVelocity);
-            Destroy(bul, 3.0F);
-            DrainAmmo();
-        }
-        if(magazineAmmo < 0 && !reloading)
-        {
-            magazineAmmo = 0;
-        }
+            if (magazineAmmo < 0 && !reloading)
+            {
+                magazineAmmo = 0;
+            }
 
-        if(magazineAmmo <= 0 && !reloading)
-        {
-            audioSource.clip = emptyMagazine;
-            if (!audioSource.isPlaying)
+            if (magazineAmmo <= 0 && !reloading)
             {
-                audioSource.Play();
+                audioSource.clip = emptyMagazine;
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
             }
         }
+    }
+
+    public void ResetValues()
+    {
+        ResetShotsFired();
+        canShoot = true;
+        reloading = false;
     }
 
     protected void DrainAmmo()
     {
-        magazineAmmo -= myWeapon.ammoDrain;
-        audioSource.clip = gunShot;
-        audioSource.PlayOneShot(gunShot);
-        if (canShoot)
+        if (gameObject.activeSelf)
         {
-            float refireTime = 60 / myWeapon.firerate;
-            StartCoroutine(LimitFireRate(refireTime));
+            magazineAmmo -= myWeapon.ammoDrain;
+            audioSource.clip = gunShot;
+            audioSource.PlayOneShot(gunShot);
+            if (canShoot)
+            {
+                float refireTime = 60 / myWeapon.firerate;
+                StartCoroutine(LimitFireRate(refireTime));
+            }
         }
+       
     }
 
     protected virtual void Reload()
     {
-        if (!reloading)
+        if (gameObject.activeSelf)
         {
-            StartCoroutine(ReloadInSeconds(myWeapon.reloadSpeed));
-            audioSource.clip = reload;
-            audioSource.Play();
+            if (!reloading)
+            {
+                StartCoroutine(ReloadInSeconds(myWeapon.reloadSpeed));
+                audioSource.clip = reload;
+                audioSource.Play();
+            }
         }
+      
     }
 
     protected void ResetShotsFired()
@@ -125,11 +144,9 @@ public class Weapon : MonoBehaviour
     private IEnumerator ReloadInSeconds(float seconds)
     {
         reloading = true;
-        Debug.Log("Start reload");
         yield return new WaitForSeconds(seconds);
         shotsFired = 0;
         magazineAmmo = totalAmmo;
-        Debug.Log("Reloaded");
         reloading = false;
     }
 }

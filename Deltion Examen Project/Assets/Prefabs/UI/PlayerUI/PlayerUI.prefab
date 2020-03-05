@@ -90,6 +90,7 @@ MonoBehaviour:
   myPlayer: {fileID: 0}
   ultCharge: {fileID: 3789005349816039890}
   weaponImage: {fileID: 3789005348828470725}
+  weaponBackImage: {fileID: 3789005349926551529}
   abilityOneCDImg: {fileID: 925792659067402307}
   abilityTwoCDImg: {fileID: 7009670975090457283}
   abilityThreeCDImg: {fileID: 5611335645389982287}
