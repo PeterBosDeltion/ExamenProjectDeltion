@@ -45,7 +45,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myPlayer: {fileID: 0}
   name: Medical drone
-  description: 
+  description: 'Man''s best friend isn''t a lifeless drone that injects you with
+    rapidly healing medication. But it''s a close second.
+
+    This drone provides
+    the user support by rapidly healing any injuries they''ve sustained.'
   uiIcon: {fileID: 21300000, guid: 660d1dd91f7fbbd48b51de9441c6296f, type: 3}
   requiredLevel: 0
   ultimate: 0
@@ -54,6 +58,9 @@ MonoBehaviour:
   cooldownTime: 20
   duration: 25
   deployableRadius: 7.5
+  deployableGhost: {fileID: 0}
+  canDeployMaterial: {fileID: 0}
+  cannotDeployMaterial: {fileID: 0}
   returned: 0
   myDeployType: 0
   healPool: 500

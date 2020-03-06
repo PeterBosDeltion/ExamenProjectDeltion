@@ -45,7 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myPlayer: {fileID: 0}
   name: Personal shield
-  description: Shieldy boi
+  description: This personal forcefield covers the user after activation and provides
+    temporary protection from incoming damage.
   uiIcon: {fileID: 21300000, guid: 7370fab89210e164997fcec293ae1f67, type: 3}
   requiredLevel: 0
   ultimate: 0
@@ -54,6 +55,9 @@ MonoBehaviour:
   cooldownTime: 40
   duration: 20
   deployableRadius: 7.5
+  deployableGhost: {fileID: 0}
+  canDeployMaterial: {fileID: 0}
+  cannotDeployMaterial: {fileID: 0}
   returned: 0
   myDeployType: 0
   tempHP: 500

@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: ExplosiveRifle
   m_EditorClassIdentifier: 
   name: Explosive Rifle
-  Description: 
+  description: 'Using advanced technology stolen from another spacefaring empire,
+    this slow firing assault rifle fires special bullets that explode upon contact
+    with an enemy. The resulting explosion hurts everything in an area around the
+    point of impact.
+
+    Somehow this was deemed safe to use and introduced to the
+    space marine arsenal.'
   requiredLevel: 0
   minFallOff: 20
   maxFallOff: 60

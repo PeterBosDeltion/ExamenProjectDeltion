@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: Sidearm
   m_EditorClassIdentifier: 
   name: Sidearm
-  Description: 
+  description: 'If you''re on the battlefield screaming "OH FUCK WE''RE ALL GONNA
+    DIE", chanses are you are holding this trusted sidearm. It was originally introduced
+    to the space marines as something to hold onto for comfort in stressful situations.
+
+    Turns
+    out you can also use it as a last resort weapon when all else fails.'
   requiredLevel: 0
   minFallOff: 10
   maxFallOff: 15
