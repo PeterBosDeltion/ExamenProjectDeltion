@@ -19,6 +19,7 @@ public class Enemy : Entity
     public override void DamageEvent(Entity Attacker)
     {
         myAI.SetTarget(Attacker);
+        myAI.SetAndPlayAudioClipOnce(myAI.hitClip,0.1f);
     }
 
     protected override void Death()

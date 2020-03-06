@@ -30,6 +30,8 @@ public abstract class EnemyAI : MonoBehaviour
 
     protected AudioSource mainAudioSource;
     public AudioClip attackClip;
+    public AudioClip deathClip;
+    public AudioClip hitClip;
 
     private void Awake()
     {
@@ -72,9 +74,9 @@ public abstract class EnemyAI : MonoBehaviour
         HandelAI();
     }
 
-    private void SetAndPlayAudioClipOnce(AudioClip clip)
+    public void SetAndPlayAudioClipOnce(AudioClip clip, float volume = 1)
     {
-        AudioSource.PlayClipAtPoint(clip, transform.position);
+        AudioSource.PlayClipAtPoint(clip, transform.position, volume);
     }
     private void PlayAudioClipLoop(bool On)
     {
@@ -160,7 +162,7 @@ public abstract class EnemyAI : MonoBehaviour
         {
             case AIState.Idle:
                 agent.isStopped = true;
-                //PlayAudioClipLoop(false);
+                PlayAudioClipLoop(false);
                 break;
             case AIState.ClosingIn:
                 agent.isStopped = false;
@@ -175,11 +177,12 @@ public abstract class EnemyAI : MonoBehaviour
                 break;
             case AIState.BackingOff:
                 agent.isStopped = false;
-                //PlayAudioClipLoop(true);
+                PlayAudioClipLoop(true);
                 break;
             case AIState.Dead:
                 agent.isStopped = true;
-                //PlayAudioClipLoop(false);
+                PlayAudioClipLoop(false);
+                SetAndPlayAudioClipOnce(deathClip);
                 break;
         }
     }
