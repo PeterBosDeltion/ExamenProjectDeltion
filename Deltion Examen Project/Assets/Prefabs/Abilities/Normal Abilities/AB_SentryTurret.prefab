@@ -53,7 +53,12 @@ MonoBehaviour:
   active: 0
   cooldownTime: 25
   duration: 30
-  maxDeployableDistance: 15
+  deployableRadius: 7.5
+  deployableGhost: {fileID: 502973584255789111, guid: 956b186b560e7b94496a3aaf467eb3c3,
+    type: 3}
+  canDeployMaterial: {fileID: 2100000, guid: 8170a1c3a7258b44490e3ba734b9603b, type: 2}
+  cannotDeployMaterial: {fileID: 2100000, guid: f2b0403cd2fa28143a4aec7a1f053f95,
+    type: 2}
   returned: 0
   myDeployType: 1
   turretPrefab: {fileID: 4535447932574800939, guid: c77ffe5fdc24d284482204add1c81a36,

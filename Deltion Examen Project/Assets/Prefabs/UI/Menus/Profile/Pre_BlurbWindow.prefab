@@ -195,8 +195,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: X
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a9fffa9c0efb74041acb3ea1217710e0, type: 2}
-  m_sharedMaterial: {fileID: -7192919992436454754, guid: a9fffa9c0efb74041acb3ea1217710e0,
+  m_fontAsset: {fileID: 11400000, guid: 9dfe0f43f94c5b94294a6ac7b506955a, type: 2}
+  m_sharedMaterial: {fileID: -7705713493407256142, guid: 9dfe0f43f94c5b94294a6ac7b506955a,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -429,8 +429,8 @@ MonoBehaviour:
     something for our exam that is passable as an actual video game you can play
     for entertainment.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a9fffa9c0efb74041acb3ea1217710e0, type: 2}
-  m_sharedMaterial: {fileID: -7192919992436454754, guid: a9fffa9c0efb74041acb3ea1217710e0,
+  m_fontAsset: {fileID: 11400000, guid: 9dfe0f43f94c5b94294a6ac7b506955a, type: 2}
+  m_sharedMaterial: {fileID: -7705713493407256142, guid: 9dfe0f43f94c5b94294a6ac7b506955a,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -502,7 +502,7 @@ MonoBehaviour:
     spaceCount: 60
     wordCount: 61
     linkCount: 0
-    lineCount: 12
+    lineCount: 9
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -585,8 +585,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Assault rifle
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a9fffa9c0efb74041acb3ea1217710e0, type: 2}
-  m_sharedMaterial: {fileID: -7192919992436454754, guid: a9fffa9c0efb74041acb3ea1217710e0,
+  m_fontAsset: {fileID: 11400000, guid: 9dfe0f43f94c5b94294a6ac7b506955a, type: 2}
+  m_sharedMaterial: {fileID: -7705713493407256142, guid: 9dfe0f43f94c5b94294a6ac7b506955a,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1342,8 +1342,8 @@ MonoBehaviour:
 
     Required level: 0'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a9fffa9c0efb74041acb3ea1217710e0, type: 2}
-  m_sharedMaterial: {fileID: -7192919992436454754, guid: a9fffa9c0efb74041acb3ea1217710e0,
+  m_fontAsset: {fileID: 11400000, guid: 9dfe0f43f94c5b94294a6ac7b506955a, type: 2}
+  m_sharedMaterial: {fileID: -7705713493407256142, guid: 9dfe0f43f94c5b94294a6ac7b506955a,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

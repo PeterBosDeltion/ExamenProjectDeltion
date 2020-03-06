@@ -9,7 +9,7 @@ public class Weapon : MonoBehaviour
     public GameObject bulletSpawn;
     public float totalAmmo;
     public float magazineAmmo;
-    protected bool canShoot = true;
+    public bool canShoot = true;
     protected AudioSource audioSource;
 
     public AudioClip gunShot;

@@ -53,7 +53,7 @@ MonoBehaviour:
   active: 0
   cooldownTime: 20
   duration: 10
-  maxDeployableDistance: 15
+  deployableRadius: 7.5
   returned: 0
   myDeployType: 0
   dronePrefab: {fileID: 4505367871833862156, guid: 5a6129d49599a4c4bb1a53cbede0643d,

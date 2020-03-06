@@ -53,7 +53,7 @@ MonoBehaviour:
   active: 0
   cooldownTime: 40
   duration: 20
-  maxDeployableDistance: 0
+  deployableRadius: 7.5
   returned: 0
   myDeployType: 0
   tempHP: 500

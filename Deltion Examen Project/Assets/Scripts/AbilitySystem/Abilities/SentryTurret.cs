@@ -22,9 +22,9 @@ public class SentryTurret : Entity
     private Player myPlayer;
 
     private float myMaxAmmo;
-    private float currentAmmo;
-    private bool reloading;
-    private float myReloadTime;
+    //private float currentAmmo;
+    //private bool reloading;
+    //private float myReloadTime;
     private bool canShoot;
     private float myFirerate;
     private float armSpeed;
@@ -44,8 +44,8 @@ public class SentryTurret : Entity
         myPlayer = player;
         myBulletForce = bulletForce;
         myMaxAmmo = maxAmmo;
-        currentAmmo = myMaxAmmo;
-        myReloadTime = reloadTime;
+        //currentAmmo = myMaxAmmo;
+        //myReloadTime = reloadTime;
         myFirerate = firerate;
         hp = maxHp;
         canShoot = true;
@@ -63,7 +63,7 @@ public class SentryTurret : Entity
         {
             if (target.GetComponent<Entity>().GetHp() > 0)
             {
-                if (Vector3.Distance(transform.position, target.position) <= myRange && currentAmmo > 0)
+                if (Vector3.Distance(transform.position, target.position) <= myRange) //&& currentAmmo > 0
                 {
                     leftArm.transform.Rotate(Vector3.up * armSpeed * Time.deltaTime);
                     rightArm.transform.Rotate(Vector3.up * armSpeed * Time.deltaTime);
@@ -123,7 +123,7 @@ public class SentryTurret : Entity
             {
                 if (Vector3.Distance(transform.position, target.position) <= myRange)
                 {
-                    if (currentAmmo > 0 && !reloading && canShoot)
+                    if (canShoot) //currentAmmo > 0 && !reloading && 
                     {
                         GameObject bulletOne = Instantiate(bulletPrefab, bulletSpawnOne.transform.position, bulletSpawnOne.transform.rotation);
                         GameObject bulletTwo = Instantiate(bulletPrefab, bulletSpawnTwo.transform.position, bulletSpawnTwo.transform.rotation);
@@ -139,7 +139,7 @@ public class SentryTurret : Entity
 
                         rbOne.AddForce(bulletSpawnOne.transform.forward * myBulletForce);
                         rbTwo.AddForce(bulletSpawnTwo.transform.forward * myBulletForce);
-                        currentAmmo -= 2;
+                        //currentAmmo -= 2;
 
                         if (canShoot)
                         {
@@ -149,13 +149,13 @@ public class SentryTurret : Entity
 
                        
                     }
-                    else if (currentAmmo <= 0)
-                    {
-                        if (!reloading)
-                        {
-                            StartCoroutine(Reload());
-                        }
-                    }
+                    //else if (currentAmmo <= 0)
+                    //{
+                    //    if (!reloading)
+                    //    {
+                    //        StartCoroutine(Reload());
+                    //    }
+                    //}
 
                 }
                 else
@@ -170,22 +170,22 @@ public class SentryTurret : Entity
         }
     }
 
-    private IEnumerator Reload()
-    {
-        reloading = true;
-        if (!flashing)
-        {
-            ammoImg.gameObject.SetActive(true);
-            ammoImg.color = flashFrom;
-            InvokeRepeating("FlashAmmo", 0, 1);
-        }
-        yield return new WaitForSeconds(myReloadTime);
-        CancelInvoke("FlashAmmo");
-        ammoImg.gameObject.SetActive(false);
-        flashing = false;
-        currentAmmo = myMaxAmmo;
-        reloading = false;
-    }
+    //private IEnumerator Reload()
+    //{
+    //    reloading = true;
+    //    if (!flashing)
+    //    {
+    //        ammoImg.gameObject.SetActive(true);
+    //        ammoImg.color = flashFrom;
+    //        InvokeRepeating("FlashAmmo", 0, 1);
+    //    }
+    //    yield return new WaitForSeconds(myReloadTime);
+    //    CancelInvoke("FlashAmmo");
+    //    ammoImg.gameObject.SetActive(false);
+    //    flashing = false;
+    //    currentAmmo = myMaxAmmo;
+    //    reloading = false;
+    //}
 
     private IEnumerator LimitFireRate(float refireTime)
     {

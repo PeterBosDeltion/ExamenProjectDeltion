@@ -28,7 +28,7 @@ public class PlayerUI : MonoBehaviour
 
     private void Initialize()
     {
-        InputManager.abilityEvent += AbilityUsed;
+        InputManager.delayedAbilityEvent += AbilityUsed;
     }
 
     public void AbilityUsed(int f)

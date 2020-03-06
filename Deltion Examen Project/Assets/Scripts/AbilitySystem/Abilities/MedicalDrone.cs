@@ -23,11 +23,13 @@ public class MedicalDrone : MonoBehaviour
     public GameObject childDroneModel;
     private bool shouldFollow;
 
-    public Color flashFrom;
-    public Color flashTo;
+    public Color fullColor;
+    public Color emptyColor;
 
-    public Image batterImg;
+    public Image filledBatterImg;
+    public Image outerBatterImg;
     private bool flashing;
+    private float rate;
 
     public void Initialize(float healpool, Player player, float reloadSpeed, float healRate)
     {
@@ -40,7 +42,9 @@ public class MedicalDrone : MonoBehaviour
         lineRend = GetComponent<LineRenderer>();
         lineRend.enabled = false;
         shouldFollow = true;
-        batterImg.gameObject.SetActive(false);
+
+        filledBatterImg.color = fullColor;
+        outerBatterImg.color = fullColor;
 
         if (!childDroneModel)
         {
@@ -58,9 +62,19 @@ public class MedicalDrone : MonoBehaviour
 
     private void Update()
     {
-        if(myPlayer.GetHp() < myPlayer.maxHp)
+        if(myPlayer.GetHp() < myPlayer.maxHp) //&& myPlayer.GetHp() > 0
         {
-            Heal();
+            if (!reloading)
+            {
+                Heal();
+            }
+            else
+            {
+                if (lineRend.enabled)
+                {
+                    lineRend.enabled = false;
+                }
+            }
         }
         else
         {
@@ -77,7 +91,20 @@ public class MedicalDrone : MonoBehaviour
             {
                 StartCoroutine(ReloadPool());
             }
+            
         }
+
+        if(reloading)
+        {
+            if (rate < myReloadSpeed)
+            {
+                rate += Time.deltaTime / myReloadSpeed;
+                currentHealpool = Mathf.Lerp(0, myHealpool, rate);
+            }
+        }
+
+        filledBatterImg.fillAmount = currentHealpool / myHealpool;
+
     }
     private void FollowPlayer()
     {
@@ -105,23 +132,15 @@ public class MedicalDrone : MonoBehaviour
     private IEnumerator ReloadPool()
     {
         reloading = true;
-        if (!flashing)
-        {
-            batterImg.gameObject.SetActive(true);
-            batterImg.color = flashFrom;
-            InvokeRepeating("FlashBattery", 0, 1);
-        }
-        yield return new WaitForSeconds(myReloadSpeed);
-        flashing = false;
-        CancelInvoke("FlashBattery");
-        batterImg.gameObject.SetActive(false);
-        currentHealpool = myHealpool;
+        currentHealpool = 0;
+        rate = 0;
+        filledBatterImg.color = emptyColor;
+        outerBatterImg.color = emptyColor;
+       
+        yield return new WaitUntil(() => currentHealpool >= myHealpool);
+        filledBatterImg.color = fullColor;
+        outerBatterImg.color = fullColor;
         reloading = false;
     }
 
-    private void FlashBattery()
-    {
-        flashing = true;
-        batterImg.color = (batterImg.color == flashFrom) ? batterImg.color = flashTo : batterImg.color = flashFrom;
-    }
 }
