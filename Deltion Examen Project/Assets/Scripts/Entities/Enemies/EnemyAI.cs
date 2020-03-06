@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(Enemy),typeof(NavMeshAgent))]
+[RequireComponent(typeof(Enemy), typeof(NavMeshAgent))]
 public abstract class EnemyAI : MonoBehaviour
 {
     public enum AIState
@@ -49,11 +49,11 @@ public abstract class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        if(!agent.isStopped && myTarget)
+        if (!agent.isStopped && myTarget)
         {
-            UpdateDestination();
+            ManageDestination();
         }
-        if(myTarget)
+        if (myTarget)
         {
             distanceToTarget = Vector3.Distance(transform.position, myTarget.transform.position);
             float distanceTillRotate = distanceToTarget - 1;
@@ -74,7 +74,7 @@ public abstract class EnemyAI : MonoBehaviour
 
     private void SetAndPlayAudioClipOnce(AudioClip clip)
     {
-        mainAudioSource.PlayOneShot(clip);
+        AudioSource.PlayClipAtPoint(clip, transform.position);
     }
     private void PlayAudioClipLoop(bool On)
     {
@@ -93,7 +93,7 @@ public abstract class EnemyAI : MonoBehaviour
     public void SetTarget(Entity Attacker = null)
     {
         StopAllCoroutines();
-        if(state != AIState.Dead)
+        if (state != AIState.Dead)
         {
             if (!Focused && Attacker)
             {
@@ -101,13 +101,13 @@ public abstract class EnemyAI : MonoBehaviour
                 SetState(AIState.ClosingIn);
                 StartCoroutine(LockedOnTimer());
             }
-            else if(!myTarget)
+            else if (!myTarget)
             {
                 myTarget = GetClosestTarget();
-                if(myTarget == null)
+                if (myTarget == null)
                 {
                     //Posibly need to call this more than once before setting it to idle
-                    if(state != AIState.Idle)
+                    if (state != AIState.Idle)
                     {
                         SetState(AIState.Idle);
                     }
@@ -122,14 +122,14 @@ public abstract class EnemyAI : MonoBehaviour
     //This function looks for the closest Entity within the EntityManagers "AllPlayersAndAbilities" list
     private Entity GetClosestTarget()
     {
-        if(entityManager.AllPlayersAndAbilities.Count != 0)
+        if (entityManager.AllPlayersAndAbilities.Count != 0)
         {
             Entity closestEntity = null;
             float rangeToClosest = Mathf.Infinity;
-            foreach(Entity entity in entityManager.AllPlayersAndAbilities)
+            foreach (Entity entity in entityManager.AllPlayersAndAbilities)
             {
                 float newDistance = Vector3.Distance(transform.position, entity.transform.position);
-                if(rangeToClosest > newDistance)
+                if (rangeToClosest > newDistance)
                 {
                     rangeToClosest = newDistance;
                     closestEntity = entity;
@@ -160,7 +160,7 @@ public abstract class EnemyAI : MonoBehaviour
         {
             case AIState.Idle:
                 agent.isStopped = true;
-                PlayAudioClipLoop(false);
+                //PlayAudioClipLoop(false);
                 break;
             case AIState.ClosingIn:
                 agent.isStopped = false;
@@ -175,11 +175,11 @@ public abstract class EnemyAI : MonoBehaviour
                 break;
             case AIState.BackingOff:
                 agent.isStopped = false;
-                PlayAudioClipLoop(true);
+                //PlayAudioClipLoop(true);
                 break;
             case AIState.Dead:
                 agent.isStopped = true;
-                PlayAudioClipLoop(false);
+                //PlayAudioClipLoop(false);
                 break;
         }
     }
@@ -207,11 +207,20 @@ public abstract class EnemyAI : MonoBehaviour
                 break;
         }
     }
+
+    private void ManageDestination()
+    {
+        if(distanceToTarget <= myStats.attackRange + 3)
+        {
+            UpdateDestination();
+        }
+    }
     
     //This function is used to move the enemy towards it target if its not stopped and has a target
-    protected virtual void UpdateDestination()
+    public virtual void UpdateDestination()
     {
-        agent.SetDestination(myTarget.transform.position);
+        if(myTarget)
+            agent.SetDestination(myTarget.transform.position);
     }
 
     protected abstract void HandelAI();
@@ -231,10 +240,5 @@ public abstract class EnemyAI : MonoBehaviour
         Focused = true;
         yield return new WaitForSeconds(AttantionTime);
         Focused = false;
-    }
-
-    private IEnumerator PlayBasicEnemyAudio()
-    {
-        yield return new WaitForSeconds(Random.Range(5, 10));
     }
 }

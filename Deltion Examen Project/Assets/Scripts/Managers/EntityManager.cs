@@ -38,4 +38,12 @@ public class EntityManager : MonoBehaviour
     {
         AllPlayersAndAbilities.Remove(toRemove);
     }
+
+    public void RetargetPlayer()
+    {
+        foreach(Enemy enemy in AllEnemys)
+        {
+            enemy.myAI.UpdateDestination();
+        }
+    }
 }

@@ -38,14 +38,6 @@ public class PlayerController : MonoBehaviour
         InputManager.leftMouseButtonEvent += Shoot;
         Initialize();
     }
-    private void Update() //[PH]
-    {
-        if (Input.GetKeyDown("f"))
-        {
-            player.TakeDamage(10, player);
-        }
-        //[PH]
-    }
 
     private void Initialize()
     {
