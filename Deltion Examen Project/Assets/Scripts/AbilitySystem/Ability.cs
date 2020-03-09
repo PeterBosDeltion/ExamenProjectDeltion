@@ -20,6 +20,7 @@ public abstract class Ability : MonoBehaviour
     public GameObject deployableGhost;
     public Material canDeployMaterial;
     public Material cannotDeployMaterial;
+    public Material deployLineMaterial;
     private GameObject activeGhost;
     [Range(3, 256)]
     private int numSegments = 128;
@@ -53,7 +54,7 @@ public abstract class Ability : MonoBehaviour
     }
     public void UseAbility()
     {
-        if (!onCooldown && !active)
+        if (!onCooldown && !active && !deploying)
         {
             returned = false;
             switch (myDeployType)
@@ -64,7 +65,7 @@ public abstract class Ability : MonoBehaviour
                     break;
                 case DeployType.Deployed:
                     activeGhost = null;
-                    if (!deploying)
+                    if (!deploying && !active)
                     {
                         DrawDeployCircle();
                     }
@@ -80,7 +81,7 @@ public abstract class Ability : MonoBehaviour
 
     private void Update()
     {
-        if (deploying)
+        if (deploying && !active)
         {
             if (activeGhost)
             {
@@ -122,7 +123,7 @@ public abstract class Ability : MonoBehaviour
 
     private void Deploy()
     {
-        if(deploying)
+        if(deploying && !active)
         {
             if (myPlayer.GetComponent<PlayerController>().currentWeapon.canShoot)
             {
@@ -143,7 +144,6 @@ public abstract class Ability : MonoBehaviour
                         lineRenderer.enabled = false;
                         Destroy(activeGhost);
                         activeGhost = null;
-                        active = false;
                         InputManager.delayedAbilityEvent.Invoke(myPlayer.GetComponent<PlayerController>().abilities.IndexOf(this));
                     }
                 }
@@ -166,7 +166,7 @@ public abstract class Ability : MonoBehaviour
 
     private void CancelDeploy()
     {
-        if (deploying)
+        if (deploying && !active)
         {
             lineRenderer.enabled = false;
             if (!myPlayer.GetComponent<PlayerController>().currentWeapon.canShoot)
@@ -189,30 +189,34 @@ public abstract class Ability : MonoBehaviour
 
     private void DrawDeployCircle()
     {
-        deploying = true;
-        lineRenderer.enabled = true;
-        lineRenderer.material = new Material(Shader.Find("Legacy Shaders/Particles/Additive"));
-        lineRenderer.startWidth = 0.25F;
-        lineRenderer.endWidth = 0.25F;
-        lineRenderer.positionCount = numSegments + 1;
-        lineRenderer.useWorldSpace = false;
-
-        float deltaTheta = (float)(2.0 * Mathf.PI) / numSegments;
-        float theta = 0f;
-
-        for (int i = 0; i < numSegments + 1; i++)
+        if(!active)
         {
-            float x = deployableRadius * Mathf.Cos(theta);
-            float z = deployableRadius * Mathf.Sin(theta);
-            Vector3 pos = new Vector3(x, .5F, z);
-            lineRenderer.SetPosition(i, pos);
-            theta += deltaTheta;
-        }
+            deploying = true;
+            lineRenderer.enabled = true;
+            lineRenderer.material = deployLineMaterial;
+            lineRenderer.startWidth = 0.25F;
+            lineRenderer.endWidth = 0.25F;
+            lineRenderer.positionCount = numSegments + 1;
+            lineRenderer.useWorldSpace = false;
 
-        if (!activeGhost)
-        {
-            activeGhost = Instantiate(deployableGhost);
+            float deltaTheta = (float)(2.0 * Mathf.PI) / numSegments;
+            float theta = 0f;
+
+            for (int i = 0; i < numSegments + 1; i++)
+            {
+                float x = deployableRadius * Mathf.Cos(theta);
+                float z = deployableRadius * Mathf.Sin(theta);
+                Vector3 pos = new Vector3(x, .5F, z);
+                lineRenderer.SetPosition(i, pos);
+                theta += deltaTheta;
+            }
+
+            if (!activeGhost)
+            {
+                activeGhost = Instantiate(deployableGhost);
+            }
         }
+      
     }
     private IEnumerator Cooldown(float seconds)
     {

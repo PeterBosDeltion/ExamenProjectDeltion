@@ -142,8 +142,11 @@ public class KamikazeDrone : MonoBehaviour
         exploding = true;
         myAbility.CheckDrones();
         explosionParticle.SetActive(true);
-        target.GetComponent<Enemy>().TakeDamage(myDamage, myPlayer);
-        if(!audioSource.isPlaying)
+        if (target)
+        {
+            target.GetComponent<Enemy>().TakeDamage(myDamage, myPlayer);
+        }
+        if (!audioSource.isPlaying)
             audioSource.PlayOneShot(explosionSFX);
 
         Collider[] overlaps = Physics.OverlapSphere(transform.position, myAOERadius);

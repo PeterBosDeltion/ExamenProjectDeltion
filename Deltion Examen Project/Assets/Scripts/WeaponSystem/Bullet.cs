@@ -13,20 +13,20 @@ public class Bullet : MonoBehaviour
     private bool exploded;
     private Vector3 originPos;
 
-    public Player myPlayer;
+    public Entity myEnt;
     private RaycastHit hit;
     public GameObject bloodParticle;
 
     public AudioClip impactSound;
 
-    public void Initialize(float newDamage, float minDrop, float maxDrop, Vector3 originPosition, Player player, float aoeRadius = 0)
+    public void Initialize(float newDamage, float minDrop, float maxDrop, Vector3 originPosition, Entity damagingEntity, float aoeRadius = 0)
     {
         startDamage = newDamage;
         damage = startDamage;
         minFalloff = minDrop;
         maxFalloff = maxDrop;
         originPos = originPosition;
-        myPlayer = player;
+        myEnt = damagingEntity;
 
         if(aoeRadius > 0)
         {
@@ -57,7 +57,7 @@ public class Bullet : MonoBehaviour
             if(myAoeRadius <= 0)
             {
                 Entity entity = collision.transform.gameObject.GetComponent<Entity>();
-                entity.TakeDamage(damage, myPlayer);
+                entity.TakeDamage(damage, myEnt);
                 Ray newRay = new Ray(collision.GetContact(0).point, collision.transform.position - collision.GetContact(0).point);
 
                 if (Physics.Raycast(newRay, out hit))
@@ -97,7 +97,7 @@ public class Bullet : MonoBehaviour
         {
             if (col.GetComponent<Enemy>())
             {
-                col.GetComponent<Enemy>().TakeDamage(damage, myPlayer);
+                col.GetComponent<Enemy>().TakeDamage(damage, myEnt);
             }
         }
 

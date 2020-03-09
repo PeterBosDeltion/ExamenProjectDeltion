@@ -35,8 +35,9 @@ public class SentryTurret : Entity
 
     public Image ammoImg;
     private bool flashing;
+    private SentryTurretAbility myAbility;
 
-    public void Initialize(float range, float damage, float aggroRadius, Player player, float bulletForce, float maxAmmo, float reloadTime, float firerate)
+    public void Initialize(float range, float damage, float aggroRadius, Player player, float bulletForce, float maxAmmo, float reloadTime, float firerate, SentryTurretAbility ability)
     {
         myRange = range;
         myDamage = damage;
@@ -49,7 +50,7 @@ public class SentryTurret : Entity
         myFirerate = firerate;
         hp = maxHp;
         canShoot = true;
-
+        myAbility = ability;
         armSpeed = RotSpeed * 40000;
         ammoImg.gameObject.SetActive(false);
 
@@ -134,8 +135,8 @@ public class SentryTurret : Entity
                         Bullet bOne = bulletOne.GetComponent<Bullet>();
                         Bullet bTwo = bulletTwo.GetComponent<Bullet>();
 
-                        bOne.Initialize(myDamage, 20, 60, bulletSpawnOne.transform.position, myPlayer);
-                        bTwo.Initialize(myDamage, 20, 60, bulletSpawnTwo.transform.position, myPlayer);
+                        bOne.Initialize(myDamage, 20, 60, bulletSpawnOne.transform.position, this);
+                        bTwo.Initialize(myDamage, 20, 60, bulletSpawnTwo.transform.position, this);
 
                         rbOne.AddForce(bulletSpawnOne.transform.forward * myBulletForce);
                         rbTwo.AddForce(bulletSpawnTwo.transform.forward * myBulletForce);
@@ -198,5 +199,10 @@ public class SentryTurret : Entity
     {
         flashing = true;
         ammoImg.color = (ammoImg.color == flashFrom) ? ammoImg.color = flashTo : ammoImg.color = flashFrom;
+    }
+
+    protected override void Death()
+    {
+        myAbility.TurretDestroyed();
     }
 }

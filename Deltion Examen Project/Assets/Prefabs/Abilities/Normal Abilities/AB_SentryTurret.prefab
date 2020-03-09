@@ -62,6 +62,7 @@ MonoBehaviour:
   canDeployMaterial: {fileID: 2100000, guid: 8170a1c3a7258b44490e3ba734b9603b, type: 2}
   cannotDeployMaterial: {fileID: 2100000, guid: f2b0403cd2fa28143a4aec7a1f053f95,
     type: 2}
+  deployLineMaterial: {fileID: 2100000, guid: 506f93c84d622fc41b612177dc6ecf73, type: 2}
   returned: 0
   myDeployType: 1
   turretPrefab: {fileID: 4535447932574800939, guid: c77ffe5fdc24d284482204add1c81a36,

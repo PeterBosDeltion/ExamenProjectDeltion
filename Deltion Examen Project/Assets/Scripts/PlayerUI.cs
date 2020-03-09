@@ -16,6 +16,17 @@ public class PlayerUI : MonoBehaviour
     public Image abilityThreeCDImg;
     public Image abilityFourCDImg;
 
+    public Image abilityOneImg;
+    public Image abilityTwoImg;
+    public Image abilityThreeImg;
+    public Image abilityFourImg;
+
+    //public Image abilityOneBGImg; todo: set these to player colors
+    //public Image abilityTwoBGImg;
+    //public Image abilityThreeBGImg;
+    //public Image abilityFourBGImg;
+
+
     public Image healthBar;
     public GameObject tempHealthbar;
     public Image tempHealthbarFilled;
@@ -29,6 +40,11 @@ public class PlayerUI : MonoBehaviour
     private void Initialize()
     {
         InputManager.delayedAbilityEvent += AbilityUsed;
+
+        abilityOneImg.sprite = myPlayer.abilities[0].uiIcon;
+        abilityTwoImg.sprite = myPlayer.abilities[1].uiIcon;
+        abilityThreeImg.sprite = myPlayer.abilities[2].uiIcon;
+        abilityFourImg.sprite = myPlayer.abilities[3].uiIcon;
     }
 
     public void AbilityUsed(int f)
