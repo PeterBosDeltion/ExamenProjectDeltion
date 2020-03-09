@@ -40,14 +40,6 @@ public class PlayerController : MonoBehaviour
         InputManager.scrollEvent += SwitchWeapon;
         Initialize();
     }
-    private void Update() //[PH]
-    {
-        if (Input.GetKeyDown("f"))
-        {
-            player.TakeDamage(10, player);
-        }
-        //[PH]
-    }
 
     private void Initialize()
     {

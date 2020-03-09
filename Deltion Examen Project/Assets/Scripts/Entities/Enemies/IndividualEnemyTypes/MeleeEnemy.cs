@@ -23,8 +23,6 @@ public class MeleeEnemy : EnemyAI
         {
             if(distanceToTarget > myStats.attackRange)
             {
-                GetComponent<Rigidbody>().velocity = Vector3.zero;
-
                 SetState(AIState.ClosingIn);
                 StopAllCoroutines();
             }

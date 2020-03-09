@@ -10,20 +10,28 @@ public class Movement : MonoBehaviour
     private Vector3 forward;
     private Vector3 right;
 
+    private Vector3 lastRecordedPosition;
+    public float distanceTillRetarget;
+
     private void Awake()
     {
         forward = Camera.main.transform.forward;
         forward.y = 0;
         forward = Vector3.Normalize(forward);
         right = Quaternion.Euler(0, 90, 0) * forward;
+        lastRecordedPosition = transform.position;
+    }
+
+    private void Update()
+    {
+        CheckIfMoved();
     }
 
     public void Move(float xAxis, float yAxis)
     {
-        Vector3 rightMovement = right * movementSpeed * Time.deltaTime * xAxis;
-        Vector3 upMovement = forward * movementSpeed * Time.deltaTime * yAxis;
-
-        Vector3 toMove = rightMovement + upMovement;
+        Vector3 rightMovement = right * Time.deltaTime * xAxis;
+        Vector3 upMovement = forward * Time.deltaTime * yAxis;
+        Vector3 toMove = Vector3.ClampMagnitude(rightMovement + upMovement, 0.1f) * movementSpeed;
         transform.position += toMove;
     }
 
@@ -38,5 +46,14 @@ public class Movement : MonoBehaviour
 
         //Set the rotation
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+    }
+
+    private void CheckIfMoved()
+    {
+        if(Vector3.Distance(lastRecordedPosition,transform.position) > distanceTillRetarget)
+        {
+            lastRecordedPosition = transform.position;
+            EntityManager.instance.RetargetPlayer();
+        }
     }
 }
