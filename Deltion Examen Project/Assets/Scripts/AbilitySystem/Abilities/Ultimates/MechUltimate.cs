@@ -29,8 +29,10 @@ public class MechUltimate : Entity
         myAbility.MechDestroyed();
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
+        base.OnDestroy();
+
         InputManager.MovingEvent -= Move;
         InputManager.RotatingEvent -= Rotate;
 

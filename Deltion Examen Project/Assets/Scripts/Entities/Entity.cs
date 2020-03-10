@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
+    public delegate void OnEntityDeath();
+    public OnEntityDeath deathEvent;
+
     protected float hp;
     protected float tempHp;
     [HideInInspector]
@@ -11,6 +14,16 @@ public class Entity : MonoBehaviour
     public float maxHp;
 
     public bool death;
+
+    protected virtual void Awake()
+    {
+        deathEvent += EmptyDeathEvent;
+    }
+
+    protected virtual void OnDestroy()
+    {
+        deathEvent = null;
+    }
 
     public void TakeDamage(float takenDamage, Entity Attacker)
     {
@@ -34,6 +47,7 @@ public class Entity : MonoBehaviour
             if (hp <= 0)
             {
                 death = true;
+                deathEvent.Invoke();
                 Death();
             }
             DamageEvent(Attacker);
@@ -90,7 +104,7 @@ public class Entity : MonoBehaviour
         return maxTempHp;
     }
 
-    public void EmptyHpEvent(Entity Attacker = null)
+    public void EmptyDeathEvent()
     {
     }
 }

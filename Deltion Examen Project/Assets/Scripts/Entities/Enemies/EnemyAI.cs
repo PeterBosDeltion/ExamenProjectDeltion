@@ -96,6 +96,14 @@ public abstract class EnemyAI : MonoBehaviour
     private void OnDestroy()
     {
         entityManager.RemoveEnemy(myStats);
+
+        if(myTarget != null)
+        myTarget.deathEvent -= TargetDied;
+    }
+
+    private void TargetDied()
+    {
+        SetTarget();
     }
 
     //This function is used to set a new target
@@ -104,18 +112,18 @@ public abstract class EnemyAI : MonoBehaviour
         StopAllCoroutines();
         if (state != AIState.Dead)
         {
-            if (!Focused && Attacker && Attacker.enabled)
+            if (!Focused && Attacker && Attacker.enabled && !Attacker.death)
             {
                 myTarget = Attacker;
+                Attacker.deathEvent += TargetDied;
                 SetState(AIState.ClosingIn);
                 StartCoroutine(LockedOnTimer());
             }
-            else if (!myTarget)
+            else if (!myTarget || !myTarget.enabled)
             {
                 myTarget = GetClosestTarget();
                 if (myTarget == null)
                 {
-                    //Posibly need to call this more than once before setting it to idle
                     if (state != AIState.Idle)
                     {
                         SetState(AIState.Idle);
@@ -123,20 +131,9 @@ public abstract class EnemyAI : MonoBehaviour
                     StartCoroutine(ReTarget());
                     return;
                 }
-                SetState(AIState.ClosingIn);
-            }
-            else if(myTarget && !myTarget.enabled)
-            {
-                myTarget = GetClosestTarget();
-                if (myTarget == null)
+                else
                 {
-                    //Posibly need to call this more than once before setting it to idle
-                    if (state != AIState.Idle)
-                    {
-                        SetState(AIState.Idle);
-                    }
-                    StartCoroutine(ReTarget());
-                    return;
+                    myTarget.deathEvent += TargetDied;
                 }
                 SetState(AIState.ClosingIn);
             }
@@ -153,7 +150,7 @@ public abstract class EnemyAI : MonoBehaviour
             foreach (Entity entity in entityManager.AllPlayersAndAbilities)
             {
                 float newDistance = Vector3.Distance(transform.position, entity.transform.position);
-                if (rangeToClosest > newDistance && entity.enabled)
+                if (rangeToClosest > newDistance && entity.enabled && !entity.death)
                 {
                     rangeToClosest = newDistance;
                     closestEntity = entity;

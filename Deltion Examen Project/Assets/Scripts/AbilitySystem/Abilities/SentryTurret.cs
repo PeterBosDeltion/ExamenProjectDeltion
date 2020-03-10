@@ -53,7 +53,7 @@ public class SentryTurret : Entity
         myAbility = ability;
         armSpeed = RotSpeed * 40000;
         ammoImg.gameObject.SetActive(false);
-
+        EntityManager.instance.AddPlayerOrAbility(this);
     }
 
     private void FixedUpdate()

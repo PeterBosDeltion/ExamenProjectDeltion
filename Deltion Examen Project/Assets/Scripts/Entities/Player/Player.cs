@@ -8,8 +8,10 @@ public class Player : Entity
 
     public HpEvent zeroTempHp;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         hp = maxHp;
         zeroTempHp += EmptyHpEvent;
     }
@@ -19,8 +21,10 @@ public class Player : Entity
         EntityManager.instance.AddPlayerOrAbility(this);
     }
 
-    public void OnDestroy()
+    protected override void OnDestroy()
     {
+        base.OnDestroy();
+
         zeroTempHp -= EmptyHpEvent;
         EntityManager.instance.RemovePlayerOrAbility(this);
     }
