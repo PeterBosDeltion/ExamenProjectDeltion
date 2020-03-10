@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private Movement movement;
     private TriggerAbility triggerAbility;
     private Animator playerAnimator;
+    public AudioSource mySource;
 
     public List<Ability> abilities = new List<Ability>();
 
@@ -27,6 +28,8 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogError("Not all player scripts have been asigned to the targeted object");
         }
+
+        mySource = GetComponent<AudioSource>();
     }
 
     //Subscribe Input functions to their Input
@@ -37,6 +40,19 @@ public class PlayerController : MonoBehaviour
         InputManager.RotatingEvent += Rotate;
         InputManager.leftMouseButtonEvent += Shoot;
         Initialize();
+    }
+
+    private void Update()
+    {
+        if(InputManager.Instance.isMoving)
+        {
+            if(!mySource.isPlaying)
+            mySource.Play();
+        }
+        else if(mySource.isPlaying)
+        {
+            mySource.Stop();
+        }
     }
 
     private void Initialize()
@@ -105,6 +121,7 @@ public class PlayerController : MonoBehaviour
     public void Rotate(float xAxis, float zAxis)
     {
         movement.Rotate(xAxis, zAxis);
+
     }
 
     public void Shoot()

@@ -26,6 +26,8 @@ public class InputManager : MonoBehaviour
     public static AxisInput MovingEvent;
     public static AxisInput RotatingEvent;
 
+    public bool isMoving;
+
     //Rotation related values
     private RaycastHit hit;
     public LayerMask floor;
@@ -94,6 +96,8 @@ public class InputManager : MonoBehaviour
         //Movement input
         if (Input.GetAxis("Horizontal") > 0f || Input.GetAxis("Horizontal") < 0f || Input.GetAxis("Vertical") > 0f || Input.GetAxis("Vertical") < 0f)
             Moving(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        else
+            isMoving = false;
         //Rotation input
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, floor))
@@ -143,6 +147,7 @@ public class InputManager : MonoBehaviour
     //Movement input
     private void Moving(float x, float y)
     {
+        isMoving = true;
         MovingEvent.Invoke(x, y);
     }
     //Rotate input
