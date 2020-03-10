@@ -29,10 +29,9 @@ public class Movement : MonoBehaviour
 
     public void Move(float xAxis, float yAxis)
     {
-        Vector3 rightMovement = right * movementSpeed * Time.deltaTime * xAxis;
-        Vector3 upMovement = forward * movementSpeed * Time.deltaTime * yAxis;
-
-        Vector3 toMove = rightMovement + upMovement;
+        Vector3 rightMovement = right * Time.deltaTime * xAxis;
+        Vector3 upMovement = forward * Time.deltaTime * yAxis;
+        Vector3 toMove = Vector3.ClampMagnitude(rightMovement + upMovement, 0.1f) * movementSpeed;
         transform.position += toMove;
     }
 
