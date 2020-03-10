@@ -4,6 +4,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Gun", menuName = "Gameplay/Weapon", order = 1)]
 public class WeaponScriptable : ScriptableObject
 {
+    public new string name;
+    [TextArea(15, 20)]
+    public string description;
     public float requiredLevel;
     public float minFallOff;
     public float maxFallOff;
@@ -14,6 +17,7 @@ public class WeaponScriptable : ScriptableObject
     public float maxSpreadAngle;
     public float totalAmmo;
     public float ammoDrain;
+    public Sprite uiIcon;
     public enum FireType
     {
         Auto,

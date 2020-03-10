@@ -9,11 +9,23 @@ public class PlayerUI : MonoBehaviour
 
     public TextMeshProUGUI ultCharge;
     public Image weaponImage;
+    public Image weaponBackImage;
 
     public Image abilityOneCDImg;
     public Image abilityTwoCDImg;
     public Image abilityThreeCDImg;
     public Image abilityFourCDImg;
+
+    public Image abilityOneImg;
+    public Image abilityTwoImg;
+    public Image abilityThreeImg;
+    public Image abilityFourImg;
+
+    //public Image abilityOneBGImg; todo: set these to player colors
+    //public Image abilityTwoBGImg;
+    //public Image abilityThreeBGImg;
+    //public Image abilityFourBGImg;
+
 
     public Image healthBar;
     public GameObject tempHealthbar;
@@ -27,7 +39,12 @@ public class PlayerUI : MonoBehaviour
 
     private void Initialize()
     {
-        InputManager.abilityEvent += AbilityUsed;
+        InputManager.delayedAbilityEvent += AbilityUsed;
+
+        abilityOneImg.sprite = myPlayer.abilities[0].uiIcon;
+        abilityTwoImg.sprite = myPlayer.abilities[1].uiIcon;
+        abilityThreeImg.sprite = myPlayer.abilities[2].uiIcon;
+        abilityFourImg.sprite = myPlayer.abilities[3].uiIcon;
     }
 
     public void AbilityUsed(int f)
@@ -35,19 +52,19 @@ public class PlayerUI : MonoBehaviour
             switch (f)
             {
                 case 0:
-                    if (abilityOneCDImg.fillAmount == 0)
+                    if (abilityOneCDImg.fillAmount == 0 && !myPlayer.abilities[0].returned)
                         abilityOneCDImg.fillAmount = 1;
                     break;
                 case 1:
-                    if (abilityTwoCDImg.fillAmount == 0)
+                    if (abilityTwoCDImg.fillAmount == 0 && !myPlayer.abilities[1].returned)
                         abilityTwoCDImg.fillAmount = 1;
                     break;
                 case 2:
-                    if (abilityThreeCDImg.fillAmount == 0)
+                    if (abilityThreeCDImg.fillAmount == 0 && !myPlayer.abilities[2].returned)
                         abilityThreeCDImg.fillAmount = 1;
                     break;
                 case 3:
-                    if (abilityFourCDImg.fillAmount == 0)
+                    if (abilityFourCDImg.fillAmount == 0 && !myPlayer.abilities[3].returned)
                         abilityFourCDImg.fillAmount = 1;
                     break;
                 default:
@@ -91,7 +108,15 @@ public class PlayerUI : MonoBehaviour
                
         }
 
-        weaponImage.fillAmount =  myPlayer.primary.magazineAmmo / myPlayer.primary.totalAmmo;
+        if(weaponImage.sprite != myPlayer.currentWeapon.myWeapon.uiIcon)
+        {
+            weaponImage.sprite = myPlayer.currentWeapon.myWeapon.uiIcon;
+        }
+        if (weaponBackImage.sprite != myPlayer.currentWeapon.myWeapon.uiIcon)
+        {
+            weaponBackImage.sprite = myPlayer.currentWeapon.myWeapon.uiIcon;
+        }
+        weaponImage.fillAmount =  myPlayer.currentWeapon.magazineAmmo / myPlayer.currentWeapon.totalAmmo;
         healthBar.fillAmount = myPlayer.GetHp() / myPlayer.GetMaxHp();
 
         if(myPlayer.GetTempHp() > 0)

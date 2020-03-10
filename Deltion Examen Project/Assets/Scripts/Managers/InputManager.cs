@@ -22,6 +22,7 @@ public class InputManager : MonoBehaviour
     public static BaseInput reloadEvent;
     public static BaseInput interactEvent;
     public static IntInput abilityEvent;
+    public static IntInput delayedAbilityEvent;
     public static FloatInput scrollEvent;
     public static AxisInput MovingEvent;
     public static AxisInput RotatingEvent;
@@ -44,6 +45,7 @@ public class InputManager : MonoBehaviour
         reloadEvent += Empty;
         interactEvent += Empty;
         abilityEvent += EmptyInt;
+        delayedAbilityEvent += EmptyInt;
         scrollEvent += EmptyFloat;
         MovingEvent += EmptyAxis;
         RotatingEvent += EmptyAxis;
@@ -58,6 +60,7 @@ public class InputManager : MonoBehaviour
         reloadEvent -= Empty;
         interactEvent -= Empty;
         abilityEvent -= EmptyInt;
+        delayedAbilityEvent -= EmptyInt;
         scrollEvent -= EmptyFloat;
         MovingEvent -= EmptyAxis;
         RotatingEvent -= EmptyAxis;

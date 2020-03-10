@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4070fe8b458becf4b9866a45a0ce4ff2, type: 3}
+  m_Name: ExplosiveRifle
+  m_EditorClassIdentifier: 
+  name: Explosive Rifle
+  description: 'Using advanced technology stolen from another spacefaring empire,
+    this slow firing assault rifle fires special bullets that explode upon contact
+    with an enemy. The resulting explosion hurts everything in an area around the
+    point of impact.
+
+    Somehow this was deemed safe to use and introduced to the
+    space marine arsenal.'
+  requiredLevel: 0
+  minFallOff: 20
+  maxFallOff: 60
+  projectileVelocity: 1500
+  damage: 125
+  firerate: 160
+  minSpreadAngle: 0
+  maxSpreadAngle: 0
+  totalAmmo: 30
+  ammoDrain: 1
+  uiIcon: {fileID: 21300000, guid: 6ee826df63e0d8e4e8ab44a7af7d3268, type: 3}
+  myFireType: 0
+  reloadSpeed: 4

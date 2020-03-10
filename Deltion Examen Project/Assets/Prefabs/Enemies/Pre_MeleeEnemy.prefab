@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTempHp: 0
-  maxHp: 300
+  maxHp: 200
   myAI: {fileID: 0}
   anim: {fileID: 0}
   speed: 7

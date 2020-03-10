@@ -33,6 +33,7 @@ public class Movement : MonoBehaviour
         Vector3 upMovement = forward * Time.deltaTime * yAxis;
         Vector3 toMove = Vector3.ClampMagnitude(rightMovement + upMovement, 0.1f) * movementSpeed;
         transform.position += toMove;
+
     }
 
     public void Rotate(float xAxis, float zAxis)

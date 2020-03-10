@@ -31,7 +31,7 @@ public class Enemy : Entity
 
     public IEnumerator DestroyEnemy()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1.5F);
         Destroy(this.gameObject);
     }
 }

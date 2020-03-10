@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MedicalDrone : MonoBehaviour
 {
     private float myHealpool;
+    private float currentHealpool;
     private Player myPlayer;
     private Vector3 targetPos;
+    private float myReloadSpeed;
+    private bool reloading;
+    private float myHealrate;
 
     public float speed = 5;
     public float yOffset = 2.5F;
@@ -16,21 +21,30 @@ public class MedicalDrone : MonoBehaviour
     public float lineOffsetDrone;
     public Vector3 lineOffsetPlayer;
     public GameObject childDroneModel;
-
-    public float healRate = 0.5F;
-
     private bool shouldFollow;
-    private bool landed;
 
-    public void Initialize(float healpool, Player player)
+    public Color fullColor;
+    public Color emptyColor;
+
+    public Image filledBatterImg;
+    public Image outerBatterImg;
+    private bool flashing;
+    private float rate;
+
+    public void Initialize(float healpool, Player player, float reloadSpeed, float healRate)
     {
-        landed = false;
         myHealpool = healpool;
+        currentHealpool = myHealpool;
         myPlayer = player;
+        myReloadSpeed = reloadSpeed;
+        myHealrate = healRate;
 
         lineRend = GetComponent<LineRenderer>();
         lineRend.enabled = false;
         shouldFollow = true;
+
+        filledBatterImg.color = fullColor;
+        outerBatterImg.color = fullColor;
 
         if (!childDroneModel)
         {
@@ -44,26 +58,23 @@ public class MedicalDrone : MonoBehaviour
         {
             FollowPlayer();
         }
-        else if(!shouldFollow && !landed)
-        {
-            RaycastHit hit;
-            if(Physics.Raycast(transform.position, Vector3.down, out hit))
-            {
-                transform.position = Vector3.Lerp(transform.position, hit.point, speed * Time.deltaTime);
-                if(Vector3.Distance(transform.position, hit.point) < .05F)
-                {
-                    landed = true;
-                    GetComponent<Animator>().enabled = false;
-                }
-            }
-        }
     }
 
     private void Update()
     {
-        if(myPlayer.GetHp() < myPlayer.maxHp)
+        if(myPlayer.GetHp() < myPlayer.maxHp) //&& myPlayer.GetHp() > 0
         {
-            Heal();
+            if (!reloading)
+            {
+                Heal();
+            }
+            else
+            {
+                if (lineRend.enabled)
+                {
+                    lineRend.enabled = false;
+                }
+            }
         }
         else
         {
@@ -73,11 +84,27 @@ public class MedicalDrone : MonoBehaviour
             }
         }
 
-        if(myHealpool <= 0)
+        if(currentHealpool <= 0)
         {
             lineRend.enabled = false;
-            shouldFollow = false;
+            if (!reloading)
+            {
+                StartCoroutine(ReloadPool());
+            }
+            
         }
+
+        if(reloading)
+        {
+            if (rate < myReloadSpeed)
+            {
+                rate += Time.deltaTime / myReloadSpeed;
+                currentHealpool = Mathf.Lerp(0, myHealpool, rate);
+            }
+        }
+
+        filledBatterImg.fillAmount = currentHealpool / myHealpool;
+
     }
     private void FollowPlayer()
     {
@@ -95,12 +122,25 @@ public class MedicalDrone : MonoBehaviour
         lineRend.SetPosition(1, myPlayer.transform.position + lineOffsetPlayer);
         lineRend.enabled = true;
 
-        if(myHealpool > 0)
+        if(currentHealpool > 0)
         {
-            myHealpool -= healRate;
-            myPlayer.Heal(healRate,0);
-            Debug.Log(myHealpool);
+            currentHealpool -= myHealrate;
+            myPlayer.Heal(myHealrate, 0);
         }
-
     }
+
+    private IEnumerator ReloadPool()
+    {
+        reloading = true;
+        currentHealpool = 0;
+        rate = 0;
+        filledBatterImg.color = emptyColor;
+        outerBatterImg.color = emptyColor;
+       
+        yield return new WaitUntil(() => currentHealpool >= myHealpool);
+        filledBatterImg.color = fullColor;
+        outerBatterImg.color = fullColor;
+        reloading = false;
+    }
+
 }

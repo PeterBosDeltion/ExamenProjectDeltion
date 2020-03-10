@@ -5,13 +5,15 @@ using UnityEngine;
 public class MedicalDroneAbility : Ability
 {
     public float healPool;
+    public float reloadSpeed;
+    public float healRate = 1;
     public GameObject dronePrefab;
     private GameObject spawnedDrone;
-    protected override void AbilityMechanic()
+    protected override void AbilityMechanic(Vector3? mPos, Quaternion? deployRotation = null)
     {
         Vector3 spawnPos = myPlayer.transform.position + new Vector3(0, 0.5F, 0);
         spawnedDrone = Instantiate(dronePrefab, spawnPos, Quaternion.identity);
-        spawnedDrone.GetComponent<MedicalDrone>().Initialize(healPool, myPlayer);
+        spawnedDrone.GetComponent<MedicalDrone>().Initialize(healPool, myPlayer, reloadSpeed, healRate);
 
         active = true;
     }

@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4070fe8b458becf4b9866a45a0ce4ff2, type: 3}
   m_Name: Sidearm
   m_EditorClassIdentifier: 
+  name: Sidearm
+  description: 'If you''re on the battlefield screaming "OH FUCK WE''RE ALL GONNA
+    DIE", chanses are you are holding this trusted sidearm. It was originally introduced
+    to the space marines as something to hold onto for comfort in stressful situations.
+
+    Turns
+    out you can also use it as a last resort weapon when all else fails.'
   requiredLevel: 0
   minFallOff: 10
   maxFallOff: 15
@@ -22,5 +29,6 @@ MonoBehaviour:
   maxSpreadAngle: 0
   totalAmmo: 25
   ammoDrain: 1
+  uiIcon: {fileID: 21300000, guid: ed6f4c15ab0bf674983f446c8fa19205, type: 3}
   myFireType: 1
   reloadSpeed: 2

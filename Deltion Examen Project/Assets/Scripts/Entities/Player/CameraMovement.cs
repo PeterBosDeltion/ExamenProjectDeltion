@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public bool focusOnPlayer = true;
-    Transform target;
+    public Transform target;
     [Tooltip("Use this offset to apply a distance between the player and the camera")]
     public float distanceOffset;
     [Tooltip("Use this offset to move the camera Up or Down incase the pivot of the player is to low or high making the follow look slightly off")]

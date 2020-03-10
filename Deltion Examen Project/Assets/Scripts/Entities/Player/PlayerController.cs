@@ -13,8 +13,8 @@ public class PlayerController : MonoBehaviour
     public AudioSource mySource;
 
     public List<Ability> abilities = new List<Ability>();
-
-    public Weapon primary; //[PH]
+    public Loadout loadout;
+    public Weapon currentWeapon; //[PH]
 
     //Assigning the Player scripts to the controller(There is no reason for the PlayerController to be anywhere else than on the Player so no need for a Gameobject reference)
     private void Awake()
@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
         movement = GetComponent<Movement>();
         triggerAbility = GetComponent<TriggerAbility>();
         playerAnimator = GetComponentInChildren<Animator>();
+        loadout = GetComponent<Loadout>();
 
         if(!player || !movement || !triggerAbility)
         {
@@ -32,6 +33,49 @@ public class PlayerController : MonoBehaviour
         mySource = GetComponent<AudioSource>();
     }
 
+    public void DisablePlayer()
+    {
+        InputManager.MovingEvent -= Move;
+        InputManager.RotatingEvent -= Rotate;
+        InputManager.leftMouseButtonEvent -= Shoot;
+        InputManager.scrollEvent -= SwitchWeapon;
+
+        currentWeapon.canShoot = false;
+
+        Renderer[] rends = GetComponentsInChildren<Renderer>();
+        foreach (Renderer renderer in rends)
+        {
+            renderer.enabled = false;
+        }
+
+        movement.enabled = false;
+        playerAnimator.enabled = false;
+        loadout.enabled = false;
+        GetComponent<Entity>().enabled = false;
+    }
+
+    public void EnablePlayer()
+    {
+        Debug.LogError("YES");
+        InputManager.MovingEvent += Move;
+        InputManager.RotatingEvent += Rotate;
+        InputManager.leftMouseButtonEvent += Shoot;
+        InputManager.scrollEvent += SwitchWeapon;
+
+        currentWeapon.canShoot = true;
+
+        Renderer[] rends = GetComponentsInChildren<Renderer>();
+        foreach (Renderer renderer in rends)
+        {
+            renderer.enabled = true;
+        }
+
+        movement.enabled = true;
+        playerAnimator.enabled = true;
+        loadout.enabled = true;
+        GetComponent<Entity>().enabled = true;
+    }
+
     //Subscribe Input functions to their Input
     public void Start()
     {
@@ -39,6 +83,7 @@ public class PlayerController : MonoBehaviour
         InputManager.MovingEvent += Move;
         InputManager.RotatingEvent += Rotate;
         InputManager.leftMouseButtonEvent += Shoot;
+        InputManager.scrollEvent += SwitchWeapon;
         Initialize();
     }
 
@@ -72,6 +117,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void SwitchWeapon(float f)
+    {
+        currentWeapon.gameObject.SetActive(false);
+        currentWeapon.StopAllCoroutines();
+        currentWeapon = (currentWeapon == loadout.primary) ? currentWeapon = loadout.secondary : currentWeapon = loadout.primary;
+        currentWeapon.ResetValues();
+        currentWeapon.gameObject.SetActive(true);
+    }
+
     //Unsubscribe Input functions for safety
     public void OnDestroy()
     {
@@ -79,6 +133,7 @@ public class PlayerController : MonoBehaviour
         InputManager.MovingEvent -= Move;
         InputManager.RotatingEvent -= Rotate;
         InputManager.leftMouseButtonEvent -= Shoot;
+        InputManager.scrollEvent -= SwitchWeapon;
     }
 
     //Player GetValue functions
