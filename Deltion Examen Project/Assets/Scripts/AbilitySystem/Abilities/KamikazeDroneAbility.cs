@@ -19,7 +19,7 @@ public class KamikazeDroneAbility : Ability
     private List<KamikazeDrone> spawnedDrones = new List<KamikazeDrone>();
     private int explodedDrones;
     private bool staggering;
-    protected override void AbilityMechanic(Vector3? mPos = null)
+    protected override void AbilityMechanic(Vector3? mPos = null, Quaternion? deployRotation = null)
     {
         spawnedDrones.Clear();
         explodedDrones = 0;

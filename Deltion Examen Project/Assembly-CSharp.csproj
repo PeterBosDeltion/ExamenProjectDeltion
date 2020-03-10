@@ -71,6 +71,8 @@
     <Compile Include="Assets\AdultLink\ShieldShader\Examples\Scripts\ToggleNoise.cs" />
     <Compile Include="Assets\AdultLink\ShieldShader\Examples\Scripts\animationController.cs" />
     <Compile Include="Assets\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
+    <Compile Include="Assets\Scripts\AbilitySystem\Abilities\DeployableShield.cs" />
+    <Compile Include="Assets\Scripts\AbilitySystem\Abilities\DeployableShieldAbility.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\FlamePulse.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\FlamePulseAbility.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\KamikazeDrone.cs" />
@@ -80,6 +82,8 @@
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\PersonalShield.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\SentryTurret.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\SentryTurretAbility.cs" />
+    <Compile Include="Assets\Scripts\AbilitySystem\Abilities\Ultimates\MechUltimate.cs" />
+    <Compile Include="Assets\Scripts\AbilitySystem\Abilities\Ultimates\MechUltimateAbility.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Ability.cs" />
     <Compile Include="Assets\Scripts\CameraBillboard.cs" />
     <Compile Include="Assets\Scripts\Entities\Enemies\Enemy.cs" />
@@ -142,7 +146,6 @@
     <None Include="Assets\EffectExamples\Misc Effects\Shaders\Dissolve.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <Reference Include="Unity.Timeline.Editor">
-<<<<<<< HEAD
       <HintPath>D:/Projects/Repositories/Examen/Deltion Examen Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
@@ -171,36 +174,6 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>D:/Projects/Repositories/Examen/Deltion Examen Project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-=======
-      <HintPath>D:/Unity/Projects/Deltion Examen Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>D:/Unity/Projects/Deltion Examen Project/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/Unity/Projects/Deltion Examen Project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>D:/Unity/Projects/Deltion Examen Project/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>D:/Unity/Projects/Deltion Examen Project/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/Unity/Projects/Deltion Examen Project/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>D:/Unity/Projects/Deltion Examen Project/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>D:/Unity/Projects/Deltion Examen Project/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/Unity/Projects/Deltion Examen Project/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>D:/Unity/Projects/Deltion Examen Project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
->>>>>>> develop
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Programs/Unity Editors/2019.3.0f3/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

@@ -55,7 +55,7 @@ public abstract class EnemyAI : MonoBehaviour
         {
             ManageDestination();
         }
-        if (myTarget)
+        if (myTarget && myTarget.enabled)
         {
             distanceToTarget = Vector3.Distance(transform.position, myTarget.transform.position);
             float distanceTillRotate = distanceToTarget - 1;
@@ -70,7 +70,14 @@ public abstract class EnemyAI : MonoBehaviour
                 agent.updateRotation = true;
             }
         }
-
+        if (myTarget)
+        {
+            if (!myTarget.enabled)
+            {
+                SetTarget();
+            }
+        }
+        
         HandelAI();
     }
 
@@ -97,13 +104,28 @@ public abstract class EnemyAI : MonoBehaviour
         StopAllCoroutines();
         if (state != AIState.Dead)
         {
-            if (!Focused && Attacker)
+            if (!Focused && Attacker && Attacker.enabled)
             {
                 myTarget = Attacker;
                 SetState(AIState.ClosingIn);
                 StartCoroutine(LockedOnTimer());
             }
             else if (!myTarget)
+            {
+                myTarget = GetClosestTarget();
+                if (myTarget == null)
+                {
+                    //Posibly need to call this more than once before setting it to idle
+                    if (state != AIState.Idle)
+                    {
+                        SetState(AIState.Idle);
+                    }
+                    StartCoroutine(ReTarget());
+                    return;
+                }
+                SetState(AIState.ClosingIn);
+            }
+            else if(myTarget && !myTarget.enabled)
             {
                 myTarget = GetClosestTarget();
                 if (myTarget == null)
@@ -131,7 +153,7 @@ public abstract class EnemyAI : MonoBehaviour
             foreach (Entity entity in entityManager.AllPlayersAndAbilities)
             {
                 float newDistance = Vector3.Distance(transform.position, entity.transform.position);
-                if (rangeToClosest > newDistance)
+                if (rangeToClosest > newDistance && entity.enabled)
                 {
                     rangeToClosest = newDistance;
                     closestEntity = entity;
@@ -222,7 +244,7 @@ public abstract class EnemyAI : MonoBehaviour
     //This function is used to move the enemy towards it target if its not stopped and has a target
     public virtual void UpdateDestination()
     {
-        if(myTarget)
+        if(myTarget && myTarget.enabled)
             agent.SetDestination(myTarget.transform.position);
     }
 

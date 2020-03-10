@@ -22,6 +22,8 @@ public abstract class Ability : MonoBehaviour
     public Material cannotDeployMaterial;
     public Material deployLineMaterial;
     private GameObject activeGhost;
+    private Quaternion ghostRotation;
+    public Vector3 deployableOffset;
     [Range(3, 256)]
     private int numSegments = 128;
     [HideInInspector]
@@ -88,8 +90,13 @@ public abstract class Ability : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
                 {
-                    Vector3 mPos = hit.point;
+                    Vector3 mPos = hit.point + deployableOffset;
                     activeGhost.transform.position = mPos;
+                    ghostRotation = Quaternion.LookRotation(activeGhost.transform.position - myPlayer.transform.position);
+                    activeGhost.transform.rotation = ghostRotation;
+                    Vector3 eul = activeGhost.transform.localEulerAngles;
+                    activeGhost.transform.localEulerAngles = new Vector3(0, eul.y, 0);
+
 
                     if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
                     {
@@ -135,10 +142,10 @@ public abstract class Ability : MonoBehaviour
             {
                 if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
                 {
-                    Vector3 mPos = hit.point;
+                    Vector3 mPos = hit.point + deployableOffset;
                     if (Vector3.Distance(mPos, center) <= deployableRadius)
                     {
-                        AbilityMechanic(mPos);
+                        AbilityMechanic(mPos, new Quaternion(0, ghostRotation.y, 0, ghostRotation.w));
                         deploying = false;
                         myPlayer.GetComponent<PlayerController>().currentWeapon.canShoot = true;
                         lineRenderer.enabled = false;
@@ -185,7 +192,7 @@ public abstract class Ability : MonoBehaviour
        
     }
 
-    protected abstract void AbilityMechanic(Vector3? mPos = null);
+    protected abstract void AbilityMechanic(Vector3? mPos = null, Quaternion? deployRotation = null);
 
     private void DrawDeployCircle()
     {

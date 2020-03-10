@@ -15,9 +15,9 @@ public class SentryTurretAbility : Ability
     public float fireRate;
 
     private GameObject spawnedTurret;
-    protected override void AbilityMechanic(Vector3? mPos)
+    protected override void AbilityMechanic(Vector3? mPos, Quaternion? deployRotation)
     {
-            spawnedTurret = Instantiate(turretPrefab, (Vector3)mPos, Quaternion.identity);
+            spawnedTurret = Instantiate(turretPrefab, (Vector3)mPos, (Quaternion)deployRotation);
             spawnedTurret.GetComponent<SentryTurret>().Initialize(range, damage, aggroRadius, myPlayer, bulletforce, maxAmmo, reloadTime, fireRate, this);
             active = true;
     }

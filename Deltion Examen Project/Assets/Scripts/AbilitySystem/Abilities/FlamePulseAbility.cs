@@ -8,7 +8,7 @@ public class FlamePulseAbility : Ability
     public GameObject particlePrefab;
     private GameObject spawnedParticles;
 
-    protected override void AbilityMechanic(Vector3? mPos = null)
+    protected override void AbilityMechanic(Vector3? mPos = null, Quaternion? deployRotation = null)
     {
         spawnedParticles = Instantiate(particlePrefab, myPlayer.transform);
         spawnedParticles.GetComponent<FlamePulse>().Initialize(damage, myPlayer);

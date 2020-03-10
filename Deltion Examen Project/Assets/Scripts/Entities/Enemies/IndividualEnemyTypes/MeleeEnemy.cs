@@ -39,7 +39,7 @@ public class MeleeEnemy : EnemyAI
         yield return new WaitForSeconds(myAttack.length * timeBeforeDamage);
         if (distanceToTarget <= myStats.attackRange)
         {
-            myTarget.TakeDamage(myStats.damage, myStats);
+                myTarget.TakeDamage(myStats.damage, myStats);
         }
         yield return new WaitForSeconds(TimeBetweenAttacks);
         if (distanceToTarget <= myStats.attackRange)

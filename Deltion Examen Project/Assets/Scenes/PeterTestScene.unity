@@ -1027,6 +1027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   focusOnPlayer: 1
+  target: {fileID: 0}
   distanceOffset: 10
   heightOfset: 0
   smoothness: 5
@@ -2867,7 +2868,7 @@ PrefabInstance:
         type: 3}
       propertyPath: abilities.Array.data[3]
       value: 
-      objectReference: {fileID: 8016432300118320977, guid: 9b09229d0b6ba9f45949c5e104b800a9,
+      objectReference: {fileID: 5655916620862092921, guid: 6ddd0b808af56294986ef188833d2f9e,
         type: 3}
     - target: {fileID: 6787876044068423647, guid: d9b859690e90e0e4388c154575858d1d,
         type: 3}

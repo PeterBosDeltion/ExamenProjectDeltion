@@ -30,6 +30,49 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void DisablePlayer()
+    {
+        InputManager.MovingEvent -= Move;
+        InputManager.RotatingEvent -= Rotate;
+        InputManager.leftMouseButtonEvent -= Shoot;
+        InputManager.scrollEvent -= SwitchWeapon;
+
+        currentWeapon.canShoot = false;
+
+        Renderer[] rends = GetComponentsInChildren<Renderer>();
+        foreach (Renderer renderer in rends)
+        {
+            renderer.enabled = false;
+        }
+
+        movement.enabled = false;
+        playerAnimator.enabled = false;
+        loadout.enabled = false;
+        GetComponent<Entity>().enabled = false;
+    }
+
+    public void EnablePlayer()
+    {
+        Debug.LogError("YES");
+        InputManager.MovingEvent += Move;
+        InputManager.RotatingEvent += Rotate;
+        InputManager.leftMouseButtonEvent += Shoot;
+        InputManager.scrollEvent += SwitchWeapon;
+
+        currentWeapon.canShoot = true;
+
+        Renderer[] rends = GetComponentsInChildren<Renderer>();
+        foreach (Renderer renderer in rends)
+        {
+            renderer.enabled = true;
+        }
+
+        movement.enabled = true;
+        playerAnimator.enabled = true;
+        loadout.enabled = true;
+        GetComponent<Entity>().enabled = true;
+    }
+
     //Subscribe Input functions to their Input
     public void Start()
     {
