@@ -149,7 +149,6 @@ public abstract class EnemyAI : MonoBehaviour
     //This function is used to set the AIstate
     public void SetState(AIState newState)
     {
-        //Debug.Log(gameObject.name + " " + state + " To " + newState);
         state = newState;
         HandleAIStates();
         SetAnimation();
@@ -163,6 +162,7 @@ public abstract class EnemyAI : MonoBehaviour
             case AIState.Idle:
                 agent.isStopped = true;
                 PlayAudioClipLoop(false);
+                SetTarget();
                 break;
             case AIState.ClosingIn:
                 agent.isStopped = false;

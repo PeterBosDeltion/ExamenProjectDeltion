@@ -10,28 +10,34 @@ public class Entity : MonoBehaviour
     public float maxTempHp;
     public float maxHp;
 
+    public bool death;
+
     public void TakeDamage(float takenDamage, Entity Attacker)
     {
-        if (tempHp > 0)
+        if(!death)
         {
-            tempHp -= takenDamage;
-
-            if (tempHp < 0)
+            if (tempHp > 0)
             {
-                hp += tempHp;
-                RemoveTempHP();
-            }
-        }
-        else
-        {
-            hp -= takenDamage;
-        }
+                tempHp -= takenDamage;
 
-        if (hp <= 0)
-        {
-            Death();
+                if (tempHp < 0)
+                {
+                    hp += tempHp;
+                    RemoveTempHP();
+                }
+            }
+            else
+            {
+                hp -= takenDamage;
+            }
+
+            if (hp <= 0)
+            {
+                death = true;
+                Death();
+            }
+            DamageEvent(Attacker);
         }
-        DamageEvent(Attacker);
     }
     public void Heal(float healedHp, float AddedTempHP)
     {
