@@ -26,15 +26,15 @@ public class LoudoutManager : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            GameObject holder = Instantiate(new GameObject());
-            holder.name = "LoadoutHolder";
-            holder.AddComponent<Loadout>();
-            DontDestroyOnLoad(holder);
-            savedLoadouts.Add(holder.GetComponent<Loadout>());
-        }
-        SelectLoadout(0);
+        //for (int i = 0; i < 3; i++)
+        //{
+        //    GameObject holder = Instantiate(new GameObject());
+        //    holder.name = "LoadoutHolder";
+        //    holder.AddComponent<Loadout>();
+        //    DontDestroyOnLoad(holder);
+        //    savedLoadouts.Add(holder.GetComponent<Loadout>());
+        //}
+        //SelectLoadout(0);
     }
     public void SetLoadoutPrimary(Weapon newPrimary)
     {

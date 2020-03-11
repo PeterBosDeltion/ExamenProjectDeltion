@@ -2333,7 +2333,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 844191688, guid: b867ca9f83b60fd41baad3528c5fd23f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b867ca9f83b60fd41baad3528c5fd23f, type: 3}
 --- !u!114 &261490181 stripped
 MonoBehaviour:
@@ -7275,7 +7276,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 844191688}
+      - m_Target: {fileID: 0}
         m_MethodName: SelectLoadout
         m_Mode: 0
         m_Arguments:
@@ -7478,18 +7479,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840437391}
   m_CullTransparentMesh: 0
---- !u!114 &844191688 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 844191688, guid: b867ca9f83b60fd41baad3528c5fd23f,
-    type: 3}
-  m_PrefabInstance: {fileID: 261490180}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3b4a9d69c1592f4db11c37646a7589c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &868826622
 GameObject:
   m_ObjectHideFlags: 0
