@@ -35,8 +35,6 @@ public class MechUltimate : Entity
 
         InputManager.MovingEvent -= Move;
         InputManager.RotatingEvent -= Rotate;
-
-        EntityManager.instance.RemovePlayerOrAbility(this);
     }
 
     public void Move(float xAxis, float yAxis)

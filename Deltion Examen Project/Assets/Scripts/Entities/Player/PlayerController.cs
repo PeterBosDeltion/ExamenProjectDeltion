@@ -56,7 +56,6 @@ public class PlayerController : MonoBehaviour
 
     public void EnablePlayer()
     {
-        Debug.LogError("YES");
         InputManager.MovingEvent += Move;
         InputManager.RotatingEvent += Rotate;
         InputManager.leftMouseButtonEvent += Shoot;

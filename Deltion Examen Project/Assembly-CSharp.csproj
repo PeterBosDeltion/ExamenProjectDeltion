@@ -112,6 +112,7 @@
     <Compile Include="Assets\Scripts\WeaponSystem\Weapons\AssaultRifle.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\Weapons\ExplosiveRifle.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\Weapons\SideArm.cs" />
+    <Compile Include="Assets\Scripts\[PH]\IncrementalSpiderSpawner.cs" />
     <Compile Include="Assets\Scripts\[PH]\Spiderspawner.cs" />
     <Compile Include="Assets\Scripts\[PH]\TestPlayer.cs" />
     <Compile Include="Assets\Scripts\anchorTool.cs" />

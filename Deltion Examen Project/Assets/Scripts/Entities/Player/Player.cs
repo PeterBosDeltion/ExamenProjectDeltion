@@ -26,7 +26,6 @@ public class Player : Entity
         base.OnDestroy();
 
         zeroTempHp -= EmptyHpEvent;
-        EntityManager.instance.RemovePlayerOrAbility(this);
     }
 
     public override void DamageEvent(Entity Attacker)
