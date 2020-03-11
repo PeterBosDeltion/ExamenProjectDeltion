@@ -15,7 +15,9 @@ public abstract class Ability : MonoBehaviour
     public bool active = false;
     public float cooldownTime;
     public float duration;
-    protected float currentUltCharge;
+    [HideInInspector]
+    public float currentUltCharge;
+    public float ultChargeIncrement;
     public float deployableRadius = 5F;
     public GameObject deployableGhost;
     public Material canDeployMaterial;
@@ -31,6 +33,7 @@ public abstract class Ability : MonoBehaviour
 
     private bool deploying;
     private LineRenderer lineRenderer;
+    private bool ultActive;
     public enum DeployType
     {
         Instant,
@@ -56,6 +59,10 @@ public abstract class Ability : MonoBehaviour
     }
     public void UseAbility()
     {
+        if(ultimate && currentUltCharge < 100)
+        {
+            return;
+        }
         if (!onCooldown && !active && !deploying)
         {
             returned = false;
@@ -76,6 +83,11 @@ public abstract class Ability : MonoBehaviour
                     break;
             }
 
+            if (ultimate)
+            {
+                currentUltCharge = 0;
+                ultActive = true;
+            }
             afterDurCoroutine = StartCoroutine(AfterDuration());
         }
        
@@ -237,9 +249,30 @@ public abstract class Ability : MonoBehaviour
         if (!this.onCooldown)
         {
             active = false;
+            if (ultActive)
+            {
+                ultActive = false;
+            }
             StartCoroutine(Cooldown(cooldownTime));
         }
     }
 
     protected abstract IEnumerator AfterDuration();
+
+    public void IncrementUltCharge()
+    {
+        if (!ultActive)
+        {
+            if (currentUltCharge < 100)
+            {
+                currentUltCharge += ultChargeIncrement;
+            }
+            else
+            {
+                currentUltCharge = 100;
+            }
+        }
+       
+
+    }
 }

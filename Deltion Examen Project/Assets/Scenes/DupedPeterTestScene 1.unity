@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af1a5e6606c5124ba86b30ffe5ef750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primary: {fileID: 299470108}
+  primary: {fileID: 1638684742}
   secondary: {fileID: 1067251861}
   abilities: []
   ultimateAbility: {fileID: 0}
@@ -533,7 +533,7 @@ PrefabInstance:
     - target: {fileID: 2841601066034771695, guid: e5bd1637ff9737d40b50461696f3d017,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4032096818812572457, guid: e5bd1637ff9737d40b50461696f3d017,
         type: 3}
@@ -1563,6 +1563,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fb16e5a959a41844bc859c48f3e81cb, type: 3}
+--- !u!114 &1638684742 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8027315702003368216, guid: d9b859690e90e0e4388c154575858d1d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3669613515134063047}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 153a9dfd4167bc3458e8219fb172b228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1754856786
 GameObject:
   m_ObjectHideFlags: 0
@@ -2776,7 +2788,7 @@ PrefabInstance:
     - target: {fileID: 2363066780717897061, guid: d9b859690e90e0e4388c154575858d1d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3669613515331608539, guid: d9b859690e90e0e4388c154575858d1d,
         type: 3}
@@ -2864,13 +2876,13 @@ PrefabInstance:
         type: 3}
       propertyPath: abilities.Array.data[2]
       value: 
-      objectReference: {fileID: 4784055780572057573, guid: b4d578f097474a848b2f7e2142911386,
+      objectReference: {fileID: 6810601224955051797, guid: f5e395721fc52d240a0954194530e50e,
         type: 3}
     - target: {fileID: 6787876044068423647, guid: d9b859690e90e0e4388c154575858d1d,
         type: 3}
       propertyPath: abilities.Array.data[3]
       value: 
-      objectReference: {fileID: 8016432300118320977, guid: 9b09229d0b6ba9f45949c5e104b800a9,
+      objectReference: {fileID: 775777898474889986, guid: de075ae0ff15d2c428b06d480045b3df,
         type: 3}
     - target: {fileID: 6787876044068423647, guid: d9b859690e90e0e4388c154575858d1d,
         type: 3}
@@ -2881,7 +2893,7 @@ PrefabInstance:
         type: 3}
       propertyPath: currentWeapon
       value: 
-      objectReference: {fileID: 299470108}
+      objectReference: {fileID: 1638684742}
     - target: {fileID: 6787876044068423647, guid: d9b859690e90e0e4388c154575858d1d,
         type: 3}
       propertyPath: myColor.g

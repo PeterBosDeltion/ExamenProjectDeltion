@@ -7,7 +7,6 @@ public class PlayerUI : MonoBehaviour
 {
     public PlayerController myPlayer;
 
-    public TextMeshProUGUI ultCharge;
     public Image weaponImage;
     public Image weaponBackImage;
 
@@ -25,6 +24,11 @@ public class PlayerUI : MonoBehaviour
     //public Image abilityTwoBGImg;
     //public Image abilityThreeBGImg;
     //public Image abilityFourBGImg;
+
+    public TextMeshProUGUI ultCharge;
+    public Image ultIcon;
+    public Image ultChargeImage;
+    public Image ultChargeFilledImage;
 
 
     public Image healthBar;
@@ -45,6 +49,7 @@ public class PlayerUI : MonoBehaviour
         abilityTwoImg.sprite = myPlayer.abilities[1].uiIcon;
         abilityThreeImg.sprite = myPlayer.abilities[2].uiIcon;
         abilityFourImg.sprite = myPlayer.abilities[3].uiIcon;
+        ultIcon.sprite = myPlayer.ultimateAbility.uiIcon;
     }
 
     public void AbilityUsed(int f)
@@ -67,7 +72,7 @@ public class PlayerUI : MonoBehaviour
                     if (abilityFourCDImg.fillAmount == 0 && !myPlayer.abilities[3].returned)
                         abilityFourCDImg.fillAmount = 1;
                     break;
-                default:
+            default:
                     break;
             }
     }
@@ -106,6 +111,23 @@ public class PlayerUI : MonoBehaviour
                 }
             }
                
+        }
+
+        if(myPlayer.ultimateAbility != null)
+        {
+            ultCharge.text = "" + Mathf.RoundToInt(myPlayer.ultimateAbility.currentUltCharge) + "%";
+            ultChargeFilledImage.fillAmount = myPlayer.ultimateAbility.currentUltCharge / 100;
+            if(myPlayer.ultimateAbility.currentUltCharge >= 100)
+            {
+                ultChargeImage.enabled = false;
+            }
+            else
+            {
+                if (!ultChargeImage.enabled)
+                {
+                    ultChargeImage.enabled = true;
+                }
+            }
         }
 
         if(weaponImage.sprite != myPlayer.currentWeapon.myWeapon.uiIcon)

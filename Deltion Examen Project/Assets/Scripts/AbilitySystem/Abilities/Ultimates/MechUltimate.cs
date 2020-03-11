@@ -8,6 +8,7 @@ public class MechUltimate : Entity
     private MechUltimateAbility myAbility;
     private Movement movement;
     private Animator anim;
+
     public void Initialize(float mechHp, float damage, MechUltimateAbility ability)
     {
         maxHp = mechHp;
@@ -48,4 +49,6 @@ public class MechUltimate : Entity
     {
         movement.Rotate(xAxis, zAxis);
     }
+
+   
 }

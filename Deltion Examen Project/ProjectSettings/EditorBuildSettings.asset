@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Kevin_Test_Scene.unity
     guid: d2d015124fa22fe4da5d5898808eab90
+  - enabled: 1
+    path: Assets/Scenes/DupedPeterTestScene 1.unity
+    guid: 332745af77ee09d45808bb5bbc0515bb
   m_configObjects: {}

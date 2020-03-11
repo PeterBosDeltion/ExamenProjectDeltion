@@ -13,7 +13,9 @@ public class PlayerController : MonoBehaviour
     public AudioSource mySource;
 
     public List<Ability> abilities = new List<Ability>();
+    public Ability ultimateAbility;
     public Loadout loadout;
+    public GameObject handParent;
     public Weapon currentWeapon; //[PH]
 
     //Assigning the Player scripts to the controller(There is no reason for the PlayerController to be anywhere else than on the Player so no need for a Gameobject reference)
@@ -25,6 +27,8 @@ public class PlayerController : MonoBehaviour
         playerAnimator = GetComponentInChildren<Animator>();
         loadout = GetComponent<Loadout>();
 
+       
+
         if(!player || !movement || !triggerAbility)
         {
             Debug.LogError("Not all player scripts have been asigned to the targeted object");
@@ -33,8 +37,27 @@ public class PlayerController : MonoBehaviour
         mySource = GetComponent<AudioSource>();
     }
 
+    //public void InitializeLoadout()
+    //{
+    //    abilities = loadout.abilities;
+    //    ultimateAbility = loadout.ultimateAbility;
+    //    GameObject nprimary = Instantiate(loadout.primary.gameObject, handParent.transform);
+    //    loadout.primary = nprimary.GetComponent<Weapon>();
+    //    currentWeapon = nprimary.GetComponent<Weapon>();
+    //    nprimary.transform.localPosition = new Vector3(-0.06500001F, 0.07259985F, 0.03050006F);
+    //    nprimary.transform.localRotation = new Quaternion(-77.98F, 0, 98F, 0);
+    //    GameObject nsecondary = Instantiate(loadout.secondary.gameObject, handParent.transform);
+    //    loadout.secondary = nsecondary.GetComponent<Weapon>();
+    //    nsecondary.transform.localPosition = new Vector3(-0.06500001F, 0.07259985F, 0.03050006F);
+    //    nsecondary.transform.localRotation = new Quaternion(-77.98F, 0, 98F, 0);
+    //    nsecondary.SetActive(false);
+
+    //    Initialize();
+    //}
+
     public void DisablePlayer()
     {
+        InputManager.abilityEvent -= TriggerAbility;
         InputManager.MovingEvent -= Move;
         InputManager.RotatingEvent -= Rotate;
         InputManager.leftMouseButtonEvent -= Shoot;
@@ -52,11 +75,12 @@ public class PlayerController : MonoBehaviour
         playerAnimator.enabled = false;
         loadout.enabled = false;
         GetComponent<Entity>().enabled = false;
+        triggerAbility.enabled = false;
     }
 
     public void EnablePlayer()
     {
-        Debug.LogError("YES");
+        InputManager.abilityEvent += TriggerAbility;
         InputManager.MovingEvent += Move;
         InputManager.RotatingEvent += Rotate;
         InputManager.leftMouseButtonEvent += Shoot;
@@ -74,6 +98,7 @@ public class PlayerController : MonoBehaviour
         playerAnimator.enabled = true;
         loadout.enabled = true;
         GetComponent<Entity>().enabled = true;
+        triggerAbility.enabled = true;
     }
 
     //Subscribe Input functions to their Input
@@ -108,6 +133,9 @@ public class PlayerController : MonoBehaviour
         }
 
         abilities.Clear();
+        Ability newUlt = Instantiate(ultimateAbility, transform);
+        ultimateAbility = newUlt;
+        ultimateAbility.myPlayer = player;
         Ability[] abs = GetComponentsInChildren<Ability>();
 
         foreach (Ability a in abs)
@@ -115,6 +143,7 @@ public class PlayerController : MonoBehaviour
             a.myPlayer = player;
             abilities.Add(a);
         }
+
     }
 
     private void SwitchWeapon(float f)
@@ -161,8 +190,21 @@ public class PlayerController : MonoBehaviour
     #region
     public void TriggerAbility(int value)
     {
-        if (!abilities[value].onCooldown)
-            abilities[value].UseAbility();
+        if(value == 4)//Ultimate
+        {
+            if (!ultimateAbility.onCooldown)
+            {
+                if(ultimateAbility.currentUltCharge >= 100)
+                {
+                    ultimateAbility.UseAbility();
+                }
+            }
+        }
+        else //Normal ability
+        {
+            if (!abilities[value].onCooldown)
+                abilities[value].UseAbility();
+        }
     }
 
     public void Move(float xAxis, float yAxis)

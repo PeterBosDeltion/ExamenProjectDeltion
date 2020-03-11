@@ -70,7 +70,7 @@ public class Entity : MonoBehaviour
 
     public virtual void DamageEvent(Entity Attacker)
     {
-
+       
     }
 
     public virtual void HealEvent()

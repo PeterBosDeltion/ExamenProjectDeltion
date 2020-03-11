@@ -29,6 +29,7 @@ public class Weapon : MonoBehaviour
 
     private void Initialize()
     {
+        myPlayer = GetComponentInParent<Player>();
         totalAmmo = myWeapon.totalAmmo;
         magazineAmmo = totalAmmo;
         audioSource = GetComponent<AudioSource>();

@@ -89,6 +89,8 @@ public class InputManager : MonoBehaviour
             AbilityHotkeys(2);
         if (Input.GetButtonDown("Ability 04"))
             AbilityHotkeys(3);
+        if (Input.GetButtonDown("Ability ult"))
+            AbilityHotkeys(4);
         if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetAxis("Mouse ScrollWheel") < 0f)
             SwitchWeapon(Input.GetAxis("Mouse ScrollWheel"));
     }
@@ -139,7 +141,7 @@ public class InputManager : MonoBehaviour
     }
     private void AbilityHotkeys(int inputAbility)
     {
-        Debug.Log(inputAbility);
+        //Debug.Log(inputAbility);
         abilityEvent.Invoke(inputAbility);
     }
     private void SwitchWeapon(float inputScroll)

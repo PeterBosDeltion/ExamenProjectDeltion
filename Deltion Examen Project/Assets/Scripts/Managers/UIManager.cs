@@ -53,7 +53,7 @@ public class UIManager : MonoBehaviour
                 levelMenu.SetActive(true);
                 currentOpenMenu = levelMenu;
                 break;
-            case "Loudout":
+            case "Loadout":
                 loadoutMenu.SetActive(true);
                 currentOpenMenu = loadoutMenu;
                 break;
