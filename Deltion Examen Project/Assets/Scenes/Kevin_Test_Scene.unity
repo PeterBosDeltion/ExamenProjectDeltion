@@ -1289,6 +1289,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 2.0773118
       objectReference: {fileID: 0}
+    - target: {fileID: 4111993552367332222, guid: d9b859690e90e0e4388c154575858d1d,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 4263985171092464855, guid: d9b859690e90e0e4388c154575858d1d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1424,6 +1429,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -64.739975
       objectReference: {fileID: 0}
+    - target: {fileID: 6787876044068423647, guid: d9b859690e90e0e4388c154575858d1d,
+        type: 3}
+      propertyPath: abilities.Array.data[3]
+      value: 
+      objectReference: {fileID: 6810601224955051797, guid: f5e395721fc52d240a0954194530e50e,
+        type: 3}
     - target: {fileID: 6818351727597158551, guid: d9b859690e90e0e4388c154575858d1d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
