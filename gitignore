@@ -1,0 +1,5 @@
+*.csproj
+*.sln
+Deltion Examen Project/.vs/
+Deltion Examen Project/Library/
+Deltion Examen Project/Temp/
