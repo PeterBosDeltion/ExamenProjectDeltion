@@ -22,6 +22,7 @@ public class Entity : MonoBehaviour
 
     protected virtual void OnDestroy()
     {
+        EntityManager.instance.RemovePlayerOrAbility(this);
         deathEvent = null;
     }
 
@@ -49,6 +50,7 @@ public class Entity : MonoBehaviour
                 death = true;
                 deathEvent.Invoke();
                 Death();
+                return;
             }
             DamageEvent(Attacker);
         }
