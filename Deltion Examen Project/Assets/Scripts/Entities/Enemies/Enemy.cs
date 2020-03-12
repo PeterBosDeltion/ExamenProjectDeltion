@@ -10,8 +10,10 @@ public class Enemy : Entity
     public float damage;
     public float attackRange;
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
+
         hp = maxHp;
         anim = GetComponentInChildren<Animator>();
     }

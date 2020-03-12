@@ -422,9 +422,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48eec2d642e847348a3ca0b36e882c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 300
   maxTempHp: 0
-  maxHp: 300
+  maxHp: 600
+  death: 0
   bulletPrefab: {fileID: 5131294813170692697, guid: 5e8b844857115c74bb70e6bf1d45be25,
     type: 3}
   rotatingBody: {fileID: 3808075253828915295}
@@ -432,7 +432,7 @@ MonoBehaviour:
   rightArm: {fileID: 4404403644380709868}
   bulletSpawnOne: {fileID: 8457416206999500647}
   bulletSpawnTwo: {fileID: 6595884746344637219}
-  RotSpeed: 20
+  RotSpeed: 10
   healthBar: {fileID: 335460013100056993}
   flashFrom: {r: 1, g: 1, b: 1, a: 1}
   flashTo: {r: 1, g: 0, b: 0, a: 1}

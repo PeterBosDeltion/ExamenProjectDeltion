@@ -96,14 +96,20 @@ public abstract class EnemyAI : MonoBehaviour
     private void OnDestroy()
     {
         entityManager.RemoveEnemy(myStats);
-
         if(myTarget != null)
-        myTarget.deathEvent -= TargetDied;
+        {
+            myTarget.deathEvent -= TargetDied;
+        }
     }
 
     private void TargetDied()
     {
-        SetTarget();
+        //Temporary null check untill i fuind out why enemys dont remove themselfs from the delegate
+        if(this != null)
+        {
+            myTarget = null;
+            SetTarget();
+        }
     }
 
     //This function is used to set a new target
