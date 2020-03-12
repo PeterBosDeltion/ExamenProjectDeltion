@@ -16,7 +16,7 @@ public class LoudoutManager : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(transform.root);
+            //DontDestroyOnLoad(transform.root);
         }
         else
         {
@@ -38,20 +38,24 @@ public class LoudoutManager : MonoBehaviour
     }
     public void SetLoadoutPrimary(Weapon newPrimary)
     {
+        if(currentSelectedLoadout)
         currentSelectedLoadout.primary = newPrimary;
     }
     public void SetLoadoutSecondary(Weapon newSecondary)
     {
+        if(currentSelectedLoadout)
         currentSelectedLoadout.secondary = newSecondary;
     }
 
     public void SetLoadoutAbility(Ability newAbility, int abilityIndex)
     {
+        if(currentSelectedLoadout)
         currentSelectedLoadout.abilities[abilityIndex] = newAbility;
     }
 
     public void SetLoadoutUltimate(Ability newUltimate)
     {
+        if(currentSelectedLoadout)
         currentSelectedLoadout.ultimateAbility = newUltimate;
     }
 
@@ -63,6 +67,7 @@ public class LoudoutManager : MonoBehaviour
 
     public void SelectLoadout(int index)
     {
+        if(currentSelectedLoadout)
         currentSelectedLoadout = savedLoadouts[index];
     }
 

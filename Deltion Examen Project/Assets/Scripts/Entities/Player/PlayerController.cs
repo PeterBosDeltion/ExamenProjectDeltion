@@ -91,6 +91,7 @@ public class PlayerController : MonoBehaviour
         Renderer[] rends = GetComponentsInChildren<Renderer>();
         foreach (Renderer renderer in rends)
         {
+            if(!renderer.GetComponent<LineRenderer>())
             renderer.enabled = true;
         }
 
