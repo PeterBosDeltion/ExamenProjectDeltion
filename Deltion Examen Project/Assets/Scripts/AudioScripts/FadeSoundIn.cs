@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class FadeSoundIn : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private AudioSource audioSource;
+    public float targetVolume;
+    public float timeToFade;
+
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 0;
+
+        StartCoroutine(Fade());
     }
 
-    // Update is called once per frame
-    void Update()
+    public IEnumerator Fade()
     {
-        
+        while (audioSource.volume < targetVolume)
+        {
+            audioSource.volume += targetVolume * Time.deltaTime / timeToFade;
+
+            yield return null;
+        }
     }
 }
