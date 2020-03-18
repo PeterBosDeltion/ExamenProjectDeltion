@@ -86,6 +86,7 @@
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\Ultimates\MechUltimate.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\Ultimates\MechUltimateAbility.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Ability.cs" />
+    <Compile Include="Assets\Scripts\AudioScripts\FadeSoundIn.cs" />
     <Compile Include="Assets\Scripts\CameraBillboard.cs" />
     <Compile Include="Assets\Scripts\Entities\Enemies\Enemy.cs" />
     <Compile Include="Assets\Scripts\Entities\Enemies\EnemyAI.cs" />
