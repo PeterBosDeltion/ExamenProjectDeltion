@@ -122,6 +122,7 @@
     <Compile Include="Assets\Scripts\[PH]\Spiderspawner.cs" />
     <Compile Include="Assets\Scripts\[PH]\TestPlayer.cs" />
     <Compile Include="Assets\Scripts\anchorTool.cs" />
+    <Compile Include="Assets\Shaders\SetRenderQueue.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\AdultLink\ShieldShader\HoloShield.shader" />
@@ -131,6 +132,7 @@
     <None Include="Assets\AdultLink\ShieldShader\Examples\AssetStore\BOXOPHOBIC\Skybox Cubemap Extended\Shaders\Skybox Cubemap Extended.shader" />
     <None Include="Assets\EffectExamples\Misc Effects\Prefabs\Readme_Dissolve_Respawn_.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\Shaders\SeeThrough.shader" />
     <None Include="Assets\Art\3D Assets\ForcefieldShader\Shader\ShieldFX.shader" />
     <None Include="Assets\EffectExamples\Magic Effects\Shaders\Ice.shader" />
     <None Include="Assets\EffectExamples\Misc Effects\Shaders\Respawn.shader" />
