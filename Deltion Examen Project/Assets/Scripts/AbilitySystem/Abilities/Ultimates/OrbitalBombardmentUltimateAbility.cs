@@ -15,6 +15,8 @@ public class OrbitalBombardmentUltimateAbility : Ability
 
     private bool canSpawn;
     private bool waiting;
+
+    private Coroutine refire;
     protected override void AbilityMechanic(Vector3? mPos = null, Quaternion? deployRotation = null)
     {
         spawnedShip = Instantiate(shipShadowPrefab, myPlayer.transform.position + offsetFromPlayer, Quaternion.identity);
@@ -44,7 +46,7 @@ public class OrbitalBombardmentUltimateAbility : Ability
                     canSpawn = false;
                     if (!waiting)
                     {
-                        StartCoroutine(RefireTime());
+                        refire = StartCoroutine(RefireTime());
                     }
                
             }
@@ -64,6 +66,9 @@ public class OrbitalBombardmentUltimateAbility : Ability
     protected override IEnumerator AfterDuration()
     {
         yield return new WaitForSeconds(duration);
+        StopCoroutine(refire);
+        canSpawn = false;
+        waiting = false;
         Destroy(spawnedShip);
         spawnedShip = null;
         StartCooldown();
