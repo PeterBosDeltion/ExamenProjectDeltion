@@ -63,7 +63,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AdultLink\ShieldShader\Editor\HoloShieldEditor.cs" />
     <Compile Include="Assets\Editor\ChangeObjectTool.cs" />
     <Compile Include="Assets\Editor\NamingTool.cs" />
     <Compile Include="Assets\Editor\SceneGUIGenericMenu.cs" />
