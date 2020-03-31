@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class Player : Entity
 {
     public delegate void HpEvent();
 
     public HpEvent zeroTempHp;
+    public AudioSource mySource;
+    public TextMeshPro uxText;
+    private bool waiting;
+    private Coroutine resetting;
 
     protected override void Awake()
     {
@@ -19,6 +23,9 @@ public class Player : Entity
     private void Start()
     {
         EntityManager.instance.AddPlayerOrAbility(this);
+
+        mySource = GetComponent<AudioSource>();
+        uxText = GetComponentInChildren<TextMeshPro>();
     }
 
     protected override void OnDestroy()
@@ -41,5 +48,27 @@ public class Player : Entity
     protected override void Death()
     {
         
+    }
+
+    public void SetUxText(string newText)
+    {
+        if (waiting)
+        {
+            StopCoroutine(resetting);
+            waiting = false;
+        }
+        uxText.text = newText;
+        if (!waiting)
+        {
+            resetting = StartCoroutine(ResetUxText());
+        }
+    }
+
+    private IEnumerator ResetUxText()
+    {
+        waiting = true;
+        yield return new WaitForSeconds(2);
+        uxText.text = "";
+        waiting = false;
     }
 }

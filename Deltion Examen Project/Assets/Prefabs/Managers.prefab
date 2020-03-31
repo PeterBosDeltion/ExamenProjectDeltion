@@ -44,9 +44,111 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savedLoadouts: []
+  currentSelectedLoadout: {fileID: 0}
   mainCanvas: {fileID: 0}
   loadoutSelectableWindow: {fileID: 7245282325412029414, guid: fa8a6b15bd623ca48a94951ab665f657,
     type: 3}
+--- !u!1 &6443715300631969843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4974781472882175532}
+  - component: {fileID: 9207037394509931636}
+  - component: {fileID: 7947567886437126608}
+  m_Layer: 0
+  m_Name: AudioClipManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4974781472882175532
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6443715300631969843}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8531780637188613729}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9207037394509931636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6443715300631969843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7726a93d82833204589a04f846915f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips: {fileID: 0}
+  audioCooldown: 2
+--- !u!114 &7947567886437126608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6443715300631969843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 719eebd99a2b4d8499ffce4124dbbdd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceAffirmative: {fileID: 0}
+  voiceNegative: {fileID: 0}
+  voiceGogogo: {fileID: 0}
+  voiceHurt: {fileID: 0}
+  voiceReloading: {fileID: 8300000, guid: 6f92e00a26bbff447b419b265da1b5aa, type: 3}
+  voiceNeedReload: {fileID: 8300000, guid: 1c07140065db53249bcfc2ace47232f0, type: 3}
+  voiceEmptyMag: {fileID: 8300000, guid: 0c7d1bb6392a5fb4285429fb455f50a5, type: 3}
+  voiceOutOfAmmo: {fileID: 8300000, guid: 18ad668e7b6ba4143a39b3c61f110ec9, type: 3}
+  voiceSwappingMag: {fileID: 8300000, guid: 95846e54f5b90ec46af0f8c35c2ada36, type: 3}
+  voiceLowAmmo: {fileID: 0}
+  voiceLaugh: {fileID: 0}
+  voiceManiacalLaugh: {fileID: 0}
+  voiceMissionComplete: {fileID: 0}
+  voiceObjectiveLocated: {fileID: 0}
+  voiceObjectiveDestroyed: {fileID: 0}
+  voiceObjectiveComplete: {fileID: 0}
+  voiceNeedHealing: {fileID: 0}
+  voiceNeedHelp: {fileID: 0}
+  voiceUltCharged: {fileID: 0}
+  voiceUltReady: {fileID: 0}
+  voiceTauntOne: {fileID: 0}
+  voiceTauntTwo: {fileID: 0}
+  voiceDeployableDestroyed: {fileID: 0}
+  smallExplosion: {fileID: 0}
+  largeExplosion: {fileID: 0}
+  hugeExplosion: {fileID: 0}
+  enemyWalk: {fileID: 0}
+  enemyAttack: {fileID: 0}
+  enemyDie: {fileID: 0}
+  ballisticShoot: {fileID: 0}
+  laserShoot: {fileID: 0}
+  reloadThreeSeconds: {fileID: 0}
+  emptyClick: {fileID: 0}
+  abilityUsedGeneric: {fileID: 0}
+  fireAbilityUsed: {fileID: 0}
+  droneBeep: {fileID: 0}
+  turretShoot: {fileID: 0}
+  healBeam: {fileID: 0}
+  menuButtonHover: {fileID: 0}
+  menuButtonClicked: {fileID: 0}
+  musicMainTheme: {fileID: 0}
+  musicMenuTheme: {fileID: 0}
+  musicCombatTheme: {fileID: 0}
 --- !u!1 &8531780636136589659
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,6 +408,7 @@ Transform:
   - {fileID: 8531780636750566127}
   - {fileID: 8531780636136589658}
   - {fileID: 844191687}
+  - {fileID: 4974781472882175532}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
