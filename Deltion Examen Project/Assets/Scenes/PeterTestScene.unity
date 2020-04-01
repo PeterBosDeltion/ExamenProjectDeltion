@@ -4308,6 +4308,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 9207037394509931636, guid: b867ca9f83b60fd41baad3528c5fd23f,
+        type: 3}
+      propertyPath: audioCooldown
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b867ca9f83b60fd41baad3528c5fd23f, type: 3}
 --- !u!4 &8626455388116159388

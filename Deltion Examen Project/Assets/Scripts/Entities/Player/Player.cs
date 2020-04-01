@@ -7,6 +7,7 @@ public class Player : Entity
     public delegate void HpEvent();
 
     public HpEvent zeroTempHp;
+    public float lowHealthVoiceThreshold = 300;
     public AudioSource mySource;
     public TextMeshPro uxText;
     private bool waiting;
@@ -39,6 +40,11 @@ public class Player : Entity
     {
         if (tempHp <= 0)
             zeroTempHp.Invoke();
+        if (hp <= lowHealthVoiceThreshold)
+        {
+            AudioClipManager.instance.HardResetSourcePlayable(mySource);
+            AudioClipManager.instance.PlayClipOneShotWithSource(mySource, AudioClipManager.instance.GetRandomLowHpVL(this));
+        }
     }
 
     public void EmptyHpEvent()

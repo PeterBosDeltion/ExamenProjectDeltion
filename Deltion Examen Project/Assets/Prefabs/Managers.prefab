@@ -106,39 +106,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719eebd99a2b4d8499ffce4124dbbdd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  voiceAffirmative: {fileID: 0}
-  voiceNegative: {fileID: 0}
-  voiceGogogo: {fileID: 0}
-  voiceHurt: {fileID: 0}
+  voiceAffirmative: {fileID: 8300000, guid: 0c338d909e0adc54287c6a225ebcdf24, type: 3}
+  voiceNegative: {fileID: 8300000, guid: 69a5b6af35468c042b32e9255845a150, type: 3}
+  voiceGogogo: {fileID: 8300000, guid: 3bf2ab161a6d2c94ab5d695176418074, type: 3}
+  voiceHurt: {fileID: 8300000, guid: 2c0609e224984e54db3a9522369eeaeb, type: 3}
   voiceReloading: {fileID: 8300000, guid: 6f92e00a26bbff447b419b265da1b5aa, type: 3}
   voiceNeedReload: {fileID: 8300000, guid: 1c07140065db53249bcfc2ace47232f0, type: 3}
   voiceEmptyMag: {fileID: 8300000, guid: 0c7d1bb6392a5fb4285429fb455f50a5, type: 3}
   voiceOutOfAmmo: {fileID: 8300000, guid: 18ad668e7b6ba4143a39b3c61f110ec9, type: 3}
   voiceSwappingMag: {fileID: 8300000, guid: 95846e54f5b90ec46af0f8c35c2ada36, type: 3}
-  voiceLowAmmo: {fileID: 0}
-  voiceLaugh: {fileID: 0}
-  voiceManiacalLaugh: {fileID: 0}
-  voiceMissionComplete: {fileID: 0}
-  voiceObjectiveLocated: {fileID: 0}
-  voiceObjectiveDestroyed: {fileID: 0}
-  voiceObjectiveComplete: {fileID: 0}
-  voiceNeedHealing: {fileID: 0}
-  voiceNeedHelp: {fileID: 0}
-  voiceUltCharged: {fileID: 0}
-  voiceUltReady: {fileID: 0}
-  voiceTauntOne: {fileID: 0}
-  voiceTauntTwo: {fileID: 0}
-  voiceDeployableDestroyed: {fileID: 0}
-  smallExplosion: {fileID: 0}
+  voiceLowAmmo: {fileID: 8300000, guid: 656b1e7dc2732e742991218aadbd3200, type: 3}
+  voiceLaugh: {fileID: 8300000, guid: 180bf2114c72f30498aaaf0ac2993d98, type: 3}
+  voiceManiacalLaugh: {fileID: 8300000, guid: cc47424e009a26b4990f8e9a6cf4f228, type: 3}
+  voiceMissionComplete: {fileID: 8300000, guid: 4a57b82aad15da84381187741c9486a8,
+    type: 3}
+  voiceObjectiveLocated: {fileID: 8300000, guid: 5f92bc1162f00264eb7368b3db7fc289,
+    type: 3}
+  voiceObjectiveDestroyed: {fileID: 8300000, guid: 024d151001e489f4ab606379103d1869,
+    type: 3}
+  voiceObjectiveComplete: {fileID: 8300000, guid: f81c97c86f6b66d4397506eee341f458,
+    type: 3}
+  voiceNeedHealing: {fileID: 8300000, guid: 36f6ada9d339e9e4aac001e46446e7a4, type: 3}
+  voiceNeedHelp: {fileID: 8300000, guid: 7209f1863b4c04441aa27b2dcbacb958, type: 3}
+  voiceUltCharged: {fileID: 8300000, guid: f8e911acd0de2d345aa0596ac25fa045, type: 3}
+  voiceUltReady: {fileID: 8300000, guid: 2693c2bbc7ef1cd429502dcf9c48f356, type: 3}
+  voiceTauntOne: {fileID: 8300000, guid: b018de43331ae4c418d733015e7845e8, type: 3}
+  voiceTauntTwo: {fileID: 8300000, guid: 631673626893eac42bd538b312ed2fbc, type: 3}
+  voiceDeployableDestroyed: {fileID: 8300000, guid: d8eed45086bd8b6478b35b385fe68275,
+    type: 3}
+  smallExplosion: {fileID: 8300000, guid: e347d27a18e44c64d83a6312088e352d, type: 3}
   largeExplosion: {fileID: 0}
   hugeExplosion: {fileID: 0}
   enemyWalk: {fileID: 0}
   enemyAttack: {fileID: 0}
   enemyDie: {fileID: 0}
-  ballisticShoot: {fileID: 0}
+  ballisticShoot: {fileID: 8300000, guid: 2cd43a761e319a847b1dfde87be62bb6, type: 3}
   laserShoot: {fileID: 0}
-  reloadThreeSeconds: {fileID: 0}
-  emptyClick: {fileID: 0}
+  reloadThreeSeconds: {fileID: 8300000, guid: 1211495b486c6374f8ba736ecea163f6, type: 3}
+  emptyClick: {fileID: 8300000, guid: 141f25fdadfd5c649b8b5c6376cc086b, type: 3}
   abilityUsedGeneric: {fileID: 0}
   fireAbilityUsed: {fileID: 0}
   droneBeep: {fileID: 0}
@@ -147,8 +152,8 @@ MonoBehaviour:
   menuButtonHover: {fileID: 0}
   menuButtonClicked: {fileID: 0}
   musicMainTheme: {fileID: 0}
-  musicMenuTheme: {fileID: 0}
-  musicCombatTheme: {fileID: 0}
+  musicMenuTheme: {fileID: 8300000, guid: 81809ce4c8c54e44d962a44216f2f3b3, type: 3}
+  musicCombatTheme: {fileID: 8300000, guid: 8bbfb808ea422684ca83c1f7d68ed739, type: 3}
 --- !u!1 &8531780636136589659
 GameObject:
   m_ObjectHideFlags: 0

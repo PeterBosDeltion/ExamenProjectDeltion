@@ -48,6 +48,7 @@ public class AudioClipManager : MonoBehaviour
     private IEnumerator ResetAudioSourcePlayable(AudioSource source)
     {
         yield return new WaitForSeconds(audioCooldown);
+        source.Stop();
         nonPlayableSources.Remove(source);
         resetCoroutines.Remove(source);
     }
@@ -107,11 +108,69 @@ public class AudioClipManager : MonoBehaviour
         }
     }
 
+    public AudioClip GetRandomUltReadyVL(Player player)
+    {
+        bool setText = true;
+        if (nonPlayableSources.ContainsKey(player.mySource))
+        {
+            if (nonPlayableSources[player.mySource] == true)
+                setText = false;
+        }
+        int i = Random.Range(1, 3);
+        switch (i)
+        {
+            case 1:
+                if (setText)
+                    player.SetUxText("Ultimate charged!");
+                return clips.voiceUltCharged;
+            case 2:
+                if (setText)
+                    player.SetUxText("Ultimate ready!");
+                return clips.voiceUltReady;
+            default:
+                if (setText)
+                    Debug.LogError("Clip not found");
+                return null;
+        }
+    }
+
+    public AudioClip GetRandomLowHpVL(Player player)
+    {
+        bool setText = true;
+        if (nonPlayableSources.ContainsKey(player.mySource))
+        {
+            if (nonPlayableSources[player.mySource] == true)
+                setText = false;
+        }
+        int i = Random.Range(1, 3);
+        switch (i)
+        {
+            case 1:
+                if (setText)
+                    player.SetUxText("Need healing!");
+                return clips.voiceNeedHealing;
+            case 2:
+                if (setText)
+                    player.SetUxText("Need help!");
+                return clips.voiceNeedHelp;
+            default:
+                if (setText)
+                    Debug.LogError("Clip not found");
+                return null;
+        }
+    }
     public void HardResetSourcePlayable(AudioSource source)
     {
-        StopCoroutine(resetCoroutines[source]);
-        resetCoroutines.Remove(source);
-        nonPlayableSources.Remove(source);
+        source.Stop();
+        if (resetCoroutines.ContainsKey(source))
+        {
+            StopCoroutine(resetCoroutines[source]);
+            resetCoroutines.Remove(source);
+        }
+        if (nonPlayableSources.ContainsKey(source))
+        {
+            nonPlayableSources.Remove(source);
+        }
 
     }
 }

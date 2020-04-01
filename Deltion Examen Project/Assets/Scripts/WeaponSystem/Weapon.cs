@@ -122,7 +122,7 @@ public class Weapon : MonoBehaviour
     {
         if (gameObject.activeSelf)
         {
-            if (!reloading)
+            if (!reloading && magazineAmmo < totalAmmo)
             {
                 StartCoroutine(ReloadInSeconds(myWeapon.reloadSpeed));
                 audioSource.clip = reload;
