@@ -48,4 +48,9 @@ public class LoudoutSelectableWindow : MonoBehaviour
                 break;
         }
     }
+
+    public void CloseWindow()
+    {
+        Destroy(gameObject);
+    }
 }
