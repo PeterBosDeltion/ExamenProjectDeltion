@@ -283,6 +283,15 @@
     <Compile Include="Assets\Griffin - PolarisV2\Scripts\Utilities\GVersionInfo.cs" />
     <Compile Include="Assets\Griffin - PolarisV2\Scripts\Utilities\GWindZone.cs" />
     <Compile Include="Assets\Griffin - PolarisV2\Scripts\Utilities\GWizardMaterialTemplate.cs" />
+    <Compile Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Demos\Scripts\DemoFreeFlyCamera.cs" />
+    <Compile Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Scripts\LowPolyWaterScript.cs" />
+    <Compile Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Scripts\src\LPWDepthEffect.cs" />
+    <Compile Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Scripts\src\LPWDisplace.cs" />
+    <Compile Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Scripts\src\LPWHiddenProps.cs" />
+    <Compile Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Scripts\src\LPWNoise.cs" />
+    <Compile Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Scripts\src\LPWNormalSolver.cs" />
+    <Compile Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Scripts\src\LPWReflection.cs" />
+    <Compile Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Scripts\src\LPWWaterChunk.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\DeployableShield.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\DeployableShieldAbility.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\FlamePulse.cs" />
@@ -294,9 +303,12 @@
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\PersonalShield.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\SentryTurret.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\SentryTurretAbility.cs" />
-    <Compile Include="Assets\Scripts\AbilitySystem\Abilities\Ultimates\MechUltimate.cs" />
-    <Compile Include="Assets\Scripts\AbilitySystem\Abilities\Ultimates\MechUltimateAbility.cs" />
+    <Compile Include="Assets\Scripts\AbilitySystem\Abilities\Ultimates\OrbitalBombardmentUltimate.cs" />
+    <Compile Include="Assets\Scripts\AbilitySystem\Abilities\Ultimates\OrbitalBombardmentUltimateAbility.cs" />
+    <Compile Include="Assets\Scripts\AbilitySystem\Abilities\Ultimates\WIP\MechUltimate.cs" />
+    <Compile Include="Assets\Scripts\AbilitySystem\Abilities\Ultimates\WIP\MechUltimateAbility.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Ability.cs" />
+    <Compile Include="Assets\Scripts\AudioClipHolder.cs" />
     <Compile Include="Assets\Scripts\AudioScripts\FadeSoundIn.cs" />
     <Compile Include="Assets\Scripts\AudioScripts\MainThemeController.cs" />
     <Compile Include="Assets\Scripts\CameraBillboard.cs" />
@@ -313,6 +325,8 @@
     <Compile Include="Assets\Scripts\LoadoutSystem\LoudoutMainMenuButton.cs" />
     <Compile Include="Assets\Scripts\LoadoutSystem\LoudoutSelectableButton.cs" />
     <Compile Include="Assets\Scripts\LoadoutSystem\LoudoutSelectableWindow.cs" />
+    <Compile Include="Assets\Scripts\MainCanvas.cs" />
+    <Compile Include="Assets\Scripts\Managers\AudioClipManager.cs" />
     <Compile Include="Assets\Scripts\Managers\EntityManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
@@ -320,6 +334,7 @@
     <Compile Include="Assets\Scripts\Managers\LoudoutManager.cs" />
     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
     <Compile Include="Assets\Scripts\Misc\KillObjectAfterTime.cs" />
+    <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerUI.cs" />
     <Compile Include="Assets\Scripts\ProfileUnlockUI.cs" />
     <Compile Include="Assets\Scripts\UnlockBlurbWindow.cs" />
@@ -342,10 +357,13 @@
     <None Include="Assets\Griffin - PolarisV2\Shaders\CGIncludes\GriffinCG.cginc" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\Blur.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\GeometryLivePreview.shader" />
+    <None Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Shaders\LowPolyWaterAdvanced.shader" />
+    <None Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Shaders\LPWRenderDepth.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\SplatPainter.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Terrain\BuiltinRP_BlinnPhong_GradientLookup.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Terrain\BuiltinRP_Lambert_8Splats.shader" />
+    <None Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Shaders\LPWLighting.cginc" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\CopyTexture.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\ElevationPainter.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\PathPainter.shader" />
@@ -354,12 +372,15 @@
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\ChannelToGrayscale.shader" />
     <None Include="Assets\EffectExamples\Misc Effects\Prefabs\Readme_Dissolve_Respawn_.txt" />
     <None Include="Assets\Griffin - PolarisV2\changelog.txt" />
+    <None Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Shaders\LPWNoise.cginc" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Demo\Water.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\SolidColor.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\WarpFilter.shader" />
+    <None Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Shaders\LPWStandard.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\SubDivPainter.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Foliage\CGIncludes\GriffinBillboardCommon.cginc" />
+    <None Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Shaders\LPWRipples.cginc" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\SubdivLivePreview.shader" />
     <None Include="Assets\Shaders\SeeThrough.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\GrassPreview.shader" />
@@ -368,6 +389,7 @@
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\InvertFilter.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\PainterCursorProjector.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\FoliageRemover.shader" />
+    <None Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Shaders\LPWLite.cginc" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\SmoothnessPainter.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\HeightSamplingPainter.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\TerrainPerPixelNormalMapRenderer.shader" />
@@ -397,11 +419,13 @@
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\VisibilityLivePreview.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\HydraulicErosionFilter.shader" />
+    <None Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Shaders\LPWShoreBlend.cginc" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\SubDivisionVisualizer.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\BillboardCreatorNormal.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Terrain\BuiltinRP_BlinnPhong_4Splats4Normals.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\TerracePainter.shader" />
+    <None Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Shaders\LPWWaves.cginc" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\BlurRadius.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Terrain\BuiltinRP_BlinnPhong_8Splats.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\BillboardCreatorAtlas.shader" />
@@ -432,7 +456,10 @@
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\StepFilter.shader" />
     <None Include="Assets\Griffin - PolarisV2\Scripts\BackupTool\LzfLibrary\Link.txt" />
     <None Include="Assets\EffectExamples\Misc Effects\Shaders\Dissolve.shader" />
+    <None Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Shaders\LPWCompatibility.cginc" />
+    <None Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Shaders\LowPolyWaterLite.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
+    <None Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Shaders\LPWReflection.cginc" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/UnityProjects/ExamenDeltion/Deltion Examen Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

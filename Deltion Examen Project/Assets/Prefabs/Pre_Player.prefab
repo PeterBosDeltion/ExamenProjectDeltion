@@ -88,6 +88,9 @@ MonoBehaviour:
   maxTempHp: 0
   maxHp: 1000
   death: 0
+  lowHealthVoiceThreshold: 300
+  mySource: {fileID: 0}
+  uxText: {fileID: 0}
 --- !u!114 &5178922821371636702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,7 +132,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 112
   m_CollisionDetection: 3
 --- !u!114 &6787876044068423647
 MonoBehaviour:
@@ -148,7 +151,7 @@ MonoBehaviour:
   - {fileID: 7808817261947519962, guid: 4d0ff1396a0deec4ab70f14d9549cc0a, type: 3}
   - {fileID: 771986780492327734, guid: 0589af15f3461a74993bf11ef55e89be, type: 3}
   - {fileID: 4784055780572057573, guid: b4d578f097474a848b2f7e2142911386, type: 3}
-  - {fileID: 5655916620862092921, guid: 6ddd0b808af56294986ef188833d2f9e, type: 3}
+  - {fileID: 6810601224955051797, guid: f5e395721fc52d240a0954194530e50e, type: 3}
   ultimateAbility: {fileID: 5655916620862092921, guid: 6ddd0b808af56294986ef188833d2f9e,
     type: 3}
   loadout: {fileID: 0}
@@ -567,6 +570,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pre_Sidearm
+      objectReference: {fileID: 0}
+    - target: {fileID: 77380491323076596, guid: b43595dbb7045204b9829d270b97d2f4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4929293056794504684, guid: b43595dbb7045204b9829d270b97d2f4,
         type: 3}
