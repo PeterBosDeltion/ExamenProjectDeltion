@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7327385878925591013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7499585487850239496}
+  - component: {fileID: 6665942228256468776}
+  m_Layer: 0
+  m_Name: Ult_Bombardment
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7499585487850239496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7327385878925591013}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6665942228256468776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7327385878925591013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fefe06792558a6b4dbd89be67a2b6511, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myPlayer: {fileID: 0}
+  name: Orbital Bombardment
+  description: 
+  uiIcon: {fileID: 21300000, guid: e6259bccac625b347a49b43ed490c83d, type: 3}
+  requiredLevel: 0
+  ultimate: 1
+  onCooldown: 0
+  active: 0
+  cooldownTime: 0
+  duration: 20
+  currentUltCharge: 0
+  ultChargeIncrement: 50
+  deployableRadius: 0
+  deployableGhost: {fileID: 0}
+  canDeployMaterial: {fileID: 0}
+  cannotDeployMaterial: {fileID: 0}
+  deployLineMaterial: {fileID: 0}
+  deployableOffset: {x: 0, y: 0, z: 0}
+  returned: 0
+  myDeployType: 0
+  shipShadowPrefab: {fileID: 8149729823325184602, guid: eb5305806edc89d45a1e2398d906641b,
+    type: 3}
+  targetingSprite: {fileID: 151126254533669130, guid: c26affb487b0a674e9bf87e2ecb2c62f,
+    type: 3}
+  offsetFromPlayer: {x: 5, y: 20, z: -10}
+  targetRadius: 20
+  damageRadius: 5
+  damage: 200

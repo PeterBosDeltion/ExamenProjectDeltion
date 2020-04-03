@@ -41,6 +41,8 @@ public class MechUltimate : Entity
     public void Move(float xAxis, float yAxis)
     {
         movement.Move(xAxis, yAxis);
+        anim.SetFloat("X", xAxis);
+        anim.SetFloat("Y", yAxis);
     }
 
     public void Rotate(float xAxis, float zAxis)

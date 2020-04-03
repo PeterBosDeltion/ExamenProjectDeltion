@@ -40,6 +40,7 @@ public class UIManager : MonoBehaviour
         {
             menus.Add(profileMenu);
         }
+
     }
     public void MenuButtonClicked(string button)
     {

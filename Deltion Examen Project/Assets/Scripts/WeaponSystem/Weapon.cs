@@ -86,6 +86,7 @@ public class Weapon : MonoBehaviour
             if (magazineAmmo <= 0 && !reloading)
             {
                 audioSource.clip = emptyMagazine;
+                AudioClipManager.instance.PlayClipOneShotWithSource(myPlayer.mySource, AudioClipManager.instance.GetRandomNoAmmoVL(myPlayer));
                 if (!audioSource.isPlaying)
                 {
                     audioSource.Play();
@@ -121,11 +122,14 @@ public class Weapon : MonoBehaviour
     {
         if (gameObject.activeSelf)
         {
-            if (!reloading)
+            if (!reloading && magazineAmmo < totalAmmo)
             {
                 StartCoroutine(ReloadInSeconds(myWeapon.reloadSpeed));
                 audioSource.clip = reload;
                 audioSource.Play();
+                AudioClipManager.instance.HardResetSourcePlayable(myPlayer.mySource);
+                AudioClipManager.instance.PlayClipOneShotWithSource(myPlayer.mySource, AudioClipManager.instance.GetRandomReloadVL(myPlayer));
+
             }
         }
       
