@@ -6,6 +6,10 @@ using TMPro;
 public class PlayerUI : MonoBehaviour
 {
     public PlayerController myPlayer;
+    public Color mainPlayerColor;
+    public Color darkPlayerColor;
+    public List<Image> playerMainColoredImages = new List<Image>();
+    public List<Image> playerDarkColoredImages = new List<Image>();
 
     public Image weaponImage;
     public Image weaponBackImage;
@@ -45,6 +49,17 @@ public class PlayerUI : MonoBehaviour
     {
         InputManager.delayedAbilityEvent += AbilityUsed;
 
+        foreach (Image img in playerMainColoredImages)
+        {
+            img.color = mainPlayerColor;
+        }
+
+        foreach (Image img in playerDarkColoredImages)
+        {
+            img.color = darkPlayerColor;
+        }
+
+        ultCharge.color = mainPlayerColor;
         abilityOneImg.sprite = myPlayer.abilities[0].uiIcon;
         abilityTwoImg.sprite = myPlayer.abilities[1].uiIcon;
         abilityThreeImg.sprite = myPlayer.abilities[2].uiIcon;
