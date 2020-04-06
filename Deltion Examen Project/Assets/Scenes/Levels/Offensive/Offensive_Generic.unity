@@ -358,7 +358,7 @@ LODGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43520527}
   serializedVersion: 2
-  m_LocalReferencePoint: {x: 120, y: 26.367817, z: 150}
+  m_LocalReferencePoint: {x: 120, y: 26.362942, z: 150}
   m_Size: 80
   m_FadeMode: 0
   m_AnimateCrossFading: 0
@@ -2893,6 +2893,16 @@ PrefabInstance:
       propertyPath: sun
       value: 
       objectReference: {fileID: 1375302433}
+    - target: {fileID: 114000013230019050, guid: 7a8a5bb6f2e71b143aff5818ec77dbcd,
+        type: 3}
+      propertyPath: material
+      value: 
+      objectReference: {fileID: 2100000, guid: f0d28705709c1b64baf441c5fcc42ebb, type: 2}
+    - target: {fileID: 114000013230019050, guid: 7a8a5bb6f2e71b143aff5818ec77dbcd,
+        type: 3}
+      propertyPath: noise
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a8a5bb6f2e71b143aff5818ec77dbcd, type: 3}
 --- !u!1 &1083017358
@@ -3736,17 +3746,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groupId: -1
-  mode: 11
+  mode: 0
   customPainterIndex: 0
   customPainterArgs: 
   editor_EnableHistory: 1
   editor_EnableLivePreview: 1
   forceUpdateGeometry: 0
-  brushRadius: 216.3
+  brushRadius: 1
   brushRadiusJitter: 0.133
   brushRotation: -360
   brushRotationJitter: 0
-  brushOpacity: 1
+  brushOpacity: 0.008
   brushOpacityJitter: 0
   brushScatter: 0
   brushScatterJitter: 0
@@ -3766,7 +3776,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: a980d13c990ec08429a09a1d0c1edb47, type: 3}
   selectedBrushMaskIndex: 6
   selectedSplatIndex: 1
-  samplePoint: {x: 262.521, y: 11.440577, z: 82.52918}
+  samplePoint: {x: 164.15146, y: 10.709034, z: 275.76944}
 --- !u!1 &1261491625
 GameObject:
   m_ObjectHideFlags: 0
@@ -3918,7 +3928,7 @@ LODGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1276150407}
   serializedVersion: 2
-  m_LocalReferencePoint: {x: 280, y: 13.529421, z: 30}
+  m_LocalReferencePoint: {x: 280, y: 13.529415, z: 30}
   m_Size: 80
   m_FadeMode: 0
   m_AnimateCrossFading: 0
