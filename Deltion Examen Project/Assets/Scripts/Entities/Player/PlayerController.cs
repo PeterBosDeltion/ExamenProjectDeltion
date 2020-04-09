@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private TriggerAbility triggerAbility;
     private Animator playerAnimator;
     public AudioSource mySource;
+    public bool inTutorial;
 
     public List<Ability> abilities = new List<Ability>();
     public Ability ultimateAbility;
@@ -214,6 +215,9 @@ public class PlayerController : MonoBehaviour
         Quaternion diffrence = transform.rotation * Quaternion.Inverse(Camera.main.transform.rotation);
         Vector3 animatedAxis = diffrence * new Vector3(xAxis, 0, yAxis);
         ManageAnimations(false, -animatedAxis.x, animatedAxis.z);
+
+        if (inTutorial && TutorialManager.instance.currentStep == 1)
+            TutorialManager.playerMovedDelegate.Invoke();
     }
 
     public void Rotate(float xAxis, float zAxis)
