@@ -21,14 +21,19 @@ public class Weapon : MonoBehaviour
     public int amountAccurateBullets;
 
     public Player myPlayer;
+    public bool tutorialInit;
 
     private void Start()
     {
         Initialize();
     }
 
-    private void Initialize()
+    public void Initialize()
     {
+        if (myPlayer.GetComponent<PlayerController>().inTutorial && !tutorialInit)
+        {
+            return;
+        }
         myPlayer = GetComponentInParent<Player>();
         totalAmmo = myWeapon.totalAmmo;
         magazineAmmo = totalAmmo;
