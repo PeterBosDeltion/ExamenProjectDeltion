@@ -19,6 +19,11 @@ public class PlayerUI : MonoBehaviour
     public Image abilityThreeCDImg;
     public Image abilityFourCDImg;
 
+    public TextMeshProUGUI abilityOneHotkeyText;
+    public TextMeshProUGUI abilityTwoHotkeyText;
+    public TextMeshProUGUI abilityThreeHotkeyText;
+    public TextMeshProUGUI abilityFourHotkeyText;
+
     public Image abilityOneImg;
     public Image abilityTwoImg;
     public Image abilityThreeImg;
@@ -74,18 +79,22 @@ public class PlayerUI : MonoBehaviour
                 case 0:
                     if (abilityOneCDImg.fillAmount == 0 && !myPlayer.abilities[0].returned)
                         abilityOneCDImg.fillAmount = 1;
-                    break;
+                        abilityOneHotkeyText.enabled = false;
+                break;
                 case 1:
                     if (abilityTwoCDImg.fillAmount == 0 && !myPlayer.abilities[1].returned)
                         abilityTwoCDImg.fillAmount = 1;
+                        abilityTwoHotkeyText.enabled = false;
                     break;
-                case 2:
+            case 2:
                     if (abilityThreeCDImg.fillAmount == 0 && !myPlayer.abilities[2].returned)
                         abilityThreeCDImg.fillAmount = 1;
+                        abilityThreeHotkeyText.enabled = false;
                     break;
-                case 3:
+            case 3:
                     if (abilityFourCDImg.fillAmount == 0 && !myPlayer.abilities[3].returned)
                         abilityFourCDImg.fillAmount = 1;
+                        abilityFourHotkeyText.enabled = false;
                     break;
             default:
                     break;
@@ -125,12 +134,24 @@ public class PlayerUI : MonoBehaviour
                     abilityFourCDImg.fillAmount -= Time.deltaTime / myPlayer.abilities[3].cooldownTime;
                 }
             }
-               
+
+            abilityOneHotkeyText.enabled = (myPlayer.abilities[0].onCooldown || myPlayer.abilities[0].active) ? false : true;
+            abilityTwoHotkeyText.enabled = (myPlayer.abilities[1].onCooldown || myPlayer.abilities[1].active) ? false : true;
+            abilityThreeHotkeyText.enabled = (myPlayer.abilities[2].onCooldown || myPlayer.abilities[2].active) ? false : true;
+            abilityFourHotkeyText.enabled = (myPlayer.abilities[3].onCooldown || myPlayer.abilities[3].active) ? false : true;
+
         }
 
-        if(myPlayer.ultimateAbility != null)
+        if (myPlayer.ultimateAbility != null)
         {
-            ultCharge.text = "" + Mathf.RoundToInt(myPlayer.ultimateAbility.currentUltCharge) + "%";
+            if(Mathf.RoundToInt(myPlayer.ultimateAbility.currentUltCharge) >= 100)
+            {
+                ultCharge.text = "F/5";
+            }
+            else
+            {
+                ultCharge.text = "" + Mathf.RoundToInt(myPlayer.ultimateAbility.currentUltCharge) + "%";
+            }
             ultChargeFilledImage.fillAmount = myPlayer.ultimateAbility.currentUltCharge / 100;
             if(myPlayer.ultimateAbility.currentUltCharge >= 100)
             {

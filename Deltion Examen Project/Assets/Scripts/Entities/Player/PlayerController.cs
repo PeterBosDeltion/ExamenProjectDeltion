@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private Animator playerAnimator;
     public AudioSource mySource;
     public bool inTutorial;
+    public bool tutorialAbilityInit;
 
     public List<Ability> abilities = new List<Ability>();
     public Ability ultimateAbility;
@@ -205,7 +206,17 @@ public class PlayerController : MonoBehaviour
         else //Normal ability
         {
             if (!abilities[value].onCooldown)
-                abilities[value].UseAbility();
+            {
+                if (inTutorial) //Prevent usage in tutorial before explanation
+                {
+                    if(tutorialAbilityInit)
+                        abilities[value].UseAbility();
+                }
+                else //Normal gameplay
+                {
+                    abilities[value].UseAbility();
+                }
+            }
         }
     }
 

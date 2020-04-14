@@ -9,6 +9,7 @@ public class TutorialManager : MonoBehaviour
     public float timeBetweenSteps = 4;
     public Image checkmark;
     private bool timing;
+    private bool waiting;
     public int currentStep;
     public delegate void TutorialStep();
     public static TutorialStep stepOneDelegate;
@@ -25,6 +26,8 @@ public class TutorialManager : MonoBehaviour
 
     public GameObject tutorialEnemy;
     public GameObject tutorialInteractable;
+    public GameObject damageMatrix;
+    public GameObject healingMatrix;
 
     public PlayerController player;
     private bool playerMoved = false;
@@ -32,6 +35,12 @@ public class TutorialManager : MonoBehaviour
     private bool playerFired = false;
     private bool playerReloaded = false;
     private bool playerSwitched = false;
+    private bool playerDamaged = false;
+    private bool playerHealed = false;
+    private bool playerUsedFirstAbility = false;
+    private bool playerSeenCooldown = false;
+    private bool playerUsedUlt = false;
+    private bool playerHasInteracted = false;
     private void Awake()
     {
         if(instance == null)
@@ -63,7 +72,8 @@ public class TutorialManager : MonoBehaviour
         InputManager.leftMouseButtonHoldEvent += PlayerFired;
         InputManager.reloadEvent += PlayerReloaded;
         InputManager.scrollEvent += PlayerSwitched;
-
+        InputManager.abilityEvent += AbilityOneUsed;
+        InputManager.abilityEvent += UltUsed;
 
         stepOneDelegate.Invoke();
     }
@@ -126,6 +136,70 @@ public class TutorialManager : MonoBehaviour
                     currentIndicator.SetActive(false);
                     currentIndicator = healthIndicator;
                     currentIndicator.SetActive(true);
+                    damageMatrix.SetActive(true);
+                }
+                break;
+            case 7: //Player has been damaged, explain healing
+                if (playerDamaged && !timing)
+                {
+                    damageMatrix.SetActive(false);
+                    tutorialText.text = tutorialTexts[6];
+                    currentIndicator.SetActive(false);
+                    currentIndicator = healthIndicator;
+                    currentIndicator.SetActive(true);
+                    healingMatrix.SetActive(true);
+                }
+                break;
+            case 8: //Player has been healed, explain abilities
+                if (playerHealed && !timing)
+                {
+                    player.tutorialAbilityInit = true;
+                    healingMatrix.SetActive(false);
+                    tutorialText.text = tutorialTexts[7];
+                    currentIndicator.SetActive(false);
+                    currentIndicator = abilitiesIndicator;
+                    currentIndicator.SetActive(true);
+                }
+                break;
+            case 9: //Player has used ability, explain cooldown
+                if (playerUsedFirstAbility && !timing)
+                {
+                    tutorialText.text = tutorialTexts[8];
+                    currentIndicator.SetActive(false);
+                    currentIndicator = abilitiesIndicator;
+                    currentIndicator.SetActive(true);
+                    if (!waiting)
+                        StartCoroutine(WaitAfterAbility());
+                }
+                break;
+            case 10: //Player has seen cooldown, explain ultimate
+                if (playerSeenCooldown && !timing)
+                {
+                    tutorialText.text = tutorialTexts[9];
+                    currentIndicator.SetActive(false);
+                    currentIndicator = ultimateIndicator;
+                    currentIndicator.SetActive(true);
+                    tutorialEnemy.SetActive(true);
+                   
+                }
+                break;
+            case 11: //Player has used ult, explain interactables
+                if (playerUsedUlt && !timing)
+                {
+                    tutorialText.text = tutorialTexts[10];
+                    currentIndicator.SetActive(false);
+                    currentIndicator = null;
+                    tutorialEnemy.SetActive(false);
+                    tutorialInteractable.SetActive(true);
+
+                }
+                break;
+            case 12: //Player has used interacted, tutorial completed.
+                if (playerHasInteracted && !timing)
+                {
+                    tutorialText.text = tutorialTexts[11];
+                    tutorialInteractable.SetActive(false);
+
                 }
                 break;
         }
@@ -181,6 +255,72 @@ public class TutorialManager : MonoBehaviour
             InputManager.scrollEvent -= PlayerSwitched;
             StartCoroutine(BetweenStepTimer());
         }
+    }
+
+    public void PlayerDamaged()
+    {
+        playerDamaged = true;
+        if (!timing && currentStep == 6)
+        {
+            StartCoroutine(BetweenStepTimer());
+        }
+    }
+
+    public void PlayerHealed()
+    {
+        playerHealed = true;
+        if (!timing && currentStep == 7)
+        {
+            StartCoroutine(BetweenStepTimer());
+        }
+
+    }
+
+    private void AbilityOneUsed(int i)
+    {
+        if(i == 0) //First ability used
+        {
+            playerUsedFirstAbility = true;
+            if (!timing && currentStep == 8)
+            {
+                InputManager.abilityEvent -= AbilityOneUsed;
+                StartCoroutine(BetweenStepTimer());
+            }
+        }
+    }
+
+    private void UltUsed(int i)
+    {
+        if(i == 4) //Ultimate 
+        {
+            if(player.ultimateAbility.active)
+            {
+                playerUsedUlt = true;
+                if (!timing && currentStep == 10)
+                {
+                    InputManager.abilityEvent -= UltUsed;
+                    StartCoroutine(BetweenStepTimer());
+                }
+            }
+        }
+    }
+
+    public void Interacted()
+    {
+        playerHasInteracted = true;
+        if (!timing && currentStep == 11)
+        {
+            StartCoroutine(BetweenStepTimer());
+        }
+    }
+
+    private IEnumerator WaitAfterAbility()
+    {
+        waiting = true;
+        yield return new WaitForSeconds(timeBetweenSteps * 2);
+        playerSeenCooldown = true;
+        StartCoroutine(BetweenStepTimer());
+        waiting = false;
     }
 
     private IEnumerator BetweenStepTimer()
