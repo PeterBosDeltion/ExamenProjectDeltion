@@ -3058,6 +3058,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 77380492351119295, guid: d9b859690e90e0e4388c154575858d1d,
+        type: 3}
+      propertyPath: myPlayer
+      value: 
+      objectReference: {fileID: 3669613515134063048}
     - target: {fileID: 2363066780717897061, guid: d9b859690e90e0e4388c154575858d1d,
         type: 3}
       propertyPath: m_IsActive
@@ -3190,6 +3195,18 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9b859690e90e0e4388c154575858d1d, type: 3}
+--- !u!114 &3669613515134063048 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6095833888640441526, guid: d9b859690e90e0e4388c154575858d1d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3669613515134063047}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281733643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140c19e93c17df44a8875e58fafe3c0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3962678529341898751
 GameObject:
   m_ObjectHideFlags: 0
@@ -3490,6 +3507,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6520027328582084699, guid: ab953951a47a4de4f871b6f5ecbb0c14,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6520027328582084699, guid: ab953951a47a4de4f871b6f5ecbb0c14,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6520027328582084699, guid: ab953951a47a4de4f871b6f5ecbb0c14,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6520027328582084699, guid: ab953951a47a4de4f871b6f5ecbb0c14,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6520027328582084699, guid: ab953951a47a4de4f871b6f5ecbb0c14,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6866972570898506053, guid: ab953951a47a4de4f871b6f5ecbb0c14,
         type: 3}

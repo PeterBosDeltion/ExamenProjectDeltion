@@ -23,6 +23,7 @@ public class PlayerUI : MonoBehaviour
     public TextMeshProUGUI abilityTwoHotkeyText;
     public TextMeshProUGUI abilityThreeHotkeyText;
     public TextMeshProUGUI abilityFourHotkeyText;
+    public GameObject needReloadText;
 
     public Image abilityOneImg;
     public Image abilityTwoImg;
@@ -175,6 +176,16 @@ public class PlayerUI : MonoBehaviour
             weaponBackImage.sprite = myPlayer.currentWeapon.myWeapon.uiIcon;
         }
         weaponImage.fillAmount =  myPlayer.currentWeapon.magazineAmmo / myPlayer.currentWeapon.totalAmmo;
+        if(myPlayer.currentWeapon.magazineAmmo <= 0)
+        {
+            if(!needReloadText.activeSelf)
+                needReloadText.SetActive(true);
+        }
+        else
+        {
+            if (needReloadText.activeSelf)
+                needReloadText.SetActive(false);
+        }
         healthBar.fillAmount = myPlayer.GetHp() / myPlayer.GetMaxHp();
 
         if(myPlayer.GetTempHp() > 0)
