@@ -17,6 +17,7 @@ public class Entity : MonoBehaviour
 
     protected virtual void Awake()
     {
+        SetEntityValues();
         deathEvent += EmptyDeathEvent;
     }
 
@@ -24,6 +25,12 @@ public class Entity : MonoBehaviour
     {
         EntityManager.instance.RemovePlayerOrAbility(this);
         deathEvent = null;
+    }
+
+    public virtual void SetEntityValues()
+    {
+        maxHp *= LevelManager.instance.healthModifier;
+        hp = maxHp;
     }
 
     public void TakeDamage(float takenDamage, Entity Attacker)
@@ -70,14 +77,12 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public virtual void DamageEvent(Entity Attacker)
+    protected virtual void DamageEvent(Entity Attacker)
     {
-       
     }
 
     public virtual void HealEvent()
     {
-
     }
 
     protected virtual void Death()

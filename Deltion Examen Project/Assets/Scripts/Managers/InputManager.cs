@@ -22,6 +22,7 @@ public class InputManager : MonoBehaviour
     public static BaseInput reloadEvent;
     public static BaseInput interactEvent;
     public static BaseInput escapeEvent;
+    public static BaseInput LastWeaponEvent;
     public static IntInput abilityEvent;
     public static IntInput delayedAbilityEvent;
     public static FloatInput scrollEvent;
@@ -45,12 +46,13 @@ public class InputManager : MonoBehaviour
         rightMouseButtonEvent += Empty;
         reloadEvent += Empty;
         interactEvent += Empty;
+        escapeEvent += Empty;
+        LastWeaponEvent += Empty;
         abilityEvent += EmptyInt;
         delayedAbilityEvent += EmptyInt;
         scrollEvent += EmptyFloat;
         MovingEvent += EmptyAxis;
         RotatingEvent += EmptyAxis;
-        escapeEvent += Empty;
     }
 
     private void OnDestroy()
@@ -61,6 +63,8 @@ public class InputManager : MonoBehaviour
         rightMouseButtonEvent -= Empty;
         reloadEvent -= Empty;
         interactEvent -= Empty;
+        escapeEvent -= Empty;
+        LastWeaponEvent -= Empty;
         abilityEvent -= EmptyInt;
         delayedAbilityEvent -= EmptyInt;
         scrollEvent -= EmptyFloat;
@@ -97,6 +101,8 @@ public class InputManager : MonoBehaviour
             SwitchWeapon(Input.GetAxis("Mouse ScrollWheel"));
         if (Input.GetButtonDown("Escape"))
             Escape();
+        if (Input.GetButtonDown("LastWeapon"))
+            LastWeapon();
     }
 
     //Fixed update for movementbased input to avoid physics problems
@@ -143,10 +149,13 @@ public class InputManager : MonoBehaviour
         Debug.Log("Interact");
         interactEvent.Invoke();
     }
-
     public void Escape()
     {
         escapeEvent.Invoke();
+    }
+    public void LastWeapon()
+    {
+        LastWeaponEvent.Invoke();
     }
     private void AbilityHotkeys(int inputAbility)
     {

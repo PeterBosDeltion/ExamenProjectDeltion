@@ -14,11 +14,16 @@ public class Enemy : Entity
     {
         base.Awake();
 
-        hp = maxHp;
         anim = GetComponentInChildren<Animator>();
     }
 
-    public override void DamageEvent(Entity Attacker)
+    public override void SetEntityValues()
+    {
+        base.SetEntityValues();
+        damage *= LevelManager.instance.damageModifier;
+    }
+
+    protected override void DamageEvent(Entity Attacker)
     {
         myAI.SetTarget(Attacker);
         myAI.SetAndPlayAudioClipOnce(myAI.hitClip,0.1f);

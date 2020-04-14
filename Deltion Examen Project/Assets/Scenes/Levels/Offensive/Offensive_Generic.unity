@@ -3746,7 +3746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groupId: -1
-  mode: 0
+  mode: 1
   customPainterIndex: 0
   customPainterArgs: 
   editor_EnableHistory: 1
@@ -3756,7 +3756,7 @@ MonoBehaviour:
   brushRadiusJitter: 0.133
   brushRotation: -360
   brushRotationJitter: 0
-  brushOpacity: 0.008
+  brushOpacity: 0.098
   brushOpacityJitter: 0
   brushScatter: 0
   brushScatterJitter: 0
@@ -3774,9 +3774,9 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 36ca50646fcd9bb438393fe69f4fce4d, type: 3}
   - {fileID: 2800000, guid: c04dea6ddca855243b98689304bd531d, type: 3}
   - {fileID: 2800000, guid: a980d13c990ec08429a09a1d0c1edb47, type: 3}
-  selectedBrushMaskIndex: 6
+  selectedBrushMaskIndex: 11
   selectedSplatIndex: 1
-  samplePoint: {x: 164.15146, y: 10.709034, z: 275.76944}
+  samplePoint: {x: 346.47015, y: 1.5, z: 68.023636}
 --- !u!1 &1261491625
 GameObject:
   m_ObjectHideFlags: 0

@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
         InputManager.RotatingEvent -= Rotate;
         InputManager.leftMouseButtonEvent -= Shoot;
         InputManager.scrollEvent -= SwitchWeapon;
+        InputManager.LastWeaponEvent -= SwitchToLastWeapon;
 
         currentWeapon.canShoot = false;
 
@@ -85,6 +86,7 @@ public class PlayerController : MonoBehaviour
         InputManager.RotatingEvent += Rotate;
         InputManager.leftMouseButtonEvent += Shoot;
         InputManager.scrollEvent += SwitchWeapon;
+        InputManager.LastWeaponEvent += SwitchToLastWeapon;
 
         currentWeapon.canShoot = true;
 
@@ -110,6 +112,7 @@ public class PlayerController : MonoBehaviour
         InputManager.RotatingEvent += Rotate;
         InputManager.leftMouseButtonEvent += Shoot;
         InputManager.scrollEvent += SwitchWeapon;
+        InputManager.LastWeaponEvent += SwitchToLastWeapon;
         Initialize();
     }
 
@@ -147,6 +150,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void SwitchToLastWeapon()
+    {
+        SwitchWeapon(0);
+    }
+
     private void SwitchWeapon(float f)
     {
         currentWeapon.gameObject.SetActive(false);
@@ -164,6 +172,7 @@ public class PlayerController : MonoBehaviour
         InputManager.RotatingEvent -= Rotate;
         InputManager.leftMouseButtonEvent -= Shoot;
         InputManager.scrollEvent -= SwitchWeapon;
+        InputManager.LastWeaponEvent -= SwitchToLastWeapon;
     }
 
     //Player GetValue functions

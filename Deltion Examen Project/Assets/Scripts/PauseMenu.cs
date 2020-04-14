@@ -57,6 +57,6 @@ public class PauseMenu : MonoBehaviour
     public void MainMenu()
     {
         Time.timeScale = 1;
-        LoadSceneManager.instance.LoadSceneByIndex(0);
+        GameManager.instance.ChangeScene(0);
     }
 }

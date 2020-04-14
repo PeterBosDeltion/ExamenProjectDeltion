@@ -36,7 +36,7 @@ public class Player : Entity
         zeroTempHp -= EmptyHpEvent;
     }
 
-    public override void DamageEvent(Entity Attacker)
+    protected override void DamageEvent(Entity Attacker)
     {
         if (tempHp <= 0)
             zeroTempHp.Invoke();
