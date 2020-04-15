@@ -45,10 +45,21 @@ public class PlayerUI : MonoBehaviour
     public GameObject tempHealthbar;
     public Image tempHealthbarFilled;
 
+    private bool waiting;
+
     //private bool waiting;
     private void Start()
     {
+        if (!waiting)
+            StartCoroutine(WaitForPlayerInit());
+    }
+
+    private IEnumerator WaitForPlayerInit()
+    {
+        waiting = true;
+        yield return new WaitUntil(() => myPlayer.playerInitialized);
         Initialize();
+        waiting = false;
     }
 
     private void Initialize()
@@ -105,105 +116,109 @@ public class PlayerUI : MonoBehaviour
 
     private void Update()
     {
-        if(myPlayer.abilities.Count > 0)
+        if (myPlayer.playerInitialized)
         {
-            if(myPlayer.abilities[0] != null)
+            if (myPlayer.abilities.Count > 0)
             {
-                if (myPlayer.abilities[0].onCooldown)
+                if (myPlayer.abilities[0] != null)
                 {
-                    abilityOneCDImg.fillAmount -= Time.deltaTime / myPlayer.abilities[0].cooldownTime;
+                    if (myPlayer.abilities[0].onCooldown)
+                    {
+                        abilityOneCDImg.fillAmount -= Time.deltaTime / myPlayer.abilities[0].cooldownTime;
+                    }
                 }
-            }
-            if (myPlayer.abilities[1] != null)
-            {
-                if (myPlayer.abilities[1].onCooldown)
+                if (myPlayer.abilities[1] != null)
                 {
-                    abilityTwoCDImg.fillAmount -= Time.deltaTime / myPlayer.abilities[1].cooldownTime;
+                    if (myPlayer.abilities[1].onCooldown)
+                    {
+                        abilityTwoCDImg.fillAmount -= Time.deltaTime / myPlayer.abilities[1].cooldownTime;
+                    }
                 }
-            }
-            if (myPlayer.abilities[2] != null)
-            {
-                if (myPlayer.abilities[2].onCooldown)
+                if (myPlayer.abilities[2] != null)
                 {
-                    abilityThreeCDImg.fillAmount -= Time.deltaTime / myPlayer.abilities[2].cooldownTime;
+                    if (myPlayer.abilities[2].onCooldown)
+                    {
+                        abilityThreeCDImg.fillAmount -= Time.deltaTime / myPlayer.abilities[2].cooldownTime;
+                    }
                 }
-            }
-            if (myPlayer.abilities[3] != null)
-            {
-                if (myPlayer.abilities[3].onCooldown)
+                if (myPlayer.abilities[3] != null)
                 {
-                    abilityFourCDImg.fillAmount -= Time.deltaTime / myPlayer.abilities[3].cooldownTime;
+                    if (myPlayer.abilities[3].onCooldown)
+                    {
+                        abilityFourCDImg.fillAmount -= Time.deltaTime / myPlayer.abilities[3].cooldownTime;
+                    }
+                }
+
+                abilityOneHotkeyText.enabled = (myPlayer.abilities[0].onCooldown || myPlayer.abilities[0].active) ? false : true;
+                abilityTwoHotkeyText.enabled = (myPlayer.abilities[1].onCooldown || myPlayer.abilities[1].active) ? false : true;
+                abilityThreeHotkeyText.enabled = (myPlayer.abilities[2].onCooldown || myPlayer.abilities[2].active) ? false : true;
+                abilityFourHotkeyText.enabled = (myPlayer.abilities[3].onCooldown || myPlayer.abilities[3].active) ? false : true;
+
+            }
+
+            if (myPlayer.ultimateAbility != null)
+            {
+                if (Mathf.RoundToInt(myPlayer.ultimateAbility.currentUltCharge) >= 100)
+                {
+                    ultCharge.text = "F/5";
+                }
+                else
+                {
+                    ultCharge.text = "" + Mathf.RoundToInt(myPlayer.ultimateAbility.currentUltCharge) + "%";
+                }
+                ultChargeFilledImage.fillAmount = myPlayer.ultimateAbility.currentUltCharge / 100;
+                if (myPlayer.ultimateAbility.currentUltCharge >= 100)
+                {
+                    ultChargeImage.enabled = false;
+                }
+                else
+                {
+                    if (!ultChargeImage.enabled)
+                    {
+                        ultChargeImage.enabled = true;
+                    }
                 }
             }
 
-            abilityOneHotkeyText.enabled = (myPlayer.abilities[0].onCooldown || myPlayer.abilities[0].active) ? false : true;
-            abilityTwoHotkeyText.enabled = (myPlayer.abilities[1].onCooldown || myPlayer.abilities[1].active) ? false : true;
-            abilityThreeHotkeyText.enabled = (myPlayer.abilities[2].onCooldown || myPlayer.abilities[2].active) ? false : true;
-            abilityFourHotkeyText.enabled = (myPlayer.abilities[3].onCooldown || myPlayer.abilities[3].active) ? false : true;
-
-        }
-
-        if (myPlayer.ultimateAbility != null)
-        {
-            if(Mathf.RoundToInt(myPlayer.ultimateAbility.currentUltCharge) >= 100)
+            if (weaponImage.sprite != myPlayer.currentWeapon.myWeapon.uiIcon)
             {
-                ultCharge.text = "F/5";
+                weaponImage.sprite = myPlayer.currentWeapon.myWeapon.uiIcon;
+            }
+            if (weaponBackImage.sprite != myPlayer.currentWeapon.myWeapon.uiIcon)
+            {
+                weaponBackImage.sprite = myPlayer.currentWeapon.myWeapon.uiIcon;
+            }
+            weaponImage.fillAmount = myPlayer.currentWeapon.magazineAmmo / myPlayer.currentWeapon.totalAmmo;
+            if (myPlayer.currentWeapon.magazineAmmo <= 0)
+            {
+                if (!needReloadText.activeSelf)
+                    needReloadText.SetActive(true);
             }
             else
             {
-                ultCharge.text = "" + Mathf.RoundToInt(myPlayer.ultimateAbility.currentUltCharge) + "%";
+                if (needReloadText.activeSelf)
+                    needReloadText.SetActive(false);
             }
-            ultChargeFilledImage.fillAmount = myPlayer.ultimateAbility.currentUltCharge / 100;
-            if(myPlayer.ultimateAbility.currentUltCharge >= 100)
+            healthBar.fillAmount = myPlayer.GetHp() / myPlayer.GetMaxHp();
+
+            if (myPlayer.GetTempHp() > 0)
             {
-                ultChargeImage.enabled = false;
+                if (!tempHealthbar.activeSelf)
+                {
+                    tempHealthbar.SetActive(true);
+                }
+
+                tempHealthbarFilled.fillAmount = myPlayer.GetTempHp() / myPlayer.GetMaxTempHp();
             }
             else
             {
-                if (!ultChargeImage.enabled)
+                if (tempHealthbar.activeSelf)
                 {
-                    ultChargeImage.enabled = true;
+                    tempHealthbar.SetActive(false);
                 }
             }
         }
-
-        if(weaponImage.sprite != myPlayer.currentWeapon.myWeapon.uiIcon)
-        {
-            weaponImage.sprite = myPlayer.currentWeapon.myWeapon.uiIcon;
-        }
-        if (weaponBackImage.sprite != myPlayer.currentWeapon.myWeapon.uiIcon)
-        {
-            weaponBackImage.sprite = myPlayer.currentWeapon.myWeapon.uiIcon;
-        }
-        weaponImage.fillAmount =  myPlayer.currentWeapon.magazineAmmo / myPlayer.currentWeapon.totalAmmo;
-        if(myPlayer.currentWeapon.magazineAmmo <= 0)
-        {
-            if(!needReloadText.activeSelf)
-                needReloadText.SetActive(true);
-        }
-        else
-        {
-            if (needReloadText.activeSelf)
-                needReloadText.SetActive(false);
-        }
-        healthBar.fillAmount = myPlayer.GetHp() / myPlayer.GetMaxHp();
-
-        if(myPlayer.GetTempHp() > 0)
-        {
-            if (!tempHealthbar.activeSelf)
-            {
-                tempHealthbar.SetActive(true);
-            }
-
-            tempHealthbarFilled.fillAmount = myPlayer.GetTempHp() / myPlayer.GetMaxTempHp();
-        }
-        else
-        {
-            if (tempHealthbar.activeSelf)
-            {
-                tempHealthbar.SetActive(false);
-            }
-        }
+       
     }
     //private IEnumerator AbilityCooldown(Image abilityCDImg, float seconds)
     //{

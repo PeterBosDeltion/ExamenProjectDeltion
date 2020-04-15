@@ -51,11 +51,14 @@ MonoBehaviour:
   bulletSpawn: {fileID: 4789438344000589986}
   totalAmmo: 0
   magazineAmmo: 0
+  canShoot: 1
   gunShot: {fileID: 8300000, guid: 61e93b9ff30545c4fb724bb7ccb41973, type: 3}
   emptyMagazine: {fileID: 8300000, guid: 141f25fdadfd5c649b8b5c6376cc086b, type: 3}
   reload: {fileID: 8300000, guid: 1211495b486c6374f8ba736ecea163f6, type: 3}
   amountAccurateBullets: 5
   myPlayer: {fileID: 0}
+  tutorialInit: 0
+  handPosition: {fileID: 4032096818812572457}
   explosionAOE: 4
   explosionParticle: {fileID: 1337198075554910, guid: 25c7aa9ad705fe143a4d71c1c8deb7d4,
     type: 3}

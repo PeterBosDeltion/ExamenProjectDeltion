@@ -13,6 +13,7 @@ public class Player : Entity
     private bool waiting;
     private Coroutine resetting;
 
+
     protected override void Awake()
     {
         base.Awake();

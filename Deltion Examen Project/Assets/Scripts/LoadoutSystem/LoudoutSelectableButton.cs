@@ -71,25 +71,25 @@ public class LoudoutSelectableButton : MonoBehaviour
         {
             if (primary)
             {
-                LoudoutManager.instance.SetLoadoutPrimary(myWeapon);
+                LoudoutManager.instance.SetSavedLoadoutPrimary(myWeapon);
             }
             else
             {
-                LoudoutManager.instance.SetLoadoutSecondary(myWeapon);
+                LoudoutManager.instance.SetSavedLoadoutPrimary(myWeapon);
             }
 
         }
-        else if (myAbility)
-        {
-            if (ult)
-            {
-                LoudoutManager.instance.SetLoadoutUltimate(myAbility);
-            }
-            else
-            {
-                LoudoutManager.instance.SetLoadoutAbility(myAbility, myAbilityIndex);
-            }
-        }
+        //else if (myAbility)
+        //{
+        //    if (ult)
+        //    {
+        //        LoudoutManager.instance.SetSavedLoadoutPrimary(myAbility);
+        //    }
+        //    else
+        //    {
+        //        LoudoutManager.instance.SetSavedLoadoutPrimary(myAbility, myAbilityIndex);
+        //    }
+        //}
 
         myButton.myImage.sprite = icon.sprite;
 

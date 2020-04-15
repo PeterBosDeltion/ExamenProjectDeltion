@@ -23,6 +23,8 @@ public class Weapon : MonoBehaviour
     public Player myPlayer;
     public bool tutorialInit;
 
+    public Transform handPosition;
+
     private void Start()
     {
         Initialize();
