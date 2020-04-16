@@ -5,11 +5,14 @@ using UnityEngine;
 public class IDManager : MonoBehaviour
 {
     public static IDManager instance;
-    public List<Weapon> allWeapons = new List<Weapon>();
+    public List<Weapon> allPrimaryWeapons = new List<Weapon>();
+    public List<Weapon> allSecondaryWeapons = new List<Weapon>();
+
     public List<Ability> allAbilities = new List<Ability>();
     public List<Ability> allUltimateAbilities = new List<Ability>();
 
-    private Dictionary<int, Weapon> weaponIds = new Dictionary<int, Weapon>();
+    private Dictionary<int, Weapon> primaryWeaponIds = new Dictionary<int, Weapon>();
+    private Dictionary<int, Weapon> secondaryWeaponIds = new Dictionary<int, Weapon>();
     private Dictionary<int, Ability> abilityIds = new Dictionary<int, Ability>();
     private Dictionary<int, Ability> ultimateAbilityIds = new Dictionary<int, Ability>();
 
@@ -32,13 +35,20 @@ public class IDManager : MonoBehaviour
 
     private void Initialize()
     {
-        int wI = -1;
+        int pwI = -1;
+        int swI = -1;
         int aI = -1;
         int uI = -1;
-        foreach (Weapon weapon in allWeapons)
+        foreach (Weapon primary in allPrimaryWeapons)
         {
-            wI++;
-            weaponIds.Add(wI, weapon);
+            pwI++;
+            primaryWeaponIds.Add(pwI, primary);
+        }
+
+        foreach (Weapon secondary in allSecondaryWeapons)
+        {
+            swI++;
+            secondaryWeaponIds.Add(swI, secondary);
         }
 
         foreach (Ability ability in allAbilities)
@@ -53,9 +63,13 @@ public class IDManager : MonoBehaviour
         }
     }
 
-    public Weapon GetWeaponByID(int id)
+    public Weapon GetPrimaryWeaponByID(int id)
     {
-        return weaponIds[id];
+        return primaryWeaponIds[id];
+    }
+    public Weapon GetSecondaryWeaponByID(int id)
+    {
+        return secondaryWeaponIds[id];
     }
     public Ability GetAbilityByID(int id)
     {
@@ -66,9 +80,20 @@ public class IDManager : MonoBehaviour
         return ultimateAbilityIds[id];
     }
 
-    public int GetIDByWeapon(Weapon weapon)
+    public int GetIDByPrimaryWeapon(Weapon weapon)
     {
-        foreach (var kvp in weaponIds)
+        foreach (var kvp in primaryWeaponIds)
+        {
+            if (kvp.Value == weapon)
+                return kvp.Key;
+        }
+
+        Debug.LogError("Weapon not found in database");
+        return 0;
+    }
+    public int GetIDBySecondaryWeapon(Weapon weapon)
+    {
+        foreach (var kvp in secondaryWeaponIds)
         {
             if (kvp.Value == weapon)
                 return kvp.Key;

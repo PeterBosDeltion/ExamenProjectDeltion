@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &77380491323076594
 Transform:
   m_ObjectHideFlags: 0
@@ -57,6 +57,8 @@ MonoBehaviour:
   amountAccurateBullets: 0
   myPlayer: {fileID: 0}
   tutorialInit: 0
+  handPosition: {x: 0.046, y: -0.255, z: -0.048}
+  handRotation: {x: 0, y: 0, z: 0}
 --- !u!82 &77380491323076595
 AudioSource:
   m_ObjectHideFlags: 0

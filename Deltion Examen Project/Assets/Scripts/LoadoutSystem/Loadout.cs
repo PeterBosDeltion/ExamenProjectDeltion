@@ -22,8 +22,8 @@ public class Loadout : MonoBehaviour
 
     public void GenerateLoadout(LoadoutTemplate template)
     {
-        Weapon primary = IDManager.instance.GetWeaponByID(template.primaryID);
-        Weapon secondary = IDManager.instance.GetWeaponByID(template.secondaryID);
+        Weapon primary = IDManager.instance.GetPrimaryWeaponByID(template.primaryID);
+        Weapon secondary = IDManager.instance.GetSecondaryWeaponByID(template.secondaryID);
 
         Ability aOne = IDManager.instance.GetAbilityByID(template.abilityOneID);
         Ability aTwo = IDManager.instance.GetAbilityByID(template.abilityTwoID);

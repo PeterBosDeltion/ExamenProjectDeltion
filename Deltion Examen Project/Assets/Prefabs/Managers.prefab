@@ -43,8 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3b4a9d69c1592f4db11c37646a7589c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  savedLoadouts: []
-  currentSelectedLoadout: {fileID: 0}
   mainCanvas: {fileID: 0}
   loadoutSelectableWindow: {fileID: 7245282325412029414, guid: fa8a6b15bd623ca48a94951ab665f657,
     type: 3}
@@ -197,10 +195,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0827954075245347aa89fee7a1e1bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allWeapons:
-  - {fileID: 77380491323076597, guid: b43595dbb7045204b9829d270b97d2f4, type: 3}
+  allPrimaryWeapons:
   - {fileID: 8027315701895015475, guid: 838ff704af4d6074fb3bb4995b45b964, type: 3}
   - {fileID: 3892689550765515434, guid: e5bd1637ff9737d40b50461696f3d017, type: 3}
+  - {fileID: 163632538, guid: 2a593c2f26a9e234e9ff9f77a1d73482, type: 3}
+  allSecondaryWeapons:
+  - {fileID: 77380491323076597, guid: b43595dbb7045204b9829d270b97d2f4, type: 3}
   allAbilities:
   - {fileID: 7808817261947519962, guid: 4d0ff1396a0deec4ab70f14d9549cc0a, type: 3}
   - {fileID: 771986780492327734, guid: 0589af15f3461a74993bf11ef55e89be, type: 3}

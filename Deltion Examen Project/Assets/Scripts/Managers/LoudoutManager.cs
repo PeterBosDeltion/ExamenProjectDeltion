@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoudoutManager : MonoBehaviour
 {
@@ -29,7 +30,8 @@ public class LoudoutManager : MonoBehaviour
 
     private void Start()
     {
-        Initialize();
+        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
+            Initialize();
     }
   
     private void Initialize()
@@ -37,16 +39,17 @@ public class LoudoutManager : MonoBehaviour
         LoadoutTemplate standardTemplate = new LoadoutTemplate();
         for (int i = 0; i < 4; i++)
         {
-            playerLoadouts.Add(standardTemplate);
+            if(playerLoadouts.Count < 4)
+                playerLoadouts.Add(standardTemplate);
         }
 
-        SetDefaultLoadout(0);
+        //SetDefaultLoadout(0);
     }
 
     private void SetDefaultLoadout(int playerID)
     {
-        SetPlayerLoadoutPrimary(playerID, IDManager.instance.GetWeaponByID(1));
-        SetPlayerLoadoutSecondary(playerID, IDManager.instance.GetWeaponByID(0));
+        SetPlayerLoadoutPrimary(playerID, IDManager.instance.GetPrimaryWeaponByID(0));
+        SetPlayerLoadoutSecondary(playerID, IDManager.instance.GetSecondaryWeaponByID(0));
 
         SetPlayerLoadoutAbility(playerID, 0, IDManager.instance.GetAbilityByID(0));
         SetPlayerLoadoutAbility(playerID, 1, IDManager.instance.GetAbilityByID(1));
@@ -70,12 +73,12 @@ public class LoudoutManager : MonoBehaviour
 
     public void SetPlayerLoadoutPrimary(int playerIndex, Weapon primary)
     {
-        playerLoadouts[playerIndex].primaryID = IDManager.instance.GetIDByWeapon(primary);
+        playerLoadouts[playerIndex].primaryID = IDManager.instance.GetIDByPrimaryWeapon(primary);
     }
 
     public void SetPlayerLoadoutSecondary(int playerIndex, Weapon secondary)
     {
-        playerLoadouts[playerIndex].secondaryID = IDManager.instance.GetIDByWeapon(secondary);
+        playerLoadouts[playerIndex].secondaryID = IDManager.instance.GetIDBySecondaryWeapon(secondary);
     }
 
     //Player loadouts
@@ -106,14 +109,14 @@ public class LoudoutManager : MonoBehaviour
     //Saved loadouts
     public void SetSavedLoadoutPrimary(Weapon primary)
     {
-        selectedSavedLoadout.primaryID = IDManager.instance.GetIDByWeapon(primary);
+        selectedSavedLoadout.primaryID = IDManager.instance.GetIDByPrimaryWeapon(primary);
     }
 
-    public void SetSavedLoadoutSecondary(int playerIndex, Weapon secondary)
+    public void SetSavedLoadoutSecondary( Weapon secondary)
     {
-        selectedSavedLoadout.secondaryID = IDManager.instance.GetIDByWeapon(secondary);
+        selectedSavedLoadout.secondaryID = IDManager.instance.GetIDBySecondaryWeapon(secondary);
     }
-    public void SetSavedLoadoutAbility(int playerIndex, int abilityIndex, Ability ability)
+    public void SetSavedLoadoutAbility(int abilityIndex, Ability ability)
     {
         switch (abilityIndex)
         {
@@ -131,7 +134,7 @@ public class LoudoutManager : MonoBehaviour
                 break;
         }
     }
-    public void SetSavedLoadoutUltimate(int playerIndex, Ability ultimate)
+    public void SetSavedLoadoutUltimate(Ability ultimate)
     {
         selectedSavedLoadout.ultimateID = IDManager.instance.GetIDByUltimateAbility(ultimate);
     }

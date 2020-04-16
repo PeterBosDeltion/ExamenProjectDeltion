@@ -147,14 +147,16 @@ public class PlayerController : MonoBehaviour
                 abilities.Add(a);
         }
 
-        GameObject newPrimary = Instantiate(currentPrimary.gameObject, handParent.transform.position, currentPrimary.gameObject.transform.rotation, handParent.transform);
-        //newPrimary.transform.SetParent(handParent.transform);
+        GameObject newPrimary = Instantiate(currentPrimary.gameObject, Vector3.zero, currentPrimary.gameObject.transform.rotation, handParent.transform);
+        newPrimary.transform.localPosition = newPrimary.GetComponent<Weapon>().handPosition;
+        newPrimary.transform.localEulerAngles = newPrimary.GetComponent<Weapon>().handRotation;
         newPrimary.GetComponent<Weapon>().myPlayer = player;
         currentWeapon = newPrimary.GetComponent<Weapon>();
         currentPrimary = newPrimary.GetComponent<Weapon>();
 
-        GameObject newSecondary = Instantiate(currentSecondary.gameObject, handParent.transform.position, currentSecondary.transform.rotation, handParent.transform);
-        //newSecondary.transform.SetParent(handParent.transform);
+        GameObject newSecondary = Instantiate(currentSecondary.gameObject, Vector3.zero, currentSecondary.transform.rotation, handParent.transform);
+        newSecondary.transform.localPosition = newSecondary.GetComponent<Weapon>().handPosition;
+        newSecondary.transform.localEulerAngles = newSecondary.GetComponent<Weapon>().handRotation;
         newSecondary.GetComponent<Weapon>().myPlayer = player;
         currentSecondary = newSecondary.GetComponent<Weapon>();
 

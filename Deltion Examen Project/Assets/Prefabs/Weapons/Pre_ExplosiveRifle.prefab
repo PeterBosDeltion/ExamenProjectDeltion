@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4032096818812572457
 Transform:
   m_ObjectHideFlags: 0
@@ -58,7 +58,8 @@ MonoBehaviour:
   amountAccurateBullets: 5
   myPlayer: {fileID: 0}
   tutorialInit: 0
-  handPosition: {fileID: 4032096818812572457}
+  handPosition: {x: -0.06500001, y: 0.07259985, z: 0.03050006}
+  handRotation: {x: -77.98, y: 0, z: 98}
   explosionAOE: 4
   explosionParticle: {fileID: 1337198075554910, guid: 25c7aa9ad705fe143a4d71c1c8deb7d4,
     type: 3}

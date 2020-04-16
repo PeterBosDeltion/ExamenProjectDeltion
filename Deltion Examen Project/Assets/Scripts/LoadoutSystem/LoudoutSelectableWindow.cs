@@ -6,44 +6,41 @@ public class LoudoutSelectableWindow : MonoBehaviour
 {
     public GameObject selectAbleButtonPrefab;
     public GameObject scrollContent;
-    public List<Ability> allAbilities = new List<Ability>();
-    public List<Ability> allUltimates = new List<Ability>();
-    public List<Weapon> allPrimaries = new List<Weapon>();
-    public List<Weapon> allSecondaries = new List<Weapon>();
+
     public void OpenWindow(string type, int abilityIndex, LoudoutMainMenuButton menuButton)
     {
         switch (type)
         {
             case "Primary":
-                foreach (var p in allPrimaries)
+                foreach (var p in IDManager.instance.allPrimaryWeapons)
                 {
                     //if () { } if it is unlocked, make available to select
                     GameObject button = Instantiate(selectAbleButtonPrefab, scrollContent.transform);
-                    button.GetComponent<LoudoutSelectableButton>().Initialize(p, null, true, null, gameObject, menuButton);
+                    button.GetComponent<LoudoutSelectableButton>().WindowInitialize(p, null, true, null, gameObject, menuButton);
                 }
                 break;
             case "Secondary":
-                foreach (var s in allSecondaries)
+                foreach (var s in IDManager.instance.allSecondaryWeapons)
                 {
                     //if () { } if it is unlocked, make available to select
                     GameObject button = Instantiate(selectAbleButtonPrefab, scrollContent.transform);
-                    button.GetComponent<LoudoutSelectableButton>().Initialize(s, null, false, null, gameObject, menuButton);
+                    button.GetComponent<LoudoutSelectableButton>().WindowInitialize(s, null, false, null, gameObject, menuButton);
                 }
                 break;
             case "Ability":
-                foreach (var a in allAbilities)
+                foreach (var a in IDManager.instance.allAbilities)
                 {
                     //if () { } if it is unlocked, make available to select
                     GameObject button = Instantiate(selectAbleButtonPrefab, scrollContent.transform);
-                    button.GetComponent<LoudoutSelectableButton>().Initialize(null, a, false, abilityIndex, gameObject, menuButton);
+                    button.GetComponent<LoudoutSelectableButton>().WindowInitialize(null, a, false, abilityIndex, gameObject, menuButton);
                 }
                 break;
             case "Ultimate":
-                foreach (var u in allUltimates)
+                foreach (var u in IDManager.instance.allUltimateAbilities)
                 {
                     //if () { } if it is unlocked, make available to select
                     GameObject button = Instantiate(selectAbleButtonPrefab, scrollContent.transform);
-                    button.GetComponent<LoudoutSelectableButton>().Initialize(null, u, false, null, gameObject, menuButton);
+                    button.GetComponent<LoudoutSelectableButton>().WindowInitialize(null, u, false, null, gameObject, menuButton);
                 }
                 break;
         }

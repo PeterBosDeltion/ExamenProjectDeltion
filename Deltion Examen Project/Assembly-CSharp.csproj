@@ -106,6 +106,7 @@
     <Compile Include="Assets\Scripts\LoadoutSystem\LoudoutMainMenuButton.cs" />
     <Compile Include="Assets\Scripts\LoadoutSystem\LoudoutSelectableButton.cs" />
     <Compile Include="Assets\Scripts\LoadoutSystem\LoudoutSelectableWindow.cs" />
+    <Compile Include="Assets\Scripts\LoadoutSystem\PlayerLoadoutMenu.cs" />
     <Compile Include="Assets\Scripts\MainCanvas.cs" />
     <Compile Include="Assets\Scripts\Managers\AudioClipManager.cs" />
     <Compile Include="Assets\Scripts\Managers\EntityManager.cs" />
