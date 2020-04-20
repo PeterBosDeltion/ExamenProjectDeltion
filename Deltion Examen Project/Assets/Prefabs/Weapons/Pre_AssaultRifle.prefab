@@ -680,7 +680,7 @@ MonoBehaviour:
   myWeapon: {fileID: 11400000, guid: 02c4464858822ad40883b0918d1092ae, type: 2}
   bullet: {fileID: 5131294813170692697, guid: 5e8b844857115c74bb70e6bf1d45be25, type: 3}
   bulletSpawn: {fileID: 7299444218595721977}
-  totalAmmo: 0
+  totalAmmo: 80
   magazineAmmo: 0
   canShoot: 1
   gunShot: {fileID: 8300000, guid: 61e93b9ff30545c4fb724bb7ccb41973, type: 3}
@@ -688,7 +688,7 @@ MonoBehaviour:
   reload: {fileID: 8300000, guid: 1211495b486c6374f8ba736ecea163f6, type: 3}
   amountAccurateBullets: 5
   myPlayer: {fileID: 0}
-  tutorialInit: 0
+  tutorialInit: 1
   handPosition: {x: 0, y: 0, z: 0}
   handRotation: {x: -77.98, y: 0, z: 98}
 --- !u!82 &4397667167730644312
@@ -701,7 +701,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 141f25fdadfd5c649b8b5c6376cc086b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.015
   m_Pitch: 1

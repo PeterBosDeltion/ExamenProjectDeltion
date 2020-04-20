@@ -62,8 +62,7 @@ public class TutorialManager : MonoBehaviour
     {
         currentStep = 1;
         player.inTutorial = true;
-        player.loadout.primary.myPlayer = player.GetComponent<Player>();
-        player.loadout.secondary.myPlayer = player.GetComponent<Player>();
+       
 
         AddEmptyDelegates();
         stepOneDelegate += StepOne;

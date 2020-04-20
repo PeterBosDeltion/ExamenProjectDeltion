@@ -26,9 +26,20 @@ public class Weapon : MonoBehaviour
     public Vector3 handPosition;
     public Vector3 handRotation;
 
+    private bool waiting;
     private void Start()
     {
+        tutorialInit = false;
+        if (!waiting)
+            StartCoroutine(WaitForPlayerInit());
+    }
+
+    private IEnumerator WaitForPlayerInit()
+    {
+        waiting = true;
+        yield return new WaitUntil(() => myPlayer.GetComponent<PlayerController>().playerInitialized);
         Initialize();
+        waiting = false;
     }
 
     public void Initialize()

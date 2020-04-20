@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public GameObject loadoutMenu;
     public GameObject settingsMenu;
     public GameObject profileMenu;
+    public GameObject beforeLevelMenu;
 
     private List<GameObject> menus = new List<GameObject>();
     private GameObject currentOpenMenu;
@@ -40,6 +41,10 @@ public class UIManager : MonoBehaviour
         {
             menus.Add(profileMenu);
         }
+        if (beforeLevelMenu)
+        {
+            menus.Add(beforeLevelMenu);
+        }
 
     }
     public void MenuButtonClicked(string button)
@@ -66,10 +71,24 @@ public class UIManager : MonoBehaviour
                 profileMenu.SetActive(true);
                 currentOpenMenu = profileMenu;
                 break;
+          
+              
+                break;
             default:
                 Debug.LogError("Button input string not recognized");
                 break;
         }
+
+        CloseAllNotOpenMenus();
+    }
+
+    public void LevelButtonClicked(int level)
+    {
+        beforeLevelMenu.SetActive(true);
+        currentOpenMenu = beforeLevelMenu;
+
+        BeforeLevelMenu lvlMenu = currentOpenMenu.GetComponent<BeforeLevelMenu>();
+        lvlMenu.OpenMenu((int)level);
 
         CloseAllNotOpenMenus();
     }

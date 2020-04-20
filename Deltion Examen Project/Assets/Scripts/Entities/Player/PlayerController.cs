@@ -22,8 +22,8 @@ public class PlayerController : MonoBehaviour
     public GameObject handParent;
     public Weapon currentWeapon;
 
-    private Weapon currentPrimary;
-    private Weapon currentSecondary;
+    public Weapon currentPrimary;
+    public Weapon currentSecondary;
 
     //Assigning the Player scripts to the controller(There is no reason for the PlayerController to be anywhere else than on the Player so no need for a Gameobject reference)
     private void Awake()
@@ -46,12 +46,16 @@ public class PlayerController : MonoBehaviour
 
     public void InitializeLoadout()
     {
-        loadout.GenerateLoadout(LoudoutManager.instance.playerLoadouts[playerNumber]);
-        currentPrimary = loadout.primary;
-        currentSecondary = loadout.secondary;
+        if (!inTutorial)
+        {
+            loadout.GenerateLoadout(LoudoutManager.instance.playerLoadouts[playerNumber]);
+            currentPrimary = loadout.primary;
+            currentSecondary = loadout.secondary;
 
-        abilities = loadout.abilities;
-        ultimateAbility = loadout.ultimateAbility;
+            abilities = loadout.abilities;
+            ultimateAbility = loadout.ultimateAbility;
+        }
+       
     }
 
     public void DisablePlayer()
@@ -127,7 +131,10 @@ public class PlayerController : MonoBehaviour
 
     private void Initialize()
     {
-        InitializeLoadout();
+        if (!inTutorial)
+        {
+            InitializeLoadout();
+        }
 
         foreach (Ability ability in abilities)
         {
@@ -147,18 +154,24 @@ public class PlayerController : MonoBehaviour
                 abilities.Add(a);
         }
 
-        GameObject newPrimary = Instantiate(currentPrimary.gameObject, Vector3.zero, currentPrimary.gameObject.transform.rotation, handParent.transform);
-        newPrimary.transform.localPosition = newPrimary.GetComponent<Weapon>().handPosition;
-        newPrimary.transform.localEulerAngles = newPrimary.GetComponent<Weapon>().handRotation;
-        newPrimary.GetComponent<Weapon>().myPlayer = player;
-        currentWeapon = newPrimary.GetComponent<Weapon>();
-        currentPrimary = newPrimary.GetComponent<Weapon>();
+        if (!inTutorial)
+        {
+            GameObject newPrimary = Instantiate(currentPrimary.gameObject, Vector3.zero, currentPrimary.gameObject.transform.rotation, handParent.transform);
+            newPrimary.transform.localPosition = newPrimary.GetComponent<Weapon>().handPosition;
+            newPrimary.transform.localEulerAngles = newPrimary.GetComponent<Weapon>().handRotation;
+            newPrimary.GetComponent<Weapon>().myPlayer = player;
+            currentWeapon = newPrimary.GetComponent<Weapon>();
+            currentPrimary = newPrimary.GetComponent<Weapon>();
 
-        GameObject newSecondary = Instantiate(currentSecondary.gameObject, Vector3.zero, currentSecondary.transform.rotation, handParent.transform);
-        newSecondary.transform.localPosition = newSecondary.GetComponent<Weapon>().handPosition;
-        newSecondary.transform.localEulerAngles = newSecondary.GetComponent<Weapon>().handRotation;
-        newSecondary.GetComponent<Weapon>().myPlayer = player;
-        currentSecondary = newSecondary.GetComponent<Weapon>();
+            GameObject newSecondary = Instantiate(currentSecondary.gameObject, Vector3.zero, currentSecondary.transform.rotation, handParent.transform);
+            newSecondary.transform.localPosition = newSecondary.GetComponent<Weapon>().handPosition;
+            newSecondary.transform.localEulerAngles = newSecondary.GetComponent<Weapon>().handRotation;
+            newSecondary.GetComponent<Weapon>().myPlayer = player;
+            currentSecondary = newSecondary.GetComponent<Weapon>();
+
+            newSecondary.SetActive(false);
+        }
+     
 
         playerInitialized = true;
     }

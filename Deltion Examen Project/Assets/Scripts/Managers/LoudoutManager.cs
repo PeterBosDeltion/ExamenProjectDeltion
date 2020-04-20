@@ -14,6 +14,8 @@ public class LoudoutManager : MonoBehaviour
 
     public GameObject mainCanvas;
     public GameObject loadoutSelectableWindow;
+
+    private bool generatedDefaults;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -43,7 +45,13 @@ public class LoudoutManager : MonoBehaviour
                 playerLoadouts.Add(standardTemplate);
         }
 
-        //SetDefaultLoadout(0);
+        if (!generatedDefaults)
+        {
+            SetDefaultLoadout(0);
+            SetDefaultLoadout(1);
+            SetDefaultLoadout(2);
+            SetDefaultLoadout(3);
+        }
     }
 
     private void SetDefaultLoadout(int playerID)

@@ -82,6 +82,9 @@ public class PlayerUI : MonoBehaviour
         abilityThreeImg.sprite = myPlayer.abilities[2].uiIcon;
         abilityFourImg.sprite = myPlayer.abilities[3].uiIcon;
         ultIcon.sprite = myPlayer.ultimateAbility.uiIcon;
+
+        weaponBackImage.sprite = myPlayer.currentWeapon.myWeapon.uiIcon;
+        weaponImage.sprite = myPlayer.currentWeapon.myWeapon.uiIcon;
     }
 
     public void AbilityUsed(int f)

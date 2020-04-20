@@ -91,6 +91,7 @@
     <Compile Include="Assets\Scripts\AudioClipHolder.cs" />
     <Compile Include="Assets\Scripts\AudioScripts\FadeSoundIn.cs" />
     <Compile Include="Assets\Scripts\AudioScripts\MainThemeController.cs" />
+    <Compile Include="Assets\Scripts\BeforeLevelMenu.cs" />
     <Compile Include="Assets\Scripts\CameraBillboard.cs" />
     <Compile Include="Assets\Scripts\Entities\Enemies\Enemy.cs" />
     <Compile Include="Assets\Scripts\Entities\Enemies\EnemyAI.cs" />
