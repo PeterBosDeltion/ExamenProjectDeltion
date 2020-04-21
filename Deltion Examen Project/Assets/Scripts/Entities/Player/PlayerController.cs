@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private Movement movement;
     private TriggerAbility triggerAbility;
     private Animator playerAnimator;
-    public AudioSource mySource;
+    public AudioSource walkingSource;
     public bool inTutorial;
     public bool tutorialAbilityInit;
 
@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("Not all player scripts have been asigned to the targeted object");
         }
 
-        mySource = GetComponent<AudioSource>();
+        //mySource = GetComponent<AudioSource>();
     }
 
     public void InitializeLoadout()
@@ -123,12 +123,12 @@ public class PlayerController : MonoBehaviour
     {
         if(InputManager.Instance.isMoving)
         {
-            if(!mySource.isPlaying)
-            mySource.Play();
+            if(!walkingSource.isPlaying)
+                walkingSource.Play();
         }
-        else if(mySource.isPlaying)
+        else if(walkingSource.isPlaying)
         {
-            mySource.Stop();
+            walkingSource.Stop();
         }
     }
 

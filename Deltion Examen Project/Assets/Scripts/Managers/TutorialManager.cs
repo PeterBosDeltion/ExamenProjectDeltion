@@ -331,4 +331,9 @@ public class TutorialManager : MonoBehaviour
         timing = false;
         NextStep();
     }
+
+    public void ReturnToMainMenu()
+    {
+        GameManager.instance.ChangeScene(0);
+    }
 }

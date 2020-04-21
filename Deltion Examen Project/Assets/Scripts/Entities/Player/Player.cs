@@ -28,7 +28,7 @@ public class Player : Entity
 
         EntityManager.instance.AddPlayerOrAbility(this);
 
-        mySource = GetComponent<AudioSource>();
+        //mySource = GetComponent<AudioSource>();
         uxText = GetComponentInChildren<TextMeshPro>();
     }
 

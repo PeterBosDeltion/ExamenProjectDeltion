@@ -19,6 +19,8 @@ public class LoudoutSelectableButton : MonoBehaviour
     private LoudoutMainMenuButton myButton;
 
     private PlayerLoadoutMenu myMenu;
+    public Color disabledColor;
+    public Color normalIconColor;
 
     public void WindowInitialize(Weapon w = null, Ability a = null, bool isPrimary = false, int? abilityIndex = null, GameObject window = null, LoudoutMainMenuButton button = null)
     {
@@ -110,6 +112,10 @@ public class LoudoutSelectableButton : MonoBehaviour
 
             myAbility = a;
         }
+
+        icon.color = normalIconColor;
+        nameText.enabled = true;
+        GetComponent<Button>().interactable = true;
     }
 
     public void Clicked()
@@ -192,5 +198,12 @@ public class LoudoutSelectableButton : MonoBehaviour
             }
         }
        
+    }
+
+    public void DisabledButton()
+    {
+        GetComponent<Button>().interactable = false;
+        icon.color = disabledColor;
+        nameText.enabled = false;
     }
 }

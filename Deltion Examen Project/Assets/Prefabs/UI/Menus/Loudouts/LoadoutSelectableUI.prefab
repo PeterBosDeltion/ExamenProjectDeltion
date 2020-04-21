@@ -102,7 +102,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -144,9 +144,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26909b3a1000c764c9e473613260147e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myPlayerNumber: 0
   icon: {fileID: 235709472185065117}
   nameText: {fileID: 4228396676142477331}
   myWindow: {fileID: 0}
+  disabledColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 0.5019608}
+  normalIconColor: {r: 0.68235296, g: 0.8745099, b: 0.97647065, a: 1}
 --- !u!1 &6322004616625925248
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,8 +215,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Assault rifle
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9dfe0f43f94c5b94294a6ac7b506955a, type: 2}
+  m_sharedMaterial: {fileID: -7705713493407256142, guid: 9dfe0f43f94c5b94294a6ac7b506955a,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -238,8 +242,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 52
+  m_fontSizeBase: 52
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
