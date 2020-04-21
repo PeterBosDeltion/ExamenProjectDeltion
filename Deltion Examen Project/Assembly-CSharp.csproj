@@ -324,6 +324,8 @@
     <Compile Include="Assets\Scripts\Entities\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Entities\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Entities\Player\TriggerAbility.cs" />
+    <Compile Include="Assets\Scripts\Interactables\Interactable.cs" />
+    <Compile Include="Assets\Scripts\Interactables\StationaryHealingStation.cs" />
     <Compile Include="Assets\Scripts\LoadoutSystem\Loadout.cs" />
     <Compile Include="Assets\Scripts\LoadoutSystem\LoadoutTemplate.cs" />
     <Compile Include="Assets\Scripts\LoadoutSystem\LoudoutMainMenuButton.cs" />
@@ -408,6 +410,7 @@
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Terrain\BuiltinRP_Lambert_VertexColor.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\AlbedoPainter.shader" />
     <None Include="Assets\EffectExamples\Misc Effects\Shaders\Respawn.shader" />
+    <None Include="Assets\Art\Materials\UiAlwaysOverlayShader\OverlayShader.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\NoiseMapGenerator.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\TextureStamperMask.shader" />

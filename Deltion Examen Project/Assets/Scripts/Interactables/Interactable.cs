@@ -1,0 +1,81 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+public abstract class Interactable : MonoBehaviour
+{
+    public bool canInteract = true;
+    public float holdDuration;
+    public Image holdCircle;
+    public TextMeshProUGUI interactText;
+    protected List<Player> nearbyPlayers = new List<Player>();
+
+    protected bool interacted = false;
+
+    private void Awake()
+    {
+        InputManager.interactEvent += Interact;
+        holdCircle.fillAmount = 0;
+        if(holdDuration <= 0)
+        {
+            interactText.text = "Press " + "\"" + "E" + "\"";
+        }
+        else
+        {
+            interactText.text = "Hold " + "\"" + "E" + "\"";
+        }
+
+        interactText.gameObject.SetActive(false);
+    }
+    public void OnTriggerStay(Collider other)
+    {
+        if (canInteract)
+        {
+            if (other.GetComponent<Player>())
+            {
+                interactText.gameObject.SetActive(true);
+                if (InputManager.Instance.GetTimeInteractHeld() > 0)
+                {
+                    interactText.gameObject.SetActive(false);
+                }
+                holdCircle.fillAmount = InputManager.Instance.GetTimeInteractHeld() / holdDuration;
+
+                if (InputManager.Instance.GetTimeInteractHeld() >= holdDuration && !interacted)
+                    Interact();
+            }
+        }
+      
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<Player>())
+        {
+            if (!nearbyPlayers.Contains(other.GetComponent<Player>()))
+            {
+                nearbyPlayers.Add(other.GetComponent<Player>());
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<Player>())
+        {
+            if (nearbyPlayers.Contains(other.GetComponent<Player>()))
+            {
+                nearbyPlayers.Remove(other.GetComponent<Player>());
+            }
+        }
+
+        if (nearbyPlayers.Count <= 0)
+        {
+            interacted = false;
+            interactText.gameObject.SetActive(false);
+        }
+    }
+
+
+    protected abstract void Interact();
+}

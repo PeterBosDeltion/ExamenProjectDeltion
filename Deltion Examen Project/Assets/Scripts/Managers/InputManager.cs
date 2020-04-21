@@ -35,6 +35,8 @@ public class InputManager : MonoBehaviour
     private RaycastHit hit;
     public LayerMask floor;
 
+    private float timeHoldingInteract = 0;
+
     //Asigning empty functions to the delegates to avoid Errors
     private void Awake()
     {
@@ -85,8 +87,12 @@ public class InputManager : MonoBehaviour
             RightMouse();
         if (Input.GetButtonDown("Reload"))
             Reload();
-        if (Input.GetButtonDown("Interact"))
-            Interact();
+        //if (Input.GetButtonDown("Interact"))
+        //    Interact();
+        if (Input.GetButton("Interact"))
+            HoldInteract();
+        if (Input.GetButtonUp("Interact"))
+            ReleaseInteract();
         if (Input.GetButtonDown("Ability 01"))
             AbilityHotkeys(0);
         if (Input.GetButtonDown("Ability 02"))
@@ -148,6 +154,21 @@ public class InputManager : MonoBehaviour
     {
         Debug.Log("Interact");
         interactEvent.Invoke();
+    }
+
+    private void HoldInteract()
+    {
+        timeHoldingInteract += Time.deltaTime;
+    }
+
+    private void ReleaseInteract()
+    {
+        timeHoldingInteract = 0;
+    }
+
+    public float GetTimeInteractHeld()
+    {
+        return timeHoldingInteract;
     }
     public void Escape()
     {
