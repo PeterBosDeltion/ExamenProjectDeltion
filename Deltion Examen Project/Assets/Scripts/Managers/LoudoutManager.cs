@@ -1,15 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoudoutManager : MonoBehaviour
 {
-    public List<Loadout> savedLoadouts = new List<Loadout>();
-    public Loadout currentSelectedLoadout;
+    public List<LoadoutTemplate> savedLoadouts = new List<LoadoutTemplate>();
+    public List<LoadoutTemplate> playerLoadouts = new List<LoadoutTemplate>();
+  
+
+    private LoadoutTemplate selectedSavedLoadout;
     public static LoudoutManager instance;
 
     public GameObject mainCanvas;
     public GameObject loadoutSelectableWindow;
+
+    private bool generatedDefaults;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -26,37 +32,40 @@ public class LoudoutManager : MonoBehaviour
 
     private void Start()
     {
-        //for (int i = 0; i < 3; i++)
-        //{
-        //    GameObject holder = Instantiate(new GameObject());
-        //    holder.name = "LoadoutHolder";
-        //    holder.AddComponent<Loadout>();
-        //    DontDestroyOnLoad(holder);
-        //    savedLoadouts.Add(holder.GetComponent<Loadout>());
-        //}
-        //SelectLoadout(0);
+        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
+            Initialize();
     }
-    public void SetLoadoutPrimary(Weapon newPrimary)
+  
+    private void Initialize()
     {
-        if(currentSelectedLoadout)
-        currentSelectedLoadout.primary = newPrimary;
-    }
-    public void SetLoadoutSecondary(Weapon newSecondary)
-    {
-        if(currentSelectedLoadout)
-        currentSelectedLoadout.secondary = newSecondary;
+        LoadoutTemplate standardTemplate = new LoadoutTemplate();
+        for (int i = 0; i < 4; i++)
+        {
+            if(playerLoadouts.Count < 4)
+                playerLoadouts.Add(standardTemplate);
+        }
+
+        if (!generatedDefaults)
+        {
+            SetDefaultLoadout(0);
+            SetDefaultLoadout(1);
+            SetDefaultLoadout(2);
+            SetDefaultLoadout(3);
+        }
     }
 
-    public void SetLoadoutAbility(Ability newAbility, int abilityIndex)
+    private void SetDefaultLoadout(int playerID)
     {
-        if(currentSelectedLoadout)
-        currentSelectedLoadout.abilities[abilityIndex] = newAbility;
-    }
+        SetPlayerLoadoutPrimary(playerID, IDManager.instance.GetPrimaryWeaponByID(0));
+        SetPlayerLoadoutSecondary(playerID, IDManager.instance.GetSecondaryWeaponByID(0));
 
-    public void SetLoadoutUltimate(Ability newUltimate)
-    {
-        if(currentSelectedLoadout)
-        currentSelectedLoadout.ultimateAbility = newUltimate;
+        SetPlayerLoadoutAbility(playerID, 0, IDManager.instance.GetAbilityByID(0));
+        SetPlayerLoadoutAbility(playerID, 1, IDManager.instance.GetAbilityByID(1));
+        SetPlayerLoadoutAbility(playerID, 2, IDManager.instance.GetAbilityByID(2));
+        SetPlayerLoadoutAbility(playerID, 3, IDManager.instance.GetAbilityByID(3));
+
+        SetPlayerLoadoutUltimate(playerID, IDManager.instance.GetUltimateAbilityByID(0));
+
     }
 
     public void OpenLoadoutSelectableWindow(string type, int abilityIndex, LoudoutMainMenuButton button)
@@ -67,8 +76,74 @@ public class LoudoutManager : MonoBehaviour
 
     public void SelectLoadout(int index)
     {
-        if(currentSelectedLoadout)
-        currentSelectedLoadout = savedLoadouts[index];
+            selectedSavedLoadout = savedLoadouts[index];
     }
 
+    public void SetPlayerLoadoutPrimary(int playerIndex, Weapon primary)
+    {
+        playerLoadouts[playerIndex].primaryID = IDManager.instance.GetIDByPrimaryWeapon(primary);
+    }
+
+    public void SetPlayerLoadoutSecondary(int playerIndex, Weapon secondary)
+    {
+        playerLoadouts[playerIndex].secondaryID = IDManager.instance.GetIDBySecondaryWeapon(secondary);
+    }
+
+    //Player loadouts
+    public void SetPlayerLoadoutAbility(int playerIndex, int abilityIndex, Ability ability)
+    {
+        switch (abilityIndex)
+        {
+            case 0:
+                playerLoadouts[playerIndex].abilityOneID = IDManager.instance.GetIDByAbility(ability);
+                break;
+            case 1:
+                playerLoadouts[playerIndex].abilityTwoID = IDManager.instance.GetIDByAbility(ability);
+                break;
+            case 2:
+                playerLoadouts[playerIndex].abilityThreeID = IDManager.instance.GetIDByAbility(ability);
+                break;
+            case 3:
+                playerLoadouts[playerIndex].abilityFourID = IDManager.instance.GetIDByAbility(ability);
+                break;
+        }
+    }
+
+    public void SetPlayerLoadoutUltimate(int playerIndex, Ability ultimate)
+    {
+        playerLoadouts[playerIndex].ultimateID = IDManager.instance.GetIDByUltimateAbility(ultimate);
+    }
+
+    //Saved loadouts
+    public void SetSavedLoadoutPrimary(Weapon primary)
+    {
+        selectedSavedLoadout.primaryID = IDManager.instance.GetIDByPrimaryWeapon(primary);
+    }
+
+    public void SetSavedLoadoutSecondary( Weapon secondary)
+    {
+        selectedSavedLoadout.secondaryID = IDManager.instance.GetIDBySecondaryWeapon(secondary);
+    }
+    public void SetSavedLoadoutAbility(int abilityIndex, Ability ability)
+    {
+        switch (abilityIndex)
+        {
+            case 0:
+                selectedSavedLoadout.abilityOneID = IDManager.instance.GetIDByAbility(ability);
+                break;
+            case 1:
+                selectedSavedLoadout.abilityTwoID = IDManager.instance.GetIDByAbility(ability);
+                break;
+            case 2:
+                selectedSavedLoadout.abilityThreeID = IDManager.instance.GetIDByAbility(ability);
+                break;
+            case 3:
+                selectedSavedLoadout.abilityFourID = IDManager.instance.GetIDByAbility(ability);
+                break;
+        }
+    }
+    public void SetSavedLoadoutUltimate(Ability ultimate)
+    {
+        selectedSavedLoadout.ultimateID = IDManager.instance.GetIDByUltimateAbility(ultimate);
+    }
 }

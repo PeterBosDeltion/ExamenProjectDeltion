@@ -25,8 +25,11 @@ public class Enemy : Entity
 
     protected override void DamageEvent(Entity Attacker)
     {
-        myAI.SetTarget(Attacker);
-        myAI.SetAndPlayAudioClipOnce(myAI.hitClip,0.1f);
+        if (myAI)
+        {
+            myAI.SetTarget(Attacker);
+            myAI.SetAndPlayAudioClipOnce(myAI.hitClip,0.1f);
+        }
         if (Attacker)
         {
             if (Attacker.GetComponent<PlayerController>())
@@ -39,7 +42,9 @@ public class Enemy : Entity
 
     protected override void Death()
     {
-        myAI.SetState(EnemyAI.AIState.Dead);
+        if(myAI)
+            myAI.SetState(EnemyAI.AIState.Dead);
+
         GetComponent<Collider>().enabled = false;
         StartCoroutine(DestroyEnemy());
     }

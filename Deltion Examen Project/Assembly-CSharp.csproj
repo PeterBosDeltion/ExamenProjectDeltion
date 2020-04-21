@@ -63,6 +63,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+=======
+    <Compile Include="Assets\AdultLink\ShieldShader\Examples\Scripts\CameraController.cs" />
+    <Compile Include="Assets\AdultLink\ShieldShader\Examples\Scripts\CameraPositions.cs" />
+    <Compile Include="Assets\AdultLink\ShieldShader\Examples\Scripts\Index.cs" />
+    <Compile Include="Assets\AdultLink\ShieldShader\Examples\Scripts\RotateAround.cs" />
+    <Compile Include="Assets\AdultLink\ShieldShader\Examples\Scripts\TimeController.cs" />
+    <Compile Include="Assets\AdultLink\ShieldShader\Examples\Scripts\ToggleDistortion.cs" />
+    <Compile Include="Assets\AdultLink\ShieldShader\Examples\Scripts\ToggleNoise.cs" />
+    <Compile Include="Assets\AdultLink\ShieldShader\Examples\Scripts\animationController.cs" />
+    <Compile Include="Assets\Art\3D Assets\HologramShader\Shader\Demo\Scripts\AutoRotate.cs" />
+>>>>>>> feature/abilitiesnew
     <Compile Include="Assets\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
     <Compile Include="Assets\Griffin - PolarisV2\Scripts\BackupTool\GBackup.cs" />
     <Compile Include="Assets\Griffin - PolarisV2\Scripts\BackupTool\GBackupFile.cs" />
@@ -311,6 +323,7 @@
     <Compile Include="Assets\Scripts\AudioClipHolder.cs" />
     <Compile Include="Assets\Scripts\AudioScripts\FadeSoundIn.cs" />
     <Compile Include="Assets\Scripts\AudioScripts\MainThemeController.cs" />
+    <Compile Include="Assets\Scripts\BeforeLevelMenu.cs" />
     <Compile Include="Assets\Scripts\CameraBillboard.cs" />
     <Compile Include="Assets\Scripts\Entities\Enemies\DestroyObjective.cs" />
     <Compile Include="Assets\Scripts\Entities\Enemies\Enemy.cs" />
@@ -324,21 +337,27 @@
     <Compile Include="Assets\Scripts\Entities\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Entities\Player\TriggerAbility.cs" />
     <Compile Include="Assets\Scripts\LoadoutSystem\Loadout.cs" />
+    <Compile Include="Assets\Scripts\LoadoutSystem\LoadoutTemplate.cs" />
     <Compile Include="Assets\Scripts\LoadoutSystem\LoudoutMainMenuButton.cs" />
     <Compile Include="Assets\Scripts\LoadoutSystem\LoudoutSelectableButton.cs" />
     <Compile Include="Assets\Scripts\LoadoutSystem\LoudoutSelectableWindow.cs" />
+    <Compile Include="Assets\Scripts\LoadoutSystem\PlayerLoadoutMenu.cs" />
     <Compile Include="Assets\Scripts\MainCanvas.cs" />
     <Compile Include="Assets\Scripts\Managers\AudioClipManager.cs" />
     <Compile Include="Assets\Scripts\Managers\EntityManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\IDManager.cs" />
     <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
     <Compile Include="Assets\Scripts\Managers\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Managers\LoudoutManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\TutorialManager.cs" />
     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
     <Compile Include="Assets\Scripts\Misc\KillObjectAfterTime.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerUI.cs" />
     <Compile Include="Assets\Scripts\ProfileUnlockUI.cs" />
+    <Compile Include="Assets\Scripts\TutorialInteractable.cs" />
+    <Compile Include="Assets\Scripts\TutorialMatrix.cs" />
     <Compile Include="Assets\Scripts\UnlockBlurbWindow.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\Bullet.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\Weapon.cs" />
@@ -373,12 +392,16 @@
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\InteractiveGrassVectorField.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\ChannelToGrayscale.shader" />
     <None Include="Assets\EffectExamples\Misc Effects\Prefabs\Readme_Dissolve_Respawn_.txt" />
+<<<<<<< HEAD
     <None Include="Assets\Griffin - PolarisV2\changelog.txt" />
     <None Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Shaders\LPWNoise.cginc" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Demo\Water.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\SolidColor.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\WarpFilter.shader" />
     <None Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Shaders\LPWStandard.cginc" />
+=======
+    <None Include="Assets\Art\3D Assets\HologramShader\Shader\Demo\Shaders\Floor.shader" />
+>>>>>>> feature/abilitiesnew
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\SubDivPainter.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Foliage\CGIncludes\GriffinBillboardCommon.cginc" />
@@ -413,8 +436,12 @@
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\DistributionMapGenerator.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Foliage\BuiltinRP_GrassInteractive.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+<<<<<<< HEAD
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\UnlitChannelMask.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\CGIncludes\GriffinSplatCommon.cginc" />
+=======
+    <None Include="Assets\Art\3D Assets\HologramShader\Shader\Hologram.shader" />
+>>>>>>> feature/abilitiesnew
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Terrain\BuiltinRP_PBR_GradientLookup.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\HeightMapFromMesh.shader" />

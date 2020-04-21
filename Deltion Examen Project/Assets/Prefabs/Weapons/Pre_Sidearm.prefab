@@ -56,6 +56,9 @@ MonoBehaviour:
   reload: {fileID: 8300000, guid: 1211495b486c6374f8ba736ecea163f6, type: 3}
   amountAccurateBullets: 0
   myPlayer: {fileID: 0}
+  tutorialInit: 0
+  handPosition: {x: 0.046, y: -0.255, z: -0.048}
+  handRotation: {x: 0, y: 0, z: 0}
 --- !u!82 &77380491323076595
 AudioSource:
   m_ObjectHideFlags: 0
@@ -217,37 +220,37 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 7baf516494fba7640b7466e6911f9b15,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.107
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7baf516494fba7640b7466e6911f9b15,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.481
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7baf516494fba7640b7466e6911f9b15,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.101
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7baf516494fba7640b7466e6911f9b15,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.13570507
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7baf516494fba7640b7466e6911f9b15,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.70710677
+      value: -0.029270213
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7baf516494fba7640b7466e6911f9b15,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.7064529
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7baf516494fba7640b7466e6911f9b15,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.70710677
+      value: 0.6940112
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7baf516494fba7640b7466e6911f9b15,
         type: 3}
@@ -257,17 +260,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 7baf516494fba7640b7466e6911f9b15,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 13.280001
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7baf516494fba7640b7466e6911f9b15,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: 8.932
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7baf516494fba7640b7466e6911f9b15,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 92.060005
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7baf516494fba7640b7466e6911f9b15,
         type: 3}

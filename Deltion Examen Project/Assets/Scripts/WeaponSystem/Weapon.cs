@@ -21,14 +21,33 @@ public class Weapon : MonoBehaviour
     public int amountAccurateBullets;
 
     public Player myPlayer;
+    public bool tutorialInit;
 
+    public Vector3 handPosition;
+    public Vector3 handRotation;
+
+    private bool waiting;
     private void Start()
     {
-        Initialize();
+        tutorialInit = false;
+        if (!waiting)
+            StartCoroutine(WaitForPlayerInit());
     }
 
-    private void Initialize()
+    private IEnumerator WaitForPlayerInit()
     {
+        waiting = true;
+        yield return new WaitUntil(() => myPlayer.GetComponent<PlayerController>().playerInitialized);
+        Initialize();
+        waiting = false;
+    }
+
+    public void Initialize()
+    {
+        if (myPlayer.GetComponent<PlayerController>().inTutorial && !tutorialInit)
+        {
+            return;
+        }
         myPlayer = GetComponentInParent<Player>();
         totalAmmo = myWeapon.totalAmmo;
         magazineAmmo = totalAmmo;

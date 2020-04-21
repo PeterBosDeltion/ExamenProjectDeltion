@@ -43,8 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3b4a9d69c1592f4db11c37646a7589c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  savedLoadouts: []
-  currentSelectedLoadout: {fileID: 0}
   mainCanvas: {fileID: 0}
   loadoutSelectableWindow: {fileID: 7245282325412029414, guid: fa8a6b15bd623ca48a94951ab665f657,
     type: 3}
@@ -154,6 +152,64 @@ MonoBehaviour:
   musicMainTheme: {fileID: 0}
   musicMenuTheme: {fileID: 8300000, guid: 81809ce4c8c54e44d962a44216f2f3b3, type: 3}
   musicCombatTheme: {fileID: 8300000, guid: 8bbfb808ea422684ca83c1f7d68ed739, type: 3}
+--- !u!1 &7919033653541552905
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1153543574470174779}
+  - component: {fileID: 4545669855822225325}
+  m_Layer: 0
+  m_Name: IDManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1153543574470174779
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7919033653541552905}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8531780637188613729}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4545669855822225325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7919033653541552905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0827954075245347aa89fee7a1e1bc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allPrimaryWeapons:
+  - {fileID: 8027315701895015475, guid: 838ff704af4d6074fb3bb4995b45b964, type: 3}
+  - {fileID: 3892689550765515434, guid: e5bd1637ff9737d40b50461696f3d017, type: 3}
+  - {fileID: 163632538, guid: 2a593c2f26a9e234e9ff9f77a1d73482, type: 3}
+  allSecondaryWeapons:
+  - {fileID: 77380491323076597, guid: b43595dbb7045204b9829d270b97d2f4, type: 3}
+  allAbilities:
+  - {fileID: 7808817261947519962, guid: 4d0ff1396a0deec4ab70f14d9549cc0a, type: 3}
+  - {fileID: 771986780492327734, guid: 0589af15f3461a74993bf11ef55e89be, type: 3}
+  - {fileID: 4784055780572057573, guid: b4d578f097474a848b2f7e2142911386, type: 3}
+  - {fileID: 8016432300118320977, guid: 9b09229d0b6ba9f45949c5e104b800a9, type: 3}
+  - {fileID: 775777898474889986, guid: de075ae0ff15d2c428b06d480045b3df, type: 3}
+  - {fileID: 6810601224955051797, guid: f5e395721fc52d240a0954194530e50e, type: 3}
+  allUltimateAbilities:
+  - {fileID: 6665942228256468776, guid: a9a382d942de5ea4eb1f9a9179fef135, type: 3}
 --- !u!1 &8531780636136589659
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +470,7 @@ Transform:
   - {fileID: 8531780636136589658}
   - {fileID: 844191687}
   - {fileID: 4974781472882175532}
+  - {fileID: 1153543574470174779}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

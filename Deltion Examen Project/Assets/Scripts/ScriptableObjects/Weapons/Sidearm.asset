@@ -23,11 +23,11 @@ MonoBehaviour:
   minFallOff: 10
   maxFallOff: 15
   projectileVelocity: 750
-  damage: 10
+  damage: 50
   firerate: 425
   minSpreadAngle: 0
   maxSpreadAngle: 0
-  totalAmmo: 25
+  totalAmmo: 15
   ammoDrain: 1
   uiIcon: {fileID: 21300000, guid: ed6f4c15ab0bf674983f446c8fa19205, type: 3}
   myFireType: 1

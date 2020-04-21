@@ -6,17 +6,24 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
+    public int playerNumber = 0; //0 == player one, 1 == 2 etc.
+    public bool playerInitialized;
     private Player player;
     private Movement movement;
     private TriggerAbility triggerAbility;
     private Animator playerAnimator;
     public AudioSource mySource;
+    public bool inTutorial;
+    public bool tutorialAbilityInit;
 
     public List<Ability> abilities = new List<Ability>();
     public Ability ultimateAbility;
     public Loadout loadout;
     public GameObject handParent;
-    public Weapon currentWeapon; //[PH]
+    public Weapon currentWeapon;
+
+    public Weapon currentPrimary;
+    public Weapon currentSecondary;
 
     //Assigning the Player scripts to the controller(There is no reason for the PlayerController to be anywhere else than on the Player so no need for a Gameobject reference)
     private void Awake()
@@ -37,23 +44,19 @@ public class PlayerController : MonoBehaviour
         mySource = GetComponent<AudioSource>();
     }
 
-    //public void InitializeLoadout()
-    //{
-    //    abilities = loadout.abilities;
-    //    ultimateAbility = loadout.ultimateAbility;
-    //    GameObject nprimary = Instantiate(loadout.primary.gameObject, handParent.transform);
-    //    loadout.primary = nprimary.GetComponent<Weapon>();
-    //    currentWeapon = nprimary.GetComponent<Weapon>();
-    //    nprimary.transform.localPosition = new Vector3(-0.06500001F, 0.07259985F, 0.03050006F);
-    //    nprimary.transform.localRotation = new Quaternion(-77.98F, 0, 98F, 0);
-    //    GameObject nsecondary = Instantiate(loadout.secondary.gameObject, handParent.transform);
-    //    loadout.secondary = nsecondary.GetComponent<Weapon>();
-    //    nsecondary.transform.localPosition = new Vector3(-0.06500001F, 0.07259985F, 0.03050006F);
-    //    nsecondary.transform.localRotation = new Quaternion(-77.98F, 0, 98F, 0);
-    //    nsecondary.SetActive(false);
+    public void InitializeLoadout()
+    {
+        if (!inTutorial)
+        {
+            loadout.GenerateLoadout(LoudoutManager.instance.playerLoadouts[playerNumber]);
+            currentPrimary = loadout.primary;
+            currentSecondary = loadout.secondary;
 
-    //    Initialize();
-    //}
+            abilities = loadout.abilities;
+            ultimateAbility = loadout.ultimateAbility;
+        }
+       
+    }
 
     public void DisablePlayer()
     {
@@ -131,6 +134,11 @@ public class PlayerController : MonoBehaviour
 
     private void Initialize()
     {
+        if (!inTutorial)
+        {
+            InitializeLoadout();
+        }
+
         foreach (Ability ability in abilities)
         {
             Instantiate(ability, transform);
@@ -145,9 +153,30 @@ public class PlayerController : MonoBehaviour
         foreach (Ability a in abs)
         {
             a.myPlayer = player;
-            abilities.Add(a);
+            if(!a.ultimate)
+                abilities.Add(a);
         }
 
+        if (!inTutorial)
+        {
+            GameObject newPrimary = Instantiate(currentPrimary.gameObject, Vector3.zero, currentPrimary.gameObject.transform.rotation, handParent.transform);
+            newPrimary.transform.localPosition = newPrimary.GetComponent<Weapon>().handPosition;
+            newPrimary.transform.localEulerAngles = newPrimary.GetComponent<Weapon>().handRotation;
+            newPrimary.GetComponent<Weapon>().myPlayer = player;
+            currentWeapon = newPrimary.GetComponent<Weapon>();
+            currentPrimary = newPrimary.GetComponent<Weapon>();
+
+            GameObject newSecondary = Instantiate(currentSecondary.gameObject, Vector3.zero, currentSecondary.transform.rotation, handParent.transform);
+            newSecondary.transform.localPosition = newSecondary.GetComponent<Weapon>().handPosition;
+            newSecondary.transform.localEulerAngles = newSecondary.GetComponent<Weapon>().handRotation;
+            newSecondary.GetComponent<Weapon>().myPlayer = player;
+            currentSecondary = newSecondary.GetComponent<Weapon>();
+
+            newSecondary.SetActive(false);
+        }
+     
+
+        playerInitialized = true;
     }
 
     private void SwitchToLastWeapon()
@@ -159,7 +188,7 @@ public class PlayerController : MonoBehaviour
     {
         currentWeapon.gameObject.SetActive(false);
         currentWeapon.StopAllCoroutines();
-        currentWeapon = (currentWeapon == loadout.primary) ? currentWeapon = loadout.secondary : currentWeapon = loadout.primary;
+        currentWeapon = (currentWeapon == currentPrimary) ? currentWeapon = currentSecondary : currentWeapon = currentPrimary;
         currentWeapon.ResetValues();
         currentWeapon.gameObject.SetActive(true);
     }
@@ -213,7 +242,17 @@ public class PlayerController : MonoBehaviour
         else //Normal ability
         {
             if (!abilities[value].onCooldown)
-                abilities[value].UseAbility();
+            {
+                if (inTutorial) //Prevent usage in tutorial before explanation
+                {
+                    if(tutorialAbilityInit)
+                        abilities[value].UseAbility();
+                }
+                else //Normal gameplay
+                {
+                    abilities[value].UseAbility();
+                }
+            }
         }
     }
 
@@ -223,6 +262,9 @@ public class PlayerController : MonoBehaviour
         Quaternion diffrence = transform.rotation * Quaternion.Inverse(Camera.main.transform.rotation);
         Vector3 animatedAxis = diffrence * new Vector3(xAxis, 0, yAxis);
         ManageAnimations(false, -animatedAxis.x, animatedAxis.z);
+
+        if (inTutorial && TutorialManager.instance.currentStep == 1)
+            TutorialManager.playerMovedDelegate.Invoke();
     }
 
     public void Rotate(float xAxis, float zAxis)

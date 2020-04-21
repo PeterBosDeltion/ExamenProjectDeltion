@@ -63,6 +63,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+=======
+    <Compile Include="Assets\AdultLink\ShieldShader\Editor\HoloShieldEditor.cs" />
+    <Compile Include="Assets\Art\3D Assets\HologramShader\Editor\Foldout.cs" />
+    <Compile Include="Assets\Art\3D Assets\HologramShader\Editor\HologramShaderGUI.cs" />
+    <Compile Include="Assets\Art\3D Assets\HologramShader\Editor\Layout.cs" />
+>>>>>>> feature/abilitiesnew
     <Compile Include="Assets\Editor\ChangeObjectTool.cs" />
     <Compile Include="Assets\Editor\NamingTool.cs" />
     <Compile Include="Assets\Editor\SceneGUIGenericMenu.cs" />
