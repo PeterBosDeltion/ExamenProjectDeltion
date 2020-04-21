@@ -43,17 +43,18 @@ public class LevelManager : MonoBehaviour
     {
         player = GameObject.FindObjectOfType<Player>();
         SetdifficultyVariables(GameManager.instance.difficulty);
-
-        foreach(EntitySpawner spawner in GameObject.FindObjectsOfType<EntitySpawner>())
+        if(GameObject.FindObjectOfType<EntitySpawner>())
         {
-            if(!spawner.objectiveSpawner)
+            foreach(EntitySpawner spawner in GameObject.FindObjectsOfType<EntitySpawner>())
             {
-                allAvailableSpawners.Add(spawner);
-                spawner.timeBetweenSpawns = timeBetweenIndividualSpawns;
+                if(!spawner.objectiveSpawner)
+                {
+                    allAvailableSpawners.Add(spawner);
+                    spawner.timeBetweenSpawns = timeBetweenIndividualSpawns;
+                }
             }
+            StartCoroutine(SpawnTick(3));
         }
-
-        StartCoroutine(SpawnTick(3));
     }
 
     private void SetdifficultyVariables(int difficulty)
