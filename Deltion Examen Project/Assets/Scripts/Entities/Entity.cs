@@ -17,8 +17,12 @@ public class Entity : MonoBehaviour
 
     protected virtual void Awake()
     {
-        SetEntityValues();
         deathEvent += EmptyDeathEvent;
+    }
+
+    protected virtual void Start()
+    {
+        SetEntityValues();
     }
 
     protected virtual void OnDestroy()

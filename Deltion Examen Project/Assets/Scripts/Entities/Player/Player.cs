@@ -21,8 +21,10 @@ public class Player : Entity
         zeroTempHp += EmptyHpEvent;
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         EntityManager.instance.AddPlayerOrAbility(this);
 
         mySource = GetComponent<AudioSource>();

@@ -12,8 +12,10 @@ public class DestroyObjective : Entity
     private bool spawnTimer = false;
     public float spawnCooldown;
 
-    private void Awake()
+    protected virtual void Awake()
     {
+        base.Awake();
+
         spawners = GetComponentsInChildren<EntitySpawner>();
         amountOfSpawners = spawners.Length; 
         foreach(EntitySpawner spawner in spawners)
