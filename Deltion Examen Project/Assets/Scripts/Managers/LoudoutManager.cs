@@ -32,7 +32,7 @@ public class LoudoutManager : MonoBehaviour
 
     private void Start()
     {
-        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
+        //if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
             Initialize();
     }
   

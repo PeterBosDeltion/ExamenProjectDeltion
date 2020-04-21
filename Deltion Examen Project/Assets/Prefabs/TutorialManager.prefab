@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4101539545660232603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4101539545660232600}
+  - component: {fileID: 4101539545660232601}
+  m_Layer: 0
+  m_Name: TutorialManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4101539545660232600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4101539545660232603}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4101539545660232601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4101539545660232603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fded8439a9b27c4bb66f8927bca6abd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenSteps: 4
+  checkmark: {fileID: 0}
+  currentStep: 0
+  tutorialTexts:
+  - Welcome to space marine bootcamp! Press W, A, S and D to move around.
+  - Great! You can move the mouse to look around.
+  - Shoot your gun with left mouse button.
+  - This is where you can find important information about your current weapon, health,
+    ammo, abilities and ultimate ability. Try reloading your weapon by pressing "R".
+  - This image represents your current weapon and how much ammunition is in your
+    magazine. All guns have infinite ammunition but need to be reloaded when the
+    magazine is empty. Now try switching weapons using your Scroll Wheel or by pressing
+    "Q".
+  - This bar is your health. If it reaches 0, you will go down. Please walk into
+    the red damage matrix to demonstrate.
+  - As you can see, taking damage will deplete the bar. Now move into the green healing
+    matrix to recover your health.
+  - These icons represent your abilities. You can activate them by pressing 1, 2,
+    3 or 4. Try using your first ability (1).
+  - As you can see when you use an ability its icon gets greyed out and starts slowly
+    filling back up. This is because the ability is on cooldown. After the cooldown
+    is over it can be used again.
+  - This is your ultimate ability. It can be used after gaining enough charge from
+    shooting enemies. Charge and activate it by shooting the dummy enemy and pressing
+    "F" or "5".
+  - Ultimates are very powerful but have limited availability. Use them wisely! One
+    last thing, in some levels you may find objects you can interact with by walking
+    up to them and pressing "E". Try interacting with the orange pillar.
+  - Now you know all you will need, get out there and kill some bugs! Click the "Main
+    Menu" button on the bottom right of the screen to leave the tutorial.
+  tutorialText: {fileID: 0}
+  mainUIIndicator: {fileID: 0}
+  weaponIndicator: {fileID: 0}
+  healthIndicator: {fileID: 0}
+  abilitiesIndicator: {fileID: 0}
+  ultimateIndicator: {fileID: 0}
+  tutorialEnemy: {fileID: 0}
+  tutorialInteractable: {fileID: 0}
+  damageMatrix: {fileID: 0}
+  healingMatrix: {fileID: 0}
+  player: {fileID: 0}

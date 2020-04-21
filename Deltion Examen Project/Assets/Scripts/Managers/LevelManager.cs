@@ -18,6 +18,7 @@ public class LevelManager : MonoBehaviour
     public List<GameObject> enemyTypes = new List<GameObject>();
     private List<GameObject> currentWaveEntitys = new List<GameObject>();
     private int curentWave;
+    private int curentType;
     private int enemiesToAdd;
     public int minimumSpawnerSpread;
     public float timeBetweenIndividualSpawns;
@@ -77,15 +78,19 @@ public class LevelManager : MonoBehaviour
     {
         curentWave++;
 
-        List<GameObject> newEnemies;
+        int amount = enemiesToAdd * Mathf.FloorToInt(curentWave / (curentType + 1));
 
-        int type = curentWave / enemyTypes.Count;
-        int amount = enemiesToAdd * (curentWave / type);
+        Debug.Log(amount);
 
         for (int i = 0; i < amount; i++)
         {
-            currentWaveEntitys.Add(enemyTypes[type - 1]);
+            currentWaveEntitys.Add(enemyTypes[curentType]);
         }
+
+        if (curentType + 1 == enemyTypes.Count)
+            curentType = 0;
+        else
+            curentType++;
 
         SpawnWave();
     }
@@ -107,20 +112,22 @@ public class LevelManager : MonoBehaviour
         }
 
         //These values are used to randomly asign a entity from the wave to a spawner
-        int spawnsPerSpawner = currentWaveEntitys.Count / closestSpawners.Count;
-        List<GameObject> wave = currentWaveEntitys;
+        int spawnsPerSpawner = Mathf.CeilToInt((float)currentWaveEntitys.Count / closestSpawners.Count);
+        List<GameObject> wave = new List<GameObject>();
+        wave.AddRange(currentWaveEntitys);
 
         foreach(EntitySpawner spawner in closestSpawners)
         {
-            for(int i = 0; i < spawnsPerSpawner; i++)
+            if(wave.Count != 0)
             {
-                int randomEntity = Random.Range(0, wave.Count - 1);
-                spawner.AddToSpawnQue(wave[randomEntity]);
-                wave.Remove(wave[randomEntity]);
+                for(int i = 0; i < spawnsPerSpawner; i++)
+                {
+                    int randomEntity = Random.Range(0, wave.Count - 1);
+                    spawner.AddToSpawnQue(wave[randomEntity]);
+                    wave.Remove(wave[randomEntity]);
+                }
             }
         }
-
-        Debug.Log(wave.Count);
 
         StartCoroutine(SpawnTick(spawnTickTime));
     }
