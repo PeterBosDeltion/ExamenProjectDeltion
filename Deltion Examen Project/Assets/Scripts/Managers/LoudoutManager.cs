@@ -32,7 +32,7 @@ public class LoudoutManager : MonoBehaviour
 
     private void Start()
     {
-        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
+        //if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
             Initialize();
     }
   
@@ -56,7 +56,7 @@ public class LoudoutManager : MonoBehaviour
 
     private void SetDefaultLoadout(int playerID)
     {
-        SetPlayerLoadoutPrimary(playerID, IDManager.instance.GetPrimaryWeaponByID(0));
+        SetPlayerLoadoutPrimary(playerID, IDManager.instance.GetPrimaryWeaponByID(2));
         SetPlayerLoadoutSecondary(playerID, IDManager.instance.GetSecondaryWeaponByID(0));
 
         SetPlayerLoadoutAbility(playerID, 0, IDManager.instance.GetAbilityByID(0));
