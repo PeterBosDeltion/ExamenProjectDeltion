@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7499585487850239496}
   - component: {fileID: 6665942228256468776}
   m_Layer: 0
-  m_Name: Ult_Bombardment
+  m_Name: Ult_TutorialBombardment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,7 +54,7 @@ MonoBehaviour:
   cooldownTime: 0
   duration: 20
   currentUltCharge: 0
-  ultChargeIncrement: 0.5
+  ultChargeIncrement: 30
   deployableRadius: 0
   deployableGhost: {fileID: 0}
   canDeployMaterial: {fileID: 0}

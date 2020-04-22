@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class ProfileUnlockUI : MonoBehaviour
 {
@@ -12,8 +14,27 @@ public class ProfileUnlockUI : MonoBehaviour
 
     public GameObject blurbWindowPrefab;
 
+    public TextMeshProUGUI nameText;
+    public Image icon;
+
     public void OnEnable()
     {
+        Initialize();
+    }
+
+    public void Initialize()
+    {
+        if (weaponUnlock && !abilityUnlockPrefab)
+        {
+            nameText.text = weaponUnlock.name;
+            icon.sprite = weaponUnlock.uiIcon;
+        }
+        else if (abilityUnlockPrefab && !weaponUnlock)
+        {
+            nameText.text = abilityUnlockPrefab.GetComponent<Ability>().name;
+            icon.sprite = abilityUnlockPrefab.GetComponent<Ability>().uiIcon;
+        }
+
         if (unlocked)
         {
             lockImage.SetActive(false);

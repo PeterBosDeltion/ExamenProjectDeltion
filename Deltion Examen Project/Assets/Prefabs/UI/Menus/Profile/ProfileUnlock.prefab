@@ -371,6 +371,8 @@ MonoBehaviour:
   abilityUnlockPrefab: {fileID: 0}
   blurbWindowPrefab: {fileID: 5344395786736086143, guid: cb150c70da57b83469c030a77683407b,
     type: 3}
+  nameText: {fileID: 6417690067482721664}
+  icon: {fileID: 9190386694116134319}
 --- !u!1 &6417690067482721918
 GameObject:
   m_ObjectHideFlags: 0
