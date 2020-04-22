@@ -31,6 +31,8 @@ public class DestroyObjective : Entity
     {
         if(!spawnTimer)
         {
+            spawnTimer = true;
+
             int spawnsPerSpawner = Mathf.CeilToInt((float)enemiesToSpawn.Count / spawners.Length);
             List<GameObject> wave = new List<GameObject>();
             wave.AddRange(enemiesToSpawn);
@@ -41,7 +43,7 @@ public class DestroyObjective : Entity
                 {
                     for (int i = 0; i < spawnsPerSpawner; i++)
                     {
-                        int randomEntity = Random.Range(0, enemiesToSpawn.Count - 1);
+                        int randomEntity = Random.Range(0, wave.Count - 1);
                         spawner.AddToSpawnQue(wave[randomEntity]);
                         wave.Remove(wave[randomEntity]);
                     }
@@ -53,7 +55,6 @@ public class DestroyObjective : Entity
 
     public IEnumerator SpawnerCooldown()
     {
-        spawnTimer = true;
         yield return new WaitForSeconds(spawnCooldown);
         spawnTimer = false;
     }
@@ -62,5 +63,8 @@ public class DestroyObjective : Entity
     {
         ObjectiveDone = true;
         LevelManager.instance.CheckObjectives();
+
+        //Temporary
+        Destroy(this.gameObject);
     }
 }
