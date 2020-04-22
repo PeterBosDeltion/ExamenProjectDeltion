@@ -39,6 +39,15 @@ public class GameManager : MonoBehaviour
             gameOverUI.ActivateUI(false);
             Debug.Log("Loss");
         }
+        ToggleTimeScale();
+    }
+
+    public void ToggleTimeScale()
+    {
+        if(Time.timeScale == 1)
+            Time.timeScale = 0;
+        else
+            Time.timeScale = 1;
     }
 
     public void CloseGame()

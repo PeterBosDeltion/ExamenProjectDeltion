@@ -343,6 +343,7 @@
     <Compile Include="Assets\Scripts\Managers\TutorialManager.cs" />
     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
     <Compile Include="Assets\Scripts\Misc\KillObjectAfterTime.cs" />
+    <Compile Include="Assets\Scripts\ProfileMenu.cs" />
     <Compile Include="Assets\Scripts\ProfileUnlockUI.cs" />
     <Compile Include="Assets\Scripts\TutorialInteractable.cs" />
     <Compile Include="Assets\Scripts\TutorialMatrix.cs" />

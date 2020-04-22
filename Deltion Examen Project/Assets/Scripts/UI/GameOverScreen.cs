@@ -32,7 +32,7 @@ public class GameOverScreen : MonoBehaviour
 
     public void BackToMenu()
     {
-        Time.timeScale = 1;
+        GameManager.instance.ToggleTimeScale();
         GameManager.instance.ChangeScene(0);
     }
 }

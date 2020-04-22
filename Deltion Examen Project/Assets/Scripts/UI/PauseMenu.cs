@@ -18,12 +18,10 @@ public class PauseMenu : MonoBehaviour
     }
     private void OpenClose()
     {
-        
         settingsScreen.SetActive(false);
         mainScreen.SetActive(true);
         gameObject.SetActive(!gameObject.activeSelf);
-        float newTS = (gameObject.activeSelf) ? 0 : 1;
-        Time.timeScale = newTS;
+        GameManager.instance.ToggleTimeScale();
     }
 
     public void Close()
@@ -31,7 +29,7 @@ public class PauseMenu : MonoBehaviour
         settingsScreen.SetActive(false);
         mainScreen.SetActive(true);
         gameObject.SetActive(false);
-        Time.timeScale = 1;
+        GameManager.instance.ToggleTimeScale();
     }
 
     public void OpenScreen(string screen)
@@ -56,7 +54,7 @@ public class PauseMenu : MonoBehaviour
 
     public void MainMenu()
     {
-        Time.timeScale = 1;
+        GameManager.instance.ToggleTimeScale();
         GameManager.instance.ChangeScene(0);
     }
 }
