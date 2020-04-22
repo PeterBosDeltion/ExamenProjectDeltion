@@ -25,4 +25,28 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(index);
     }
+
+    public void GameOver(bool victory)
+    {
+        GameOverScreen gameOverUI = FindObjectOfType<MainCanvas>().gameOverScreen;
+        if(victory)
+        {
+            gameOverUI.ActivateUI(true);
+            Debug.Log("Victory");
+        }
+        else
+        {
+            gameOverUI.ActivateUI(false);
+            Debug.Log("Loss");
+        }
+    }
+
+    public void CloseGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 }

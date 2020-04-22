@@ -28,7 +28,9 @@ public class LevelManager : MonoBehaviour
     public float spawnTickTime;
 
     //Enemy values
+    [HideInInspector]
     public float healthModifier;
+    [HideInInspector]
     public float damageModifier;
 
     private void Awake()
@@ -59,6 +61,13 @@ public class LevelManager : MonoBehaviour
             }
             StartCoroutine(SpawnTick(3));
         }
+        if(GameObject.FindObjectOfType<DestroyObjective>())
+        {
+            foreach (DestroyObjective objective in GameObject.FindObjectsOfType<DestroyObjective>())
+            {
+                Levelobjectives.Add(objective);
+            }
+        }
     }
 
     public void CheckObjectives()
@@ -80,7 +89,7 @@ public class LevelManager : MonoBehaviour
 
     private void TriggerVictory()
     {
-
+        GameManager.instance.GameOver(true);
     }
 
     private void SetdifficultyVariables(int difficulty)

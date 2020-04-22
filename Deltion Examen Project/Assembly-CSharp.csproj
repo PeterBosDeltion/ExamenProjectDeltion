@@ -333,7 +333,6 @@
     <Compile Include="Assets\Scripts\LoadoutSystem\LoudoutSelectableButton.cs" />
     <Compile Include="Assets\Scripts\LoadoutSystem\LoudoutSelectableWindow.cs" />
     <Compile Include="Assets\Scripts\LoadoutSystem\PlayerLoadoutMenu.cs" />
-    <Compile Include="Assets\Scripts\MainCanvas.cs" />
     <Compile Include="Assets\Scripts\Managers\AudioClipManager.cs" />
     <Compile Include="Assets\Scripts\Managers\EntityManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
@@ -344,11 +343,13 @@
     <Compile Include="Assets\Scripts\Managers\TutorialManager.cs" />
     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
     <Compile Include="Assets\Scripts\Misc\KillObjectAfterTime.cs" />
-    <Compile Include="Assets\Scripts\PauseMenu.cs" />
-    <Compile Include="Assets\Scripts\PlayerUI.cs" />
     <Compile Include="Assets\Scripts\ProfileUnlockUI.cs" />
     <Compile Include="Assets\Scripts\TutorialInteractable.cs" />
     <Compile Include="Assets\Scripts\TutorialMatrix.cs" />
+    <Compile Include="Assets\Scripts\UI\GameOverScreen.cs" />
+    <Compile Include="Assets\Scripts\UI\MainCanvas.cs" />
+    <Compile Include="Assets\Scripts\UI\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\PlayerUI.cs" />
     <Compile Include="Assets\Scripts\UnlockBlurbWindow.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\Bullet.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\Weapon.cs" />
