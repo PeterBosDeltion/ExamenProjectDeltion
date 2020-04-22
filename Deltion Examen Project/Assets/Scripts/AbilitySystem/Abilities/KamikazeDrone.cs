@@ -141,7 +141,8 @@ public class KamikazeDrone : MonoBehaviour
     {
         exploding = true;
         myAbility.CheckDrones();
-        explosionParticle.SetActive(true);
+        if(explosionParticle)
+            explosionParticle.SetActive(true);
         if (target)
         {
             target.GetComponent<Enemy>().TakeDamage(myDamage, myPlayer);

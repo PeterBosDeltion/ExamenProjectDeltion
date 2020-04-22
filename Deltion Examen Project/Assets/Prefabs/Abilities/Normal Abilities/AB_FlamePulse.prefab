@@ -45,7 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myPlayer: {fileID: 0}
   name: Flame Pulse
-  description: 
+  description: The oldest trick makind has to use against things they don't like.
+    This flame pulse is very effective at quickly and heaviliy damaging anything
+    caught in the radius.
   uiIcon: {fileID: 21300000, guid: 11ef10001c3b85142aba6ea103b8a1cf, type: 3}
   requiredLevel: 0
   ultimate: 0
@@ -53,11 +55,14 @@ MonoBehaviour:
   active: 0
   cooldownTime: 15
   duration: 2.5
+  currentUltCharge: 0
+  ultChargeIncrement: 0
   deployableRadius: 0
   deployableGhost: {fileID: 0}
   canDeployMaterial: {fileID: 0}
   cannotDeployMaterial: {fileID: 0}
   deployLineMaterial: {fileID: 0}
+  deployableOffset: {x: 0, y: 0, z: 0}
   returned: 0
   myDeployType: 0
   damage: 160

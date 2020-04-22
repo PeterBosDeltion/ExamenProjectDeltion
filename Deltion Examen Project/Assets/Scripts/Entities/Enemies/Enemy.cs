@@ -14,14 +14,22 @@ public class Enemy : Entity
     {
         base.Awake();
 
-        hp = maxHp;
         anim = GetComponentInChildren<Animator>();
     }
 
-    public override void DamageEvent(Entity Attacker)
+    public override void SetEntityValues()
     {
-        myAI.SetTarget(Attacker);
-        myAI.SetAndPlayAudioClipOnce(myAI.hitClip,0.1f);
+        base.SetEntityValues();
+        damage *= LevelManager.instance.damageModifier;
+    }
+
+    protected override void DamageEvent(Entity Attacker)
+    {
+        if (myAI)
+        {
+            myAI.SetTarget(Attacker);
+            myAI.SetAndPlayAudioClipOnce(myAI.hitClip,0.1f);
+        }
         if (Attacker)
         {
             if (Attacker.GetComponent<PlayerController>())
@@ -34,7 +42,9 @@ public class Enemy : Entity
 
     protected override void Death()
     {
-        myAI.SetState(EnemyAI.AIState.Dead);
+        if(myAI)
+            myAI.SetState(EnemyAI.AIState.Dead);
+
         GetComponent<Collider>().enabled = false;
         StartCoroutine(DestroyEnemy());
     }

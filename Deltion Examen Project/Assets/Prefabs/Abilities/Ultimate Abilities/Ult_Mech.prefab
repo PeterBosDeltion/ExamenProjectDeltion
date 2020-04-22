@@ -54,7 +54,7 @@ MonoBehaviour:
   cooldownTime: 0
   duration: 60
   currentUltCharge: 0
-  ultChargeIncrement: 0.5
+  ultChargeIncrement: 50
   deployableRadius: 5
   deployableGhost: {fileID: 0}
   canDeployMaterial: {fileID: 0}

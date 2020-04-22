@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Kevin_Test_Scene.unity
     guid: d2d015124fa22fe4da5d5898808eab90
   - enabled: 1
-    path: Assets/Scenes/DupedPeterTestScene 1.unity
-    guid: 332745af77ee09d45808bb5bbc0515bb
+    path: Assets/Scenes/TutorialScene.unity
+    guid: d4420eb066ff9b0428485760551e90f0
+  - enabled: 1
+    path: Assets/Scenes/Levels/Offensive/Offensive_Generic.unity
+    guid: b2c0351264c039e468e9e210b3307b3c
   m_configObjects: {}

@@ -21,6 +21,8 @@ public class InputManager : MonoBehaviour
     public static BaseInput rightMouseButtonEvent;
     public static BaseInput reloadEvent;
     public static BaseInput interactEvent;
+    public static BaseInput escapeEvent;
+    public static BaseInput LastWeaponEvent;
     public static IntInput abilityEvent;
     public static IntInput delayedAbilityEvent;
     public static FloatInput scrollEvent;
@@ -33,6 +35,8 @@ public class InputManager : MonoBehaviour
     private RaycastHit hit;
     public LayerMask floor;
 
+    private float timeHoldingInteract = 0;
+
     //Asigning empty functions to the delegates to avoid Errors
     private void Awake()
     {
@@ -44,6 +48,8 @@ public class InputManager : MonoBehaviour
         rightMouseButtonEvent += Empty;
         reloadEvent += Empty;
         interactEvent += Empty;
+        escapeEvent += Empty;
+        LastWeaponEvent += Empty;
         abilityEvent += EmptyInt;
         delayedAbilityEvent += EmptyInt;
         scrollEvent += EmptyFloat;
@@ -59,6 +65,8 @@ public class InputManager : MonoBehaviour
         rightMouseButtonEvent -= Empty;
         reloadEvent -= Empty;
         interactEvent -= Empty;
+        escapeEvent -= Empty;
+        LastWeaponEvent -= Empty;
         abilityEvent -= EmptyInt;
         delayedAbilityEvent -= EmptyInt;
         scrollEvent -= EmptyFloat;
@@ -79,8 +87,12 @@ public class InputManager : MonoBehaviour
             RightMouse();
         if (Input.GetButtonDown("Reload"))
             Reload();
-        if (Input.GetButtonDown("Interact"))
-            Interact();
+        //if (Input.GetButtonDown("Interact"))
+        //    Interact();
+        if (Input.GetButton("Interact"))
+            HoldInteract();
+        if (Input.GetButtonUp("Interact"))
+            ReleaseInteract();
         if (Input.GetButtonDown("Ability 01"))
             AbilityHotkeys(0);
         if (Input.GetButtonDown("Ability 02"))
@@ -93,6 +105,10 @@ public class InputManager : MonoBehaviour
             AbilityHotkeys(4);
         if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetAxis("Mouse ScrollWheel") < 0f)
             SwitchWeapon(Input.GetAxis("Mouse ScrollWheel"));
+        if (Input.GetButtonDown("Escape"))
+            Escape();
+        if (Input.GetButtonDown("LastWeapon"))
+            LastWeapon();
     }
 
     //Fixed update for movementbased input to avoid physics problems
@@ -138,6 +154,29 @@ public class InputManager : MonoBehaviour
     {
         Debug.Log("Interact");
         interactEvent.Invoke();
+    }
+
+    private void HoldInteract()
+    {
+        timeHoldingInteract += Time.deltaTime;
+    }
+
+    private void ReleaseInteract()
+    {
+        timeHoldingInteract = 0;
+    }
+
+    public float GetTimeInteractHeld()
+    {
+        return timeHoldingInteract;
+    }
+    public void Escape()
+    {
+        escapeEvent.Invoke();
+    }
+    public void LastWeapon()
+    {
+        LastWeaponEvent.Invoke();
     }
     private void AbilityHotkeys(int inputAbility)
     {

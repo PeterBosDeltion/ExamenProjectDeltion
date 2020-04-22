@@ -657,14 +657,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2363066780894296142}
-  m_LocalRotation: {x: -0.61278856, y: -0.4313352, z: -0.43523479, w: -0.4990098}
+  m_LocalRotation: {x: 0.6127881, y: 0.43133536, z: 0.43523574, w: 0.49900952}
   m_LocalPosition: {x: 1.9730699, y: 3.865015, z: 4.144188}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3233378494785019651}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -77.98, y: 0, z: 98}
+  m_LocalEulerAnglesHint: {x: 13.657001, y: 97.27901, z: 97.68101}
 --- !u!114 &8027315701895015475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,7 +680,7 @@ MonoBehaviour:
   myWeapon: {fileID: 11400000, guid: 02c4464858822ad40883b0918d1092ae, type: 2}
   bullet: {fileID: 5131294813170692697, guid: 5e8b844857115c74bb70e6bf1d45be25, type: 3}
   bulletSpawn: {fileID: 7299444218595721977}
-  totalAmmo: 0
+  totalAmmo: 80
   magazineAmmo: 0
   canShoot: 1
   gunShot: {fileID: 8300000, guid: 61e93b9ff30545c4fb724bb7ccb41973, type: 3}
@@ -688,6 +688,9 @@ MonoBehaviour:
   reload: {fileID: 8300000, guid: 1211495b486c6374f8ba736ecea163f6, type: 3}
   amountAccurateBullets: 5
   myPlayer: {fileID: 0}
+  tutorialInit: 1
+  handPosition: {x: 0, y: 0, z: 0}
+  handRotation: {x: -77.98, y: 0, z: 98}
 --- !u!82 &4397667167730644312
 AudioSource:
   m_ObjectHideFlags: 0
@@ -698,7 +701,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 141f25fdadfd5c649b8b5c6376cc086b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.015
   m_Pitch: 1
@@ -2134,7 +2137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6358190257422479009}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.016, y: 0.081, z: 0.166}
   m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
   m_Children:
   - {fileID: 8178823729163595360}

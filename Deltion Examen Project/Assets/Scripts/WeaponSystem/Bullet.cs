@@ -95,9 +95,9 @@ public class Bullet : MonoBehaviour
         Collider[] overlaps = Physics.OverlapSphere(transform.position, myAoeRadius);
         foreach (var col in overlaps)
         {
-            if (col.GetComponent<Enemy>())
+            if (col.GetComponent<Entity>())
             {
-                col.GetComponent<Enemy>().TakeDamage(damage, myEnt);
+                col.GetComponent<Entity>().TakeDamage(damage, myEnt);
             }
         }
 

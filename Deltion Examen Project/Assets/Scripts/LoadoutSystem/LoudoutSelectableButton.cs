@@ -6,6 +6,7 @@ using TMPro;
 
 public class LoudoutSelectableButton : MonoBehaviour
 {
+    public int myPlayerNumber;
     public Image icon;
     public TextMeshProUGUI nameText;
     private Weapon myWeapon;
@@ -17,7 +18,11 @@ public class LoudoutSelectableButton : MonoBehaviour
     public GameObject myWindow;
     private LoudoutMainMenuButton myButton;
 
-    public void Initialize(Weapon w = null, Ability a = null, bool isPrimary = false, int? abilityIndex = null, GameObject window = null, LoudoutMainMenuButton button = null)
+    private PlayerLoadoutMenu myMenu;
+    public Color disabledColor;
+    public Color normalIconColor;
+
+    public void WindowInitialize(Weapon w = null, Ability a = null, bool isPrimary = false, int? abilityIndex = null, GameObject window = null, LoudoutMainMenuButton button = null)
     {
         myWindow = window;
         myButton = button;
@@ -64,35 +69,141 @@ public class LoudoutSelectableButton : MonoBehaviour
             myAbility = a;
         }
     }
+    public void MenuInitialize(PlayerLoadoutMenu menu, int abilityIndex, int playerNumber, Weapon w = null, Ability a = null, bool isPrimary = false)
+    {
+        myMenu = menu;
+        myPlayerNumber = playerNumber;
+        if (w && a)
+        {
+            Debug.LogError("NotAllowed");
+            return;
+        }
+
+        if (w && !a)
+        {
+            if (isPrimary)
+            {
+                primary = true;
+            }
+            else
+            {
+                primary = false;
+            }
+
+            icon.sprite = w.myWeapon.uiIcon;
+            nameText.text = w.myWeapon.name;
+            myWeapon = w;
+        }
+        else if (a && !w)
+        {
+            if (a.ultimate)
+            {
+                ult = true;
+            }
+            else
+            {
+                ult = false;
+            }
+
+            myAbilityIndex = abilityIndex;
+
+            icon.sprite = a.uiIcon;
+            nameText.text = a.name;
+
+            myAbility = a;
+        }
+
+        icon.color = normalIconColor;
+        nameText.enabled = true;
+        GetComponent<Button>().interactable = true;
+    }
 
     public void Clicked()
     {
-        if (myWeapon)
+        if (!myMenu)
         {
-            if (primary)
+            if (myWeapon)
             {
-                LoudoutManager.instance.SetLoadoutPrimary(myWeapon);
+                if (primary)
+                {
+                    LoudoutManager.instance.SetSavedLoadoutPrimary(myWeapon);
+                }
+                else
+                {
+                    LoudoutManager.instance.SetSavedLoadoutPrimary(myWeapon);
+                }
+
             }
-            else
+            else if (myAbility)
             {
-                LoudoutManager.instance.SetLoadoutSecondary(myWeapon);
+                if (ult)
+                {
+                    LoudoutManager.instance.SetSavedLoadoutUltimate(myAbility);
+                }
+                else
+                {
+                    // LoudoutManager.instance.SetSavedLoadoutAbility(myAbility, myAbilityIndex);
+                }
             }
 
+            myButton.myImage.sprite = icon.sprite;
+
+            Destroy(myWindow);
         }
-        else if (myAbility)
+        else
         {
-            if (ult)
+            if (myWeapon)
             {
-                LoudoutManager.instance.SetLoadoutUltimate(myAbility);
+                if (primary)
+                {
+                    LoudoutManager.instance.SetPlayerLoadoutPrimary(myPlayerNumber, myWeapon);
+                }
+                else
+                {
+                    LoudoutManager.instance.SetPlayerLoadoutSecondary(myPlayerNumber,myWeapon);
+                }
+
             }
-            else
+            else if (myAbility)
             {
-                LoudoutManager.instance.SetLoadoutAbility(myAbility, myAbilityIndex);
+                if (ult)
+                {
+                    LoudoutManager.instance.SetPlayerLoadoutUltimate(myPlayerNumber, myAbility);
+                    myMenu.CloseUltimateSelect();
+                }
+                else
+                {
+                    LoudoutManager.instance.SetPlayerLoadoutAbility(myPlayerNumber, myAbilityIndex, myAbility);
+                    myMenu.CloseAbilitySelect();
+                }
+            }
+
+            switch (myAbilityIndex)
+            {
+                case 0:
+                    myMenu.abilityOneImg.sprite = icon.sprite;
+                    break;
+                case 1:
+                    myMenu.abilityTwoImg.sprite = icon.sprite;
+                    break;
+                case 2:
+                    myMenu.abilityThreeImg.sprite = icon.sprite;
+                    break;
+                case 3:
+                    myMenu.abilityFourImg.sprite = icon.sprite;
+                    break;
+                case 5:
+                    myMenu.ultImg.sprite = icon.sprite;
+                    break;
             }
         }
+       
+    }
 
-        myButton.myImage.sprite = icon.sprite;
-
-        Destroy(myWindow);
+    public void DisabledButton()
+    {
+        GetComponent<Button>().interactable = false;
+        icon.color = disabledColor;
+        nameText.enabled = false;
     }
 }

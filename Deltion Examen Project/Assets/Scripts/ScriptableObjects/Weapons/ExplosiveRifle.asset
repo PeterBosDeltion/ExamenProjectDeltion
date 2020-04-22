@@ -24,7 +24,7 @@ MonoBehaviour:
   minFallOff: 20
   maxFallOff: 60
   projectileVelocity: 1500
-  damage: 125
+  damage: 75
   firerate: 160
   minSpreadAngle: 0
   maxSpreadAngle: 0

@@ -35,6 +35,8 @@ public class SentryTurretAbility : Ability
         StopCoroutine(afterDurCoroutine);
         Destroy(spawnedTurret);
         spawnedTurret = null;
+        AudioClipManager.instance.PlayClipOneShotWithSource(myPlayer.mySource, AudioClipManager.instance.clips.voiceDeployableDestroyed);
+        myPlayer.SetUxText("Deployable destroyed!");
         StartCooldown();
     }
 }

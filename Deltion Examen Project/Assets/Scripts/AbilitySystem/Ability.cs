@@ -34,6 +34,7 @@ public abstract class Ability : MonoBehaviour
     private bool deploying;
     private LineRenderer lineRenderer;
     private bool ultActive;
+    private bool checkUltCharged;
     public enum DeployType
     {
         Instant,
@@ -87,6 +88,7 @@ public abstract class Ability : MonoBehaviour
             {
                 currentUltCharge = 0;
                 ultActive = true;
+                checkUltCharged = false;
             }
             afterDurCoroutine = StartCoroutine(AfterDuration());
         }
@@ -270,6 +272,15 @@ public abstract class Ability : MonoBehaviour
             else
             {
                 currentUltCharge = 100;
+            }
+
+            if(currentUltCharge >= 100)
+            {
+                if (!checkUltCharged)
+                {
+                    AudioClipManager.instance.PlayClipOneShotWithSource(myPlayer.mySource, AudioClipManager.instance.GetRandomUltReadyVL(myPlayer));
+                    checkUltCharged = true;
+                }
             }
         }
        

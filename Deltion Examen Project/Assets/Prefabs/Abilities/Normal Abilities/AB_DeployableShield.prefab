@@ -45,14 +45,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myPlayer: {fileID: 0}
   name: Deployable Shield
-  description: 
-  uiIcon: {fileID: 21300000, guid: c9093dfd23476ff4593402060a526c64, type: 3}
+  description: This deployable shield is excellent for quickly providing temporary
+    cover from any incoming hostiles.
+  uiIcon: {fileID: 21300000, guid: 42c8b51b46bf15648be9f8145a482fb0, type: 3}
   requiredLevel: 0
   ultimate: 0
   onCooldown: 0
   active: 0
   cooldownTime: 20
   duration: 15
+  currentUltCharge: 0
+  ultChargeIncrement: 0
   deployableRadius: 5
   deployableGhost: {fileID: 2071833340662389407, guid: 6508bb96e4e007f409ef6bc72e190a28,
     type: 3}

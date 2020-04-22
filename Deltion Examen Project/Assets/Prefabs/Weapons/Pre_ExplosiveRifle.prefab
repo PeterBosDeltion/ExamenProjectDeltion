@@ -51,12 +51,16 @@ MonoBehaviour:
   bulletSpawn: {fileID: 4789438344000589986}
   totalAmmo: 0
   magazineAmmo: 0
-  gunShot: {fileID: 8300000, guid: 61e93b9ff30545c4fb724bb7ccb41973, type: 3}
+  canShoot: 1
+  gunShot: {fileID: 8300000, guid: 5e97263bd26855049821318e049c3228, type: 3}
   emptyMagazine: {fileID: 8300000, guid: 141f25fdadfd5c649b8b5c6376cc086b, type: 3}
-  reload: {fileID: 8300000, guid: 1211495b486c6374f8ba736ecea163f6, type: 3}
-  amountAccurateBullets: 5
+  reload: {fileID: 8300000, guid: b060675524808ad4ca2e1b3d76b531ab, type: 3}
+  amountAccurateBullets: 0
   myPlayer: {fileID: 0}
-  explosionAOE: 4
+  tutorialInit: 0
+  handPosition: {x: -0.06500001, y: 0.07259985, z: 0.03050006}
+  handRotation: {x: -77.98, y: 0, z: 98}
+  explosionAOE: 3.25
   explosionParticle: {fileID: 1337198075554910, guid: 25c7aa9ad705fe143a4d71c1c8deb7d4,
     type: 3}
   explosionSfx: {fileID: 8300000, guid: e347d27a18e44c64d83a6312088e352d, type: 3}
@@ -72,7 +76,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.025
+  m_Volume: 0.03
   m_Pitch: 1
   Loop: 0
   Mute: 0

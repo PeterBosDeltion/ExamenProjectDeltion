@@ -115,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTempHp: 0
   maxHp: 200
+  death: 0
   myAI: {fileID: 0}
   anim: {fileID: 0}
   speed: 7
@@ -154,7 +155,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2cd43a761e319a847b1dfde87be62bb6, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.015
+  m_Volume: 0.002
   m_Pitch: 1
   Loop: 1
   Mute: 0

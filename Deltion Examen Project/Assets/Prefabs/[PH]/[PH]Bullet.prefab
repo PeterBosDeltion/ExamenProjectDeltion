@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8937259809129557173}
   - component: {fileID: 3523682788062803738}
   - component: {fileID: 3824479900586794576}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: '[PH]Bullet'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.05
+  m_Volume: 0.025
   m_Pitch: 1
   Loop: 0
   Mute: 0

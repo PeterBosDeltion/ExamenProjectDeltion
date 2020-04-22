@@ -1,12 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class Player : Entity
 {
     public delegate void HpEvent();
 
     public HpEvent zeroTempHp;
+    public float lowHealthVoiceThreshold = 300;
+    public AudioSource mySource;
+    public TextMeshPro uxText;
+    private bool waiting;
+    private Coroutine resetting;
+
 
     protected override void Awake()
     {
@@ -16,9 +22,14 @@ public class Player : Entity
         zeroTempHp += EmptyHpEvent;
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         EntityManager.instance.AddPlayerOrAbility(this);
+
+        //mySource = GetComponent<AudioSource>();
+        uxText = GetComponentInChildren<TextMeshPro>();
     }
 
     protected override void OnDestroy()
@@ -28,10 +39,18 @@ public class Player : Entity
         zeroTempHp -= EmptyHpEvent;
     }
 
-    public override void DamageEvent(Entity Attacker)
+    protected override void DamageEvent(Entity Attacker)
     {
         if (tempHp <= 0)
             zeroTempHp.Invoke();
+        if (hp <= lowHealthVoiceThreshold)
+        {
+            AudioClipManager.instance.HardResetSourcePlayable(mySource);
+            AudioClipManager.instance.PlayClipOneShotWithSource(mySource, AudioClipManager.instance.GetRandomLowHpVL(this));
+        }
+
+        if (!mySource.isPlaying)
+            AudioClipManager.instance.PlayClipOneShotWithSource(mySource, AudioClipManager.instance.clips.voiceHurt);
     }
 
     public void EmptyHpEvent()
@@ -40,6 +59,28 @@ public class Player : Entity
 
     protected override void Death()
     {
-        
+        GameManager.instance.GameOver(false);
+    }
+
+    public void SetUxText(string newText)
+    {
+        if (waiting)
+        {
+            StopCoroutine(resetting);
+            waiting = false;
+        }
+        uxText.text = newText;
+        if (!waiting)
+        {
+            resetting = StartCoroutine(ResetUxText());
+        }
+    }
+
+    private IEnumerator ResetUxText()
+    {
+        waiting = true;
+        yield return new WaitForSeconds(2);
+        uxText.text = "";
+        waiting = false;
     }
 }

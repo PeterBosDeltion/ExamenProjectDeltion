@@ -21,14 +21,33 @@ public class Weapon : MonoBehaviour
     public int amountAccurateBullets;
 
     public Player myPlayer;
+    public bool tutorialInit;
 
+    public Vector3 handPosition;
+    public Vector3 handRotation;
+
+    private bool waiting;
     private void Start()
     {
-        Initialize();
+        tutorialInit = false;
+        if (!waiting)
+            StartCoroutine(WaitForPlayerInit());
     }
 
-    private void Initialize()
+    private IEnumerator WaitForPlayerInit()
     {
+        waiting = true;
+        yield return new WaitUntil(() => myPlayer.GetComponent<PlayerController>().playerInitialized);
+        Initialize();
+        waiting = false;
+    }
+
+    public void Initialize()
+    {
+        if (myPlayer.GetComponent<PlayerController>().inTutorial && !tutorialInit)
+        {
+            return;
+        }
         myPlayer = GetComponentInParent<Player>();
         totalAmmo = myWeapon.totalAmmo;
         magazineAmmo = totalAmmo;
@@ -86,6 +105,7 @@ public class Weapon : MonoBehaviour
             if (magazineAmmo <= 0 && !reloading)
             {
                 audioSource.clip = emptyMagazine;
+                AudioClipManager.instance.PlayClipOneShotWithSource(myPlayer.mySource, AudioClipManager.instance.GetRandomNoAmmoVL(myPlayer));
                 if (!audioSource.isPlaying)
                 {
                     audioSource.Play();
@@ -121,17 +141,20 @@ public class Weapon : MonoBehaviour
     {
         if (gameObject.activeSelf)
         {
-            if (!reloading)
+            if (!reloading && magazineAmmo < totalAmmo)
             {
                 StartCoroutine(ReloadInSeconds(myWeapon.reloadSpeed));
                 audioSource.clip = reload;
                 audioSource.Play();
+                AudioClipManager.instance.HardResetSourcePlayable(myPlayer.mySource);
+                AudioClipManager.instance.PlayClipOneShotWithSource(myPlayer.mySource, AudioClipManager.instance.GetRandomReloadVL(myPlayer));
+
             }
         }
       
     }
 
-    protected void ResetShotsFired()
+    protected virtual void ResetShotsFired()
     {
         shotsFired = 0;
     }
