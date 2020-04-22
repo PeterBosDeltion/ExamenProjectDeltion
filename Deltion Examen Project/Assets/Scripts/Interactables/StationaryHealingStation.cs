@@ -43,12 +43,16 @@ public class StationaryHealingStation : Interactable
     {
         if (currentAvailableHealth > 0)
         {
-            currentAvailableHealth -= healRate;
             foreach (Player player in nearbyPlayers)
             {
                 if(player.GetHp() < player.maxHp && player.GetHp() > 0)
+                {
+                    currentAvailableHealth -= healRate;
                     player.Heal(healRate, 0);
+                    healthCylinder.transform.localScale = new Vector3(healthCylinder.transform.localScale.x, healthCylinder.transform.localScale.y, currentAvailableHealth / totalAvailableHealth);
+                }
             }
+
         }
     }
 
@@ -59,7 +63,6 @@ public class StationaryHealingStation : Interactable
             if (nearbyPlayers.Count > 0)
             {
                 Heal();
-                healthCylinder.transform.localScale = new Vector3(healthCylinder.transform.localScale.x, healthCylinder.transform.localScale.y, currentAvailableHealth / totalAvailableHealth);
             }
             else
             {

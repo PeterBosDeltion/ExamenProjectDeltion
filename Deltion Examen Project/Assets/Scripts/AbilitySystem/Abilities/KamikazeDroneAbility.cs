@@ -61,7 +61,8 @@ public class KamikazeDroneAbility : Ability
         yield return new WaitForSeconds(duration);
         foreach (KamikazeDrone drone in spawnedDrones)
         {
-            drone.Explode();
+            if(drone)
+                drone.Explode();
         }
 
         StartCooldown();
