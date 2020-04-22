@@ -200,7 +200,6 @@ MonoBehaviour:
   allPrimaryWeapons:
   - {fileID: 8027315701895015475, guid: 838ff704af4d6074fb3bb4995b45b964, type: 3}
   - {fileID: 3892689550765515434, guid: e5bd1637ff9737d40b50461696f3d017, type: 3}
-  - {fileID: 1853621600, guid: 2a593c2f26a9e234e9ff9f77a1d73482, type: 3}
   allSecondaryWeapons:
   - {fileID: 77380491323076597, guid: b43595dbb7045204b9829d270b97d2f4, type: 3}
   allAbilities:
