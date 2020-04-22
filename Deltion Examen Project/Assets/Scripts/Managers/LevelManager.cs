@@ -13,6 +13,9 @@ public class LevelManager : MonoBehaviour
     private List<EntitySpawner> allAvailableSpawners = new List<EntitySpawner>();
     private List<EntitySpawner> closestSpawners = new List<EntitySpawner>();
 
+    //objectiveList
+    public List<DestroyObjective> Levelobjectives = new List<DestroyObjective>();
+
     //Wave values
     [Tooltip("Fill from easy to hard for increased difficulty in later waves")]
     public List<GameObject> enemyTypes = new List<GameObject>();
@@ -56,6 +59,28 @@ public class LevelManager : MonoBehaviour
             }
             StartCoroutine(SpawnTick(3));
         }
+    }
+
+    public void CheckObjectives()
+    {
+        bool victory = true;
+
+        foreach(DestroyObjective objective in Levelobjectives)
+        {
+            if(!objective.ObjectiveDone)
+            {
+                victory = false;
+                break;
+            }
+        }
+
+        if (victory)
+            TriggerVictory();
+    }
+
+    private void TriggerVictory()
+    {
+
     }
 
     private void SetdifficultyVariables(int difficulty)

@@ -48,6 +48,9 @@ public class Player : Entity
             AudioClipManager.instance.HardResetSourcePlayable(mySource);
             AudioClipManager.instance.PlayClipOneShotWithSource(mySource, AudioClipManager.instance.GetRandomLowHpVL(this));
         }
+
+        if (!mySource.isPlaying)
+            AudioClipManager.instance.PlayClipOneShotWithSource(mySource, AudioClipManager.instance.clips.voiceHurt);
     }
 
     public void EmptyHpEvent()

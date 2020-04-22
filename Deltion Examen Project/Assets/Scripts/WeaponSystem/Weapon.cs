@@ -154,7 +154,7 @@ public class Weapon : MonoBehaviour
       
     }
 
-    protected void ResetShotsFired()
+    protected virtual void ResetShotsFired()
     {
         shotsFired = 0;
     }

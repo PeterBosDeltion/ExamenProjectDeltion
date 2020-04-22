@@ -12,6 +12,9 @@ public class DestroyObjective : Entity
     private bool spawnTimer = false;
     public float spawnCooldown;
 
+    [HideInInspector]
+    public bool ObjectiveDone;
+
     protected virtual void Awake()
     {
         base.Awake();
@@ -41,5 +44,11 @@ public class DestroyObjective : Entity
         spawnTimer = true;
         yield return new WaitForSeconds(spawnCooldown);
         spawnTimer = false;
+    }
+
+    protected override void Death()
+    {
+        ObjectiveDone = true;
+        LevelManager.instance.CheckObjectives();
     }
 }
