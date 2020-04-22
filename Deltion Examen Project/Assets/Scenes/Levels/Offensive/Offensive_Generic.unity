@@ -9036,7 +9036,7 @@ PrefabInstance:
     - target: {fileID: 3669613515331608539, guid: d9b859690e90e0e4388c154575858d1d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 347.7
+      value: 351.5
       objectReference: {fileID: 0}
     - target: {fileID: 3669613515331608539, guid: d9b859690e90e0e4388c154575858d1d,
         type: 3}
@@ -9046,7 +9046,7 @@ PrefabInstance:
     - target: {fileID: 3669613515331608539, guid: d9b859690e90e0e4388c154575858d1d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 237.7
+      value: 239.2
       objectReference: {fileID: 0}
     - target: {fileID: 3669613515331608539, guid: d9b859690e90e0e4388c154575858d1d,
         type: 3}
@@ -17801,7 +17801,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   focusOnPlayer: 1
   target: {fileID: 0}
-  distanceOffset: 10
+  distanceOffset: 15
   heightOfset: 1
   smoothness: 5
 --- !u!81 &1684621401
