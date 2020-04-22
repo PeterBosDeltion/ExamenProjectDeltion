@@ -369,9 +369,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTempHp: 0
-  maxHp: 1000
+  maxHp: 1500
   death: 0
-  lowHealthVoiceThreshold: 300
+  lowHealthVoiceThreshold: 600
   mySource: {fileID: 4734839736015168692}
   uxText: {fileID: 544025577}
 --- !u!114 &5178922821371636702

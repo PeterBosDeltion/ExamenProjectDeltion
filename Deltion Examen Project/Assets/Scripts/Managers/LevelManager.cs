@@ -152,9 +152,9 @@ public class LevelManager : MonoBehaviour
 
         foreach(EntitySpawner spawner in closestSpawners)
         {
-            if(wave.Count != 0)
+            for(int i = 0; i < spawnsPerSpawner; i++)
             {
-                for(int i = 0; i < spawnsPerSpawner; i++)
+                if (wave.Count != 0)
                 {
                     int randomEntity = Random.Range(0, wave.Count - 1);
                     spawner.AddToSpawnQue(wave[randomEntity]);
