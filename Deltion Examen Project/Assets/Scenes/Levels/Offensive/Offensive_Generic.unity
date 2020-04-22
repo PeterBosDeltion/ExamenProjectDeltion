@@ -15946,6 +15946,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pre_Objective_Destroy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1947663707442958867, guid: 759a63f1a0b9ef544b6577e7664a0c08,
+        type: 3}
+      propertyPath: spawnCooldown
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 759a63f1a0b9ef544b6577e7664a0c08, type: 3}
 --- !u!1 &1499571363
@@ -21946,6 +21951,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pre_Objective_Destroy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1947663707442958867, guid: 759a63f1a0b9ef544b6577e7664a0c08,
+        type: 3}
+      propertyPath: spawnCooldown
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 759a63f1a0b9ef544b6577e7664a0c08, type: 3}

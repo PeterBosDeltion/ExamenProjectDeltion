@@ -106,7 +106,7 @@ public class SentryTurret : Entity
             {
                 foreach (var collider in overlaps)
                 {
-                    if (collider.transform.GetComponent<Enemy>())
+                    if (collider.transform.GetComponent<Entity>() && !collider.transform.GetComponent<Player>() && collider.transform != transform)
                     {
                         target = collider.transform;
                     }
