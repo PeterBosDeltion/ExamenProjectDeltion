@@ -13,6 +13,7 @@ public class Entity : MonoBehaviour
     public float maxTempHp;
     public float maxHp;
 
+    [HideInInspector]
     public bool death;
 
     protected virtual void Awake()

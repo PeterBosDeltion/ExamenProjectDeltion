@@ -59,7 +59,7 @@ public class Player : Entity
 
     protected override void Death()
     {
-        
+        GameManager.instance.GameOver(false);
     }
 
     public void SetUxText(string newText)

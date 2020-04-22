@@ -1,5 +1,13 @@
 fileFormatVersion: 2
-guid: ec87d27e1d2455d42a05ff67dc6e1606
+<<<<<<< HEAD
+<<<<<<< HEAD:Deltion Examen Project/Assets/Scenes/Levels/Defensive.meta
+guid: 0d0c685627dd4f9418f0be2d52dec3dd
+=======
+guid: ac2aa814d2b2463458e94bc702a7682d
+>>>>>>> feature/interactables:Deltion Examen Project/Assets/Prefabs/Health tank.meta
+=======
+guid: 0d0c685627dd4f9418f0be2d52dec3dd
+>>>>>>> feature/interactables
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

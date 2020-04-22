@@ -8,7 +8,8 @@ public class DestroyObjective : Entity
     public SpawnOnDamage OnDamage;
 
     private EntitySpawner[] spawners;
-    private int amountOfSpawners;
+    public List<GameObject> enemiesToSpawn = new List<GameObject>();
+
     private bool spawnTimer = false;
     public float spawnCooldown;
 
@@ -20,7 +21,6 @@ public class DestroyObjective : Entity
         base.Awake();
 
         spawners = GetComponentsInChildren<EntitySpawner>();
-        amountOfSpawners = spawners.Length; 
         foreach(EntitySpawner spawner in spawners)
         {
             spawner.objectiveSpawner = true;
@@ -31,9 +31,23 @@ public class DestroyObjective : Entity
     {
         if(!spawnTimer)
         {
-            foreach(EntitySpawner spawner in spawners)
-            {
+            spawnTimer = true;
 
+            int spawnsPerSpawner = Mathf.CeilToInt((float)enemiesToSpawn.Count / spawners.Length);
+            List<GameObject> wave = new List<GameObject>();
+            wave.AddRange(enemiesToSpawn);
+
+            foreach (EntitySpawner spawner in spawners)
+            {
+                if(wave.Count != 0)
+                {
+                    for (int i = 0; i < spawnsPerSpawner; i++)
+                    {
+                        int randomEntity = Random.Range(0, wave.Count - 1);
+                        spawner.AddToSpawnQue(wave[randomEntity]);
+                        wave.Remove(wave[randomEntity]);
+                    }
+                }
             }
             StartCoroutine(SpawnerCooldown());
         }
@@ -41,7 +55,6 @@ public class DestroyObjective : Entity
 
     public IEnumerator SpawnerCooldown()
     {
-        spawnTimer = true;
         yield return new WaitForSeconds(spawnCooldown);
         spawnTimer = false;
     }
@@ -50,5 +63,8 @@ public class DestroyObjective : Entity
     {
         ObjectiveDone = true;
         LevelManager.instance.CheckObjectives();
+
+        //Temporary
+        Destroy(this.gameObject);
     }
 }
