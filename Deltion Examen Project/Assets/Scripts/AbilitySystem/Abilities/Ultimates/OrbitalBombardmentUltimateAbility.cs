@@ -30,7 +30,7 @@ public class OrbitalBombardmentUltimateAbility : Ability
     {
         Vector3 point = new Vector2(myPlayer.transform.position.x, myPlayer.transform.position.z) + Random.insideUnitCircle * targetRadius;
         point.z = point.y;
-        point.y = 0.1F;
+        point.y = 1.6F;
         return point;
     }
 
