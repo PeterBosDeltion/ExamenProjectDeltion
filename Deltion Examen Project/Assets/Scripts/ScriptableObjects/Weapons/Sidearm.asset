@@ -22,7 +22,7 @@ MonoBehaviour:
   requiredLevel: 0
   minFallOff: 10
   maxFallOff: 15
-  projectileVelocity: 750
+  projectileVelocity: 1500
   damage: 50
   firerate: 450
   minSpreadAngle: 0
