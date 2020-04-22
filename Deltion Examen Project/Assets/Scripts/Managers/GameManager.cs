@@ -14,12 +14,13 @@ public class GameManager : MonoBehaviour
         if(!instance)
         {
             instance = this;
-            DontDestroyOnLoad(transform.root.gameObject);
         }
         else if(instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(transform.root.gameObject);
         }
+
+        DontDestroyOnLoad(transform.root.gameObject);
     }
     public void ChangeScene(int index)
     {
