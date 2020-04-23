@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTempHp: 0
-  maxHp: 2000
+  maxHp: 1500
   death: 0
   enemiesToSpawn:
   - {fileID: 227615046000823840, guid: 2fb16e5a959a41844bc859c48f3e81cb, type: 3}
