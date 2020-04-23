@@ -292,15 +292,15 @@ public class TutorialManager : MonoBehaviour
     {
         if(i == 4) //Ultimate 
         {
-            if(player.ultimateAbility.active)
-            {
-                playerUsedUlt = true;
+            //if (player.ultimateAbility.active)
+            //{
                 if (!timing && currentStep == 10)
                 {
+                    playerUsedUlt = true;
                     InputManager.abilityEvent -= UltUsed;
                     StartCoroutine(BetweenStepTimer());
                 }
-            }
+            //}
         }
     }
 

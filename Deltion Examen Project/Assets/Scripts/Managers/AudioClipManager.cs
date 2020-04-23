@@ -48,9 +48,12 @@ public class AudioClipManager : MonoBehaviour
     private IEnumerator ResetAudioSourcePlayable(AudioSource source)
     {
         yield return new WaitForSeconds(audioCooldown);
-        source.Stop();
-        nonPlayableSources.Remove(source);
-        resetCoroutines.Remove(source);
+        if(source)
+        {
+            source.Stop();
+            nonPlayableSources.Remove(source);
+            resetCoroutines.Remove(source);
+        }
     }
 
     public AudioClip GetRandomNoAmmoVL(Player player)
