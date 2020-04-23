@@ -118,7 +118,7 @@ MonoBehaviour:
   death: 0
   myAI: {fileID: 0}
   anim: {fileID: 0}
-  speed: 7
+  speed: 6.2
   damage: 100
   attackRange: 3
 --- !u!195 &271476835443764934

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1947663707442958865}
   - component: {fileID: 1947663707442958864}
   - component: {fileID: 1947663707442958867}
+  - component: {fileID: 1828402978950897466}
   m_Layer: 0
   m_Name: Pre_Objective_Destroy
   m_TagString: Untagged
@@ -122,6 +123,22 @@ MonoBehaviour:
   - {fileID: 227615046000823840, guid: 2fb16e5a959a41844bc859c48f3e81cb, type: 3}
   spawnCooldown: 120
   ObjectiveDone: 0
+--- !u!208 &1828402978950897466
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947663707442958866}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &1947663707487758856
 PrefabInstance:
   m_ObjectHideFlags: 0

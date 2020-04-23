@@ -1297,6 +1297,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2037181574, guid: ab953951a47a4de4f871b6f5ecbb0c14, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2040506076, guid: ab953951a47a4de4f871b6f5ecbb0c14, type: 3}
       propertyPath: m_textInfo.characterCount
       value: 0
@@ -1903,7 +1907,7 @@ GameObject:
   - component: {fileID: 949374254}
   - component: {fileID: 949374253}
   - component: {fileID: 949374256}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3125,7 +3129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1261710565}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HealingMatrix
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3681,7 +3685,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1540792892}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Damage Matrix
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4747,7 +4751,7 @@ GameObject:
   - component: {fileID: 2044891450}
   - component: {fileID: 2044891449}
   - component: {fileID: 2044891452}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

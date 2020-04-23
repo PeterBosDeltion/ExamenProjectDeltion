@@ -111,6 +111,6 @@ public class UIManager : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+        GameManager.instance.CloseGame();
     }
 }

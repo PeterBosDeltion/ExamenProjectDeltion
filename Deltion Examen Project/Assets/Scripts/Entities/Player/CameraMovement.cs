@@ -16,6 +16,9 @@ public class CameraMovement : MonoBehaviour
     private void Awake()
     {
         target = FindObjectOfType<PlayerController>().gameObject.transform;
+        Vector3 newOffset = Camera.main.transform.forward * -distanceOffset;
+        newOffset += Camera.main.transform.up * heightOfset;
+        transform.position = target.position + newOffset;
     }
 
     //Either late or fixed update CAN work with this.
