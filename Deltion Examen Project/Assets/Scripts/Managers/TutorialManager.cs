@@ -77,6 +77,19 @@ public class TutorialManager : MonoBehaviour
         stepOneDelegate.Invoke();
     }
 
+    private void OnDestroy()
+    {
+        stepOneDelegate -= StepOne;
+        playerMovedDelegate -= PlayerMoved;
+        InputManager.RotatingEvent -= PlayerRotated;
+        InputManager.leftMouseButtonHoldEvent -= PlayerFired;
+        InputManager.reloadEvent -= PlayerReloaded;
+        InputManager.scrollEvent -= PlayerSwitched;
+        InputManager.abilityEvent -= AbilityOneUsed;
+        InputManager.abilityEvent -= UltUsed;
+    }
+
+
     private void AddEmptyDelegates()
     {
         stepOneDelegate += Empty;
