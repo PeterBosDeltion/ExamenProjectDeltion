@@ -87,6 +87,11 @@ public class PlayerUI : MonoBehaviour
         weaponImage.sprite = myPlayer.currentWeapon.myWeapon.uiIcon;
     }
 
+    private void OnDestroy()
+    {
+        InputManager.delayedAbilityEvent -= AbilityUsed;
+    }
+
     public void AbilityUsed(int f)
     {
             switch (f)
