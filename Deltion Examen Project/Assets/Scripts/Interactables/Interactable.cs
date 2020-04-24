@@ -36,7 +36,7 @@ public abstract class Interactable : MonoBehaviour
             {
                 if(!interacted)
                     interactText.gameObject.SetActive(true);
-                if (InputManager.Instance.GetTimeInteractHeld() > 0)
+                if (InputManager.instance.GetTimeInteractHeld() > 0)
                 {
                     interactText.gameObject.SetActive(false);
                     holdCircle.enabled = true;
@@ -44,14 +44,14 @@ public abstract class Interactable : MonoBehaviour
                 }
                 if (!interacted)
                 {
-                    holdCircle.fillAmount = InputManager.Instance.GetTimeInteractHeld() / holdDuration;
+                    holdCircle.fillAmount = InputManager.instance.GetTimeInteractHeld() / holdDuration;
                 }
                 else
                 {
                     holdCircle.fillAmount = 0;
                 }
 
-                if (InputManager.Instance.GetTimeInteractHeld() >= holdDuration && !interacted)
+                if (InputManager.instance.GetTimeInteractHeld() >= holdDuration && !interacted)
                 {
                     Interact();
                 }

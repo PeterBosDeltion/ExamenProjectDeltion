@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(InputManager.Instance.isMoving)
+        if(InputManager.instance.isMoving)
         {
             if(!walkingSource.isPlaying)
                 walkingSource.Play();

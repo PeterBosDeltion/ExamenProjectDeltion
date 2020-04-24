@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //This Manager is used as a centralized point for all of the Players Input.
 //This makes it easier to find problems related to input for debugging purposes.
 
 public class InputManager : MonoBehaviour
 {
-    public static InputManager Instance;
+    public static InputManager instance;
 
     //Input Delegates. subscribe a function to trigger its contents on input.
     public delegate void BaseInput();
@@ -40,7 +41,14 @@ public class InputManager : MonoBehaviour
     //Asigning empty functions to the delegates to avoid Errors
     private void Awake()
     {
-        Instance = this;
+        if (!instance)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(transform.root.gameObject);
+        }
 
         leftMouseButtonEvent += Empty;
         leftMouseButtonHoldEvent += Empty;
@@ -55,6 +63,11 @@ public class InputManager : MonoBehaviour
         scrollEvent += EmptyFloat;
         MovingEvent += EmptyAxis;
         RotatingEvent += EmptyAxis;
+    }
+
+    private void Start()
+    {
+        SceneManager.activeSceneChanged += ActiveSceneChanged;
     }
 
     private void OnDestroy()
@@ -216,4 +229,31 @@ public class InputManager : MonoBehaviour
     {
     }
     #endregion
+
+    //Just incase a script doesnt properly wipe its delegate the InputManager will wipe the delegates when changing scene
+
+    private void ActiveSceneChanged(Scene current, Scene next)
+    {
+        Debug.Log(SceneManager.GetActiveScene().name);
+        ResetDelegates();
+    }
+
+    public void ResetDelegates()
+    {
+        leftMouseButtonEvent = null;
+        leftMouseButtonHoldEvent = null;
+        leftMouseButtonUpEvent = null;
+        rightMouseButtonEvent = null;
+        reloadEvent = null;
+        interactEvent = null;
+        escapeEvent = null;
+        LastWeaponEvent = null;
+        abilityEvent = null;
+        delayedAbilityEvent = null;
+        scrollEvent = null;
+        MovingEvent = null;
+        RotatingEvent = null;
+
+        Awake();
+    }
 }
