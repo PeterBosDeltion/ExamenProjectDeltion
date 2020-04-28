@@ -47,6 +47,7 @@ public abstract class EnemyAI : MonoBehaviour
         entityManager.AddEnemy(myStats);
         SetTarget();
         agent.speed = myStats.speed;
+        StartCoroutine(CheckTarget());
     }
 
     private void Update()
@@ -104,7 +105,7 @@ public abstract class EnemyAI : MonoBehaviour
 
     private void TargetDied()
     {
-        //Temporary null check untill i fuind out why enemys dont remove themselfs from the delegate
+        //Temporary null check untill I find time to check why enemys dont remove themselfs from the delegate
         if(this != null)
         {
             myTarget = null;
@@ -268,5 +269,15 @@ public abstract class EnemyAI : MonoBehaviour
         Focused = true;
         yield return new WaitForSeconds(AttantionTime);
         Focused = false;
+    }
+
+    private IEnumerator CheckTarget()
+    {
+        yield return new WaitForSeconds(10);
+        if(myTarget)
+        {
+            TargetDied();
+        }
+        StartCoroutine(CheckTarget());
     }
 }
