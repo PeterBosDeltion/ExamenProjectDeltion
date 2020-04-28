@@ -373,6 +373,7 @@ MonoBehaviour:
     type: 3}
   nameText: {fileID: 6417690067482721664}
   icon: {fileID: 9190386694116134319}
+  menu: {fileID: 0}
 --- !u!1 &6417690067482721918
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,10 +466,10 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 31
-  m_fontSizeBase: 31
+  m_fontSize: 18
+  m_fontSizeBase: 26
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0

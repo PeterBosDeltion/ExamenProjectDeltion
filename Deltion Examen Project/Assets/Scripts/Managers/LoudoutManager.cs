@@ -16,6 +16,7 @@ public class LoudoutManager : MonoBehaviour
     public GameObject loadoutSelectableWindow;
 
     private bool generatedDefaults;
+    private GameObject currentWindow;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -70,8 +71,12 @@ public class LoudoutManager : MonoBehaviour
 
     public void OpenLoadoutSelectableWindow(string type, int abilityIndex, LoudoutMainMenuButton button)
     {
+        if (currentWindow)
+            Destroy(currentWindow);
         GameObject window = Instantiate(loadoutSelectableWindow, mainCanvas.transform);
         window.GetComponent<LoudoutSelectableWindow>().OpenWindow(type, abilityIndex, button);
+
+        currentWindow = window;
     }
 
     public void SelectLoadout(int index)

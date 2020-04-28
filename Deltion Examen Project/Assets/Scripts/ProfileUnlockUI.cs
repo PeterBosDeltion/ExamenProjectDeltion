@@ -17,6 +17,8 @@ public class ProfileUnlockUI : MonoBehaviour
     public TextMeshProUGUI nameText;
     public Image icon;
 
+    public ProfileMenu menu;
+
     public void OnEnable()
     {
         Initialize();
@@ -43,7 +45,11 @@ public class ProfileUnlockUI : MonoBehaviour
 
     public void Clicked()
     {
+        if (menu.currentWindow)
+            Destroy(menu.currentWindow);
         GameObject window = Instantiate(blurbWindowPrefab, GetComponentInParent<Canvas>().transform);
         window.GetComponent<UnlockBlurbWindow>().Initialize(weaponUnlock, abilityUnlockPrefab);
+
+        menu.currentWindow = window;
     }
 }

@@ -46,6 +46,8 @@ public class PlayerUI : MonoBehaviour
     public Image tempHealthbarFilled;
 
     private bool waiting;
+    private bool reloading;
+    private float time = 0;
 
     //private bool waiting;
     private void Start()
@@ -65,6 +67,9 @@ public class PlayerUI : MonoBehaviour
     private void Initialize()
     {
         InputManager.delayedAbilityEvent += AbilityUsed;
+        InputManager.reloadEvent += ReloadEvent;
+        InputManager.scrollEvent += SwapEvent;
+        InputManager.LastWeaponEvent += LastSwapEvent;
 
         foreach (Image img in playerMainColoredImages)
         {
@@ -90,6 +95,9 @@ public class PlayerUI : MonoBehaviour
     private void OnDestroy()
     {
         InputManager.delayedAbilityEvent -= AbilityUsed;
+        InputManager.reloadEvent -= ReloadEvent;
+        InputManager.scrollEvent -= SwapEvent;
+        InputManager.LastWeaponEvent -= LastSwapEvent;
     }
 
     public void AbilityUsed(int f)
@@ -196,7 +204,10 @@ public class PlayerUI : MonoBehaviour
             {
                 weaponBackImage.sprite = myPlayer.currentWeapon.myWeapon.uiIcon;
             }
-            weaponImage.fillAmount = myPlayer.currentWeapon.magazineAmmo / myPlayer.currentWeapon.totalAmmo;
+            if (!reloading)
+            {
+                    weaponImage.fillAmount = myPlayer.currentWeapon.magazineAmmo / myPlayer.currentWeapon.totalAmmo;
+            }
             if (myPlayer.currentWeapon.magazineAmmo <= 0)
             {
                 if (!needReloadText.activeSelf)
@@ -225,8 +236,55 @@ public class PlayerUI : MonoBehaviour
                     tempHealthbar.SetActive(false);
                 }
             }
+
+            if (reloading)
+            {
+                AnimateReload(myPlayer.currentWeapon);
+            }
+           
         }
        
+    }
+
+    private void ReloadEvent()
+    {
+        if (myPlayer.currentWeapon.magazineAmmo < myPlayer.currentWeapon.totalAmmo)
+        {
+            if (!reloading)
+            {
+                time = 0;
+                reloading = true;
+            }
+        }
+    }
+
+    private void SwapEvent(float f)
+    {
+        if (reloading)
+        {
+            reloading = false;
+            time = 0;
+        }
+    }
+
+    private void LastSwapEvent()
+    {
+        if (reloading)
+        {
+            reloading = false;
+            time = 0;
+        }
+    }
+
+    public void AnimateReload(Weapon w)
+    {
+        time += Time.deltaTime;
+        weaponImage.fillAmount = time / w.myWeapon.reloadSpeed;
+        if(weaponImage.fillAmount >= 1)
+        {
+            reloading = false;
+            weaponImage.fillAmount = 1;
+        }
     }
     //private IEnumerator AbilityCooldown(Image abilityCDImg, float seconds)
     //{
