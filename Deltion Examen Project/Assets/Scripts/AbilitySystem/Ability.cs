@@ -112,7 +112,7 @@ public abstract class Ability : MonoBehaviour
                     activeGhost.transform.localEulerAngles = new Vector3(0, eul.y, 0);
 
 
-                    if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
+                    if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor") && mPos.y <= myPlayer.transform.position.y + 0.1F && mPos.y >= myPlayer.transform.position.y - 0.1F)
                     {
                         if(activeGhost.GetComponentInChildren<Renderer>().material != canDeployMaterial)
                         {
@@ -157,7 +157,7 @@ public abstract class Ability : MonoBehaviour
                 if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
                 {
                     Vector3 mPos = hit.point + deployableOffset;
-                    if (Vector3.Distance(mPos, center) <= deployableRadius)
+                    if (Vector3.Distance(mPos, center) <= deployableRadius && mPos.y <= myPlayer.transform.position.y + 0.1F && mPos.y >= myPlayer.transform.position.y -0.1F)
                     {
                         AbilityMechanic(mPos, new Quaternion(0, ghostRotation.y, 0, ghostRotation.w));
                         deploying = false;

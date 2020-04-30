@@ -33,7 +33,9 @@ public class SentryTurret : Entity
     public Color flashFrom;
     public Color flashTo;
 
-    public Image ammoImg;
+    //public Image ammoImg;
+    public Image timerImg;
+    private float currentDuration;
     private bool flashing;
     private SentryTurretAbility myAbility;
 
@@ -52,7 +54,8 @@ public class SentryTurret : Entity
         canShoot = true;
         myAbility = ability;
         armSpeed = RotSpeed * 40000;
-        ammoImg.gameObject.SetActive(false);
+        //ammoImg.gameObject.SetActive(false);
+        currentDuration = myAbility.duration;
         EntityManager.instance.AddPlayerOrAbility(this);
     }
 
@@ -80,6 +83,9 @@ public class SentryTurret : Entity
         Shoot();
 
         healthBar.fillAmount = hp / maxHp;
+        currentDuration -= Time.deltaTime;
+        timerImg.fillAmount = currentDuration / myAbility.duration;
+
     }
 
     private void Rotate()
@@ -223,11 +229,11 @@ public class SentryTurret : Entity
         canShoot = true;
     }
 
-    private void FlashAmmo()
-    {
-        flashing = true;
-        ammoImg.color = (ammoImg.color == flashFrom) ? ammoImg.color = flashTo : ammoImg.color = flashFrom;
-    }
+    //private void FlashAmmo()
+    //{
+    //    flashing = true;
+    //    ammoImg.color = (ammoImg.color == flashFrom) ? ammoImg.color = flashTo : ammoImg.color = flashFrom;
+    //}
 
     protected override void Death()
     {
