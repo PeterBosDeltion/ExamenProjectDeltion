@@ -93640,6 +93640,11 @@ PrefabInstance:
       propertyPath: mainCanvas
       value: 
       objectReference: {fileID: 744770920}
+    - target: {fileID: 8531780636136589661, guid: b867ca9f83b60fd41baad3528c5fd23f,
+        type: 3}
+      propertyPath: amountOfPlayers
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8531780637188613729, guid: b867ca9f83b60fd41baad3528c5fd23f,
         type: 3}
       propertyPath: m_LocalPosition.x

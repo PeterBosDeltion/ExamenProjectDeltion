@@ -8,6 +8,17 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public int difficulty = 2;
+    public int amountOfPlayers = 1;
+
+    public PlayerController[] GetPlayers()
+    {
+        return FindObjectsOfType<PlayerController>();
+    }
+
+    public PlayerController playerOne;
+    public PlayerController playerTwo;
+    public PlayerController playerThree;
+    public PlayerController playerFour;
 
     private void Awake()
     {

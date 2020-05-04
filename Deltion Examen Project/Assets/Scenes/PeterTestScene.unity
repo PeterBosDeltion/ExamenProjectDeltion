@@ -2083,6 +2083,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2850965622193425102, guid: 456a9396cd0ac3441a8b13964e89ceba,
+        type: 3}
+      propertyPath: playerSpawnPositions.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850965622193425102, guid: 456a9396cd0ac3441a8b13964e89ceba,
+        type: 3}
+      propertyPath: playerSpawnPositions.Array.data[1].z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850965622193425102, guid: 456a9396cd0ac3441a8b13964e89ceba,
+        type: 3}
+      propertyPath: playerSpawnPositions.Array.data[2].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850965622193425102, guid: 456a9396cd0ac3441a8b13964e89ceba,
+        type: 3}
+      propertyPath: playerSpawnPositions.Array.data[2].z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850965622193425102, guid: 456a9396cd0ac3441a8b13964e89ceba,
+        type: 3}
+      propertyPath: playerSpawnPositions.Array.data[3].x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2850965622193425103, guid: 456a9396cd0ac3441a8b13964e89ceba,
         type: 3}
       propertyPath: m_Name
@@ -2422,6 +2447,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pre_Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3669613515331608540, guid: d9b859690e90e0e4388c154575858d1d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9b859690e90e0e4388c154575858d1d, type: 3}

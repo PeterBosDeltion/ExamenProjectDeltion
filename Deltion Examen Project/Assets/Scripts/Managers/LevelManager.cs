@@ -8,8 +8,9 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
-
-    private Player player;
+    public GameObject playerPrefab;
+    public List<Vector3> playerSpawnPositions = new List<Vector3>();
+    private Player playerOne;
     private List<EntitySpawner> allAvailableSpawners = new List<EntitySpawner>();
     private List<EntitySpawner> closestSpawners = new List<EntitySpawner>();
 
@@ -45,9 +46,48 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    private void SetupPlayers()
+    {
+        for (int i = 0; i < GameManager.instance.amountOfPlayers; i++)
+        {
+            GameObject prePlayer = Instantiate(playerPrefab, playerSpawnPositions[i], Quaternion.identity);
+            PlayerController pc = prePlayer.GetComponent<PlayerController>();
+
+            switch (i)
+            {
+                case 0:
+                    GameManager.instance.playerOne = pc;
+                    break;
+                case 1:
+                    GameManager.instance.playerTwo = pc;
+                    pc.playerNumber = 1;
+                    break;
+                case 2:
+                    GameManager.instance.playerThree = pc;
+                    pc.playerNumber = 2;
+                    break;
+                case 3:
+                    GameManager.instance.playerFour = pc;
+                    pc.playerNumber = 3;
+                    break;
+            }
+        }
+
+        FindObjectOfType<CameraMovement>().FindPlayerOne();
+        FindObjectOfType<MainCanvas>().SetUIPlayers();
+        playerOne = GameManager.instance.playerOne.GetComponent<Player>();
+    }
+
     private void Start()
     {
-        player = GameObject.FindObjectOfType<Player>();
+        if(playerSpawnPositions.Count <= 0)
+        {
+            Debug.LogError("Please assign 4 spawnpositions for players in this levels LevelManager");
+            return;
+        }
+
+        SetupPlayers();
+       
         SetdifficultyVariables(GameManager.instance.difficulty);
         if(GameObject.FindObjectOfType<EntitySpawner>())
         {
@@ -177,7 +217,7 @@ public class LevelManager : MonoBehaviour
 
             foreach(EntitySpawner spawner in allAvailableSpawners)
             {
-                float newDistance = Vector3.Distance(spawner.gameObject.transform.position, player.transform.position);
+                float newDistance = Vector3.Distance(spawner.gameObject.transform.position, playerOne.transform.position);
                 if (distance > newDistance && !closestSpawners.Contains(spawner))
                 {
                     distance = newDistance;

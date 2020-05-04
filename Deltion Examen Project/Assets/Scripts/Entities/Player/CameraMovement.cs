@@ -13,9 +13,22 @@ public class CameraMovement : MonoBehaviour
     [Tooltip("The lower the value the slower/smoother the camera will follow the player")]
     public float smoothness = 5;
 
-    private void Awake()
+    //private void Awake()
+    //{
+    //    target = FindObjectOfType<PlayerController>().gameObject.transform;
+    //    Vector3 newOffset = Camera.main.transform.forward * -distanceOffset;
+    //    newOffset += Camera.main.transform.up * heightOfset;
+    //    transform.position = target.position + newOffset;
+    //}
+    public void FindPlayerOne()
     {
-        target = FindObjectOfType<PlayerController>().gameObject.transform;
+
+        foreach (PlayerController player in GameManager.instance.GetPlayers())
+        {
+            if (player.playerNumber == 0)
+                target = player.transform;
+        }
+        //target = FindObjectOfType<PlayerController>().gameObject.transform;
         Vector3 newOffset = Camera.main.transform.forward * -distanceOffset;
         newOffset += Camera.main.transform.up * heightOfset;
         transform.position = target.position + newOffset;
@@ -33,11 +46,14 @@ public class CameraMovement : MonoBehaviour
     //Camera follows player
     void MoveAfterPlayer()
     {
-        Vector3 newOffset = Camera.main.transform.forward * -distanceOffset;
-        newOffset += Camera.main.transform.up * heightOfset;
-        Vector3 targetPos = target.position + newOffset;
-        Vector3 smoothedPos = Vector3.Lerp(transform.position, targetPos, smoothness * Time.deltaTime);
+        if (target)
+        {
+            Vector3 newOffset = Camera.main.transform.forward * -distanceOffset;
+            newOffset += Camera.main.transform.up * heightOfset;
+            Vector3 targetPos = target.position + newOffset;
+            Vector3 smoothedPos = Vector3.Lerp(transform.position, targetPos, smoothness * Time.deltaTime);
 
-        transform.localPosition = smoothedPos;
+            transform.localPosition = smoothedPos;
+        }
     }
 }
