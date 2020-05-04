@@ -7,6 +7,7 @@ public class ProfileMenu : MonoBehaviour
     public GameObject profileUnlockablePrefab;
     public GameObject profileUnlockableContent;
 
+    public GameObject currentWindow;
     private void Start()
     {
         Initialize();
@@ -19,6 +20,7 @@ public class ProfileMenu : MonoBehaviour
             GameObject element = Instantiate(profileUnlockablePrefab, profileUnlockableContent.transform);
             element.GetComponent<ProfileUnlockUI>().weaponUnlock = pw.myWeapon;
             element.GetComponent<ProfileUnlockUI>().unlocked = true;
+            element.GetComponent<ProfileUnlockUI>().menu = this;
             element.GetComponent<ProfileUnlockUI>().Initialize();
         }
         foreach (Weapon sw in IDManager.instance.allSecondaryWeapons)
@@ -26,6 +28,7 @@ public class ProfileMenu : MonoBehaviour
             GameObject element = Instantiate(profileUnlockablePrefab, profileUnlockableContent.transform);
             element.GetComponent<ProfileUnlockUI>().weaponUnlock = sw.myWeapon;
             element.GetComponent<ProfileUnlockUI>().unlocked = true;
+            element.GetComponent<ProfileUnlockUI>().menu = this;
             element.GetComponent<ProfileUnlockUI>().Initialize();
         }
 
@@ -34,6 +37,7 @@ public class ProfileMenu : MonoBehaviour
             GameObject element = Instantiate(profileUnlockablePrefab, profileUnlockableContent.transform);
             element.GetComponent<ProfileUnlockUI>().abilityUnlockPrefab = a.gameObject;
             element.GetComponent<ProfileUnlockUI>().unlocked = true;
+            element.GetComponent<ProfileUnlockUI>().menu = this;
             element.GetComponent<ProfileUnlockUI>().Initialize();
         }
 
@@ -42,6 +46,7 @@ public class ProfileMenu : MonoBehaviour
             GameObject element = Instantiate(profileUnlockablePrefab, profileUnlockableContent.transform);
             element.GetComponent<ProfileUnlockUI>().abilityUnlockPrefab = u.gameObject;
             element.GetComponent<ProfileUnlockUI>().unlocked = true;
+            element.GetComponent<ProfileUnlockUI>().menu = this;
             element.GetComponent<ProfileUnlockUI>().Initialize();
         }
     }

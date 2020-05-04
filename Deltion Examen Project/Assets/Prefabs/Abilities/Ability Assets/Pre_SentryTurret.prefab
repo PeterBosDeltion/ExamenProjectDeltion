@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 134488900534230689}
   - component: {fileID: 2789826598792086296}
   - component: {fileID: 4766400580713152672}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,8 +125,9 @@ GameObject:
   - component: {fileID: 4890011809716948366}
   - component: {fileID: 3250930922704889811}
   - component: {fileID: 1202360787643978722}
-  m_Layer: 2
-  m_Name: AmmoImage
+  - component: {fileID: 9075695642176451283}
+  m_Layer: 0
+  m_Name: TimerImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +143,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 6085361924684846682}
   m_Father: {fileID: 8555421378744028000}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -172,13 +174,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.68235296, g: 0.8745099, b: 0.97647065, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 363893f9345c44a4a8c1294f122b8d18, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 0107d0a99e53a7a4ea95c3967477fe9a, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -187,6 +189,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9075695642176451283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257255575268007804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb134f1ed38c28c4699a8be89ccb0b36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetCam: {fileID: 0}
+  targetMainCamera: 1
 --- !u!1 &767042763103193732
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3023348641416102426}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: r_arm_rotation_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3195542438951085849}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: r_arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +273,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 491531650481024888}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +305,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7946427749979431494}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +336,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2101580353292984498}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Rotator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8671398135851911727}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: r_arm_rotation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,7 +402,7 @@ GameObject:
   - component: {fileID: 7998419907076783143}
   - component: {fileID: 8846033761769598298}
   - component: {fileID: 2098321639}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Pre_SentryTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +452,7 @@ MonoBehaviour:
   healthBar: {fileID: 335460013100056993}
   flashFrom: {r: 1, g: 1, b: 1, a: 1}
   flashTo: {r: 1, g: 0, b: 0, a: 1}
-  ammoImg: {fileID: 1202360787643978722}
+  timerImg: {fileID: 1202360787643978722}
 --- !u!65 &2098321639
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -459,7 +475,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1398040384145585360}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: l_arm_rotation_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -490,7 +506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5142628597172319628}
   - component: {fileID: 5516415530352924981}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -579,7 +595,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4561072361288921105}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -610,7 +626,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4275065454106008374}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: l_arm_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -641,7 +657,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7170199576528991259}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: l_arm_rotation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -672,7 +688,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2177962748924476145}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Bulletspawn (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -702,7 +718,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5974424344837007816}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -737,7 +753,7 @@ GameObject:
   - component: {fileID: 7798224160525166575}
   - component: {fileID: 3317049254033525411}
   - component: {fileID: 8316704449541097727}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -824,6 +840,79 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &7973204534278172800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6085361924684846682}
+  - component: {fileID: 1180234431512740170}
+  - component: {fileID: 1321945595507609428}
+  m_Layer: 0
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6085361924684846682
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7973204534278172800}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4890011809716948366}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.16964291, y: 0.16964287}
+  m_AnchorMax: {x: 0.8303572, y: 0.8303572}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1180234431512740170
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7973204534278172800}
+  m_CullTransparentMesh: 0
+--- !u!114 &1321945595507609428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7973204534278172800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.68235296, g: 0.8745099, b: 0.97647065, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 9776fd35409a00b408c0cdbcdd25ab2a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8149973124314235288
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,7 +922,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5539349310014376238}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: r_arm_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -864,7 +953,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8426324898027262699}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: l_arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -895,7 +984,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3339621531955046675}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Bulletspawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -927,7 +1016,7 @@ GameObject:
   - component: {fileID: 2463219356646023550}
   - component: {fileID: 8315414644243408020}
   - component: {fileID: 335460013100056993}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Healthbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -986,6 +1075,6 @@ MonoBehaviour:
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 0
-  m_FillOrigin: 2
+  m_FillOrigin: 3
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1

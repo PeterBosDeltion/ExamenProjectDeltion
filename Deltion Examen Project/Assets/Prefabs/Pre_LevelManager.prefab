@@ -43,6 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9312f5ad2fcda834e8a61042952890b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 3669613515331608540, guid: d9b859690e90e0e4388c154575858d1d,
+    type: 3}
+  playerSpawnPositions: []
+  Levelobjectives: []
   enemyTypes:
   - {fileID: 227615046000823840, guid: 2fb16e5a959a41844bc859c48f3e81cb, type: 3}
   minimumSpawnerSpread: 3

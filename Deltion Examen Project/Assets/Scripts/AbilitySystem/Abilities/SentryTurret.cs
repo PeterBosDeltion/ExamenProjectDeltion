@@ -18,7 +18,7 @@ public class SentryTurret : Entity
     private float myDamage;
     public float RotSpeed;
 
-    private Transform target;
+    private Entity target;
     private Player myPlayer;
 
     private float myMaxAmmo;
@@ -33,7 +33,9 @@ public class SentryTurret : Entity
     public Color flashFrom;
     public Color flashTo;
 
-    public Image ammoImg;
+    //public Image ammoImg;
+    public Image timerImg;
+    private float currentDuration;
     private bool flashing;
     private SentryTurretAbility myAbility;
 
@@ -52,7 +54,8 @@ public class SentryTurret : Entity
         canShoot = true;
         myAbility = ability;
         armSpeed = RotSpeed * 40000;
-        ammoImg.gameObject.SetActive(false);
+        //ammoImg.gameObject.SetActive(false);
+        currentDuration = myAbility.duration;
         EntityManager.instance.AddPlayerOrAbility(this);
     }
 
@@ -64,7 +67,7 @@ public class SentryTurret : Entity
         {
             if (target.GetComponent<Entity>().GetHp() > 0)
             {
-                if (Vector3.Distance(transform.position, target.position) <= myRange) //&& currentAmmo > 0
+                if (Vector3.Distance(transform.position, target.transform.position) <= myRange) //&& currentAmmo > 0
                 {
                     leftArm.transform.Rotate(Vector3.up * armSpeed * Time.deltaTime);
                     rightArm.transform.Rotate(Vector3.up * armSpeed * Time.deltaTime);
@@ -80,6 +83,9 @@ public class SentryTurret : Entity
         Shoot();
 
         healthBar.fillAmount = hp / maxHp;
+        currentDuration -= Time.deltaTime;
+        timerImg.fillAmount = currentDuration / myAbility.duration;
+
     }
 
     private void Rotate()
@@ -99,21 +105,49 @@ public class SentryTurret : Entity
 
     private void FindTarget()
     {
-        if (!target)
+        //if (!target)
+        //{
+        //    Collider[] overlaps = Physics.OverlapSphere(transform.position, myAggroRadius);
+        //    if (overlaps.Length > 0)
+        //    {
+        //        foreach (var collider in overlaps)
+        //        {
+        //            if (collider.transform.GetComponent<Entity>() && !collider.transform.GetComponent<Player>() && collider.transform != transform)
+        //            {
+        //                target = collider.transform;
+        //            }
+        //        }
+        //    }
+        //}
+
+        if (EntityManager.instance.AllEnemys.Count != 0)
+            target = GetClosestTarget();
+
+      
+    }
+
+    private Entity GetClosestTarget()
+    {
+        if (EntityManager.instance.AllEnemys.Count != 0)
         {
-            Collider[] overlaps = Physics.OverlapSphere(transform.position, myAggroRadius);
-            if (overlaps.Length > 0)
+            Entity closestEntity = null;
+            float rangeToClosest = Mathf.Infinity;
+            foreach (Entity entity in EntityManager.instance.AllEnemys)
             {
-                foreach (var collider in overlaps)
+                float newDistance = Vector3.Distance(transform.position, entity.transform.position);
+                if (rangeToClosest > newDistance && entity.enabled && !entity.death)
                 {
-                    if (collider.transform.GetComponent<Entity>() && !collider.transform.GetComponent<Player>() && collider.transform != transform)
-                    {
-                        target = collider.transform;
-                    }
+                    rangeToClosest = newDistance;
+                    closestEntity = entity;
                 }
             }
+
+            return closestEntity;
         }
-      
+        else
+        {
+            return null;
+        }
     }
 
     private void Shoot()
@@ -122,7 +156,7 @@ public class SentryTurret : Entity
         {
             if(target.GetComponent<Entity>().GetHp() > 0)
             {
-                if (Vector3.Distance(transform.position, target.position) <= myRange)
+                if (Vector3.Distance(transform.position, target.transform.position) <= myRange)
                 {
                     if (canShoot) //currentAmmo > 0 && !reloading && 
                     {
@@ -195,11 +229,11 @@ public class SentryTurret : Entity
         canShoot = true;
     }
 
-    private void FlashAmmo()
-    {
-        flashing = true;
-        ammoImg.color = (ammoImg.color == flashFrom) ? ammoImg.color = flashTo : ammoImg.color = flashFrom;
-    }
+    //private void FlashAmmo()
+    //{
+    //    flashing = true;
+    //    ammoImg.color = (ammoImg.color == flashFrom) ? ammoImg.color = flashTo : ammoImg.color = flashFrom;
+    //}
 
     protected override void Death()
     {
