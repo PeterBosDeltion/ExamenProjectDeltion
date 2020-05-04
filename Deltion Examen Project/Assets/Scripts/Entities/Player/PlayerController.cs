@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
     public Weapon currentPrimary;
     public Weapon currentSecondary;
+    private bool waiting;
 
     //Assigning the Player scripts to the controller(There is no reason for the PlayerController to be anywhere else than on the Player so no need for a Gameobject reference)
     private void Awake()
@@ -48,14 +49,13 @@ public class PlayerController : MonoBehaviour
     {
         if (!inTutorial)
         {
-            loadout.GenerateLoadout(LoudoutManager.instance.playerLoadouts[playerNumber]);
-            currentPrimary = loadout.primary;
-            currentSecondary = loadout.secondary;
+                loadout.GenerateLoadout(LoudoutManager.instance.playerLoadouts[playerNumber]);
+                currentPrimary = loadout.primary;
+                currentSecondary = loadout.secondary;
 
-            abilities = loadout.abilities;
-            ultimateAbility = loadout.ultimateAbility;
+                abilities = loadout.abilities;
+                ultimateAbility = loadout.ultimateAbility;
         }
-       
     }
 
     public void DisablePlayer()
@@ -116,7 +116,6 @@ public class PlayerController : MonoBehaviour
         InputManager.leftMouseButtonEvent += Shoot;
         InputManager.scrollEvent += SwitchWeapon;
         InputManager.LastWeaponEvent += SwitchToLastWeapon;
-        Initialize();
     }
 
     private void Update()
@@ -132,12 +131,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Initialize()
+    public void Initialize()
     {
-        //if (!inTutorial)
-        //{
-        //    InitializeLoadout();
-        //}
+        if (!inTutorial)
+        {
+            InitializeLoadout();
+        }
 
         foreach (Ability ability in abilities)
         {
@@ -177,6 +176,14 @@ public class PlayerController : MonoBehaviour
      
 
         playerInitialized = true;
+    }
+
+    private IEnumerator WaitForLoadoutInit()
+    {
+        waiting = true;
+        yield return new WaitUntil(() => LoudoutManager.instance.loadoutsInit);
+        Initialize();
+        waiting = false;
     }
 
     private void SwitchToLastWeapon()
