@@ -39,9 +39,9 @@ public class LoudoutManager : MonoBehaviour
   
     private void Initialize()
     {
-        LoadoutTemplate standardTemplate = new LoadoutTemplate();
         for (int i = 0; i < 4; i++)
         {
+            LoadoutTemplate standardTemplate = new LoadoutTemplate();
             if(playerLoadouts.Count < 4)
                 playerLoadouts.Add(standardTemplate);
         }

@@ -134,10 +134,10 @@ public class PlayerController : MonoBehaviour
 
     private void Initialize()
     {
-        if (!inTutorial)
-        {
-            InitializeLoadout();
-        }
+        //if (!inTutorial)
+        //{
+        //    InitializeLoadout();
+        //}
 
         foreach (Ability ability in abilities)
         {
