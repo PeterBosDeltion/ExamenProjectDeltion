@@ -72,7 +72,7 @@ public abstract class EnemyAI : MonoBehaviour
         }
         if (myTarget)
         {
-            if (!myTarget.enabled || myTarget != null)
+            if (!myTarget.enabled)
             {
                 SetTarget();
             }
@@ -104,7 +104,7 @@ public abstract class EnemyAI : MonoBehaviour
 
     private void TargetDied()
     {
-        //Temporary null check untill I find time to check why enemys dont remove themselfs from the delegate
+        //Temporary null check untill I find out why enemys dont remove themselfs from the delegate
         if(this != null)
         {
             myTarget = null;
@@ -115,6 +115,7 @@ public abstract class EnemyAI : MonoBehaviour
     //This function is used to set a new target
     public void SetTarget(Entity Attacker = null)
     {
+        Debug.LogError("ror.er");
         StopAllCoroutines();
         if (state != AIState.Dead)
         {
@@ -134,7 +135,7 @@ public abstract class EnemyAI : MonoBehaviour
                     {
                         SetState(AIState.Idle);
                     }
-                    StartCoroutine(ReTarget());
+                    //StartCoroutine(ReTarget());
                     return;
                 }
                 else
@@ -254,13 +255,6 @@ public abstract class EnemyAI : MonoBehaviour
     protected abstract void HandelAI();
 
     protected abstract void Attack();
-
-    //This Coroutine is used as a timer for when the enemy doesent have a taget and needs to rtetarget after being idle (incase this ever hapens)
-    private IEnumerator ReTarget()
-    {
-        yield return new WaitForSeconds(3);
-        SetTarget();
-    }
 
     //This Coroutine is used as a timer for when a enemy can change their taget if they get hit
     private IEnumerator LockedOnTimer()

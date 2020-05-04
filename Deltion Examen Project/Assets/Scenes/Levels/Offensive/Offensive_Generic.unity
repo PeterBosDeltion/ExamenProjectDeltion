@@ -8911,7 +8911,7 @@ PrefabInstance:
     - target: {fileID: 2850965622193425102, guid: 456a9396cd0ac3441a8b13964e89ceba,
         type: 3}
       propertyPath: spawnTickTime
-      value: 50
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2850965622193425102, guid: 456a9396cd0ac3441a8b13964e89ceba,
         type: 3}
@@ -8931,7 +8931,7 @@ PrefabInstance:
     - target: {fileID: 2850965622193425102, guid: 456a9396cd0ac3441a8b13964e89ceba,
         type: 3}
       propertyPath: playerSpawnPositions.Array.data[0].z
-      value: 239.2
+      value: 70.1
       objectReference: {fileID: 0}
     - target: {fileID: 2850965622193425102, guid: 456a9396cd0ac3441a8b13964e89ceba,
         type: 3}
@@ -9109,7 +9109,7 @@ PrefabInstance:
     - target: {fileID: 3669613515331608539, guid: d9b859690e90e0e4388c154575858d1d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 239.2
+      value: 70.1
       objectReference: {fileID: 0}
     - target: {fileID: 3669613515331608539, guid: d9b859690e90e0e4388c154575858d1d,
         type: 3}

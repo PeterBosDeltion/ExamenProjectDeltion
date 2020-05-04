@@ -61,6 +61,8 @@ public class DestroyObjective : Entity
 
     protected override void Death()
     {
+        base.Death();
+
         ObjectiveDone = true;
         LevelManager.instance.CheckObjectives();
 

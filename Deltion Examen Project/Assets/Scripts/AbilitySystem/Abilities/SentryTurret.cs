@@ -237,6 +237,7 @@ public class SentryTurret : Entity
 
     protected override void Death()
     {
+        base.Death();
         myAbility.TurretDestroyed();
     }
 }
