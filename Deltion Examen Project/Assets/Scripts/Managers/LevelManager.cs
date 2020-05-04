@@ -71,6 +71,9 @@ public class LevelManager : MonoBehaviour
                     pc.playerNumber = 3;
                     break;
             }
+
+            if(!pc.inTutorial)
+                pc.InitializeLoadout();
         }
 
         FindObjectOfType<CameraMovement>().FindPlayerOne();
