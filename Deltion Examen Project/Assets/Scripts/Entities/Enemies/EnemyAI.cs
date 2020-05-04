@@ -47,7 +47,6 @@ public abstract class EnemyAI : MonoBehaviour
         entityManager.AddEnemy(myStats);
         SetTarget();
         agent.speed = myStats.speed;
-        StartCoroutine(CheckTarget());
     }
 
     private void Update()
@@ -73,7 +72,7 @@ public abstract class EnemyAI : MonoBehaviour
         }
         if (myTarget)
         {
-            if (!myTarget.enabled)
+            if (!myTarget.enabled || myTarget != null)
             {
                 SetTarget();
             }
@@ -269,15 +268,5 @@ public abstract class EnemyAI : MonoBehaviour
         Focused = true;
         yield return new WaitForSeconds(AttantionTime);
         Focused = false;
-    }
-
-    private IEnumerator CheckTarget()
-    {
-        yield return new WaitForSeconds(10);
-        if(myTarget)
-        {
-            TargetDied();
-        }
-        StartCoroutine(CheckTarget());
     }
 }
