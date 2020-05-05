@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour
 
     public Weapon currentPrimary;
     public Weapon currentSecondary;
-    private bool waiting;
 
     //Assigning the Player scripts to the controller(There is no reason for the PlayerController to be anywhere else than on the Player so no need for a Gameobject reference)
     private void Awake()
@@ -178,13 +177,7 @@ public class PlayerController : MonoBehaviour
         playerInitialized = true;
     }
 
-    private IEnumerator WaitForLoadoutInit()
-    {
-        waiting = true;
-        yield return new WaitUntil(() => LoudoutManager.instance.loadoutsInit);
-        Initialize();
-        waiting = false;
-    }
+   
 
     private void SwitchToLastWeapon()
     {

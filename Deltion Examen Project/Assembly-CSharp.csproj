@@ -342,6 +342,7 @@
     <Compile Include="Assets\Scripts\Managers\LoudoutManager.cs" />
     <Compile Include="Assets\Scripts\Managers\TutorialManager.cs" />
     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
+    <Compile Include="Assets\Scripts\MinimapIcon.cs" />
     <Compile Include="Assets\Scripts\Misc\KillObjectAfterTime.cs" />
     <Compile Include="Assets\Scripts\ProfileMenu.cs" />
     <Compile Include="Assets\Scripts\ProfileUnlockUI.cs" />
