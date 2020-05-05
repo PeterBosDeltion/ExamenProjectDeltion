@@ -115,7 +115,6 @@ public abstract class EnemyAI : MonoBehaviour
     //This function is used to set a new target
     public void SetTarget(Entity Attacker = null)
     {
-        Debug.LogError("ror.er");
         StopAllCoroutines();
         if (state != AIState.Dead)
         {

@@ -7,6 +7,15 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public enum GameState
+    {
+        Playing,
+        Paused,
+        GameOver
+    }
+
+    public GameState curentState;
+
     public int difficulty = 2;
     public int amountOfPlayers = 1;
 
@@ -33,13 +42,35 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(transform.root.gameObject);
     }
+
+    public void SetGameState(GameState state)
+    {
+        curentState = state;
+    }
+
     public void ChangeScene(int index)
     {
         SceneManager.LoadScene(index);
     }
 
+    public void CheckGameOver()
+    {
+        if(amountOfPlayers > 1)
+        {
+            if(playerOne.GetIfDeath() && playerTwo.GetIfDeath() && playerThree.GetIfDeath() && playerFour.GetIfDeath())
+            {
+                GameOver(false);
+            }
+        }
+        else
+        {
+            GameOver(false);
+        }
+    }
+
     public void GameOver(bool victory)
     {
+        SetGameState(GameState.GameOver);
         GameOverScreen gameOverUI = FindObjectOfType<MainCanvas>().gameOverScreen;
         if(victory)
         {

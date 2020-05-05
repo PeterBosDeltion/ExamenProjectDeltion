@@ -79,7 +79,7 @@ public class Weapon : MonoBehaviour
 
     protected virtual void Shoot()
     {
-        if (gameObject.activeSelf)
+        if (gameObject.activeSelf && canShoot)
         {
             if (magazineAmmo > 0 && !reloading && canShoot)
             {

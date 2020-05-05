@@ -57,7 +57,7 @@ public class Entity : MonoBehaviour
                 hp -= takenDamage;
             }
 
-            if (hp <= 0)
+            if (hp <= 0 && !death)
             {
                 Death();
                 return;

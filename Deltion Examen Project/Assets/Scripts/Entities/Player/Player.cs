@@ -59,7 +59,21 @@ public class Player : Entity
 
     protected override void Death()
     {
-        GameManager.instance.GameOver(false);
+        GameManager.instance.CheckGameOver();
+        WipePlayer();
+    }
+
+    private void WipePlayer()
+    {
+        gameObject.SetActive(false);
+        ResetPlayer();
+    }
+
+    private void ResetPlayer()
+    {
+        hp = maxHp;
+        //Reset Loadout
+        //Reset ability's cooldown & ult charge
     }
 
     public void SetUxText(string newText)

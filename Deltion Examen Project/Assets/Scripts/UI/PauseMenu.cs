@@ -22,6 +22,11 @@ public class PauseMenu : MonoBehaviour
         mainScreen.SetActive(true);
         gameObject.SetActive(!gameObject.activeSelf);
         GameManager.instance.ToggleTimeScale();
+
+        if(gameObject.activeSelf)
+            GameManager.instance.SetGameState(GameManager.GameState.Paused);
+        else
+            GameManager.instance.SetGameState(GameManager.GameState.Playing);
     }
 
     public void Close()
@@ -30,6 +35,7 @@ public class PauseMenu : MonoBehaviour
         mainScreen.SetActive(true);
         gameObject.SetActive(false);
         GameManager.instance.ToggleTimeScale();
+        GameManager.instance.SetGameState(GameManager.GameState.Playing);
     }
 
     public void OpenScreen(string screen)
