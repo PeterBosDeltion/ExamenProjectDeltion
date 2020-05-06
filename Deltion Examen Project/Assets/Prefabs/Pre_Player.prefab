@@ -426,7 +426,7 @@ MonoBehaviour:
   ultimateAbility: {fileID: 5655916620862092921, guid: 6ddd0b808af56294986ef188833d2f9e,
     type: 3}
   loadout: {fileID: 0}
-  handParent: {fileID: 7938238604259646524}
+  handParent: {fileID: 979651095}
   currentWeapon: {fileID: 8027315702003368216}
   currentPrimary: {fileID: 0}
   currentSecondary: {fileID: 0}
@@ -752,36 +752,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1 &7938238604259646524
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8263255945725933570}
-  m_Layer: 10
-  m_Name: Test weapon slot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8263255945725933570
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7938238604259646524}
-  m_LocalRotation: {x: 0.034583632, y: 6.297934e-14, z: 1.5221383e-12, w: 0.99940187}
-  m_LocalPosition: {x: -0, y: 0, z: 0.432}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 7726647564821982727}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 3.9640002, y: 0, z: 0}
 --- !u!1001 &445492523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2146,12 +2116,6 @@ PrefabInstance:
 --- !u!4 &7035245446097046547 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3220319501169496967, guid: 2da96a06a6d5f7f4c8277a3a536c87f9,
-    type: 3}
-  m_PrefabInstance: {fileID: 3669613515390050410}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7726647564821982727 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6473791464006618733, guid: 2da96a06a6d5f7f4c8277a3a536c87f9,
     type: 3}
   m_PrefabInstance: {fileID: 3669613515390050410}
   m_PrefabAsset: {fileID: 0}
