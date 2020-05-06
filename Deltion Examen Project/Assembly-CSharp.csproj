@@ -342,6 +342,7 @@
     <Compile Include="Assets\Scripts\Managers\LoudoutManager.cs" />
     <Compile Include="Assets\Scripts\Managers\TutorialManager.cs" />
     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
+    <Compile Include="Assets\Scripts\MinimapCamera.cs" />
     <Compile Include="Assets\Scripts\MinimapIcon.cs" />
     <Compile Include="Assets\Scripts\Misc\KillObjectAfterTime.cs" />
     <Compile Include="Assets\Scripts\ProfileMenu.cs" />
@@ -388,6 +389,7 @@
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\ChannelToGrayscale.shader" />
     <None Include="Assets\EffectExamples\Misc Effects\Prefabs\Readme_Dissolve_Respawn_.txt" />
     <None Include="Assets\Art\3D Assets\HologramShader\Shader\Demo\Shaders\Floor.shader" />
+    <None Include="Assets\Art\3D Assets\HologramShader\Shader\HologramNoZ.shader" />
     <None Include="Assets\Griffin - PolarisV2\changelog.txt" />
     <None Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Shaders\LPWNoise.cginc" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Demo\Water.shader" />

@@ -12,6 +12,8 @@ public class MinimapIcon : MonoBehaviour
     private LineRenderer lineRend;
     [HideInInspector]
     public bool rendPlayer;
+    public Transform miniMapCam = null;
+
     public enum IconType
     {
         Player,
@@ -48,7 +50,7 @@ public class MinimapIcon : MonoBehaviour
                 icon.color = ObjectiveColor;
                 break;
             case IconType.Interactable:
-                transform.localScale = new Vector3(0.4F, 0.4F, 0.4F);
+                transform.localScale = new Vector3(0.5F, 0.5F, 0.5F);
                 icon.color = interactableColor;
                 break;
             case IconType.Deployable:
@@ -62,12 +64,8 @@ public class MinimapIcon : MonoBehaviour
     {
         if (rendPlayer)
         {
-            //float oX = Time.time * .9F;
-            //float oY = Time.time * .1F;
             SetLineRendererTarget(FindNearestDestroyObjective());
-            //lineRend.material.SetTextureOffset()
         }
-
     }
 
     public void SetLineRendererNextAlive()
@@ -89,14 +87,15 @@ public class MinimapIcon : MonoBehaviour
     {
         if (target)
         {
+            Vector3 targetPos = new Vector3(target.position.x, 5, target.position.z);
             if(lineRend.positionCount < 2)
                 lineRend.positionCount = 2;
 
             if (lineRend.GetPosition(0) != transform.position)
                 lineRend.SetPosition(0, transform.position);
 
-            if (lineRend.GetPosition(1) != target.position)
-                lineRend.SetPosition(1, target.position);
+            if (lineRend.GetPosition(1) != targetPos)
+                lineRend.SetPosition(1, targetPos);
         }
         else
         {

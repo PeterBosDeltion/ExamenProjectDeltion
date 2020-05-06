@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4098096561378771969}
   - component: {fileID: 4098096561378772031}
+  - component: {fileID: 1201509188}
   m_Layer: 0
   m_Name: MapCamera
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4098096561378771968}
   m_LocalRotation: {x: 0.38268346, y: -0, z: -0, w: 0.9238795}
-  m_LocalPosition: {x: -0.35, y: 2.35, z: 3}
+  m_LocalPosition: {x: -0.35, y: 20, z: -45}
   m_LocalScale: {x: 1, y: 1.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4098096561687781402}
@@ -41,7 +42,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.28235295, g: 0.43921572, b: 0.5411765, a: 0.39215687}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -58,11 +59,11 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 50
+  orthographic size: 40
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 4368
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 474d2df97b3d26545b7950c11b460618, type: 2}
   m_TargetDisplay: 0
@@ -74,6 +75,20 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &1201509188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4098096561378771968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05083209fe7a476408d09e95979ab387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSize: 25
+  maxSize: 150
 --- !u!1 &4098096561687781407
 GameObject:
   m_ObjectHideFlags: 0
