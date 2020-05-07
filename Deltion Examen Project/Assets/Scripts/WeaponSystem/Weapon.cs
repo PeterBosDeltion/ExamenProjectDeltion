@@ -27,6 +27,10 @@ public class Weapon : MonoBehaviour
     public Vector3 handRotation;
 
     private bool waiting;
+    private Coroutine LimitFirerateCoroutine;
+    private Coroutine ReloadCoroutine;
+
+    private List<Coroutine> activeCoroutines = new List<Coroutine>();
     private void Start()
     {
         tutorialInit = false;
@@ -131,7 +135,9 @@ public class Weapon : MonoBehaviour
             if (canShoot)
             {
                 float refireTime = 60 / myWeapon.firerate;
-                StartCoroutine(LimitFireRate(refireTime));
+                LimitFirerateCoroutine = StartCoroutine(LimitFireRate(refireTime));
+                if (!activeCoroutines.Contains(LimitFirerateCoroutine))
+                    activeCoroutines.Add(LimitFirerateCoroutine);
             }
         }
        
@@ -143,7 +149,9 @@ public class Weapon : MonoBehaviour
         {
             if (!reloading && magazineAmmo < totalAmmo)
             {
-                StartCoroutine(ReloadInSeconds(myWeapon.reloadSpeed));
+                ReloadCoroutine = StartCoroutine(ReloadInSeconds(myWeapon.reloadSpeed));
+                if (!activeCoroutines.Contains(ReloadCoroutine))
+                    activeCoroutines.Add(ReloadCoroutine);
                 audioSource.clip = reload;
                 audioSource.Play();
                 AudioClipManager.instance.HardResetSourcePlayable(myPlayer.mySource);
@@ -162,6 +170,8 @@ public class Weapon : MonoBehaviour
     {
         canShoot = false;
         yield return new WaitForSeconds(refireTime);
+        if (activeCoroutines.Contains(LimitFirerateCoroutine))
+            activeCoroutines.Remove(LimitFirerateCoroutine);
         canShoot = true;
     }
 
@@ -171,6 +181,16 @@ public class Weapon : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         shotsFired = 0;
         magazineAmmo = totalAmmo;
+        if (activeCoroutines.Contains(ReloadCoroutine))
+            activeCoroutines.Remove(ReloadCoroutine);
         reloading = false;
+    }
+
+    public void StopCoroutines()
+    {
+        foreach (Coroutine c in activeCoroutines)
+        {
+            StopCoroutine(c);
+        }
     }
 }
