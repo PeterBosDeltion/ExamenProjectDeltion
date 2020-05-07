@@ -21,8 +21,8 @@ MonoBehaviour:
   projectileVelocity: 1500
   damage: 20
   firerate: 600
-  minSpreadAngle: 0
-  maxSpreadAngle: 0
+  minSpreadAngle: -10
+  maxSpreadAngle: 10
   totalAmmo: 80
   ammoDrain: 1
   uiIcon: {fileID: 21300000, guid: 88b7d87f1b9f46a4b8270c93bb19e83f, type: 3}

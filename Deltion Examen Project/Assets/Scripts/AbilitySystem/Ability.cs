@@ -161,7 +161,7 @@ public abstract class Ability : MonoBehaviour
                     {
                         AbilityMechanic(mPos, new Quaternion(0, ghostRotation.y, 0, ghostRotation.w));
                         deploying = false;
-                        myPlayer.GetComponent<PlayerController>().currentWeapon.canShoot = true;
+                        StartCoroutine(WaitTillUnlockGun());
                         lineRenderer.enabled = false;
                         Destroy(activeGhost);
                         activeGhost = null;
@@ -173,7 +173,7 @@ public abstract class Ability : MonoBehaviour
                     onCooldown = false;
                     returned = true;
                     deploying = false;
-                    myPlayer.GetComponent<PlayerController>().currentWeapon.canShoot = true;
+                    StartCoroutine(WaitTillUnlockGun());
                     lineRenderer.enabled = false;
                     Destroy(activeGhost);
                     activeGhost = null;
@@ -285,5 +285,11 @@ public abstract class Ability : MonoBehaviour
         }
        
 
+    }
+
+    public IEnumerator WaitTillUnlockGun()
+    {
+        yield return new WaitForSeconds(0.1f);
+        myPlayer.GetComponent<PlayerController>().currentWeapon.canShoot = true;
     }
 }

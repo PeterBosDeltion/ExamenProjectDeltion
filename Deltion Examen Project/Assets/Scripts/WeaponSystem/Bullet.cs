@@ -58,7 +58,10 @@ public class Bullet : MonoBehaviour
             {
                 Entity entity = collision.transform.gameObject.GetComponent<Entity>();
                 entity.TakeDamage(damage, myEnt);
-                Ray newRay = new Ray(collision.GetContact(0).point, collision.transform.position - collision.GetContact(0).point);
+                Vector3 bulletTrajectory = collision.transform.position - collision.GetContact(0).point;
+                bulletTrajectory.z = 1;
+                Ray newRay = new Ray(collision.GetContact(0).point, bulletTrajectory);
+
 
                 if (Physics.Raycast(newRay, out hit))
                 {

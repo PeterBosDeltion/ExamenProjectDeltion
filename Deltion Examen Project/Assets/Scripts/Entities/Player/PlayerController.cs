@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     public List<Ability> abilities = new List<Ability>();
     public Ability ultimateAbility;
+    public static bool deployingAbility;
     public Loadout loadout;
     public GameObject handParent;
     public Weapon currentWeapon;
@@ -226,10 +227,13 @@ public class PlayerController : MonoBehaviour
     {
         return player.maxHp;
     }
-
     public float GetMaxTempHp()
     {
         return player.maxTempHp;
+    }
+    public bool GetIfDeath()
+    {
+        return player.death;
     }
     #endregion
 

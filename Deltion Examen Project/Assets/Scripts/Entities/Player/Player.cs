@@ -61,12 +61,28 @@ public class Player : Entity
 
     protected override void Death()
     {
+        GameManager.instance.CheckGameOver();
+
+        if(GameManager.instance.curentState != GameManager.GameState.GameOver)
+            WipePlayer();
+    }
+
+    private void WipePlayer()
+    {
+        gameObject.SetActive(false);
+        ResetPlayer();
+    }
+
+    private void ResetPlayer()
+    {
+        hp = maxHp;
+        //Reset Loadout
+        //Reset ability's cooldown & ult charge
         MinimapIcon minimapIcon = GetComponentInChildren<MinimapIcon>();
         if (minimapIcon.rendPlayer)
         {
             minimapIcon.SetLineRendererNextAlive();
         }
-        GameManager.instance.GameOver(false);
     }
 
     public void SetUxText(string newText)

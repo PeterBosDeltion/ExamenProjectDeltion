@@ -185,8 +185,6 @@ public class LevelManager : MonoBehaviour
 
         int amount = enemiesToAdd * Mathf.FloorToInt(curentWave / (curentType + 1));
 
-        Debug.Log(amount);
-
         for (int i = 0; i < amount; i++)
         {
             currentWaveEntitys.Add(enemyTypes[curentType]);

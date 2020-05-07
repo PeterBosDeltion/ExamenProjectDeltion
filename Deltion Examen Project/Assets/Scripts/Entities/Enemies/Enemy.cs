@@ -42,7 +42,9 @@ public class Enemy : Entity
 
     protected override void Death()
     {
-        if(myAI)
+        base.Death();
+
+        if (myAI)
             myAI.SetState(EnemyAI.AIState.Dead);
 
         GetComponent<Collider>().enabled = false;

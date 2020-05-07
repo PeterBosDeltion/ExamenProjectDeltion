@@ -61,10 +61,8 @@ public class Entity : MonoBehaviour
                 hp -= takenDamage;
             }
 
-            if (hp <= 0)
+            if (hp <= 0 && !death)
             {
-                death = true;
-                deathEvent.Invoke();
                 Death();
                 return;
             }
@@ -98,8 +96,14 @@ public class Entity : MonoBehaviour
 
     protected virtual void Death()
     {
-        Destroy(this.gameObject);
+        TriggerDeathEvents();
         //Add score when script is made
+    }
+
+    public virtual void TriggerDeathEvents()
+    {
+        death = true;
+        deathEvent.Invoke();
     }
 
     public void RemoveTempHP()

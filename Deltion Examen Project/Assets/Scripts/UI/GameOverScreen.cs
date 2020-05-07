@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameOverScreen : MonoBehaviour
 {
@@ -34,5 +35,11 @@ public class GameOverScreen : MonoBehaviour
     {
         GameManager.instance.ToggleTimeScale();
         GameManager.instance.ChangeScene(0);
+    }
+
+    public void RestartLevel()
+    {
+        GameManager.instance.ToggleTimeScale();
+        GameManager.instance.ChangeScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

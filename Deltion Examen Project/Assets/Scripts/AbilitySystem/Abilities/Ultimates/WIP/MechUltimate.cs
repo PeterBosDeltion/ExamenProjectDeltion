@@ -27,6 +27,7 @@ public class MechUltimate : Entity
 
     protected override void Death()
     {
+        base.Death();
         myAbility.MechDestroyed();
     }
 

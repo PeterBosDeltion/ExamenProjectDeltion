@@ -7,6 +7,26 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public delegate void CursorChange();
+    public static CursorChange cursorEvent;
+
+    public enum GameState
+    {
+        Playing,
+        Paused,
+        GameOver
+    }
+
+    public enum CursorState
+    {
+        Cursor,
+        Crosshair,
+        Empty
+    }
+
+    public GameState curentState;
+    public CursorState curentCursorState;
+
     public int difficulty = 2;
     public int amountOfPlayers = 1;
 
@@ -33,13 +53,53 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(transform.root.gameObject);
     }
+
+    public void SetCursorState(CursorState state)
+    {
+        curentCursorState = state;
+        cursorEvent.Invoke();
+    }
+
+    public void SetGameState(GameState state)
+    {
+        curentState = state;
+        if(state == GameState.GameOver || state == GameState.Paused)
+            SetCursorState(CursorState.Cursor);
+        else
+            SetCursorState(CursorState.Crosshair);
+    }
+
     public void ChangeScene(int index)
     {
+        if (index != 0)
+            SetCursorState(CursorState.Crosshair);
+        else
+            SetCursorState(CursorState.Cursor);
+
+        SetGameState(GameState.Playing);
+
+        cursorEvent = null;
         SceneManager.LoadScene(index);
+    }
+
+    public void CheckGameOver()
+    {
+        if(amountOfPlayers > 1)
+        {
+            if(playerOne.GetIfDeath() && playerTwo.GetIfDeath() && playerThree.GetIfDeath() && playerFour.GetIfDeath())
+            {
+                GameOver(false);
+            }
+        }
+        else
+        {
+            GameOver(false);
+        }
     }
 
     public void GameOver(bool victory)
     {
+        SetGameState(GameState.GameOver);
         GameOverScreen gameOverUI = FindObjectOfType<MainCanvas>().gameOverScreen;
         if(victory)
         {
