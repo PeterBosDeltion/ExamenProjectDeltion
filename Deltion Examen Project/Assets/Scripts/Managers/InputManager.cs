@@ -127,8 +127,6 @@ public class InputManager : MonoBehaviour
                 AbilityHotkeys(4);
             if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetAxis("Mouse ScrollWheel") < 0f)
                 SwitchWeapon(Input.GetAxis("Mouse ScrollWheel"));
-            if (Input.GetButtonDown("Escape"))
-                Escape();
             if (Input.GetButtonDown("LastWeapon"))
                 LastWeapon();
             if (Input.GetButtonDown("Tab"))
@@ -136,7 +134,8 @@ public class InputManager : MonoBehaviour
             if (Input.GetButtonUp("Tab"))
                 TabUp();
         }
-
+        if (Input.GetButtonDown("Escape"))
+            Escape();
     }
 
     //Fixed update for movementbased input to avoid physics problems

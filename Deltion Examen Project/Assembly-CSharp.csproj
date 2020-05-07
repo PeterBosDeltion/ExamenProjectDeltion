@@ -345,12 +345,9 @@
     <Compile Include="Assets\Scripts\MinimapCamera.cs" />
     <Compile Include="Assets\Scripts\MinimapIcon.cs" />
     <Compile Include="Assets\Scripts\Misc\KillObjectAfterTime.cs" />
-<<<<<<< HEAD
     <Compile Include="Assets\Scripts\MouseCursorFunctionality.cs" />
-=======
     <Compile Include="Assets\Scripts\ObjectiveBar.cs" />
     <Compile Include="Assets\Scripts\ObjectiveIcon.cs" />
->>>>>>> feature/UI
     <Compile Include="Assets\Scripts\ProfileMenu.cs" />
     <Compile Include="Assets\Scripts\ProfileUnlockUI.cs" />
     <Compile Include="Assets\Scripts\TutorialInteractable.cs" />
