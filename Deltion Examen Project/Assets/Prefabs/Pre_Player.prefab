@@ -1227,6 +1227,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -5764326582207922032, guid: 2da96a06a6d5f7f4c8277a3a536c87f9,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -5696235270323981043, guid: 2da96a06a6d5f7f4c8277a3a536c87f9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
