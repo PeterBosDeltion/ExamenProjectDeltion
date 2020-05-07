@@ -34,7 +34,6 @@ public class Entity : MonoBehaviour
 
     public virtual void SetEntityValues()
     {
-        maxHp *= LevelManager.instance.healthModifier;
         hp = maxHp;
     }
 

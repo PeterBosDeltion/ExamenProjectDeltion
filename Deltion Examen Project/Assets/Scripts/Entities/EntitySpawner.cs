@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,17 @@ public class EntitySpawner : MonoBehaviour
     public float timeBetweenSpawns;
     private bool spawning;
     private List<GameObject> que = new List<GameObject>();
+
+    private Color GizmoColor = Color.red;
+    [HideInInspector]
+    public bool EntityToClose;
+
+    private int amountOfEntitysToClose;
+
+    private void Start()
+    {
+        GetComponent<SphereCollider>().radius = LevelManager.instance.NoSpawnsDistance;
+    }
 
     public void AddToSpawnQue(GameObject entity)
     {
@@ -24,9 +36,14 @@ public class EntitySpawner : MonoBehaviour
 
     private IEnumerator EntitySpawning(GameObject entity)
     {
+        GizmoColor = Color.cyan;
+
         yield return new WaitForSeconds(timeBetweenSpawns);
 
-        Instantiate(entity, transform.position, Quaternion.identity);
+        if(!EntityToClose)
+            Instantiate(entity, transform.position, Quaternion.identity);
+        else
+            LevelManager.instance.ReasignEnemys(entity);
 
         if (que.Count != 0)
         {
@@ -35,13 +52,37 @@ public class EntitySpawner : MonoBehaviour
         }
         else
         {
+            GizmoColor = Color.red;
             spawning = false;
         }
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = GizmoColor;
+
         Gizmos.DrawCube(transform.position, new Vector3(1, 1, 1));
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.GetComponent<Entity>())
+        {
+            if (!EntityToClose)
+                EntityToClose = true;
+
+            amountOfEntitysToClose++;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<Entity>())
+        {
+            amountOfEntitysToClose--;
+
+            if (amountOfEntitysToClose == 0 && !EntityToClose)
+                EntityToClose = false;
+        }
     }
 }

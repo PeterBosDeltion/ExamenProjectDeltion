@@ -8978,6 +8978,11 @@ PrefabInstance:
       propertyPath: playerSpawnPositions.Array.data[3].z
       value: 244.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2850965622193425102, guid: 456a9396cd0ac3441a8b13964e89ceba,
+        type: 3}
+      propertyPath: NoSpawnsDistance
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2850965622193425103, guid: 456a9396cd0ac3441a8b13964e89ceba,
         type: 3}
       propertyPath: m_Name

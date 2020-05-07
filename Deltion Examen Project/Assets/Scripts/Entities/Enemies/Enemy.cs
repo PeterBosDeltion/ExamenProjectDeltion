@@ -19,8 +19,9 @@ public class Enemy : Entity
 
     public override void SetEntityValues()
     {
-        base.SetEntityValues();
+        maxHp *= LevelManager.instance.healthModifier;
         damage *= LevelManager.instance.damageModifier;
+        base.SetEntityValues();
     }
 
     protected override void DamageEvent(Entity Attacker)

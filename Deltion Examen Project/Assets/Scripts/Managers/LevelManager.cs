@@ -28,6 +28,9 @@ public class LevelManager : MonoBehaviour
     public float timeBetweenIndividualSpawns;
     public float spawnTickTime;
 
+    [Tooltip("The distance a player has to be away from the object to allow spawning")]
+    public float NoSpawnsDistance;
+
     //Enemy values
     [HideInInspector]
     public float healthModifier;
@@ -165,7 +168,7 @@ public class LevelManager : MonoBehaviour
 
     private void SetdifficultyVariables(int difficulty)
     {
-        switch(difficulty)
+        switch (difficulty)
         {
             case 1:
                 break;
@@ -175,6 +178,28 @@ public class LevelManager : MonoBehaviour
                 enemiesToAdd = 2;
                 break;
             case 3:
+                break;
+        }
+        switch (GameManager.instance.amountOfPlayers)
+        {
+            case 1:
+                healthModifier *= 1;
+                damageModifier *= 1;
+                break;
+            case 2:
+                healthModifier *= 1.5f;
+                damageModifier *= 1.5f;
+                break;
+            case 3:
+                healthModifier *= 2;
+                damageModifier *= 2;
+                break;
+            case 4:
+                healthModifier *= 3;
+                damageModifier *= 3;
+                break;
+
+            default:
                 break;
         }
     }
@@ -235,6 +260,17 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(SpawnTick(spawnTickTime));
     }
 
+    //used to move enemys to spawners that arent blocked
+    public void ReasignEnemys(GameObject entity)
+    {
+        GetNearbySpawners(1);
+
+        Debug.Log(closestSpawners.Count);
+
+        closestSpawners[0].AddToSpawnQue(entity);
+    }
+
+    //Sets (does not return a list to avoid creating unnecessary new lists every wave) the list of closest spawers relative to the focusPlayer
     private void GetNearbySpawners(int spawnerSpread)
     {
         closestSpawners.Clear();
@@ -247,10 +283,13 @@ public class LevelManager : MonoBehaviour
             foreach(EntitySpawner spawner in allAvailableSpawners)
             {
                 float newDistance = Vector3.Distance(spawner.gameObject.transform.position, playerOne.transform.position);
-                if (distance > newDistance && newDistance > 2 && !closestSpawners.Contains(spawner))
+                if (distance > newDistance && !closestSpawners.Contains(spawner))
                 {
-                    distance = newDistance;
-                    closestSpawner = spawner;
+                    if(!spawner.EntityToClose)
+                    {
+                        distance = newDistance;
+                        closestSpawner = spawner;
+                    }
                 }
             }
 
