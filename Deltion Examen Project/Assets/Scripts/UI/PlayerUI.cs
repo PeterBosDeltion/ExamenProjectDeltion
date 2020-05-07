@@ -119,11 +119,11 @@ public class PlayerUI : MonoBehaviour
 
     private void OnDestroy()
     {
+        myPlayer.GetComponent<Player>().takeDamageEvent -= TakeDamage;
         InputManager.delayedAbilityEvent -= AbilityUsed;
         InputManager.reloadEvent -= ReloadEvent;
         InputManager.scrollEvent -= SwapEvent;
         InputManager.LastWeaponEvent -= LastSwapEvent;
-        myPlayer.GetComponent<Player>().takeDamageEvent -= TakeDamage;
     }
 
     private void TakeDamage()

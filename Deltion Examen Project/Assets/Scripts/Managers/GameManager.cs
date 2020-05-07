@@ -71,12 +71,12 @@ public class GameManager : MonoBehaviour
 
     public void ChangeScene(int index)
     {
+        SetGameState(GameState.Playing);
+
         if (index != 0)
             SetCursorState(CursorState.Crosshair);
         else
             SetCursorState(CursorState.Cursor);
-
-        SetGameState(GameState.Playing);
 
         cursorEvent = null;
         SceneManager.LoadScene(index);
