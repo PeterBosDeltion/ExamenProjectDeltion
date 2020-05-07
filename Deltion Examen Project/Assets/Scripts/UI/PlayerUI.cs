@@ -50,6 +50,7 @@ public class PlayerUI : MonoBehaviour
     private bool reloading;
     private float time = 0;
 
+    private Animator ani;
     //private bool waiting;
     public void GetMyPlayer()
     {
@@ -87,10 +88,13 @@ public class PlayerUI : MonoBehaviour
 
     private void Initialize()
     {
+        ani = GetComponent<Animator>();
         InputManager.delayedAbilityEvent += AbilityUsed;
         InputManager.reloadEvent += ReloadEvent;
         InputManager.scrollEvent += SwapEvent;
         InputManager.LastWeaponEvent += LastSwapEvent;
+
+        myPlayer.GetComponent<Player>().takeDamageEvent += TakeDamage;
 
         foreach (Image img in playerMainColoredImages)
         {
@@ -119,6 +123,12 @@ public class PlayerUI : MonoBehaviour
         InputManager.reloadEvent -= ReloadEvent;
         InputManager.scrollEvent -= SwapEvent;
         InputManager.LastWeaponEvent -= LastSwapEvent;
+        myPlayer.GetComponent<Player>().takeDamageEvent -= TakeDamage;
+    }
+
+    private void TakeDamage()
+    {
+        ani.SetTrigger("Damaged");
     }
 
     public void AbilityUsed(int f)

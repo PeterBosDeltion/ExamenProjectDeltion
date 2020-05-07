@@ -190,7 +190,7 @@ public class PlayerController : MonoBehaviour
         if (!InputManager.instance.holdingTab)
         {
             currentWeapon.gameObject.SetActive(false);
-            currentWeapon.StopAllCoroutines();
+            currentWeapon.StopCoroutines();
             currentWeapon = (currentWeapon == currentPrimary) ? currentWeapon = currentSecondary : currentWeapon = currentPrimary;
             currentWeapon.ResetValues();
             currentWeapon.gameObject.SetActive(true);

@@ -7,6 +7,8 @@ public class Entity : MonoBehaviour
     public delegate void OnEntityDeath();
     public OnEntityDeath deathEvent;
 
+    public delegate void TakeDamageEvent();
+    public TakeDamageEvent takeDamageEvent;
     protected float hp;
     protected float tempHp;
     [HideInInspector]
@@ -19,6 +21,7 @@ public class Entity : MonoBehaviour
     protected virtual void Awake()
     {
         deathEvent += EmptyDeathEvent;
+        takeDamageEvent += EmptyDeathEvent;
     }
 
     protected virtual void Start()
@@ -30,6 +33,7 @@ public class Entity : MonoBehaviour
     {
         EntityManager.instance.RemovePlayerOrAbility(this);
         deathEvent = null;
+        takeDamageEvent = null;
     }
 
     public virtual void SetEntityValues()
@@ -62,6 +66,8 @@ public class Entity : MonoBehaviour
                 return;
             }
             DamageEvent(Attacker);
+
+            takeDamageEvent.Invoke();
         }
     }
     public void Heal(float healedHp, float AddedTempHP)

@@ -48,6 +48,7 @@ MonoBehaviour:
   mainCanvas: {fileID: 0}
   loadoutSelectableWindow: {fileID: 4999715071368997667, guid: a80af784020e0634d818a5c218278740,
     type: 3}
+  loadoutsInit: 0
 --- !u!1 &6443715300631969843
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,6 +256,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficulty: 2
+  amountOfPlayers: 1
+  playerOne: {fileID: 0}
+  playerTwo: {fileID: 0}
+  playerThree: {fileID: 0}
+  playerFour: {fileID: 0}
 --- !u!1 &8531780636332113929
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,6 +353,7 @@ MonoBehaviour:
   floor:
     serializedVersion: 2
     m_Bits: 256
+  holdingTab: 0
 --- !u!1 &8531780637188613758
 GameObject:
   m_ObjectHideFlags: 0
