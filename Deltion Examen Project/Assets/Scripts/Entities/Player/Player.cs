@@ -62,7 +62,9 @@ public class Player : Entity
     protected override void Death()
     {
         GameManager.instance.CheckGameOver();
-        WipePlayer();
+
+        if(GameManager.instance.curentState != GameManager.GameState.GameOver)
+            WipePlayer();
     }
 
     private void WipePlayer()
@@ -81,7 +83,6 @@ public class Player : Entity
         {
             minimapIcon.SetLineRendererNextAlive();
         }
-        GameManager.instance.GameOver(false);
     }
 
     public void SetUxText(string newText)

@@ -60,7 +60,6 @@ public class Bullet : MonoBehaviour
                 entity.TakeDamage(damage, myEnt);
                 Vector3 bulletTrajectory = collision.transform.position - collision.GetContact(0).point;
                 bulletTrajectory.z = 1;
-                Debug.DrawRay(collision.GetContact(0).point, bulletTrajectory,Color.red,100);
                 Ray newRay = new Ray(collision.GetContact(0).point, bulletTrajectory);
 
 
