@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
+
 public class Player : Entity
 {
     public delegate void HpEvent();
@@ -74,6 +76,12 @@ public class Player : Entity
         hp = maxHp;
         //Reset Loadout
         //Reset ability's cooldown & ult charge
+        MinimapIcon minimapIcon = GetComponentInChildren<MinimapIcon>();
+        if (minimapIcon.rendPlayer)
+        {
+            minimapIcon.SetLineRendererNextAlive();
+        }
+        GameManager.instance.GameOver(false);
     }
 
     public void SetUxText(string newText)

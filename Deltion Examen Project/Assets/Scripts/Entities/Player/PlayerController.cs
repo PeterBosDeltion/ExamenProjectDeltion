@@ -49,14 +49,13 @@ public class PlayerController : MonoBehaviour
     {
         if (!inTutorial)
         {
-            loadout.GenerateLoadout(LoudoutManager.instance.playerLoadouts[playerNumber]);
-            currentPrimary = loadout.primary;
-            currentSecondary = loadout.secondary;
+                loadout.GenerateLoadout(LoudoutManager.instance.playerLoadouts[playerNumber]);
+                currentPrimary = loadout.primary;
+                currentSecondary = loadout.secondary;
 
-            abilities = loadout.abilities;
-            ultimateAbility = loadout.ultimateAbility;
+                abilities = loadout.abilities;
+                ultimateAbility = loadout.ultimateAbility;
         }
-       
     }
 
     public void DisablePlayer()
@@ -117,7 +116,6 @@ public class PlayerController : MonoBehaviour
         InputManager.leftMouseButtonEvent += Shoot;
         InputManager.scrollEvent += SwitchWeapon;
         InputManager.LastWeaponEvent += SwitchToLastWeapon;
-        Initialize();
     }
 
     private void Update()
@@ -133,12 +131,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Initialize()
+    public void Initialize()
     {
-        //if (!inTutorial)
-        //{
-        //    InitializeLoadout();
-        //}
+        if (!inTutorial)
+        {
+            InitializeLoadout();
+        }
 
         foreach (Ability ability in abilities)
         {
@@ -180,6 +178,8 @@ public class PlayerController : MonoBehaviour
         playerInitialized = true;
     }
 
+   
+
     private void SwitchToLastWeapon()
     {
         SwitchWeapon(0);
@@ -187,11 +187,19 @@ public class PlayerController : MonoBehaviour
 
     private void SwitchWeapon(float f)
     {
-        currentWeapon.gameObject.SetActive(false);
-        currentWeapon.StopAllCoroutines();
-        currentWeapon = (currentWeapon == currentPrimary) ? currentWeapon = currentSecondary : currentWeapon = currentPrimary;
-        currentWeapon.ResetValues();
-        currentWeapon.gameObject.SetActive(true);
+        if (!InputManager.instance.holdingTab)
+        {
+            currentWeapon.gameObject.SetActive(false);
+            currentWeapon.StopAllCoroutines();
+            currentWeapon = (currentWeapon == currentPrimary) ? currentWeapon = currentSecondary : currentWeapon = currentPrimary;
+            currentWeapon.ResetValues();
+            currentWeapon.gameObject.SetActive(true);
+        }
+        else
+        {
+            return;
+        }
+      
     }
 
     //Unsubscribe Input functions for safety

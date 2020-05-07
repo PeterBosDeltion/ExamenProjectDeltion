@@ -283,11 +283,19 @@ public class PlayerUI : MonoBehaviour
 
     private void SwapEvent(float f)
     {
-        if (reloading)
+        if (!InputManager.instance.holdingTab)
         {
-            reloading = false;
-            time = 0;
+            if (reloading)
+            {
+                reloading = false;
+                time = 0;
+            }
         }
+        else
+        {
+            return;
+        }
+       
     }
 
     private void LastSwapEvent()
