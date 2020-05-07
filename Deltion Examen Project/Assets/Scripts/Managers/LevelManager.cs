@@ -219,7 +219,7 @@ public class LevelManager : MonoBehaviour
             foreach(EntitySpawner spawner in allAvailableSpawners)
             {
                 float newDistance = Vector3.Distance(spawner.gameObject.transform.position, playerOne.transform.position);
-                if (distance > newDistance && !closestSpawners.Contains(spawner))
+                if (distance > newDistance && newDistance > 2 && !closestSpawners.Contains(spawner))
                 {
                     distance = newDistance;
                     closestSpawner = spawner;
