@@ -15002,6 +15002,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3456231283841353555, guid: ab953951a47a4de4f871b6f5ecbb0c14,
+        type: 3}
+      propertyPath: m_Name
+      value: Cross
+      objectReference: {fileID: 0}
     - target: {fileID: 3608383178327127786, guid: ab953951a47a4de4f871b6f5ecbb0c14,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -16711,6 +16716,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pre_Objective_Destroy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1947663707442958866, guid: 759a63f1a0b9ef544b6577e7664a0c08,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1947663707442958867, guid: 759a63f1a0b9ef544b6577e7664a0c08,
         type: 3}

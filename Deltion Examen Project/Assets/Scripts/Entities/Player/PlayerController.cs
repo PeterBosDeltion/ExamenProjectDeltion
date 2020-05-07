@@ -186,11 +186,19 @@ public class PlayerController : MonoBehaviour
 
     private void SwitchWeapon(float f)
     {
-        currentWeapon.gameObject.SetActive(false);
-        currentWeapon.StopAllCoroutines();
-        currentWeapon = (currentWeapon == currentPrimary) ? currentWeapon = currentSecondary : currentWeapon = currentPrimary;
-        currentWeapon.ResetValues();
-        currentWeapon.gameObject.SetActive(true);
+        if (!InputManager.instance.holdingTab)
+        {
+            currentWeapon.gameObject.SetActive(false);
+            currentWeapon.StopAllCoroutines();
+            currentWeapon = (currentWeapon == currentPrimary) ? currentWeapon = currentSecondary : currentWeapon = currentPrimary;
+            currentWeapon.ResetValues();
+            currentWeapon.gameObject.SetActive(true);
+        }
+        else
+        {
+            return;
+        }
+      
     }
 
     //Unsubscribe Input functions for safety

@@ -345,6 +345,8 @@
     <Compile Include="Assets\Scripts\MinimapCamera.cs" />
     <Compile Include="Assets\Scripts\MinimapIcon.cs" />
     <Compile Include="Assets\Scripts\Misc\KillObjectAfterTime.cs" />
+    <Compile Include="Assets\Scripts\ObjectiveBar.cs" />
+    <Compile Include="Assets\Scripts\ObjectiveIcon.cs" />
     <Compile Include="Assets\Scripts\ProfileMenu.cs" />
     <Compile Include="Assets\Scripts\ProfileUnlockUI.cs" />
     <Compile Include="Assets\Scripts\TutorialInteractable.cs" />

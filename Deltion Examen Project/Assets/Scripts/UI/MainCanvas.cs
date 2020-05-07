@@ -8,6 +8,11 @@ public class MainCanvas : MonoBehaviour
     public List<GameObject> playerUis = new List<GameObject>();
     [HideInInspector]
     public GameOverScreen gameOverScreen;
+
+    public GameObject objectivesParent;
+    public GameObject objectivePrefab;
+
+    private List<GameObject> objectives = new List<GameObject>();
     void Start()
     {
         gameOverScreen = GetComponentInChildren<GameOverScreen>(true);
@@ -35,6 +40,26 @@ public class MainCanvas : MonoBehaviour
         foreach (var ui in playerUis)
         {
             ui.GetComponent<PlayerUI>().GetMyPlayer();
+        }
+    }
+
+    public void GenerateDestroyObjective()
+    {
+        DestroyObjective[] destroyObjectives = FindObjectsOfType<DestroyObjective>();
+
+        GameObject objective = Instantiate(objectivePrefab, objectivesParent.transform);
+        objective.GetComponent<ObjectiveBar>().SetObjectiveDestroy("Destroy bug nests", destroyObjectives.Length);
+
+        objectives.Add(objective);
+    }
+
+    public void AdvanceObjective()
+    {
+        foreach (GameObject objective in objectives)
+        {
+            ObjectiveBar bar = objective.GetComponent<ObjectiveBar>();
+            //if() In case of multiple objectives, implement some way of checking which one to advance. Not supported at the moment
+            bar.AdvanceDestroyObjective();
         }
     }
 }

@@ -23,6 +23,8 @@ public class InputManager : MonoBehaviour
     public static BaseInput reloadEvent;
     public static BaseInput interactEvent;
     public static BaseInput escapeEvent;
+    public static BaseInput tabEvent;
+    public static BaseInput tabUpEvent;
     public static BaseInput LastWeaponEvent;
     public static IntInput abilityEvent;
     public static IntInput delayedAbilityEvent;
@@ -37,6 +39,7 @@ public class InputManager : MonoBehaviour
     public LayerMask floor;
 
     private float timeHoldingInteract = 0;
+    public bool holdingTab;
 
     //Asigning empty functions to the delegates to avoid Errors
     private void Awake()
@@ -63,6 +66,8 @@ public class InputManager : MonoBehaviour
         scrollEvent += EmptyFloat;
         MovingEvent += EmptyAxis;
         RotatingEvent += EmptyAxis;
+        tabEvent += Empty;
+        tabUpEvent += Empty;
     }
 
     private void Start()
@@ -85,6 +90,8 @@ public class InputManager : MonoBehaviour
         scrollEvent -= EmptyFloat;
         MovingEvent -= EmptyAxis;
         RotatingEvent -= EmptyAxis;
+        tabEvent -= Empty;
+        tabUpEvent -= Empty;
     }
 
     private void Update()
@@ -122,6 +129,11 @@ public class InputManager : MonoBehaviour
             Escape();
         if (Input.GetButtonDown("LastWeapon"))
             LastWeapon();
+        if (Input.GetButtonDown("Tab"))
+            Tab();
+        if (Input.GetButtonUp("Tab"))
+            TabUp();
+
     }
 
     //Fixed update for movementbased input to avoid physics problems
@@ -167,6 +179,17 @@ public class InputManager : MonoBehaviour
     {
         Debug.Log("Interact");
         interactEvent.Invoke();
+    }
+
+    private void Tab()
+    {
+        holdingTab = true;
+        tabEvent.Invoke();
+    }
+    private void TabUp()
+    {
+        holdingTab = false;
+        tabUpEvent.Invoke();
     }
 
     private void HoldInteract()

@@ -35,6 +35,8 @@ public class LevelManager : MonoBehaviour
     public float damageModifier;
 
     private bool waiting;
+    private MainCanvas mainCanvas;
+    private List<DestroyObjective> advancedObjectives = new List<DestroyObjective>();
 
     private void Awake()
     {
@@ -79,7 +81,7 @@ public class LevelManager : MonoBehaviour
         }
 
         FindObjectOfType<CameraMovement>().FindPlayerOne();
-        FindObjectOfType<MainCanvas>().SetUIPlayers();
+        mainCanvas.SetUIPlayers();
         playerOne = GameManager.instance.playerOne.GetComponent<Player>();
     }
 
@@ -93,7 +95,9 @@ public class LevelManager : MonoBehaviour
 
     private void Initialize()
     {
+        mainCanvas = FindObjectOfType<MainCanvas>();
         SetupPlayers();
+        mainCanvas.GenerateDestroyObjective();
 
         SetdifficultyVariables(GameManager.instance.difficulty);
         if (GameObject.FindObjectOfType<EntitySpawner>())
@@ -138,7 +142,12 @@ public class LevelManager : MonoBehaviour
 
         foreach(DestroyObjective objective in Levelobjectives)
         {
-            if(!objective.ObjectiveDone)
+            if (objective.ObjectiveDone && !advancedObjectives.Contains(objective))
+            {
+                mainCanvas.AdvanceObjective();
+                advancedObjectives.Add(objective);
+            }
+            if (!objective.ObjectiveDone)
             {
                 victory = false;
                 break;

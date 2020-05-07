@@ -261,12 +261,20 @@ public class TutorialManager : MonoBehaviour
 
     private void PlayerSwitched(float f)
     {
-        playerSwitched = true;
-        if (!timing && currentStep == 5)
+        if (!InputManager.instance.holdingTab)
         {
-            InputManager.scrollEvent -= PlayerSwitched;
-            StartCoroutine(BetweenStepTimer());
+            playerSwitched = true;
+            if (!timing && currentStep == 5)
+            {
+                InputManager.scrollEvent -= PlayerSwitched;
+                StartCoroutine(BetweenStepTimer());
+            }
         }
+        else
+        {
+            return;
+        }
+       
     }
 
     public void PlayerDamaged()

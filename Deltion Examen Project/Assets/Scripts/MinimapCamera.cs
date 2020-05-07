@@ -9,6 +9,7 @@ public class MinimapCamera : MonoBehaviour
     private float startSize;
     public float minSize = 25;
     public float maxSize = 100;
+    private bool tabbed;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,18 +17,31 @@ public class MinimapCamera : MonoBehaviour
         cam = GetComponent<Camera>();
         startSize = cam.orthographicSize;
         InputManager.scrollEvent += Scroll;
+        InputManager.tabEvent += SetTabbedTrue;
+        InputManager.tabUpEvent += SetTabbedFalse;
     }
 
 
     private void OnDestroy()
     {
         InputManager.scrollEvent -= Scroll;
+        InputManager.tabEvent -= SetTabbedTrue;
+        InputManager.tabUpEvent -= SetTabbedFalse;
+    }
+
+    private void SetTabbedTrue()
+    {
+        tabbed = true;
+    }
+    private void SetTabbedFalse()
+    {
+        tabbed = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Tab))
+        if (tabbed)
         {
             float x = Input.GetAxis("Mouse X");
             float z = Input.GetAxis("Mouse Y");
@@ -36,7 +50,7 @@ public class MinimapCamera : MonoBehaviour
             transform.position = transform.position + movement * 120 * Time.deltaTime;
         }
 
-        if (Input.GetKeyUp(KeyCode.Tab))
+        if (!tabbed)
         {
             transform.localPosition = startPos;
             cam.orthographicSize = startSize;
@@ -45,7 +59,7 @@ public class MinimapCamera : MonoBehaviour
 
     void Scroll(float f)
     {
-        if (Input.GetKey(KeyCode.Tab))
+        if (tabbed)
         {
             if(cam.orthographicSize >= minSize && cam.orthographicSize <= maxSize)
                 cam.orthographicSize += -f * 10000 * Time.deltaTime;
