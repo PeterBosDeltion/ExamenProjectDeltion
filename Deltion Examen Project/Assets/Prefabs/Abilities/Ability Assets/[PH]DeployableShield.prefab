@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4303929681078463700}
   - component: {fileID: 7551113221139197978}
   - component: {fileID: -7079946165185567560}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: '[PH]DeployableShield'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0ef0cb57a034c77498370531abdb4b3c, type: 2}
+  - {fileID: 2100000, guid: 0a5e6098545a30040be27988ac0b22a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

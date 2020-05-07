@@ -34,6 +34,10 @@ public class LevelManager : MonoBehaviour
     [HideInInspector]
     public float damageModifier;
 
+    private bool waiting;
+    private MainCanvas mainCanvas;
+    private List<DestroyObjective> advancedObjectives = new List<DestroyObjective>();
+
     private void Awake()
     {
         if (!instance)
@@ -73,12 +77,48 @@ public class LevelManager : MonoBehaviour
             }
 
             if(!pc.inTutorial)
-                pc.InitializeLoadout();
+                pc.Initialize();
         }
 
         FindObjectOfType<CameraMovement>().FindPlayerOne();
-        FindObjectOfType<MainCanvas>().SetUIPlayers();
+        mainCanvas.SetUIPlayers();
         playerOne = GameManager.instance.playerOne.GetComponent<Player>();
+    }
+
+    private IEnumerator WaitForLoadoutInit()
+    {
+        waiting = true;
+        yield return new WaitUntil(() => LoudoutManager.instance.loadoutsInit);
+        Initialize();
+        waiting = false;
+    }
+
+    private void Initialize()
+    {
+        mainCanvas = FindObjectOfType<MainCanvas>();
+        SetupPlayers();
+        mainCanvas.GenerateDestroyObjective();
+
+        SetdifficultyVariables(GameManager.instance.difficulty);
+        if (GameObject.FindObjectOfType<EntitySpawner>())
+        {
+            foreach (EntitySpawner spawner in GameObject.FindObjectsOfType<EntitySpawner>())
+            {
+                if (!spawner.objectiveSpawner)
+                {
+                    allAvailableSpawners.Add(spawner);
+                    spawner.timeBetweenSpawns = timeBetweenIndividualSpawns;
+                }
+            }
+            StartCoroutine(SpawnTick(3));
+        }
+        if (GameObject.FindObjectOfType<DestroyObjective>())
+        {
+            foreach (DestroyObjective objective in GameObject.FindObjectsOfType<DestroyObjective>())
+            {
+                Levelobjectives.Add(objective);
+            }
+        }
     }
 
     private void Start()
@@ -89,28 +129,11 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
-        SetupPlayers();
-       
-        SetdifficultyVariables(GameManager.instance.difficulty);
-        if(GameObject.FindObjectOfType<EntitySpawner>())
+        if (!waiting)
         {
-            foreach(EntitySpawner spawner in GameObject.FindObjectsOfType<EntitySpawner>())
-            {
-                if(!spawner.objectiveSpawner)
-                {
-                    allAvailableSpawners.Add(spawner);
-                    spawner.timeBetweenSpawns = timeBetweenIndividualSpawns;
-                }
-            }
-            StartCoroutine(SpawnTick(3));
+            StartCoroutine(WaitForLoadoutInit());
         }
-        if(GameObject.FindObjectOfType<DestroyObjective>())
-        {
-            foreach (DestroyObjective objective in GameObject.FindObjectsOfType<DestroyObjective>())
-            {
-                Levelobjectives.Add(objective);
-            }
-        }
+      
     }
 
     public void CheckObjectives()
@@ -119,7 +142,12 @@ public class LevelManager : MonoBehaviour
 
         foreach(DestroyObjective objective in Levelobjectives)
         {
-            if(!objective.ObjectiveDone)
+            if (objective.ObjectiveDone && !advancedObjectives.Contains(objective))
+            {
+                mainCanvas.AdvanceObjective();
+                advancedObjectives.Add(objective);
+            }
+            if (!objective.ObjectiveDone)
             {
                 victory = false;
                 break;
