@@ -27,6 +27,7 @@ public abstract class Ability : MonoBehaviour
     private GameObject activeGhost;
     private Quaternion ghostRotation;
     public Vector3 deployableOffset;
+    private Vector3 joy = new Vector3(0, 0, 0);
     [Range(3, 256)]
     private int numSegments = 128;
     [HideInInspector]
@@ -76,6 +77,7 @@ public abstract class Ability : MonoBehaviour
                     break;
                 case DeployType.Deployed:
                     activeGhost = null;
+                    joy = Vector3.zero;
                     if (!deploying && !active)
                     {
                         DrawDeployCircle();
@@ -103,42 +105,91 @@ public abstract class Ability : MonoBehaviour
             if (activeGhost)
             {
                 RaycastHit hit;
-                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
+                if (!hinput.gamepad[myPlayerController.playerNumber].isConnected)
                 {
-                    Vector3 mPos = hit.point + deployableOffset;
-                    activeGhost.transform.position = mPos;
+                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
+                    {
+                        Vector3 mPos = hit.point + deployableOffset;
+                        activeGhost.transform.position = mPos;
+                        ghostRotation = Quaternion.LookRotation(activeGhost.transform.position - myPlayer.transform.position);
+                        activeGhost.transform.rotation = ghostRotation;
+                        Vector3 eul = activeGhost.transform.localEulerAngles;
+                        activeGhost.transform.localEulerAngles = new Vector3(0, eul.y, 0);
+
+
+                        if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor") && mPos.y - deployableOffset.y <= myPlayer.transform.position.y + 0.1F && mPos.y - deployableOffset.y >= myPlayer.transform.position.y - 0.1F)
+                        {
+                            if (activeGhost.GetComponentInChildren<Renderer>().material != canDeployMaterial)
+                            {
+                                activeGhost.GetComponentInChildren<Renderer>().material = canDeployMaterial;
+                            }
+                        }
+                        else
+                        {
+                            if (activeGhost.GetComponentInChildren<Renderer>().material != cannotDeployMaterial)
+                            {
+                                activeGhost.GetComponentInChildren<Renderer>().material = cannotDeployMaterial;
+                            }
+                        }
+
+                        float radius = deployableRadius;
+                        Vector3 centerPosition = myPlayer.transform.position; //center of *black circle*
+                        float distance = Vector3.Distance(activeGhost.transform.position, centerPosition); //distance from ~green object~ to *black circle*
+
+                        if (distance > radius) //If the distance is less than the radius, it is already within the circle.
+                        {
+                            Vector3 fromOriginToObject = activeGhost.transform.position - centerPosition; //~GreenPosition~ - *BlackCenter*
+                            fromOriginToObject *= radius / distance; //Multiply by radius //Divide by Distance
+                            activeGhost.transform.position = centerPosition + fromOriginToObject; //*BlackCenter* + all that Math
+                        }
+                    }
+                }
+                else
+                {
+                    joy.x += -myPlayerController.myInputManager.padRSAxisY;
+                    joy.z += myPlayerController.myInputManager.padRSAxisX;
+
+
+                    Vector3 gPos = myPlayer.transform.position + joy;
+                    activeGhost.transform.position = gPos;
                     ghostRotation = Quaternion.LookRotation(activeGhost.transform.position - myPlayer.transform.position);
                     activeGhost.transform.rotation = ghostRotation;
                     Vector3 eul = activeGhost.transform.localEulerAngles;
                     activeGhost.transform.localEulerAngles = new Vector3(0, eul.y, 0);
 
 
-                    if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor") && mPos.y - deployableOffset.y <= myPlayer.transform.position.y + 0.1F && mPos.y - deployableOffset.y >= myPlayer.transform.position.y - 0.1F)
+                    if(Physics.Raycast(gPos + new Vector3(0, 1.5F, 0), -myPlayer.transform.up, out hit, Mathf.Infinity))
                     {
-                        if(activeGhost.GetComponentInChildren<Renderer>().material != canDeployMaterial)
+                        if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor") && gPos.y - deployableOffset.y <= myPlayer.transform.position.y + 0.1F && gPos.y - deployableOffset.y >= myPlayer.transform.position.y - 0.1F)
                         {
-                            activeGhost.GetComponentInChildren<Renderer>().material = canDeployMaterial;
+                            if (activeGhost.GetComponentInChildren<Renderer>().material != canDeployMaterial)
+                            {
+                                activeGhost.GetComponentInChildren<Renderer>().material = canDeployMaterial;
+                            }
+                        }
+                        else
+                        {
+                            if (activeGhost.GetComponentInChildren<Renderer>().material != cannotDeployMaterial)
+                            {
+                                activeGhost.GetComponentInChildren<Renderer>().material = cannotDeployMaterial;
+                            }
+                        }
+
+                        float radius = deployableRadius;
+                        Vector3 centerPosition = myPlayer.transform.position; //center of *black circle*
+                        float distance = Vector3.Distance(gPos, centerPosition); //distance from ~green object~ to *black circle*
+
+                        if (distance > radius) //If the distance is less than the radius, it is already within the circle.
+                        {
+                            Vector3 fromOriginToObject = gPos - centerPosition; //~GreenPosition~ - *BlackCenter*
+                            fromOriginToObject *= radius / distance; //Multiply by radius //Divide by Distance
+                            activeGhost.transform.position = centerPosition + fromOriginToObject; //*BlackCenter* + all that Math
+                            joy = activeGhost.transform.position - myPlayer.transform.position;
                         }
                     }
-                    else
-                    {
-                        if (activeGhost.GetComponentInChildren<Renderer>().material != cannotDeployMaterial)
-                        {
-                            activeGhost.GetComponentInChildren<Renderer>().material = cannotDeployMaterial;
-                        }
-                    }
-
-                    float radius = deployableRadius;
-                    Vector3 centerPosition = myPlayer.transform.position; //center of *black circle*
-                    float distance = Vector3.Distance(activeGhost.transform.position, centerPosition); //distance from ~green object~ to *black circle*
-
-                    if (distance > radius) //If the distance is less than the radius, it is already within the circle.
-                    {
-                        Vector3 fromOriginToObject = activeGhost.transform.position - centerPosition; //~GreenPosition~ - *BlackCenter*
-                        fromOriginToObject *= radius / distance; //Multiply by radius //Divide by Distance
-                        activeGhost.transform.position = centerPosition + fromOriginToObject; //*BlackCenter* + all that Math
-                    }
+                  
                 }
+               
             }
         }
     }
@@ -153,36 +204,73 @@ public abstract class Ability : MonoBehaviour
             }
             RaycastHit hit;
             Vector3 center = myPlayer.transform.position;
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
+            if (!hinput.gamepad[myPlayerController.playerNumber].isConnected)
             {
-                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
                 {
-                    Vector3 mPos = hit.point + deployableOffset;
-                    if (Vector3.Distance(mPos, center) <= deployableRadius && mPos.y - deployableOffset.y <= myPlayer.transform.position.y + 0.1F && mPos.y - deployableOffset.y >= myPlayer.transform.position.y -0.1F)
+                    if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
                     {
-                        AbilityMechanic(mPos, new Quaternion(0, ghostRotation.y, 0, ghostRotation.w));
+                        Vector3 mPos = hit.point + deployableOffset;
+                        if (Vector3.Distance(mPos, center) <= deployableRadius && mPos.y - deployableOffset.y <= myPlayer.transform.position.y + 0.1F && mPos.y - deployableOffset.y >= myPlayer.transform.position.y - 0.1F)
+                        {
+                            AbilityMechanic(mPos, new Quaternion(0, ghostRotation.y, 0, ghostRotation.w));
+                            deploying = false;
+                            StartCoroutine(WaitTillUnlockGun());
+                            lineRenderer.enabled = false;
+                            Destroy(activeGhost);
+                            activeGhost = null;
+                            myPlayerController.myInputManager.delayedAbilityEvent.Invoke(myPlayer.GetComponent<PlayerController>().abilities.IndexOf(this));
+                        }
+                    }
+                    else
+                    {
+                        onCooldown = false;
+                        returned = true;
                         deploying = false;
                         StartCoroutine(WaitTillUnlockGun());
                         lineRenderer.enabled = false;
                         Destroy(activeGhost);
                         activeGhost = null;
-                        myPlayerController.myInputManager.delayedAbilityEvent.Invoke(myPlayer.GetComponent<PlayerController>().abilities.IndexOf(this));
+                        active = false;
+                        return;
                     }
-                }
-                else
-                {
-                    onCooldown = false;
-                    returned = true;
-                    deploying = false;
-                    StartCoroutine(WaitTillUnlockGun());
-                    lineRenderer.enabled = false;
-                    Destroy(activeGhost);
-                    activeGhost = null;
-                    active = false;
-                    return;
-                }
 
+                }
             }
+            else
+            {
+                if (Physics.Raycast(activeGhost.transform.position + new Vector3(0, 1.5F, 0), -myPlayer.transform.up, out hit, Mathf.Infinity))
+                {
+                    if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
+                    {
+                        Vector3 mPos = hit.point + deployableOffset;
+                        if (Vector3.Distance(mPos, center) <= deployableRadius && mPos.y - deployableOffset.y <= myPlayer.transform.position.y + 0.1F && mPos.y - deployableOffset.y >= myPlayer.transform.position.y - 0.1F)
+                        {
+                            AbilityMechanic(mPos, new Quaternion(0, ghostRotation.y, 0, ghostRotation.w));
+                            deploying = false;
+                            StartCoroutine(WaitTillUnlockGun());
+                            lineRenderer.enabled = false;
+                            Destroy(activeGhost);
+                            activeGhost = null;
+                            myPlayerController.myInputManager.delayedAbilityEvent.Invoke(myPlayer.GetComponent<PlayerController>().abilities.IndexOf(this));
+                        }
+                    }
+                    else
+                    {
+                        onCooldown = false;
+                        returned = true;
+                        deploying = false;
+                        StartCoroutine(WaitTillUnlockGun());
+                        lineRenderer.enabled = false;
+                        Destroy(activeGhost);
+                        activeGhost = null;
+                        active = false;
+                        return;
+                    }
+
+                }
+            }
+           
         }
     }
 

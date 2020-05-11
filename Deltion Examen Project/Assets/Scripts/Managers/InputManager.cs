@@ -21,10 +21,10 @@ public class InputManager : MonoBehaviour
     public int playerIndex;
 
     private GamePadState myGamepadState;
-    private float padLSAxisX;
-    private float padLSAxisY;
-    private float padRSAxisX;
-    private float padRSAxisY;
+    public float padLSAxisX;
+    public float padLSAxisY;
+    public float padRSAxisX;
+    public float padRSAxisY;
 
     public BaseInput leftMouseButtonEvent;
     public BaseInput leftMouseButtonHoldEvent;
@@ -120,7 +120,7 @@ public class InputManager : MonoBehaviour
             }
           
         }
-        if (Input.GetButtonDown("Escape"))
+        if (Input.GetButtonDown("Escape") || hinput.gamepad[playerIndex].start.justPressed)
             Escape();
     }
 
@@ -186,19 +186,19 @@ public class InputManager : MonoBehaviour
             HoldInteract();
         if (hinput.gamepad[playerIndex].A.justReleased)
             ReleaseInteract();
-        if (hinput.gamepad[playerIndex].dPad.left.justPressed)
-            AbilityHotkeys(0);
         if (hinput.gamepad[playerIndex].dPad.up.justPressed)
-            AbilityHotkeys(1);
+            AbilityHotkeys(0);
         if (hinput.gamepad[playerIndex].dPad.right.justPressed)
-            AbilityHotkeys(2);
+            AbilityHotkeys(1);
         if (hinput.gamepad[playerIndex].dPad.down.justPressed)
+            AbilityHotkeys(2);
+        if (hinput.gamepad[playerIndex].dPad.left.justPressed)
             AbilityHotkeys(3);
-        if (hinput.gamepad[playerIndex].leftBumper.justPressed)
+        if (hinput.gamepad[playerIndex].Y.justPressed)
             AbilityHotkeys(4);
         //if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetAxis("Mouse ScrollWheel") < 0f)
         //    SwitchWeapon(Input.GetAxis("Mouse ScrollWheel"));
-        if (hinput.gamepad[playerIndex].Y.justPressed)
+        if (hinput.gamepad[playerIndex].rightBumper.justPressed)
             LastWeapon();
         if (hinput.gamepad[playerIndex].leftTrigger.pressed)
             Tab();
@@ -236,7 +236,7 @@ public class InputManager : MonoBehaviour
                 if (targetDirection != Vector3.zero)
                 {
                     Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
-                    transform.rotation = targetRotation;
+                    transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 10 * Time.deltaTime);
                 }
             }
 
