@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Ability : MonoBehaviour
 {
     public Player myPlayer;
+    public PlayerController myPlayerController;
     public new string name;
     [TextArea(15, 20)]
     public  string description;
@@ -47,16 +48,16 @@ public abstract class Ability : MonoBehaviour
 
     private void Start()
     {
-        InputManager.rightMouseButtonEvent += CancelDeploy;
-        InputManager.leftMouseButtonEvent += Deploy;
-
         lineRenderer = myPlayer.gameObject.GetComponent<LineRenderer>();
+
+        myPlayerController.myInputManager.rightMouseButtonEvent += CancelDeploy;
+        myPlayerController.myInputManager.leftMouseButtonEvent += Deploy;
     }
 
     private void OnDestroy()
     {
-        InputManager.rightMouseButtonEvent -= CancelDeploy;
-        InputManager.leftMouseButtonEvent -= Deploy;
+        myPlayerController.myInputManager.rightMouseButtonEvent -= CancelDeploy;
+        myPlayerController.myInputManager.leftMouseButtonEvent -= Deploy;
     }
     public void UseAbility()
     {
@@ -71,7 +72,7 @@ public abstract class Ability : MonoBehaviour
             {
                 case DeployType.Instant:
                     AbilityMechanic();
-                    InputManager.delayedAbilityEvent.Invoke(myPlayer.GetComponent<PlayerController>().abilities.IndexOf(this));
+                    myPlayerController.myInputManager.delayedAbilityEvent.Invoke(myPlayer.GetComponent<PlayerController>().abilities.IndexOf(this));
                     break;
                 case DeployType.Deployed:
                     activeGhost = null;
@@ -165,7 +166,7 @@ public abstract class Ability : MonoBehaviour
                         lineRenderer.enabled = false;
                         Destroy(activeGhost);
                         activeGhost = null;
-                        InputManager.delayedAbilityEvent.Invoke(myPlayer.GetComponent<PlayerController>().abilities.IndexOf(this));
+                        myPlayerController.myInputManager.delayedAbilityEvent.Invoke(myPlayer.GetComponent<PlayerController>().abilities.IndexOf(this));
                     }
                 }
                 else

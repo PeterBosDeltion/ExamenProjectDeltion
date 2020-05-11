@@ -21,6 +21,7 @@ public class Weapon : MonoBehaviour
     public int amountAccurateBullets;
 
     public Player myPlayer;
+    public PlayerController myPlayerController;
     public bool tutorialInit;
 
     public Vector3 handPosition;
@@ -48,11 +49,11 @@ public class Weapon : MonoBehaviour
 
     public void Initialize()
     {
-        if (myPlayer.GetComponent<PlayerController>().inTutorial && !tutorialInit)
+        myPlayer = GetComponentInParent<Player>();
+        if (myPlayerController.inTutorial && !tutorialInit)
         {
             return;
         }
-        myPlayer = GetComponentInParent<Player>();
         totalAmmo = myWeapon.totalAmmo;
         magazineAmmo = totalAmmo;
         audioSource = GetComponent<AudioSource>();
@@ -60,25 +61,25 @@ public class Weapon : MonoBehaviour
         switch (myWeapon.myFireType)
         {
             case WeaponScriptable.FireType.Auto:
-                InputManager.leftMouseButtonHoldEvent += Shoot;
+                myPlayerController.myInputManager.leftMouseButtonHoldEvent += Shoot;
                 break;
             case WeaponScriptable.FireType.Semi:
-                InputManager.leftMouseButtonEvent += Shoot;
+                 myPlayerController.myInputManager.leftMouseButtonEvent += Shoot;
                 break;
             case WeaponScriptable.FireType.Bolt:
-                InputManager.leftMouseButtonEvent += Shoot;
+                 myPlayerController.myInputManager.leftMouseButtonEvent += Shoot;
                 break;
         }
-        InputManager.leftMouseButtonUpEvent += ResetShotsFired;
-        InputManager.reloadEvent += Reload;
+         myPlayerController.myInputManager.leftMouseButtonUpEvent += ResetShotsFired;
+         myPlayerController.myInputManager.reloadEvent += Reload;
     }
 
     private void OnDestroy()
     {
-        InputManager.leftMouseButtonEvent -= Shoot;
-        InputManager.leftMouseButtonHoldEvent -= Shoot;
-        InputManager.leftMouseButtonUpEvent -= ResetShotsFired;
-        InputManager.reloadEvent -= Reload;
+         myPlayerController.myInputManager.leftMouseButtonEvent -= Shoot;
+         myPlayerController.myInputManager.leftMouseButtonHoldEvent -= Shoot;
+         myPlayerController.myInputManager.leftMouseButtonUpEvent -= ResetShotsFired;
+         myPlayerController.myInputManager.reloadEvent -= Reload;
     }
 
     protected virtual void Shoot()

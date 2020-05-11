@@ -12,12 +12,14 @@ public class MainCanvas : MonoBehaviour
     public GameObject objectivesParent;
     public GameObject objectivePrefab;
 
+    private bool waiting;
     private List<GameObject> objectives = new List<GameObject>();
     void Start()
     {
         gameOverScreen = GetComponentInChildren<GameOverScreen>(true);
         pauseMenu = GetComponentInChildren<PauseMenu>(true);
-        pauseMenu.Initialize();
+        if (!waiting)
+            StartCoroutine(WaitForPlayerInit());
         PlayerUI[] pUIs = GetComponentsInChildren<PlayerUI>(true);
 
         foreach (var pui in pUIs)
@@ -25,6 +27,14 @@ public class MainCanvas : MonoBehaviour
             playerUis.Add(pui.gameObject);
         }
         Initialize();
+    }
+
+    private IEnumerator WaitForPlayerInit()
+    {
+        waiting = true;
+        yield return new WaitUntil(() => GameManager.instance.playersSpawned);
+        pauseMenu.Initialize();
+        waiting = false;
     }
 
     private void Initialize()

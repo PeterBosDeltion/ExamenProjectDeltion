@@ -20,14 +20,20 @@ public class ObjectiveBar : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
-        InputManager.tabEvent += FadeTrue;
-        InputManager.tabUpEvent += FadeFalse;
+        foreach (PlayerController pc in FindObjectsOfType<PlayerController>())
+        {
+            pc.myInputManager.tabEvent += FadeTrue;
+            pc.myInputManager.tabUpEvent += FadeFalse;
+        }
     }
 
     private void OnDestroy()
     {
-        InputManager.tabEvent -= FadeTrue;
-        InputManager.tabUpEvent -= FadeFalse;
+        foreach (PlayerController pc in FindObjectsOfType<PlayerController>())
+        {
+            pc.myInputManager.tabEvent -= FadeTrue;
+            pc.myInputManager.tabUpEvent -= FadeFalse;
+        }
     }
     public void SetObjectiveDestroy(string description, int amountToDestroy)
     {

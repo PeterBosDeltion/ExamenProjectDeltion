@@ -67,12 +67,12 @@ public class TutorialManager : MonoBehaviour
         AddEmptyDelegates();
         stepOneDelegate += StepOne;
         playerMovedDelegate += PlayerMoved;
-        InputManager.RotatingEvent += PlayerRotated;
-        InputManager.leftMouseButtonHoldEvent += PlayerFired;
-        InputManager.reloadEvent += PlayerReloaded;
-        InputManager.scrollEvent += PlayerSwitched;
-        InputManager.abilityEvent += AbilityOneUsed;
-        InputManager.abilityEvent += UltUsed;
+        player.myInputManager.RotatingEvent += PlayerRotated;
+        player.myInputManager.leftMouseButtonHoldEvent += PlayerFired;
+        player.myInputManager.reloadEvent += PlayerReloaded;
+        player.myInputManager.scrollEvent += PlayerSwitched;
+        player.myInputManager.abilityEvent += AbilityOneUsed;
+        player.myInputManager.abilityEvent += UltUsed;
 
         stepOneDelegate.Invoke();
     }
@@ -81,12 +81,12 @@ public class TutorialManager : MonoBehaviour
     {
         stepOneDelegate -= StepOne;
         playerMovedDelegate -= PlayerMoved;
-        InputManager.RotatingEvent -= PlayerRotated;
-        InputManager.leftMouseButtonHoldEvent -= PlayerFired;
-        InputManager.reloadEvent -= PlayerReloaded;
-        InputManager.scrollEvent -= PlayerSwitched;
-        InputManager.abilityEvent -= AbilityOneUsed;
-        InputManager.abilityEvent -= UltUsed;
+        player.myInputManager.RotatingEvent -= PlayerRotated;
+        player.myInputManager.leftMouseButtonHoldEvent -= PlayerFired;
+        player.myInputManager.reloadEvent -= PlayerReloaded;
+        player.myInputManager.scrollEvent -= PlayerSwitched;
+        player.myInputManager.abilityEvent -= AbilityOneUsed;
+        player.myInputManager.abilityEvent -= UltUsed;
     }
 
 
@@ -235,7 +235,7 @@ public class TutorialManager : MonoBehaviour
         playerRotated = true;
         if(!timing && currentStep == 2)
         {
-            InputManager.RotatingEvent -= PlayerRotated;
+            player.myInputManager.RotatingEvent -= PlayerRotated;
             StartCoroutine(BetweenStepTimer());
         }
     }
@@ -245,7 +245,7 @@ public class TutorialManager : MonoBehaviour
         playerFired = true;
         if (!timing && currentStep == 3)
         {
-            InputManager.leftMouseButtonHoldEvent -= PlayerFired;
+            player.myInputManager.leftMouseButtonHoldEvent -= PlayerFired;
             StartCoroutine(BetweenStepTimer());
         }
     }
@@ -254,19 +254,19 @@ public class TutorialManager : MonoBehaviour
         playerReloaded = true;
         if (!timing && currentStep == 4)
         {
-            InputManager.reloadEvent -= PlayerReloaded;
+            player.myInputManager.reloadEvent -= PlayerReloaded;
             StartCoroutine(BetweenStepTimer());
         }
     }
 
     private void PlayerSwitched(float f)
     {
-        if (!InputManager.instance.holdingTab)
+        if (!player.myInputManager.holdingTab)
         {
             playerSwitched = true;
             if (!timing && currentStep == 5)
             {
-                InputManager.scrollEvent -= PlayerSwitched;
+                player.myInputManager.scrollEvent -= PlayerSwitched;
                 StartCoroutine(BetweenStepTimer());
             }
         }
@@ -303,7 +303,7 @@ public class TutorialManager : MonoBehaviour
             playerUsedFirstAbility = true;
             if (!timing && currentStep == 8)
             {
-                InputManager.abilityEvent -= AbilityOneUsed;
+                player.myInputManager.abilityEvent -= AbilityOneUsed;
                 StartCoroutine(BetweenStepTimer());
             }
         }
@@ -318,7 +318,7 @@ public class TutorialManager : MonoBehaviour
                 if (!timing && currentStep == 10)
                 {
                     playerUsedUlt = true;
-                    InputManager.abilityEvent -= UltUsed;
+                    player.myInputManager.abilityEvent -= UltUsed;
                     StartCoroutine(BetweenStepTimer());
                 }
             //}

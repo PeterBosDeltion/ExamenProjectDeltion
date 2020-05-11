@@ -15,7 +15,7 @@ public abstract class Interactable : MonoBehaviour
 
     private void Awake()
     {
-        InputManager.interactEvent += Interact;
+        //InputManager.interactEvent += Interact;
         holdCircle.fillAmount = 0;
         if(holdDuration <= 0)
         {
@@ -36,7 +36,7 @@ public abstract class Interactable : MonoBehaviour
             {
                 if(!interacted)
                     interactText.gameObject.SetActive(true);
-                if (InputManager.instance.GetTimeInteractHeld() > 0)
+                if ((other.GetComponent<PlayerController>().myInputManager.GetTimeInteractHeld() > 0))
                 {
                     interactText.gameObject.SetActive(false);
                     holdCircle.enabled = true;
@@ -44,14 +44,14 @@ public abstract class Interactable : MonoBehaviour
                 }
                 if (!interacted)
                 {
-                    holdCircle.fillAmount = InputManager.instance.GetTimeInteractHeld() / holdDuration;
+                    holdCircle.fillAmount = (other.GetComponent<PlayerController>().myInputManager.GetTimeInteractHeld() / holdDuration);
                 }
                 else
                 {
                     holdCircle.fillAmount = 0;
                 }
 
-                if (InputManager.instance.GetTimeInteractHeld() >= holdDuration && !interacted)
+                if ((other.GetComponent<PlayerController>().myInputManager.GetTimeInteractHeld() >= holdDuration && !interacted))
                 {
                     Interact();
                 }

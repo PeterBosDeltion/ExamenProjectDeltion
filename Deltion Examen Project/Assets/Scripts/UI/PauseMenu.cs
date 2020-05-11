@@ -9,12 +9,18 @@ public class PauseMenu : MonoBehaviour
 
     public void Initialize()
     {
-        InputManager.escapeEvent += OpenClose;
+        foreach (PlayerController pc in FindObjectsOfType<PlayerController>())
+        {
+            pc.myInputManager.escapeEvent += OpenClose;
+        }
     }
 
     private void OnDestroy()
     {
-        InputManager.escapeEvent -= OpenClose;
+        foreach (PlayerController pc in FindObjectsOfType<PlayerController>())
+        {
+            pc.myInputManager.escapeEvent -= OpenClose;
+        }
     }
     private void OpenClose()
     {

@@ -303,6 +303,7 @@ GameObject:
   - component: {fileID: 843111946}
   - component: {fileID: 4734839736015168692}
   - component: {fileID: 2566045720392636725}
+  - component: {fileID: 6006667397669680802}
   m_Layer: 10
   m_Name: Pre_Player
   m_TagString: Untagged
@@ -431,6 +432,7 @@ MonoBehaviour:
   currentWeapon: {fileID: 8027315702003368216}
   currentPrimary: {fileID: 0}
   currentSecondary: {fileID: 0}
+  myInputManager: {fileID: 0}
 --- !u!114 &3275903919972861520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -734,6 +736,23 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &6006667397669680802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3669613515331608540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 805aae0b34ca84b45ba5f077a5943e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMoving: 0
+  floor:
+    serializedVersion: 2
+    m_Bits: 256
+  holdingTab: 0
 --- !u!95 &3669613514768335483
 Animator:
   serializedVersion: 3

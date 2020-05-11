@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using XInputDotNetPure;
 
 //This Manager is used as a centralized point for all of the Players Input.
 //This makes it easier to find problems related to input for debugging purposes.
 
 public class InputManager : MonoBehaviour
 {
-    public static InputManager instance;
+    //public static InputManager instance;
 
     //Input Delegates. subscribe a function to trigger its contents on input.
     public delegate void BaseInput();
@@ -16,21 +17,30 @@ public class InputManager : MonoBehaviour
     public delegate void IntInput(int value);
     public delegate void AxisInput(float xAxis, float yAxis);
 
-    public static BaseInput leftMouseButtonEvent;
-    public static BaseInput leftMouseButtonHoldEvent;
-    public static BaseInput leftMouseButtonUpEvent;
-    public static BaseInput rightMouseButtonEvent;
-    public static BaseInput reloadEvent;
-    public static BaseInput interactEvent;
-    public static BaseInput escapeEvent;
-    public static BaseInput tabEvent;
-    public static BaseInput tabUpEvent;
-    public static BaseInput LastWeaponEvent;
-    public static IntInput abilityEvent;
-    public static IntInput delayedAbilityEvent;
-    public static FloatInput scrollEvent;
-    public static AxisInput MovingEvent;
-    public static AxisInput RotatingEvent;
+    [HideInInspector]
+    public int playerIndex;
+
+    private GamePadState myGamepadState;
+    private float padLSAxisX;
+    private float padLSAxisY;
+    private float padRSAxisX;
+    private float padRSAxisY;
+
+    public BaseInput leftMouseButtonEvent;
+    public BaseInput leftMouseButtonHoldEvent;
+    public BaseInput leftMouseButtonUpEvent;
+    public BaseInput rightMouseButtonEvent;
+    public BaseInput reloadEvent;
+    public BaseInput interactEvent;
+    public BaseInput escapeEvent;
+    public BaseInput tabEvent;
+    public BaseInput tabUpEvent;
+    public BaseInput LastWeaponEvent;
+    public IntInput abilityEvent;
+    public IntInput delayedAbilityEvent;
+    public FloatInput scrollEvent;
+    public AxisInput MovingEvent;
+    public AxisInput RotatingEvent;
 
     public bool isMoving;
 
@@ -44,14 +54,14 @@ public class InputManager : MonoBehaviour
     //Asigning empty functions to the delegates to avoid Errors
     private void Awake()
     {
-        if (!instance)
-        {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Destroy(transform.root.gameObject);
-        }
+        //if (!instance)
+        //{
+        //    instance = this;
+        //}
+        //else if (instance != this)
+        //{
+        //    Destroy(transform.root.gameObject);
+        //}
 
         leftMouseButtonEvent += Empty;
         leftMouseButtonHoldEvent += Empty;
@@ -73,6 +83,7 @@ public class InputManager : MonoBehaviour
     private void Start()
     {
         SceneManager.activeSceneChanged += ActiveSceneChanged;
+        myGamepadState = GamePad.GetState((PlayerIndex)playerIndex);
     }
 
     private void OnDestroy()
@@ -99,43 +110,100 @@ public class InputManager : MonoBehaviour
         //Generic input
         if(GameManager.instance.curentState == GameManager.GameState.Playing)
         {
-            if (Input.GetMouseButtonDown(0))
-                LeftMouse();
-            if (Input.GetMouseButtonUp(0))
-                LeftMouseUp();
-            if (Input.GetMouseButton(0))
-                LeftMouseHold();
-            if (Input.GetMouseButtonDown(1))
-                RightMouse();
-            if (Input.GetButtonDown("Reload"))
-                Reload();
-            //if (Input.GetButtonDown("Interact"))
-            //    Interact();
-            if (Input.GetButton("Interact"))
-                HoldInteract();
-            if (Input.GetButtonUp("Interact"))
-                ReleaseInteract();
-            if (Input.GetButtonDown("Ability 01"))
-                AbilityHotkeys(0);
-            if (Input.GetButtonDown("Ability 02"))
-                AbilityHotkeys(1);
-            if (Input.GetButtonDown("Ability 03"))
-                AbilityHotkeys(2);
-            if (Input.GetButtonDown("Ability 04"))
-                AbilityHotkeys(3);
-            if (Input.GetButtonDown("Ability ult"))
-                AbilityHotkeys(4);
-            if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetAxis("Mouse ScrollWheel") < 0f)
-                SwitchWeapon(Input.GetAxis("Mouse ScrollWheel"));
-            if (Input.GetButtonDown("LastWeapon"))
-                LastWeapon();
-            if (Input.GetButtonDown("Tab"))
-                Tab();
-            if (Input.GetButtonUp("Tab"))
-                TabUp();
+            if (!myGamepadState.IsConnected)
+            {
+                NormalInput();
+            }
+            else
+            {
+                GamePadInput();
+            }
+          
         }
         if (Input.GetButtonDown("Escape"))
             Escape();
+    }
+
+    private void NormalInput()
+    {
+        if (Input.GetMouseButtonDown(0))
+            LeftMouse();
+        if (Input.GetMouseButtonUp(0))
+            LeftMouseUp();
+        if (Input.GetMouseButton(0))
+            LeftMouseHold();
+        if (Input.GetMouseButtonDown(1))
+            RightMouse();
+        if (Input.GetButtonDown("Reload"))
+            Reload();
+        //if (Input.GetButtonDown("Interact"))
+        //    Interact();
+        if (Input.GetButton("Interact"))
+            HoldInteract();
+        if (Input.GetButtonUp("Interact"))
+            ReleaseInteract();
+        if (Input.GetButtonDown("Ability 01"))
+            AbilityHotkeys(0);
+        if (Input.GetButtonDown("Ability 02"))
+            AbilityHotkeys(1);
+        if (Input.GetButtonDown("Ability 03"))
+            AbilityHotkeys(2);
+        if (Input.GetButtonDown("Ability 04"))
+            AbilityHotkeys(3);
+        if (Input.GetButtonDown("Ability ult"))
+            AbilityHotkeys(4);
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetAxis("Mouse ScrollWheel") < 0f)
+            SwitchWeapon(Input.GetAxis("Mouse ScrollWheel"));
+        if (Input.GetButtonDown("LastWeapon"))
+            LastWeapon();
+        if (Input.GetButtonDown("Tab"))
+            Tab();
+        if (Input.GetButtonUp("Tab"))
+            TabUp();
+    }
+
+    private void GamePadInput()
+    {
+        padLSAxisX = hinput.gamepad[playerIndex].leftStick.horizontal;
+        padLSAxisY = hinput.gamepad[playerIndex].leftStick.vertical;
+
+        padRSAxisX = hinput.gamepad[playerIndex].rightStick.horizontal;
+        padRSAxisY = hinput.gamepad[playerIndex].rightStick.vertical;
+
+        if (hinput.gamepad[playerIndex].rightTrigger.justPressed)
+            LeftMouse();
+        if (hinput.gamepad[playerIndex].rightTrigger.justReleased)
+            LeftMouseUp();
+        if (hinput.gamepad[playerIndex].rightTrigger.pressed)
+            LeftMouseHold();
+        if (hinput.gamepad[playerIndex].B.justPressed)
+            RightMouse();
+        if (hinput.gamepad[playerIndex].X.justPressed)
+            Reload();
+        //if (Input.GetButtonDown("Interact"))
+        //    Interact();
+        if (hinput.gamepad[playerIndex].A.pressed)
+            HoldInteract();
+        if (hinput.gamepad[playerIndex].A.justReleased)
+            ReleaseInteract();
+        if (hinput.gamepad[playerIndex].dPad.left.justPressed)
+            AbilityHotkeys(0);
+        if (hinput.gamepad[playerIndex].dPad.up.justPressed)
+            AbilityHotkeys(1);
+        if (hinput.gamepad[playerIndex].dPad.right.justPressed)
+            AbilityHotkeys(2);
+        if (hinput.gamepad[playerIndex].dPad.down.justPressed)
+            AbilityHotkeys(3);
+        if (hinput.gamepad[playerIndex].leftBumper.justPressed)
+            AbilityHotkeys(4);
+        //if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetAxis("Mouse ScrollWheel") < 0f)
+        //    SwitchWeapon(Input.GetAxis("Mouse ScrollWheel"));
+        if (hinput.gamepad[playerIndex].Y.justPressed)
+            LastWeapon();
+        if (hinput.gamepad[playerIndex].leftTrigger.pressed)
+            Tab();
+        if (hinput.gamepad[playerIndex].leftTrigger.justReleased)
+            TabUp();
     }
 
     //Fixed update for movementbased input to avoid physics problems
@@ -144,14 +212,34 @@ public class InputManager : MonoBehaviour
         if(GameManager.instance.curentState == GameManager.GameState.Playing)
         {
             //Movement input
-            if (Input.GetAxis("Horizontal") > 0f || Input.GetAxis("Horizontal") < 0f || Input.GetAxis("Vertical") > 0f || Input.GetAxis("Vertical") < 0f)
-                Moving(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            if (!myGamepadState.IsConnected)
+            {
+                if (Input.GetAxis("Horizontal") > 0f || Input.GetAxis("Horizontal") < 0f || Input.GetAxis("Vertical") > 0f || Input.GetAxis("Vertical") < 0f)
+                    Moving(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+                else
+                    isMoving = false;
+                //Rotation input
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out hit, floor))
+                    Rotating(hit.point.x, hit.point.z);
+            }
             else
-                isMoving = false;
-            //Rotation input
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, floor))
-                Rotating(hit.point.x, hit.point.z);
+            {
+                if (padLSAxisX > 0f || padLSAxisX < 0f ||padLSAxisY > 0f || padLSAxisY < 0f)
+                    Moving(padLSAxisX, padLSAxisY);
+                else
+                    isMoving = false;
+                //Rotation input
+
+                Vector3 targetDirection = new Vector3(-padRSAxisY, 0f, padRSAxisX);
+
+                if (targetDirection != Vector3.zero)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
+                    transform.rotation = targetRotation;
+                }
+            }
+
         }
     }
 

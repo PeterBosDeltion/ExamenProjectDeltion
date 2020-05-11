@@ -26,9 +26,14 @@ public class PlayerController : MonoBehaviour
     public Weapon currentPrimary;
     public Weapon currentSecondary;
 
+    [HideInInspector]
+    public InputManager myInputManager;
+
     //Assigning the Player scripts to the controller(There is no reason for the PlayerController to be anywhere else than on the Player so no need for a Gameobject reference)
     private void Awake()
     {
+        myInputManager = GetComponent<InputManager>();
+        myInputManager.playerIndex = playerNumber;
         player = GetComponent<Player>();
         movement = GetComponent<Movement>();
         triggerAbility = GetComponent<TriggerAbility>();
@@ -60,12 +65,12 @@ public class PlayerController : MonoBehaviour
 
     public void DisablePlayer()
     {
-        InputManager.abilityEvent -= TriggerAbility;
-        InputManager.MovingEvent -= Move;
-        InputManager.RotatingEvent -= Rotate;
-        InputManager.leftMouseButtonEvent -= Shoot;
-        InputManager.scrollEvent -= SwitchWeapon;
-        InputManager.LastWeaponEvent -= SwitchToLastWeapon;
+        myInputManager.abilityEvent -= TriggerAbility;
+        myInputManager.MovingEvent -= Move;
+        myInputManager.RotatingEvent -= Rotate;
+        myInputManager.leftMouseButtonEvent -= Shoot;
+        myInputManager.scrollEvent -= SwitchWeapon;
+        myInputManager.LastWeaponEvent -= SwitchToLastWeapon;
 
         currentWeapon.canShoot = false;
 
@@ -84,12 +89,12 @@ public class PlayerController : MonoBehaviour
 
     public void EnablePlayer()
     {
-        InputManager.abilityEvent += TriggerAbility;
-        InputManager.MovingEvent += Move;
-        InputManager.RotatingEvent += Rotate;
-        InputManager.leftMouseButtonEvent += Shoot;
-        InputManager.scrollEvent += SwitchWeapon;
-        InputManager.LastWeaponEvent += SwitchToLastWeapon;
+        myInputManager.abilityEvent += TriggerAbility;
+        myInputManager.MovingEvent += Move;
+        myInputManager.RotatingEvent += Rotate;
+        myInputManager.leftMouseButtonEvent += Shoot;
+        myInputManager.scrollEvent += SwitchWeapon;
+        myInputManager.LastWeaponEvent += SwitchToLastWeapon;
 
         currentWeapon.canShoot = true;
 
@@ -110,17 +115,17 @@ public class PlayerController : MonoBehaviour
     //Subscribe Input functions to their Input
     public void Start()
     {
-        InputManager.abilityEvent += TriggerAbility;
-        InputManager.MovingEvent += Move;
-        InputManager.RotatingEvent += Rotate;
-        InputManager.leftMouseButtonEvent += Shoot;
-        InputManager.scrollEvent += SwitchWeapon;
-        InputManager.LastWeaponEvent += SwitchToLastWeapon;
+        myInputManager.abilityEvent += TriggerAbility;
+        myInputManager.MovingEvent += Move;
+        myInputManager.RotatingEvent += Rotate;
+        myInputManager.leftMouseButtonEvent += Shoot;
+        myInputManager.scrollEvent += SwitchWeapon;
+        myInputManager.LastWeaponEvent += SwitchToLastWeapon;
     }
 
     private void Update()
     {
-        if(InputManager.instance.isMoving)
+        if(myInputManager.isMoving)
         {
             if(!walkingSource.isPlaying)
                 walkingSource.Play();
@@ -152,6 +157,7 @@ public class PlayerController : MonoBehaviour
         foreach (Ability a in abs)
         {
             a.myPlayer = player;
+            a.myPlayerController = this;
             if(!a.ultimate)
                 abilities.Add(a);
         }
@@ -162,6 +168,7 @@ public class PlayerController : MonoBehaviour
             newPrimary.transform.localPosition = newPrimary.GetComponent<Weapon>().handPosition;
             newPrimary.transform.localEulerAngles = newPrimary.GetComponent<Weapon>().handRotation;
             newPrimary.GetComponent<Weapon>().myPlayer = player;
+            newPrimary.GetComponent<Weapon>().myPlayerController = this;
             currentWeapon = newPrimary.GetComponent<Weapon>();
             currentPrimary = newPrimary.GetComponent<Weapon>();
 
@@ -169,6 +176,7 @@ public class PlayerController : MonoBehaviour
             newSecondary.transform.localPosition = newSecondary.GetComponent<Weapon>().handPosition;
             newSecondary.transform.localEulerAngles = newSecondary.GetComponent<Weapon>().handRotation;
             newSecondary.GetComponent<Weapon>().myPlayer = player;
+            newSecondary.GetComponent<Weapon>().myPlayerController = this;
             currentSecondary = newSecondary.GetComponent<Weapon>();
 
             newSecondary.SetActive(false);
@@ -176,6 +184,8 @@ public class PlayerController : MonoBehaviour
      
 
         playerInitialized = true;
+        if (!GameManager.instance.playersSpawned)
+            GameManager.instance.playersSpawned = true;
     }
 
    
@@ -187,7 +197,7 @@ public class PlayerController : MonoBehaviour
 
     private void SwitchWeapon(float f)
     {
-        if (!InputManager.instance.holdingTab)
+        if (!myInputManager.holdingTab)
         {
             currentWeapon.gameObject.SetActive(false);
             currentWeapon.StopCoroutines();
@@ -205,12 +215,12 @@ public class PlayerController : MonoBehaviour
     //Unsubscribe Input functions for safety
     public void OnDestroy()
     {
-        InputManager.abilityEvent -= TriggerAbility;
-        InputManager.MovingEvent -= Move;
-        InputManager.RotatingEvent -= Rotate;
-        InputManager.leftMouseButtonEvent -= Shoot;
-        InputManager.scrollEvent -= SwitchWeapon;
-        InputManager.LastWeaponEvent -= SwitchToLastWeapon;
+        myInputManager.abilityEvent -= TriggerAbility;
+        myInputManager.MovingEvent -= Move;
+        myInputManager.RotatingEvent -= Rotate;
+        myInputManager.leftMouseButtonEvent -= Shoot;
+        myInputManager.scrollEvent -= SwitchWeapon;
+        myInputManager.LastWeaponEvent -= SwitchToLastWeapon;
     }
 
     //Player GetValue functions

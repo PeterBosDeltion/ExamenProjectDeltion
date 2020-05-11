@@ -89,10 +89,10 @@ public class PlayerUI : MonoBehaviour
     private void Initialize()
     {
         ani = GetComponent<Animator>();
-        InputManager.delayedAbilityEvent += AbilityUsed;
-        InputManager.reloadEvent += ReloadEvent;
-        InputManager.scrollEvent += SwapEvent;
-        InputManager.LastWeaponEvent += LastSwapEvent;
+        myPlayer.myInputManager.delayedAbilityEvent += AbilityUsed;
+        myPlayer.myInputManager.reloadEvent += ReloadEvent;
+        myPlayer.myInputManager.scrollEvent += SwapEvent;
+        myPlayer.myInputManager.LastWeaponEvent += LastSwapEvent;
 
         myPlayer.GetComponent<Player>().takeDamageEvent += TakeDamage;
 
@@ -119,11 +119,15 @@ public class PlayerUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        myPlayer.GetComponent<Player>().takeDamageEvent -= TakeDamage;
-        InputManager.delayedAbilityEvent -= AbilityUsed;
-        InputManager.reloadEvent -= ReloadEvent;
-        InputManager.scrollEvent -= SwapEvent;
-        InputManager.LastWeaponEvent -= LastSwapEvent;
+        if (myPlayer)
+        {
+            myPlayer.GetComponent<Player>().takeDamageEvent -= TakeDamage;
+            myPlayer.myInputManager.delayedAbilityEvent -= AbilityUsed;
+            myPlayer.myInputManager.reloadEvent -= ReloadEvent;
+            myPlayer.myInputManager.scrollEvent -= SwapEvent;
+            myPlayer.myInputManager.LastWeaponEvent -= LastSwapEvent;
+        }
+      
     }
 
     private void TakeDamage()
@@ -293,7 +297,7 @@ public class PlayerUI : MonoBehaviour
 
     private void SwapEvent(float f)
     {
-        if (!InputManager.instance.holdingTab)
+        if (!myPlayer.myInputManager.holdingTab)
         {
             if (reloading)
             {

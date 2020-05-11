@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public delegate void CursorChange();
     public static CursorChange cursorEvent;
 
+    public bool playersSpawned;
+
     public enum GameState
     {
         Playing,
@@ -71,6 +73,7 @@ public class GameManager : MonoBehaviour
 
     public void ChangeScene(int index)
     {
+        playersSpawned = false;
         SetGameState(GameState.Playing);
 
         if (index != 0)
@@ -99,6 +102,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver(bool victory)
     {
+        playersSpawned = false;
         SetGameState(GameState.GameOver);
         GameOverScreen gameOverUI = FindObjectOfType<MainCanvas>().gameOverScreen;
         if(victory)

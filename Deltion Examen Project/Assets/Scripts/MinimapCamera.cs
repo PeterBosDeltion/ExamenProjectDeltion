@@ -10,23 +10,43 @@ public class MinimapCamera : MonoBehaviour
     public float minSize = 25;
     public float maxSize = 100;
     private bool tabbed;
+
+    private bool waiting;
     // Start is called before the first frame update
     void Start()
     {
         startPos = transform.localPosition;
         cam = GetComponent<Camera>();
         startSize = cam.orthographicSize;
-        InputManager.scrollEvent += Scroll;
-        InputManager.tabEvent += SetTabbedTrue;
-        InputManager.tabUpEvent += SetTabbedFalse;
+        if (!waiting)
+            StartCoroutine(WaitForPlayerInit());
+    }
+    private IEnumerator WaitForPlayerInit()
+    {
+        waiting = true;
+        yield return new WaitUntil(() => GameManager.instance.playersSpawned);
+        Initialize();
+        waiting = false;
     }
 
+    private void Initialize()
+    {
+        foreach (PlayerController pc in FindObjectsOfType<PlayerController>())
+        {
+            pc.myInputManager.scrollEvent += Scroll;
+            pc.myInputManager.tabEvent += SetTabbedTrue;
+            pc.myInputManager.tabUpEvent += SetTabbedFalse;
+        }
+    }
 
     private void OnDestroy()
     {
-        InputManager.scrollEvent -= Scroll;
-        InputManager.tabEvent -= SetTabbedTrue;
-        InputManager.tabUpEvent -= SetTabbedFalse;
+        foreach (PlayerController pc in FindObjectsOfType<PlayerController>())
+        {
+            pc.myInputManager.scrollEvent -= Scroll;
+            pc.myInputManager.tabEvent -= SetTabbedTrue;
+            pc.myInputManager.tabUpEvent -= SetTabbedFalse;
+        }
     }
 
     private void SetTabbedTrue()
