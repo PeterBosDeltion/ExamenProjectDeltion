@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
     public PlayerController playerThree;
     public PlayerController playerFour;
 
+    public List<PlayerController> activePlayers = new List<PlayerController>();
+
     private void Awake()
     {
         if(!instance)
@@ -89,10 +91,17 @@ public class GameManager : MonoBehaviour
     {
         if(amountOfPlayers > 1)
         {
-            if(playerOne.GetIfDeath() && playerTwo.GetIfDeath() && playerThree.GetIfDeath() && playerFour.GetIfDeath())
+            //if(playerOne.GetIfDeath() && playerTwo.GetIfDeath() && playerThree.GetIfDeath() && playerFour.GetIfDeath())
+            //{
+            //    GameOver(false);
+            //}
+            foreach (PlayerController activePlayer in activePlayers)
             {
-                GameOver(false);
+                if (!activePlayer.GetIfDeath())
+                    return;
             }
+
+            GameOver(false);
         }
         else
         {

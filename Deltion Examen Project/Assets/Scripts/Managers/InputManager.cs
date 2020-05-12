@@ -17,8 +17,10 @@ public class InputManager : MonoBehaviour
     public delegate void IntInput(int value);
     public delegate void AxisInput(float xAxis, float yAxis);
 
-    [HideInInspector]
     public int playerIndex;
+    private int controllerIndex;
+    public bool mouseKeyBoard;
+    public static bool testeroni;
 
     private GamePadState myGamepadState;
     public float padLSAxisX;
@@ -80,10 +82,48 @@ public class InputManager : MonoBehaviour
         tabUpEvent += Empty;
     }
 
-    private void Start()
+    public void Initialize()
     {
+        //if (playerIndex == 0 && !InputManager.testeroni)
+        //{
+        //    mouseKeyBoard = true;
+        //    InputManager.testeroni = true;
+        //}
+        //else
+        //{
+        //    mouseKeyBoard = false;
+        //}
         SceneManager.activeSceneChanged += ActiveSceneChanged;
-        myGamepadState = GamePad.GetState((PlayerIndex)playerIndex);
+        SetGamepadIndex();
+    }
+
+    public void SetGamepadIndex()
+    {
+        controllerIndex = playerIndex;
+        if (!mouseKeyBoard)
+        {
+            myGamepadState = GamePad.GetState((PlayerIndex)playerIndex);
+        }
+        else
+        {
+            controllerIndex = -1;
+        }
+
+        foreach (InputManager ipm in FindObjectsOfType<InputManager>())
+        {
+            if (ipm.mouseKeyBoard)
+            {
+                if(ipm.playerIndex < playerIndex)
+                {
+                    if (!mouseKeyBoard)
+                    {
+                        myGamepadState = GamePad.GetState((PlayerIndex)playerIndex - 1);
+                        controllerIndex = playerIndex - 1;
+                    }
+                }
+            }
+
+        }
     }
 
     private void OnDestroy()
@@ -110,11 +150,11 @@ public class InputManager : MonoBehaviour
         //Generic input
         if(GameManager.instance.curentState == GameManager.GameState.Playing)
         {
-            if (!myGamepadState.IsConnected)
+            if (controllerIndex < 0 && mouseKeyBoard)
             {
                 NormalInput();
             }
-            else
+            else if(myGamepadState.IsConnected && !mouseKeyBoard)
             {
                 GamePadInput();
             }
@@ -164,50 +204,50 @@ public class InputManager : MonoBehaviour
 
     private void GamePadInput()
     {
-        padLSAxisX = hinput.gamepad[playerIndex].leftStick.horizontal;
-        padLSAxisY = hinput.gamepad[playerIndex].leftStick.vertical;
+        padLSAxisX = hinput.gamepad[controllerIndex].leftStick.horizontal;
+        padLSAxisY = hinput.gamepad[controllerIndex].leftStick.vertical;
 
-        padRSAxisX = hinput.gamepad[playerIndex].rightStick.horizontal;
-        padRSAxisY = hinput.gamepad[playerIndex].rightStick.vertical;
+        padRSAxisX = hinput.gamepad[controllerIndex].rightStick.horizontal;
+        padRSAxisY = hinput.gamepad[controllerIndex].rightStick.vertical;
 
-        if (hinput.gamepad[playerIndex].rightTrigger.justPressed)
+        if (hinput.gamepad[controllerIndex].rightTrigger.justPressed)
             LeftMouse();
-        if (hinput.gamepad[playerIndex].rightTrigger.justReleased)
+        if (hinput.gamepad[controllerIndex].rightTrigger.justReleased)
             LeftMouseUp();
-        if (hinput.gamepad[playerIndex].rightTrigger.pressed)
+        if (hinput.gamepad[controllerIndex].rightTrigger.pressed)
             LeftMouseHold();
-        if (hinput.gamepad[playerIndex].B.justPressed)
+        if (hinput.gamepad[controllerIndex].B.justPressed)
             RightMouse();
-        if (hinput.gamepad[playerIndex].X.justPressed)
+        if (hinput.gamepad[controllerIndex].X.justPressed)
             Reload();
         //if (Input.GetButtonDown("Interact"))
         //    Interact();
-        if (hinput.gamepad[playerIndex].A.pressed)
+        if (hinput.gamepad[controllerIndex].A.pressed)
             HoldInteract();
-        if (hinput.gamepad[playerIndex].A.justReleased)
+        if (hinput.gamepad[controllerIndex].A.justReleased)
             ReleaseInteract();
-        if (hinput.gamepad[playerIndex].dPad.up.justPressed)
+        if (hinput.gamepad[controllerIndex].dPad.up.justPressed)
             AbilityHotkeys(0);
-        if (hinput.gamepad[playerIndex].dPad.right.justPressed)
+        if (hinput.gamepad[controllerIndex].dPad.right.justPressed)
             AbilityHotkeys(1);
-        if (hinput.gamepad[playerIndex].dPad.down.justPressed)
+        if (hinput.gamepad[controllerIndex].dPad.down.justPressed)
             AbilityHotkeys(2);
-        if (hinput.gamepad[playerIndex].dPad.left.justPressed)
+        if (hinput.gamepad[controllerIndex].dPad.left.justPressed)
             AbilityHotkeys(3);
-        if (hinput.gamepad[playerIndex].Y.justPressed)
+        if (hinput.gamepad[controllerIndex].Y.justPressed)
             AbilityHotkeys(4);
         if (holdingTab)
         {
-            if(hinput.gamepad[playerIndex].leftStickClick.pressed)
+            if(hinput.gamepad[controllerIndex].leftStickClick.pressed)
                 SwitchWeapon(-.01F);
-            if (hinput.gamepad[playerIndex].rightStickClick.pressed)
+            if (hinput.gamepad[controllerIndex].rightStickClick.pressed)
                 SwitchWeapon(.01F);
         }
-        if (hinput.gamepad[playerIndex].rightBumper.justPressed)
+        if (hinput.gamepad[controllerIndex].rightBumper.justPressed)
             LastWeapon();
-        if (hinput.gamepad[playerIndex].leftTrigger.pressed)
+        if (hinput.gamepad[controllerIndex].leftTrigger.pressed)
             Tab();
-        if (hinput.gamepad[playerIndex].leftTrigger.justReleased)
+        if (hinput.gamepad[controllerIndex].leftTrigger.justReleased)
             TabUp();
     }
 
@@ -261,6 +301,7 @@ public class InputManager : MonoBehaviour
     }
     private void LeftMouseHold()
     {
+        hinput.gamepad[controllerIndex].Vibrate();
         leftMouseButtonHoldEvent.Invoke();
     }
     private void RightMouse()

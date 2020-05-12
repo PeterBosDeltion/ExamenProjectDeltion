@@ -33,7 +33,6 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         myInputManager = GetComponent<InputManager>();
-        myInputManager.playerIndex = playerNumber;
         player = GetComponent<Player>();
         movement = GetComponent<Movement>();
         triggerAbility = GetComponent<TriggerAbility>();
@@ -121,6 +120,7 @@ public class PlayerController : MonoBehaviour
         myInputManager.leftMouseButtonEvent += Shoot;
         myInputManager.scrollEvent += SwitchWeapon;
         myInputManager.LastWeaponEvent += SwitchToLastWeapon;
+
     }
 
     private void Update()
@@ -183,7 +183,10 @@ public class PlayerController : MonoBehaviour
         }
      
 
+        myInputManager.playerIndex = playerNumber;
         playerInitialized = true;
+        myInputManager.Initialize();
+        GameManager.instance.activePlayers.Add(this);
         if (!GameManager.instance.playersSpawned)
             GameManager.instance.playersSpawned = true;
     }
