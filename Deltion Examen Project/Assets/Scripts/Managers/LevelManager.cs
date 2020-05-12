@@ -279,27 +279,35 @@ public class LevelManager : MonoBehaviour
     private void GetNearbySpawners(int spawnerSpread)
     {
         closestSpawners.Clear();
+        Debug.Log(spawnerSpread);
         int neededSpawners = spawnerSpread;
 
-        for (int i = 0; i < neededSpawners; i++)
+        while (neededSpawners != 0)
         {
-            float distance = Mathf.Infinity;
-            EntitySpawner closestSpawner = allAvailableSpawners[0];
-
-            foreach(EntitySpawner spawner in allAvailableSpawners)
+            for (int i = 0; i < GameManager.instance.amountOfPlayers; i++)
             {
-                float newDistance = Vector3.Distance(spawner.gameObject.transform.position, playerOne.transform.position);
-                if (distance > newDistance && !closestSpawners.Contains(spawner))
+                if(neededSpawners != 0)
                 {
-                    if(!spawner.EntityToClose)
+                    float distance = Mathf.Infinity;
+                    EntitySpawner closestSpawner = allAvailableSpawners[0];
+
+                    foreach (EntitySpawner spawner in allAvailableSpawners)
                     {
-                        distance = newDistance;
-                        closestSpawner = spawner;
+                        float newDistance = Vector3.Distance(spawner.gameObject.transform.position, playerOne.transform.position);
+                        if (distance > newDistance && !closestSpawners.Contains(spawner))
+                        {
+                            if (!spawner.EntityToClose)
+                            {
+                                distance = newDistance;
+                                closestSpawner = spawner;
+                            }
+                        }
                     }
+
+                    closestSpawners.Add(closestSpawner);
+                    neededSpawners--;
                 }
             }
-
-            closestSpawners.Add(closestSpawner);
         }
     }
 
