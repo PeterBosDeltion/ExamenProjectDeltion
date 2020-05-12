@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Art\3D Assets\HologramShader\Shader\Demo\Scripts\AutoRotate.cs" />
+    <Compile Include="Assets\Art\Shaders\QuickOutline-master\QuickOutline\Scripts\Outline.cs" />
     <Compile Include="Assets\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
     <Compile Include="Assets\Griffin - PolarisV2\Scripts\BackupTool\GBackup.cs" />
     <Compile Include="Assets\Griffin - PolarisV2\Scripts\BackupTool\GBackupFile.cs" />
@@ -389,8 +390,10 @@
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\ElevationPainter.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\PathPainter.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Terrain\BuiltinRP_PBR_VertexColor.shader" />
+    <None Include="Assets\Art\Shaders\QuickOutline-master\License.txt" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\InteractiveGrassVectorField.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\ChannelToGrayscale.shader" />
+    <None Include="Assets\Art\Shaders\QuickOutline-master\QuickOutline\Resources\Shaders\OutlineMask.shader" />
     <None Include="Assets\EffectExamples\Misc Effects\Prefabs\Readme_Dissolve_Respawn_.txt" />
     <None Include="Assets\Art\3D Assets\HologramShader\Shader\Demo\Shaders\Floor.shader" />
     <None Include="Assets\Art\3D Assets\HologramShader\Shader\HologramNoZ.shader" />
@@ -414,6 +417,7 @@
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\FoliageRemover.shader" />
     <None Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Shaders\LPWLite.cginc" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\SmoothnessPainter.shader" />
+    <None Include="Assets\Art\Shaders\UltimateOutline-master\UltimateOutlineShadows.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\HeightSamplingPainter.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\TerrainPerPixelNormalMapRenderer.shader" />
     <None Include="Assets\EffectExamples\Magic Effects\Shaders\Ice.shader" />
@@ -422,6 +426,7 @@
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\AlbedoPainter.shader" />
     <None Include="Assets\EffectExamples\Misc Effects\Shaders\Respawn.shader" />
     <None Include="Assets\Art\Materials\UiAlwaysOverlayShader\OverlayShader.shader" />
+    <None Include="Assets\Art\Shaders\UltimateOutline-master\UltimateOutline.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\NoiseMapGenerator.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\TextureStamperMask.shader" />
@@ -440,6 +445,7 @@
     <None Include="Assets\Art\3D Assets\HologramShader\Shader\Hologram.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Terrain\BuiltinRP_PBR_GradientLookup.shader" />
+    <None Include="Assets\Art\Shaders\QuickOutline-master\QuickOutline\Readme.txt" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\HeightMapFromMesh.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\VisibilityLivePreview.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
@@ -447,6 +453,7 @@
     <None Include="Assets\Low Poly Water GPU\LowPolyWaterv2\Shaders\LPWShoreBlend.cginc" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\SubDivisionVisualizer.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\BillboardCreatorNormal.shader" />
+    <None Include="Assets\Art\Shaders\AlwaysVisible.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Terrain\BuiltinRP_BlinnPhong_4Splats4Normals.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\TerracePainter.shader" />
@@ -468,6 +475,7 @@
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Terrain\BuiltinRP_Lambert_GradientLookup.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Terrain\BuiltinRP_PBR_8Splats.shader" />
+    <None Include="Assets\Art\Shaders\QuickOutline-master\QuickOutline\Resources\Shaders\OutlineFill.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\PainterCursor.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\MaskVisualizer.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
