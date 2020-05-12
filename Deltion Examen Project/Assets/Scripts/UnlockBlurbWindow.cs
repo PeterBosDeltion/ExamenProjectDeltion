@@ -12,9 +12,11 @@ public class UnlockBlurbWindow : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI normalText;
     public TextMeshProUGUI statText;
+    private GameObject mButton;
 
-    public void Initialize(WeaponScriptable weapon = null, GameObject abilityPrefab = null)
+    public void Initialize(ProfileUnlockUI button, WeaponScriptable weapon = null, GameObject abilityPrefab = null)
     {
+        mButton = button.gameObject;
         if(!weapon && !abilityPrefab)
         {
             Debug.LogError("Please assign at least one unlock type");
@@ -87,5 +89,6 @@ public class UnlockBlurbWindow : MonoBehaviour
     public void CloseWindow()
     {
         Destroy(gameObject);
+        FindObjectOfType<UIManager>().SetSelectedObject(mButton);
     }
 }

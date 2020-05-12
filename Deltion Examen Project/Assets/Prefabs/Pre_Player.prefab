@@ -187,8 +187,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 2
-  m_fontSizeBase: 2
+  m_fontSize: 2.5
+  m_fontSizeBase: 2.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -748,6 +748,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805aae0b34ca84b45ba5f077a5943e66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerIndex: 0
+  padLSAxisX: 0
+  padLSAxisY: 0
+  padRSAxisX: 0
+  padRSAxisY: 0
   isMoving: 0
   floor:
     serializedVersion: 2

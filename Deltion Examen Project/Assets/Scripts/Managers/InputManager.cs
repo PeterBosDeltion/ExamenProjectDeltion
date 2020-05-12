@@ -196,8 +196,13 @@ public class InputManager : MonoBehaviour
             AbilityHotkeys(3);
         if (hinput.gamepad[playerIndex].Y.justPressed)
             AbilityHotkeys(4);
-        //if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetAxis("Mouse ScrollWheel") < 0f)
-        //    SwitchWeapon(Input.GetAxis("Mouse ScrollWheel"));
+        if (holdingTab)
+        {
+            if(hinput.gamepad[playerIndex].leftStickClick.pressed)
+                SwitchWeapon(-.01F);
+            if (hinput.gamepad[playerIndex].rightStickClick.pressed)
+                SwitchWeapon(.01F);
+        }
         if (hinput.gamepad[playerIndex].rightBumper.justPressed)
             LastWeapon();
         if (hinput.gamepad[playerIndex].leftTrigger.pressed)

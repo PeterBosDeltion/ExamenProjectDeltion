@@ -352,6 +352,7 @@
     <Compile Include="Assets\Scripts\ProfileUnlockUI.cs" />
     <Compile Include="Assets\Scripts\TutorialInteractable.cs" />
     <Compile Include="Assets\Scripts\TutorialMatrix.cs" />
+    <Compile Include="Assets\Scripts\TutorialReminderWindow.cs" />
     <Compile Include="Assets\Scripts\UI\GameOverScreen.cs" />
     <Compile Include="Assets\Scripts\UI\MainCanvas.cs" />
     <Compile Include="Assets\Scripts\UI\PauseMenu.cs" />

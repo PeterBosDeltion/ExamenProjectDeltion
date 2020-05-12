@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,12 +12,22 @@ public class UIManager : MonoBehaviour
     public GameObject profileMenu;
     public GameObject beforeLevelMenu;
 
+    public GameObject tutorialReminderWindow;
+    public GameObject playButton;
+    public GameObject firstLevelButton;
+
     private List<GameObject> menus = new List<GameObject>();
+    public List<GameObject> mainButtons = new List<GameObject>();
     private GameObject currentOpenMenu;
 
     private void Start()
     {
         Initialize();
+    }
+
+    public void SetSelectedObject(GameObject selected)
+    {
+        EventSystem.current.SetSelectedGameObject(selected);
     }
 
     private void Initialize()
@@ -46,18 +57,31 @@ public class UIManager : MonoBehaviour
             menus.Add(beforeLevelMenu);
         }
 
+        //if not done tutorial
+        tutorialReminderWindow.SetActive(true);
+        SetSelectedObject(tutorialReminderWindow.GetComponent<TutorialReminderWindow>().yesButton);
+        tutorialReminderWindow.GetComponent<TutorialReminderWindow>().manager = this;
+
+
+
     }
     public void MenuButtonClicked(string button)
     {
+        foreach (GameObject b in mainButtons)
+        {
+            b.SetActive(true);
+        }
         switch (button)
         {
             case "Main":
                 mainMenu.SetActive(true);
                 currentOpenMenu = mainMenu;
+                SetSelectedObject(playButton);
                 break;
             case "Play":
                 levelMenu.SetActive(true);
                 currentOpenMenu = levelMenu;
+                SetSelectedObject(firstLevelButton);
                 break;
             case "Loadout":
                 loadoutMenu.SetActive(true);
@@ -84,11 +108,16 @@ public class UIManager : MonoBehaviour
 
     public void LevelButtonClicked(int level)
     {
+        foreach (GameObject button in mainButtons)
+        {
+            button.SetActive(false);
+        }
         beforeLevelMenu.SetActive(true);
         currentOpenMenu = beforeLevelMenu;
 
         BeforeLevelMenu lvlMenu = currentOpenMenu.GetComponent<BeforeLevelMenu>();
         lvlMenu.OpenMenu((int)level);
+        SetSelectedObject(lvlMenu.startButton);
 
         CloseAllNotOpenMenus();
     }

@@ -22,6 +22,8 @@ public class PlayerLoadoutMenu : MonoBehaviour
     public Image ultImg;
 
     public GameObject loadoutSelectablePrefab;
+    public GameObject scrollBarAbilities;
+    public GameObject scrollBarUltimates;
 
     private void Start()
     {
@@ -70,6 +72,7 @@ public class PlayerLoadoutMenu : MonoBehaviour
 
     public void OpenAbilitySelect(int abilityIndex)
     {
+        FindObjectOfType<UIManager>().SetSelectedObject(scrollBarAbilities);
         abilityScrollObject.SetActive(true);
         foreach (Transform existingObject in abilityScrollContent.transform)
         {
@@ -98,6 +101,7 @@ public class PlayerLoadoutMenu : MonoBehaviour
 
     public void OpenUltimateSelect()
     {
+        FindObjectOfType<UIManager>().SetSelectedObject(scrollBarUltimates);
         ultimateScrollObject.SetActive(true);
         foreach (Transform existingObject in ultimateScrollContent.transform)
         {
@@ -115,11 +119,13 @@ public class PlayerLoadoutMenu : MonoBehaviour
 
     public void CloseAbilitySelect()
     {
+        FindObjectOfType<UIManager>().SetSelectedObject(primaryWeaponDropDown.gameObject);
         abilityScrollObject.SetActive(false);
     }
 
     public void CloseUltimateSelect()
     {
+        FindObjectOfType<UIManager>().SetSelectedObject(primaryWeaponDropDown.gameObject);
         ultimateScrollObject.SetActive(false);
     }
 

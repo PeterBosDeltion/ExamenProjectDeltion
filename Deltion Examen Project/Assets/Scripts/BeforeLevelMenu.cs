@@ -5,6 +5,7 @@ using UnityEngine;
 public class BeforeLevelMenu : MonoBehaviour
 {
     private int selectedLevel;
+    public GameObject startButton;
 
     public void OpenMenu(int newSelectedLevel)
     {

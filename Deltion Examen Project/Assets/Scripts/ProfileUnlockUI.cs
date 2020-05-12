@@ -48,7 +48,7 @@ public class ProfileUnlockUI : MonoBehaviour
         if (menu.currentWindow)
             Destroy(menu.currentWindow);
         GameObject window = Instantiate(blurbWindowPrefab, GetComponentInParent<Canvas>().transform);
-        window.GetComponent<UnlockBlurbWindow>().Initialize(weaponUnlock, abilityUnlockPrefab);
+        window.GetComponent<UnlockBlurbWindow>().Initialize(this, weaponUnlock, abilityUnlockPrefab);
 
         menu.currentWindow = window;
     }

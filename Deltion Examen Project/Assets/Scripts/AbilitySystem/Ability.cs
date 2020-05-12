@@ -146,8 +146,8 @@ public abstract class Ability : MonoBehaviour
                 }
                 else
                 {
-                    joy.x += -myPlayerController.myInputManager.padRSAxisY;
-                    joy.z += myPlayerController.myInputManager.padRSAxisX;
+                    joy.x += -myPlayerController.myInputManager.padRSAxisY / 1.5F;
+                    joy.z += myPlayerController.myInputManager.padRSAxisX / 1.5F;
 
 
                     Vector3 gPos = myPlayer.transform.position + joy;

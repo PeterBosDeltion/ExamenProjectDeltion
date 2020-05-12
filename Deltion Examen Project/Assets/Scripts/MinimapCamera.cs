@@ -12,6 +12,7 @@ public class MinimapCamera : MonoBehaviour
     private bool tabbed;
 
     private bool waiting;
+    public PlayerController controllingPlayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,10 +53,19 @@ public class MinimapCamera : MonoBehaviour
     private void SetTabbedTrue()
     {
         tabbed = true;
+        foreach (PlayerController pc in FindObjectsOfType<PlayerController>())
+        {
+            if(pc.myInputManager.holdingTab && controllingPlayer == null)
+            {
+                controllingPlayer = pc;
+            }
+        }
     }
     private void SetTabbedFalse()
     {
         tabbed = false;
+        if (controllingPlayer)
+            controllingPlayer = null;
     }
 
     // Update is called once per frame
@@ -63,11 +73,27 @@ public class MinimapCamera : MonoBehaviour
     {
         if (tabbed)
         {
-            float x = Input.GetAxis("Mouse X");
-            float z = Input.GetAxis("Mouse Y");
+            if (!hinput.gamepad[controllingPlayer.playerNumber].isConnected)
+            {
+                float x = Input.GetAxis("Mouse X");
+                float z = Input.GetAxis("Mouse Y");
 
-            Vector3 movement = new Vector3(-z, 0, x);
-            transform.position = transform.position + movement * 120 * Time.deltaTime;
+
+
+                Vector3 movement = new Vector3(-z, 0, x);
+                transform.position = transform.position + movement * 120 * Time.deltaTime;
+            }
+            else
+            {
+                float x = controllingPlayer.myInputManager.padRSAxisX;
+                float z = controllingPlayer.myInputManager.padRSAxisY;
+
+
+
+                Vector3 movement = new Vector3(-z, 0, x);
+                transform.position = transform.position + movement * 120 * Time.deltaTime;
+            }
+          
         }
 
         if (!tabbed)
