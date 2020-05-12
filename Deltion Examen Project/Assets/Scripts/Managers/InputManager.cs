@@ -301,7 +301,7 @@ public class InputManager : MonoBehaviour
     }
     private void LeftMouseHold()
     {
-        hinput.gamepad[controllerIndex].Vibrate();
+        //hinput.gamepad[controllerIndex].Vibrate();
         leftMouseButtonHoldEvent.Invoke();
     }
     private void RightMouse()

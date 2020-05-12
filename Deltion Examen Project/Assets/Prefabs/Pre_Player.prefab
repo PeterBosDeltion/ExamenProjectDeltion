@@ -749,6 +749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIndex: 0
+  mouseKeyBoard: 0
   padLSAxisX: 0
   padLSAxisY: 0
   padRSAxisX: 0

@@ -371,8 +371,6 @@
     <Compile Include="Assets\Scripts\anchorTool.cs" />
     <Compile Include="Assets\Shaders\SetRenderQueue.cs" />
     <Compile Include="Assets\hinput\Debugger\Scripts\hDebugger.cs" />
-    <Compile Include="Assets\hinput\Example Scene\Scripts\hExampleGamepad.cs" />
-    <Compile Include="Assets\hinput\Example Scene\Scripts\hExampleManager.cs" />
     <Compile Include="Assets\hinput\Scripts\Gamepad\hAnyGamepad.cs" />
     <Compile Include="Assets\hinput\Scripts\Gamepad\hAnyGamepadStick.cs" />
     <Compile Include="Assets\hinput\Scripts\Gamepad\hAnyInput.cs" />
