@@ -356,6 +356,7 @@
     <Compile Include="Assets\Scripts\UI\MainCanvas.cs" />
     <Compile Include="Assets\Scripts\UI\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerUI.cs" />
+    <Compile Include="Assets\Scripts\UI\WaveTimer.cs" />
     <Compile Include="Assets\Scripts\UnlockBlurbWindow.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\Bullet.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\Weapon.cs" />

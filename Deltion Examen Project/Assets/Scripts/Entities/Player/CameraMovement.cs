@@ -13,22 +13,14 @@ public class CameraMovement : MonoBehaviour
     [Tooltip("The lower the value the slower/smoother the camera will follow the player")]
     public float smoothness = 5;
 
-    //private void Awake()
-    //{
-    //    target = FindObjectOfType<PlayerController>().gameObject.transform;
-    //    Vector3 newOffset = Camera.main.transform.forward * -distanceOffset;
-    //    newOffset += Camera.main.transform.up * heightOfset;
-    //    transform.position = target.position + newOffset;
-    //}
     public void FindPlayerOne()
     {
-
         foreach (PlayerController player in GameManager.instance.GetPlayers())
         {
             if (player.playerNumber == 0)
                 target = player.transform;
         }
-        //target = FindObjectOfType<PlayerController>().gameObject.transform;
+
         Vector3 newOffset = Camera.main.transform.forward * -distanceOffset;
         newOffset += Camera.main.transform.up * heightOfset;
         transform.position = target.position + newOffset;
