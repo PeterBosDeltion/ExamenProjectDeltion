@@ -58,8 +58,16 @@ public class UIManager : MonoBehaviour
         }
 
         //if not done tutorial
-        tutorialReminderWindow.SetActive(true);
-        SetSelectedObject(tutorialReminderWindow.GetComponent<TutorialReminderWindow>().yesButton);
+        if (tutorialReminderWindow.GetComponent<TutorialReminderWindow>().remindme)
+        {
+            tutorialReminderWindow.SetActive(true);
+            SetSelectedObject(tutorialReminderWindow.GetComponent<TutorialReminderWindow>().yesButton);
+        }
+        else
+        {
+            SetSelectedObject(playButton);
+
+        }
         tutorialReminderWindow.GetComponent<TutorialReminderWindow>().manager = this;
 
 
@@ -81,7 +89,7 @@ public class UIManager : MonoBehaviour
             case "Play":
                 levelMenu.SetActive(true);
                 currentOpenMenu = levelMenu;
-                SetSelectedObject(firstLevelButton);
+                //SetSelectedObject(firstLevelButton);
                 break;
             case "Loadout":
                 loadoutMenu.SetActive(true);

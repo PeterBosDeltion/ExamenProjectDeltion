@@ -42,7 +42,11 @@ public class GameManager : MonoBehaviour
     public PlayerController playerThree;
     public PlayerController playerFour;
 
+    public int mouseKeyboardPlayer = 0;
+
     public List<PlayerController> activePlayers = new List<PlayerController>();
+    public List<Color> playerColors = new List<Color>();
+    public List<Color> darkPlayerColors = new List<Color>();
 
     private void Awake()
     {
@@ -133,6 +137,11 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
         else
             Time.timeScale = 1;
+    }
+
+    public void SetMouseAndKeyboardPlayer(int index)
+    {
+        mouseKeyboardPlayer = index;
     }
 
     public void CloseGame()

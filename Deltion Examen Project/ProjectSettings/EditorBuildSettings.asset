@@ -20,4 +20,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Kevin_Test_Scene.unity
     guid: d2d015124fa22fe4da5d5898808eab90
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 7ec32dbf6385d3e4bb1f8adc6c61f980,
+      type: 2}

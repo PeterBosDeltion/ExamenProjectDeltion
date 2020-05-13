@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cd69a9b3fcd6a4da45d6ce719e1993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playersSpawned: 0
   curentState: 0
   curentCursorState: 0
   difficulty: 2
@@ -263,6 +264,17 @@ MonoBehaviour:
   playerTwo: {fileID: 0}
   playerThree: {fileID: 0}
   playerFour: {fileID: 0}
+  activePlayers: []
+  playerColors:
+  - {r: 0, g: 0.3971982, b: 1, a: 1}
+  - {r: 1, g: 0.6, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0.010979414, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  darkPlayerColors:
+  - {r: 0, g: 0.11764706, b: 0.31132078, a: 1}
+  - {r: 0.31132078, g: 0.11764706, b: 0, a: 1}
+  - {r: 0, g: 0.30980393, b: 0.11764706, a: 1}
+  - {r: 0.30980393, g: 0, b: 0, a: 1}
 --- !u!1 &8531780636332113929
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,7 +20,6 @@ public class InputManager : MonoBehaviour
     public int playerIndex;
     private int controllerIndex;
     public bool mouseKeyBoard;
-    public static bool testeroni;
 
     private GamePadState myGamepadState;
     public float padLSAxisX;
@@ -84,15 +83,14 @@ public class InputManager : MonoBehaviour
 
     public void Initialize()
     {
-        //if (playerIndex == 0 && !InputManager.testeroni)
-        //{
-        //    mouseKeyBoard = true;
-        //    InputManager.testeroni = true;
-        //}
-        //else
-        //{
-        //    mouseKeyBoard = false;
-        //}
+        if (playerIndex == GameManager.instance.mouseKeyboardPlayer)
+        {
+            mouseKeyBoard = true;
+        }
+        else
+        {
+            mouseKeyBoard = false;
+        }
         SceneManager.activeSceneChanged += ActiveSceneChanged;
         SetGamepadIndex();
     }
