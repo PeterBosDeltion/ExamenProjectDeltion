@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 490688}
   - component: {fileID: 3381906}
   - component: {fileID: 2319052}
-  m_Layer: 0
+  - component: {fileID: 2708431400862776102}
+  m_Layer: 2
   m_Name: Cactus_l_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &490688
 Transform:
@@ -80,6 +81,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &2708431400862776102
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129946}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 2b9f3ea8563003a439dca70d33893ad4, type: 3}
 --- !u!1 &142804
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,12 +105,12 @@ GameObject:
   m_Component:
   - component: {fileID: 468756}
   - component: {fileID: 13619390}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &468756
 Transform:

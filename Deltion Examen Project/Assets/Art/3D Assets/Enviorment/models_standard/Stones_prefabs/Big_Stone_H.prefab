@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 410402}
   - component: {fileID: 3343636}
   - component: {fileID: 2351858}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Big_Stone_H_child
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &410402
 Transform:
@@ -90,12 +90,12 @@ GameObject:
   - component: {fileID: 457478}
   - component: {fileID: 3367040}
   - component: {fileID: 2393940}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Big_Stone_H
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &457478
 Transform:
@@ -171,12 +171,12 @@ GameObject:
   - component: {fileID: 479402}
   - component: {fileID: 3379672}
   - component: {fileID: 2386476}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Big_Stone_H_child_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &479402
 Transform:

@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 469822}
   - component: {fileID: 3383076}
   - component: {fileID: 2376288}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Gravel_D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &469822
 Transform:

@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 461446}
   - component: {fileID: 3394774}
   - component: {fileID: 2365628}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Dead_Bush_a_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &461446
 Transform:

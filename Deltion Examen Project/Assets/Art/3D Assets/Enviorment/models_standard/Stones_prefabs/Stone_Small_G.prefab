@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 412438}
   - component: {fileID: 3346112}
   - component: {fileID: 2362442}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Stone_Small_G
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &412438
 Transform:
@@ -91,12 +91,12 @@ GameObject:
   - component: {fileID: 459850}
   - component: {fileID: 3300200}
   - component: {fileID: 2340744}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Stone_Small_G_child
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &459850
 Transform:

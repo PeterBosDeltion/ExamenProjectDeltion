@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 410684}
   - component: {fileID: 3394488}
   - component: {fileID: 2364152}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Big_Stone_F_child
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &410684
 Transform:
@@ -90,12 +90,12 @@ GameObject:
   - component: {fileID: 403614}
   - component: {fileID: 3303504}
   - component: {fileID: 2370224}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Big_Stone_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &403614
 Transform:
