@@ -284,9 +284,10 @@ public class PlayerController : MonoBehaviour
     public void Move(float xAxis, float yAxis)
     {
         movement.Move(xAxis, yAxis);
-        Quaternion diffrence = transform.rotation * Quaternion.Inverse(Camera.main.transform.rotation);
-        Vector3 animatedAxis = diffrence * new Vector3(xAxis, 0, yAxis);
-        ManageAnimations(false, -animatedAxis.x, animatedAxis.z);
+
+        float diffrenceAngle = transform.rotation.eulerAngles.y - Camera.main.transform.rotation.y;
+        Vector3 animatedAxis = Quaternion.Euler(0,diffrenceAngle,0) * new Vector3(xAxis, 0, yAxis);
+        ManageAnimations(false, animatedAxis.x, animatedAxis.z);
 
         if (inTutorial && TutorialManager.instance.currentStep == 1)
             TutorialManager.playerMovedDelegate.Invoke();

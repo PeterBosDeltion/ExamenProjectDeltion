@@ -20,7 +20,8 @@ public class EntitySpawner : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<SphereCollider>().radius = LevelManager.instance.NoSpawnsDistance;
+        if(!objectiveSpawner)
+            GetComponent<SphereCollider>().radius = LevelManager.instance.NoSpawnsDistance;
     }
 
     public void AddToSpawnQue(GameObject entity)
@@ -40,10 +41,12 @@ public class EntitySpawner : MonoBehaviour
 
         yield return new WaitForSeconds(timeBetweenSpawns);
 
-        if(!EntityToClose)
+        if (!EntityToClose)
             Instantiate(entity, transform.position, Quaternion.identity);
-        else
+        else if (!objectiveSpawner)
             LevelManager.instance.ReasignEnemys(entity);
+        else
+            que.Add(entity);
 
         if (que.Count != 0)
         {

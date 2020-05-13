@@ -34,6 +34,9 @@ public class DestroyObjective : Entity
             spawnTimer = true;
 
             int spawnsPerSpawner = Mathf.CeilToInt((float)enemiesToSpawn.Count / spawners.Length);
+            if (spawnsPerSpawner == 0)
+                spawnsPerSpawner = 1;
+
             List<GameObject> wave = new List<GameObject>();
             wave.AddRange(enemiesToSpawn);
 

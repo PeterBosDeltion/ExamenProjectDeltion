@@ -122,7 +122,7 @@ MonoBehaviour:
   - {fileID: 227615046000823840, guid: 2fb16e5a959a41844bc859c48f3e81cb, type: 3}
   - {fileID: 227615046000823840, guid: 2fb16e5a959a41844bc859c48f3e81cb, type: 3}
   - {fileID: 227615046000823840, guid: 2fb16e5a959a41844bc859c48f3e81cb, type: 3}
-  spawnCooldown: 120
+  spawnCooldown: 20
   ObjectiveDone: 0
 --- !u!208 &1828402978950897466
 NavMeshObstacle:
@@ -147,6 +147,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1947663707442958863}
     m_Modifications:
+    - target: {fileID: 1507679123970806680, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1614415758301244679, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
         type: 3}
       propertyPath: objectiveSpawner
@@ -227,6 +232,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1947663707442958863}
     m_Modifications:
+    - target: {fileID: 1507679123970806680, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1614415758301244679, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
         type: 3}
       propertyPath: objectiveSpawner
@@ -307,6 +317,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1947663707442958863}
     m_Modifications:
+    - target: {fileID: 1507679123970806680, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1614415758301244679, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
         type: 3}
       propertyPath: objectiveSpawner
@@ -387,6 +402,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1947663707442958863}
     m_Modifications:
+    - target: {fileID: 1507679123970806680, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1614415758301244679, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
         type: 3}
       propertyPath: objectiveSpawner
@@ -467,6 +487,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1947663707442958863}
     m_Modifications:
+    - target: {fileID: 1507679123970806680, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1614415758301244679, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
         type: 3}
       propertyPath: objectiveSpawner

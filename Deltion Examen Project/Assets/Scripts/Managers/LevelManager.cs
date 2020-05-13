@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 //For this script to work it needs to be put in a level with a player (to avoid EnemyAI errors) and EntitySpawners
 //To make it work the way you want you will need to asign all the public values in the inspector
@@ -21,12 +23,15 @@ public class LevelManager : MonoBehaviour
     [Tooltip("Fill from easy to hard for increased difficulty in later waves")]
     public List<GameObject> enemyTypes = new List<GameObject>();
     private List<GameObject> currentWaveEntitys = new List<GameObject>();
-    private int curentWave;
+    [HideInInspector]
+    public int curentWave;
     private int curentType;
     private int enemiesToAdd;
     public int minimumSpawnerSpread;
     public float timeBetweenIndividualSpawns;
     public float spawnTickTime;
+
+    public WaveTimer timer;
 
     [Tooltip("The distance a player has to be away from the object to allow spawning")]
     public float NoSpawnsDistance;
@@ -274,31 +279,41 @@ public class LevelManager : MonoBehaviour
     private void GetNearbySpawners(int spawnerSpread)
     {
         closestSpawners.Clear();
+        Debug.Log(spawnerSpread);
+        int neededSpawners = spawnerSpread;
 
-        for (int i = 0; i < spawnerSpread; i++)
+        while (neededSpawners != 0)
         {
-            float distance = Mathf.Infinity;
-            EntitySpawner closestSpawner = allAvailableSpawners[0];
-
-            foreach(EntitySpawner spawner in allAvailableSpawners)
+            for (int i = 0; i < GameManager.instance.amountOfPlayers; i++)
             {
-                float newDistance = Vector3.Distance(spawner.gameObject.transform.position, playerOne.transform.position);
-                if (distance > newDistance && !closestSpawners.Contains(spawner))
+                if(neededSpawners != 0)
                 {
-                    if(!spawner.EntityToClose)
+                    float distance = Mathf.Infinity;
+                    EntitySpawner closestSpawner = allAvailableSpawners[0];
+
+                    foreach (EntitySpawner spawner in allAvailableSpawners)
                     {
-                        distance = newDistance;
-                        closestSpawner = spawner;
+                        float newDistance = Vector3.Distance(spawner.gameObject.transform.position, playerOne.transform.position);
+                        if (distance > newDistance && !closestSpawners.Contains(spawner))
+                        {
+                            if (!spawner.EntityToClose)
+                            {
+                                distance = newDistance;
+                                closestSpawner = spawner;
+                            }
+                        }
                     }
+
+                    closestSpawners.Add(closestSpawner);
+                    neededSpawners--;
                 }
             }
-
-            closestSpawners.Add(closestSpawner);
         }
     }
 
     private IEnumerator SpawnTick(float time)
     {
+        timer.SetTimerValues(time, curentWave);
         yield return new WaitForSeconds(time);
         SetupWave();
     }
