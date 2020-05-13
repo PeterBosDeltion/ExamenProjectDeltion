@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 438234}
   - component: {fileID: 3348304}
   - component: {fileID: 2348658}
-  - component: {fileID: -2343537478990896234}
   m_Layer: 0
   m_Name: Big_Stone_Cracked_C
   m_TagString: Untagged
@@ -80,17 +79,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &-2343537478990896234
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 180130}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300040, guid: 7a2c3f5bd4782c04ab4966e74fc0c5e9, type: 3}

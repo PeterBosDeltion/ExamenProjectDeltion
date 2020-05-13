@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b712840779f4647baae93e0b9355d2, type: 3}
+  m_Name: SmallRocks
+  m_EditorClassIdentifier: 
+  prototypes:
+  - {fileID: 130454, guid: 9235b62cdbf8efa43a2f579d585be053, type: 3}
+  - {fileID: 192704, guid: bb33ca05dd05fe84898cd247c95c7b70, type: 3}
+  - {fileID: 116760, guid: 405e91b4450c44749b57e56cffaa7e01, type: 3}
+  - {fileID: 187072, guid: 64ca835380521b44c8eec6b98d26e78b, type: 3}
+  - {fileID: 164576, guid: e9b722d27865829429f34aa8eba60805, type: 3}
+  - {fileID: 168814, guid: a04e1c865b36bd3409ecc510570051ac, type: 3}
+  - {fileID: 179012, guid: c5d7b1cf939caa845902b5ba2a3927de, type: 3}
+  - {fileID: 150882, guid: 3e2cf4e4369e0fb4fb5b35461e1b3afe, type: 3}
+  - {fileID: 151428, guid: 6e970f71ca12d7e43a5a49afdff3cd52, type: 3}
+  - {fileID: 150064, guid: a56b04b626bbbe94086d8ecba677b41b, type: 3}
+  - {fileID: 175020, guid: c354a5ff0bfc647468326421b34f8674, type: 3}
+  - {fileID: 187150, guid: 6031d8be6f1a47243a9418120a33f59d, type: 3}
+  - {fileID: 168496, guid: 1557475e6b70398479f20f034259223e, type: 3}
+  - {fileID: 183518, guid: a33f6ddd2005164459d5af5899b43ea3, type: 3}
+  - {fileID: 189494, guid: 253c982395f7d684e83e980afc2f8fc9, type: 3}
+  - {fileID: 107450, guid: 386f5fd710675dd4aa3a3abc76ef0bfb, type: 3}
+  - {fileID: 104624, guid: f559276d721b62e45857e375692e25af, type: 3}
+  - {fileID: 168622, guid: d02f480b144f6e747a1f799450eda98f, type: 3}
+  - {fileID: 124866, guid: cbc395971a3be0c40847995fcab671f5, type: 3}
+  - {fileID: 163662, guid: 3962283c6f4ca3e46b1a378bd40ba02e, type: 3}
+  - {fileID: 168624, guid: c38fa9e6739b3ee498a79127ab47e01a, type: 3}
+  - {fileID: 155080, guid: 9bc64d8414731de479017ea33f22b455, type: 3}
+  editor_PrefabAssetPaths:
+  - Assets/Art/3D Assets/Enviorment/models_standard/Gravel_prefabs/Gravel_A.prefab
+  - Assets/Art/3D Assets/Enviorment/models_standard/Gravel_prefabs/Gravel_B.prefab
+  - Assets/Art/3D Assets/Enviorment/models_standard/Gravel_prefabs/Gravel_C.prefab
+  - Assets/Art/3D Assets/Enviorment/models_standard/Gravel_prefabs/Gravel_D.prefab
+  - Assets/Art/3D Assets/Enviorment/models_standard/Gravel_prefabs/Gravel_E.prefab
+  - Assets/Art/3D Assets/Enviorment/models_standard/Gravel_prefabs/Gravel_F.prefab
+  - Assets/Art/3D Assets/Enviorment/models_standard/Gravel_prefabs/Gravel_G.prefab
+  - Assets/Art/3D Assets/Enviorment/models_standard/Gravel_prefabs/Gravel_H.prefab
+  - Assets/Art/3D Assets/Enviorment/models_standard/Gravel_prefabs/Gravel_I.prefab
+  - Assets/Art/3D Assets/Enviorment/models_standard/Gravel_prefabs/Gravel_J.prefab
+  - Assets/Art/3D Assets/Enviorment/models_standard/Gravel_prefabs/Gravel_K.prefab
+  - Assets/Art/3D Assets/Enviorment/models_standard/Gravel_prefabs/Gravel_L.prefab
+  - Assets/Art/3D Assets/Enviorment/models_standard/Gravel_prefabs/Gravel_M.prefab
+  - Assets/Art/3D Assets/Enviorment/models_standard/Gravel_prefabs/Gravel_N.prefab
+  - Assets/Art/3D Assets/Enviorment/models_standard/Stones_prefabs/Stone_Small_I.prefab
+  - Assets/Art/3D Assets/Enviorment/models_standard/Stones_prefabs/Stone_Small_H.prefab
+  - Assets/Art/3D Assets/Enviorment/models_standard/Stones_prefabs/Stone_Small_G.prefab
+  - Assets/Art/3D Assets/Enviorment/models_standard/Stones_prefabs/Stone_Small_K.prefab
+  - Assets/Art/3D Assets/Enviorment/models_standard/Stones_prefabs/Stone_Small_J.prefab
+  - Assets/Art/3D Assets/Enviorment/models_standard/Stones_prefabs/Stone_Small_L.prefab
+  - Assets/Art/3D Assets/Enviorment/models_standard/Stones_prefabs/Stone_Small_M.prefab
+  - Assets/Art/3D Assets/Enviorment/models_standard/Stones_prefabs/Stone_Small_N.prefab
