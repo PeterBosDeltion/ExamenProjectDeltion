@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 441626}
   - component: {fileID: 3381860}
   - component: {fileID: 2367264}
-  m_Layer: 0
+  - component: {fileID: -4637837012587131727}
+  m_Layer: 2
   m_Name: Cliff_V
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &441626
 Transform:
@@ -49,7 +50,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174872}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -59,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9416b49b954cfde40914e794994121de, type: 2}
+  - {fileID: 2100000, guid: 719028da267711c44abc35f0a0a217f0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,6 +81,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &-4637837012587131727
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174872}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300048, guid: a620c2ce8b83a6741b72ac2f240c10b8, type: 3}
 --- !u!1 &179266
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,12 +106,12 @@ GameObject:
   - component: {fileID: 459512}
   - component: {fileID: 3330150}
   - component: {fileID: 2338660}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cliff_V_child
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &459512
 Transform:
@@ -138,7 +153,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9416b49b954cfde40914e794994121de, type: 2}
+  - {fileID: 2100000, guid: 719028da267711c44abc35f0a0a217f0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
