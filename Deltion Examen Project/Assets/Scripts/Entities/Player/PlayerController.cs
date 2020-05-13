@@ -272,11 +272,8 @@ public class PlayerController : MonoBehaviour
     {
         movement.Move(xAxis, yAxis);
 
-        //Quaternion diffrence = Quaternion.Inverse(Camera.main.transform.rotation) * transform.rotation;
-
         float diffrenceAngle = transform.rotation.eulerAngles.y - Camera.main.transform.rotation.y;
         Vector3 animatedAxis = Quaternion.Euler(0,diffrenceAngle,0) * new Vector3(xAxis, 0, yAxis);
-        Debug.Log(animatedAxis);
         ManageAnimations(false, animatedAxis.x, animatedAxis.z);
 
         if (inTutorial && TutorialManager.instance.currentStep == 1)
