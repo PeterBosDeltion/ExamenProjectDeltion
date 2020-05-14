@@ -149,6 +149,8 @@
     <Compile Include="Assets\Griffin - PolarisV2\Scripts\Utilities\Editor\GWindZoneInspector.cs" />
     <Compile Include="Assets\Griffin - PolarisV2\Scripts\Utilities\Editor\GWizardMaterialTemplatePropertyDrawer.cs" />
     <Compile Include="Assets\Griffin - PolarisV2\Shaders\Editor\GGetWorldToNormalizedMatrixNode.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX Easy Editor\Editor\CFXEasyEditor.cs" />
+    <Compile Include="Assets\JMO Assets\WarFX\Editor\CFX_SpawnSystemEditor.cs" />
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>D:/Projects/Repositories/Examen/Deltion Examen Project/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>

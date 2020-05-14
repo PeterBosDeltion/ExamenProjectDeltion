@@ -46,19 +46,25 @@ public abstract class Ability : MonoBehaviour
     public DeployType myDeployType;
 
     protected Coroutine afterDurCoroutine;
+    private GameObject laserTargetObject;
+    private bool lasering;
 
     private void Start()
     {
         lineRenderer = myPlayer.gameObject.GetComponent<LineRenderer>();
 
         myPlayerController.myInputManager.rightMouseButtonEvent += CancelDeploy;
+        myPlayerController.myInputManager.rightMouseButtonEvent += CancelLaser;
         myPlayerController.myInputManager.leftMouseButtonEvent += Deploy;
+        myPlayerController.myInputManager.leftMouseButtonEvent += UseLaserTarget;
     }
 
     private void OnDestroy()
     {
         myPlayerController.myInputManager.rightMouseButtonEvent -= CancelDeploy;
+        myPlayerController.myInputManager.rightMouseButtonEvent -= CancelLaser;
         myPlayerController.myInputManager.leftMouseButtonEvent -= Deploy;
+        myPlayerController.myInputManager.leftMouseButtonEvent -= UseLaserTarget;
     }
     public void UseAbility()
     {
@@ -66,7 +72,7 @@ public abstract class Ability : MonoBehaviour
         {
             return;
         }
-        if (!onCooldown && !active && !deploying)
+        if (!onCooldown && !active && !deploying && !lasering)
         {
             returned = false;
             switch (myDeployType)
@@ -84,8 +90,42 @@ public abstract class Ability : MonoBehaviour
                     }
                     break;
                 case DeployType.LaserTarget:
+                    if (!lasering)
+                    {
+                        laserTargetObject = new GameObject("lasertarget");
+                        lasering = true;
+                        myPlayerController.currentWeapon.canShoot = false;
+                        myPlayerController.canSwitch = false;
+
+                    }
                     break;
             }
+
+            //if (ultimate)
+            //{
+            //    currentUltCharge = 0;
+            //    ultActive = true;
+            //    checkUltCharged = false;
+            //}
+
+                afterDurCoroutine = StartCoroutine(AfterDuration());
+        }
+       
+    }
+
+    private void UseLaserTarget()
+    {
+        if (laserTargetObject)
+        {
+            Vector3 laserPos = laserTargetObject.transform.position;
+            AbilityMechanic(laserPos);
+
+            StartCoroutine(WaitTillUnlockGun());
+            Destroy(laserTargetObject);
+            laserTargetObject = null;
+            myPlayerController.currentWeapon.CancelLaser();
+            lasering = false;
+            myPlayerController.canSwitch = true;
 
             if (ultimate)
             {
@@ -93,13 +133,36 @@ public abstract class Ability : MonoBehaviour
                 ultActive = true;
                 checkUltCharged = false;
             }
-            afterDurCoroutine = StartCoroutine(AfterDuration());
         }
-       
+    }
+
+    private void CancelLaser()
+    {
+        if (lasering)
+        {
+            myPlayerController.currentWeapon.CancelLaser();
+            Destroy(laserTargetObject);
+            laserTargetObject = null;
+            myPlayerController.currentWeapon.canShoot = true;
+            myPlayerController.canSwitch = true;
+            lasering = false;
+
+        }
+
     }
 
     private void Update()
     {
+        if (lasering)
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit))
+                laserTargetObject.transform.position = hit.point;
+            myPlayerController.currentWeapon.SetLaser(laserTargetObject);
+
+        }
+       
         if (deploying && !active)
         {
             if (activeGhost)

@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     public InputManager myInputManager;
     public SkinnedMeshRenderer playerMeshRenderer;
 
+    public bool canSwitch = true;
+
     //Assigning the Player scripts to the controller(There is no reason for the PlayerController to be anywhere else than on the Player so no need for a Gameobject reference)
     private void Awake()
     {
@@ -201,24 +203,27 @@ public class PlayerController : MonoBehaviour
 
     private void SwitchToLastWeapon()
     {
-        SwitchWeapon(0);
+        if(canSwitch)
+            SwitchWeapon(0);
     }
 
     private void SwitchWeapon(float f)
     {
-        if (!myInputManager.holdingTab)
+        if (canSwitch)
         {
-            currentWeapon.gameObject.SetActive(false);
-            currentWeapon.StopCoroutines();
-            currentWeapon = (currentWeapon == currentPrimary) ? currentWeapon = currentSecondary : currentWeapon = currentPrimary;
-            currentWeapon.ResetValues();
-            currentWeapon.gameObject.SetActive(true);
+            if (!myInputManager.holdingTab)
+            {
+                currentWeapon.gameObject.SetActive(false);
+                currentWeapon.StopCoroutines();
+                currentWeapon = (currentWeapon == currentPrimary) ? currentWeapon = currentSecondary : currentWeapon = currentPrimary;
+                currentWeapon.ResetValues();
+                currentWeapon.gameObject.SetActive(true);
+            }
+            else
+            {
+                return;
+            }
         }
-        else
-        {
-            return;
-        }
-      
     }
 
     //Unsubscribe Input functions for safety

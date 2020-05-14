@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myPlayer: {fileID: 0}
+  myPlayerController: {fileID: 0}
   name: Orbital Bombardment
   description: 
   uiIcon: {fileID: 21300000, guid: a12170eab4a60374393dbdd4d05d107d, type: 3}
@@ -52,7 +53,7 @@ MonoBehaviour:
   onCooldown: 0
   active: 0
   cooldownTime: 0
-  duration: 20
+  duration: 25
   currentUltCharge: 0
   ultChargeIncrement: 0.5
   deployableRadius: 0
@@ -62,12 +63,14 @@ MonoBehaviour:
   deployLineMaterial: {fileID: 0}
   deployableOffset: {x: 0, y: 0, z: 0}
   returned: 0
-  myDeployType: 0
+  myDeployType: 2
   shipShadowPrefab: {fileID: 8149729823325184602, guid: eb5305806edc89d45a1e2398d906641b,
     type: 3}
   targetingSprite: {fileID: 151126254533669130, guid: c26affb487b0a674e9bf87e2ecb2c62f,
     type: 3}
-  offsetFromPlayer: {x: 5, y: 30, z: -10}
+  offsetFromPlayer: {x: 0, y: 30, z: 0}
   targetRadius: 20
-  damageRadius: 5
-  damage: 200
+  damageRadius: 6
+  damage: 300
+  centerPointLineRendererPrefab: {fileID: 531234053404811474, guid: 29ee371549ef7964ca69e44a6348a7f4,
+    type: 3}

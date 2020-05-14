@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myPlayer: {fileID: 0}
+  myPlayerController: {fileID: 0}
   name: Flame Pulse
   description: The oldest trick makind has to use against things they don't like.
     This flame pulse is very effective at quickly and heaviliy damaging anything

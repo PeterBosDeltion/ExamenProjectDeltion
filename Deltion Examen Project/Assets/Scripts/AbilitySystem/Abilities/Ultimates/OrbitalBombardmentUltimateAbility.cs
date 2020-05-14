@@ -13,62 +13,84 @@ public class OrbitalBombardmentUltimateAbility : Ability
     public float damageRadius;
     public float damage;
 
-    private bool canSpawn;
-    private bool waiting;
 
-    private Coroutine refire;
+    private Vector3 centerPoint;
+    public GameObject centerPointLineRendererPrefab;
+    private GameObject centerLineRend;
+    private LineRenderer myLineRenderer;
+
+    [Range(3, 256)]
+    private int nSegments = 128;
     protected override void AbilityMechanic(Vector3? mPos = null, Quaternion? deployRotation = null)
     {
-        spawnedShip = Instantiate(shipShadowPrefab, myPlayer.transform.position + offsetFromPlayer, Quaternion.identity);
+        centerPoint = (Vector3)mPos;
+        centerLineRend = Instantiate(centerPointLineRendererPrefab, centerPoint, Quaternion.identity);
+        spawnedShip = Instantiate(shipShadowPrefab, centerPoint + offsetFromPlayer, Quaternion.identity);
+        myLineRenderer = centerLineRend.GetComponent<LineRenderer>();
+        myLineRenderer.startColor = GameManager.instance.playerColors[myPlayer.GetComponent<PlayerController>().playerNumber];
+        myLineRenderer.endColor = GameManager.instance.playerColors[myPlayer.GetComponent<PlayerController>().playerNumber];
         spawnedShip.transform.localEulerAngles += new Vector3(0, -90, 0);
-        canSpawn = true;
+        DrawRangeCircle();
+        BombardLocation(centerPoint + new Vector3(0, .2F, 0));
+        InvokeRepeating("Bombard", .1F, 0.75F);
     
         active = true;
     }
 
     private Vector3 FindPoint()
     {
-        Vector3 point = new Vector2(myPlayer.transform.position.x, myPlayer.transform.position.z) + Random.insideUnitCircle * targetRadius;
+        Vector3 point = new Vector2(centerPoint.x, centerPoint.z) + Random.insideUnitCircle * targetRadius;
         point.z = point.y;
         point.y = 1.6F;
         return point;
     }
 
-    private void Update()
+    private void Bombard()
     {
-        if (canSpawn)
-        {
-            for (int i = 0; i < 8; i++)
+        GameObject spr = Instantiate(targetingSprite, FindPoint(), Quaternion.identity);
+        spr.GetComponent<OrbitalBombardmentUltimate>().Initialize(damageRadius, damage, myPlayer);
+    }
+       
+
+    private void BombardLocation(Vector3 position)
+    {
+        GameObject spr = Instantiate(targetingSprite, position, Quaternion.identity);
+        spr.GetComponent<OrbitalBombardmentUltimate>().Initialize(damageRadius, damage, myPlayer);
+    }
+
+
+    private void DrawRangeCircle()
+    {
+
+        myLineRenderer.enabled = true;
+        myLineRenderer.startWidth = 0.25F;
+        myLineRenderer.endWidth = 0.25F;
+        myLineRenderer.positionCount = nSegments + 1;
+        myLineRenderer.useWorldSpace = false;
+
+            float deltaTheta = (float)(2.0 * Mathf.PI) / nSegments;
+            float theta = 0f;
+
+            for (int i = 0; i < nSegments + 1; i++)
             {
-                GameObject spr = Instantiate(targetingSprite, FindPoint(), Quaternion.identity);
-                spr.GetComponent<OrbitalBombardmentUltimate>().Initialize(damageRadius, damage, myPlayer);
-               
-                    canSpawn = false;
-                    if (!waiting)
-                    {
-                        refire = StartCoroutine(RefireTime());
-                    }
-               
+                float x = targetRadius * Mathf.Cos(theta);
+                float z = targetRadius * Mathf.Sin(theta);
+                Vector3 pos = new Vector3(x, .5F, z);
+                myLineRenderer.SetPosition(i, pos);
+                theta += deltaTheta;
             }
 
-            
-        }
+        
+
     }
 
-    private IEnumerator RefireTime()
-    {
-        waiting = true;
-        yield return new WaitForSeconds(6);
-        canSpawn = true;
-        waiting = false;
-    }
+   
 
     protected override IEnumerator AfterDuration()
     {
         yield return new WaitForSeconds(duration);
-        StopCoroutine(refire);
-        canSpawn = false;
-        waiting = false;
+        Destroy(centerLineRend);
+        CancelInvoke();
         Destroy(spawnedShip);
         spawnedShip = null;
         StartCooldown();

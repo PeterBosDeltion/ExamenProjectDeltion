@@ -32,6 +32,8 @@ public class Weapon : MonoBehaviour
     private Coroutine ReloadCoroutine;
 
     private List<Coroutine> activeCoroutines = new List<Coroutine>();
+    private LineRenderer laserTarget;
+    private GameObject laserEndPos;
     private void Start()
     {
         tutorialInit = false;
@@ -50,6 +52,16 @@ public class Weapon : MonoBehaviour
     public void Initialize()
     {
         myPlayer = GetComponentInParent<Player>();
+        laserTarget = GetComponentInChildren<LineRenderer>();
+        if (laserTarget)
+        {
+            laserTarget.positionCount = 0;
+        }
+        else
+        {
+            Debug.Log("Plase add laser visuals to " + gameObject.name);
+        }
+
         if (myPlayerController.inTutorial && !tutorialInit)
         {
             return;
@@ -72,6 +84,26 @@ public class Weapon : MonoBehaviour
         }
          myPlayerController.myInputManager.leftMouseButtonUpEvent += ResetShotsFired;
          myPlayerController.myInputManager.reloadEvent += Reload;
+    }
+
+    public void SetLaser(GameObject target)
+    {
+            laserEndPos = target;
+            if (laserTarget.positionCount != 2)
+                laserTarget.positionCount = 2;
+
+            if(laserTarget.positionCount != 0)
+            {
+                laserTarget.SetPosition(0, bulletSpawn.transform.position);
+                laserTarget.SetPosition(1, laserEndPos.transform.position);
+            }
+           
+    }
+
+    public void CancelLaser()
+    {
+        laserTarget.positionCount = 0;
+        laserEndPos = null;
     }
 
     private void OnDestroy()
