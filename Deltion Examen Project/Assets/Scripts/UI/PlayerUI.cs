@@ -47,10 +47,12 @@ public class PlayerUI : MonoBehaviour
     public Image tempHealthbarFilled;
 
     private bool waiting;
+    private bool wait;
     private bool reloading;
     private float time = 0;
 
     private Animator ani;
+    private bool aniInit;
     //private bool waiting;
     public void GetMyPlayer()
     {
@@ -82,8 +84,17 @@ public class PlayerUI : MonoBehaviour
     {
         waiting = true;
         yield return new WaitUntil(() => myPlayer.playerInitialized);
+       
         Initialize();
         waiting = false;
+    }
+
+    private IEnumerator WaitForAniInit()
+    {
+        wait = true;
+        yield return new WaitUntil(() => ani.isInitialized);
+        aniInit = true;
+        wait = false;
     }
 
     private void Initialize()
@@ -115,6 +126,9 @@ public class PlayerUI : MonoBehaviour
 
         weaponBackImage.sprite = myPlayer.currentWeapon.myWeapon.uiIcon;
         weaponImage.sprite = myPlayer.currentWeapon.myWeapon.uiIcon;
+
+        if (!wait)
+            StartCoroutine(WaitForAniInit());
     }
 
     private void OnDestroy()
@@ -132,7 +146,8 @@ public class PlayerUI : MonoBehaviour
 
     private void TakeDamage()
     {
-        ani.SetTrigger("Damaged");
+        if(aniInit)
+            ani.SetTrigger("Damaged");
     }
 
     public void AbilityUsed(int f)

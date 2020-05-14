@@ -52,6 +52,8 @@ public class MinimapCamera : MonoBehaviour
 
     private void SetTabbedTrue()
     {
+        if (controllingPlayer)
+            return;
         tabbed = true;
         foreach (PlayerController pc in FindObjectsOfType<PlayerController>())
         {
@@ -73,25 +75,32 @@ public class MinimapCamera : MonoBehaviour
     {
         if (tabbed)
         {
-            if (!hinput.gamepad[controllingPlayer.playerNumber].isConnected)
+            if (controllingPlayer.myInputManager.controllerIndex < 0 )
             {
-                float x = Input.GetAxis("Mouse X");
-                float z = Input.GetAxis("Mouse Y");
+                if (!hinput.gamepad[controllingPlayer.myInputManager.playerIndex].isConnected)
+                {
+                    float x = Input.GetAxis("Mouse X");
+                    float z = Input.GetAxis("Mouse Y");
 
 
 
-                Vector3 movement = new Vector3(-z, 0, x);
-                transform.position = transform.position + movement * 120 * Time.deltaTime;
+                    Vector3 movement = new Vector3(-x, 0, -z);
+                    transform.position = transform.position + movement * 120 * Time.deltaTime;
+                }
+               
             }
-            else
+            else if (controllingPlayer.myInputManager.controllerIndex >= 0)
             {
-                float x = controllingPlayer.myInputManager.padRSAxisX;
-                float z = controllingPlayer.myInputManager.padRSAxisY;
+                if (hinput.gamepad[controllingPlayer.myInputManager.controllerIndex].isConnected)
+                {
+                    float x = controllingPlayer.myInputManager.padRSAxisX;
+                    float z = controllingPlayer.myInputManager.padRSAxisY;
 
 
-
-                Vector3 movement = new Vector3(-z, 0, x);
-                transform.position = transform.position + movement * 120 * Time.deltaTime;
+                    Vector3 movement = new Vector3(-x, 0, -z);
+                    transform.position = transform.position + movement * 120 * Time.deltaTime;
+                }
+             
             }
           
         }

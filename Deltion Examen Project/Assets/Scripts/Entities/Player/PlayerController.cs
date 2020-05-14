@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using cakeslice;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector]
     public InputManager myInputManager;
+    public SkinnedMeshRenderer playerMeshRenderer;
 
     //Assigning the Player scripts to the controller(There is no reason for the PlayerController to be anywhere else than on the Player so no need for a Gameobject reference)
     private void Awake()
@@ -138,6 +140,8 @@ public class PlayerController : MonoBehaviour
 
     public void Initialize()
     {
+        GetComponentInChildren<Outline>().color = playerNumber;
+
         if (!inTutorial)
         {
             InitializeLoadout();
@@ -184,6 +188,8 @@ public class PlayerController : MonoBehaviour
      
 
         myInputManager.playerIndex = playerNumber;
+        playerMeshRenderer.materials[4].color = GameManager.instance.darkPlayerColors[playerNumber];
+        playerMeshRenderer.materials[5].color = GameManager.instance.playerColors[playerNumber];
         playerInitialized = true;
         myInputManager.Initialize();
         GameManager.instance.activePlayers.Add(this);

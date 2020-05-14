@@ -18,7 +18,7 @@ public class InputManager : MonoBehaviour
     public delegate void AxisInput(float xAxis, float yAxis);
 
     public int playerIndex;
-    private int controllerIndex;
+    public int controllerIndex;
     public bool mouseKeyBoard;
 
     private GamePadState myGamepadState;
@@ -274,7 +274,7 @@ public class InputManager : MonoBehaviour
                     isMoving = false;
                 //Rotation input
 
-                Vector3 targetDirection = new Vector3(-padRSAxisY, 0f, padRSAxisX);
+                Vector3 targetDirection = new Vector3(-padRSAxisX, 0f, -padRSAxisY);
 
                 if (targetDirection != Vector3.zero)
                 {
