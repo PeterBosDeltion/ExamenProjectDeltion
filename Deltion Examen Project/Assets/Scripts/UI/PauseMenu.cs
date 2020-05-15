@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
     public GameObject mainScreen;
     public GameObject settingsScreen;
+    public GameObject resumeButton;
 
     public void Initialize()
     {
@@ -24,6 +26,8 @@ public class PauseMenu : MonoBehaviour
     }
     private void OpenClose()
     {
+        EventSystem.current.SetSelectedGameObject(resumeButton);
+
         settingsScreen.SetActive(false);
         mainScreen.SetActive(true);
         gameObject.SetActive(!gameObject.activeSelf);

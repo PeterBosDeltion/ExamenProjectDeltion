@@ -8273,6 +8273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainScreen: {fileID: 6958080695357810078}
   settingsScreen: {fileID: 2853641110145439354}
+  resumeButton: {fileID: 6540949959500888179}
 --- !u!1 &2476923634019628174
 GameObject:
   m_ObjectHideFlags: 0

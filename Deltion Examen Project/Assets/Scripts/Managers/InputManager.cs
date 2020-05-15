@@ -40,6 +40,7 @@ public class InputManager : MonoBehaviour
     public IntInput abilityEvent;
     public IntInput delayedAbilityEvent;
     public FloatInput scrollEvent;
+    public FloatInput bumperEvent;
     public AxisInput MovingEvent;
     public AxisInput RotatingEvent;
 
@@ -79,6 +80,7 @@ public class InputManager : MonoBehaviour
         RotatingEvent += EmptyAxis;
         tabEvent += Empty;
         tabUpEvent += Empty;
+        bumperEvent += EmptyFloat;
     }
 
     public void Initialize()
@@ -141,6 +143,7 @@ public class InputManager : MonoBehaviour
         RotatingEvent -= EmptyAxis;
         tabEvent -= Empty;
         tabUpEvent -= Empty;
+        bumperEvent -= EmptyFloat;
     }
 
     private void Update()
@@ -242,7 +245,17 @@ public class InputManager : MonoBehaviour
                 SwitchWeapon(.01F);
         }
         if (hinput.gamepad[controllerIndex].rightBumper.justPressed)
+        {
             LastWeapon();
+        }
+        if (hinput.gamepad[controllerIndex].rightBumper.pressed)
+        {
+            ControllerBumper(.1F);
+        }
+        if (hinput.gamepad[controllerIndex].leftBumper.pressed)
+        {
+            ControllerBumper(-.1F);
+        }
         if (hinput.gamepad[controllerIndex].leftTrigger.pressed)
             Tab();
         if (hinput.gamepad[controllerIndex].leftTrigger.justReleased)
@@ -359,6 +372,11 @@ public class InputManager : MonoBehaviour
     private void SwitchWeapon(float inputScroll)
     {
         scrollEvent(inputScroll);
+    }
+
+    private void ControllerBumper(float f)
+    {
+        bumperEvent.Invoke(f);
     }
 
     //Movement input

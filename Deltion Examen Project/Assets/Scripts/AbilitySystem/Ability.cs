@@ -37,6 +37,10 @@ public abstract class Ability : MonoBehaviour
     private LineRenderer lineRenderer;
     private bool ultActive;
     private bool checkUltCharged;
+    public float controllerLaserStartDist = 5;
+    public float controllerLaserMaxDist = 12.5F;
+    public float controllerLaserMinDist = 3F;
+    private float controllerLaserDist;
     public enum DeployType
     {
         Instant,
@@ -57,6 +61,7 @@ public abstract class Ability : MonoBehaviour
         myPlayerController.myInputManager.rightMouseButtonEvent += CancelLaser;
         myPlayerController.myInputManager.leftMouseButtonEvent += Deploy;
         myPlayerController.myInputManager.leftMouseButtonEvent += UseLaserTarget;
+        myPlayerController.myInputManager.bumperEvent += ControllerLaserDistance;
     }
 
     private void OnDestroy()
@@ -65,6 +70,7 @@ public abstract class Ability : MonoBehaviour
         myPlayerController.myInputManager.rightMouseButtonEvent -= CancelLaser;
         myPlayerController.myInputManager.leftMouseButtonEvent -= Deploy;
         myPlayerController.myInputManager.leftMouseButtonEvent -= UseLaserTarget;
+        myPlayerController.myInputManager.bumperEvent -= ControllerLaserDistance;
     }
     public void UseAbility()
     {
@@ -93,6 +99,8 @@ public abstract class Ability : MonoBehaviour
                     if (!lasering)
                     {
                         laserTargetObject = new GameObject("lasertarget");
+                        controllerLaserDist = controllerLaserStartDist;
+                        laserTargetObject.transform.position = myPlayer.transform.position;
                         lasering = true;
                         myPlayerController.currentWeapon.canShoot = false;
                         myPlayerController.canSwitch = false;
@@ -108,7 +116,7 @@ public abstract class Ability : MonoBehaviour
             //    checkUltCharged = false;
             //}
 
-                afterDurCoroutine = StartCoroutine(AfterDuration());
+            afterDurCoroutine = StartCoroutine(AfterDuration());
         }
        
     }
@@ -151,15 +159,53 @@ public abstract class Ability : MonoBehaviour
 
     }
 
+    private void ControllerLaserDistance(float f)
+    {
+        if (lasering)
+        {
+            if (controllerLaserDist > controllerLaserMaxDist)
+            {
+                controllerLaserDist = controllerLaserMaxDist;
+            }
+            if (controllerLaserDist < controllerLaserMinDist)
+            {
+                controllerLaserDist = controllerLaserMinDist;
+            }
+
+            if (controllerLaserDist <= controllerLaserMaxDist && controllerLaserDist >= controllerLaserMinDist)
+            {
+                controllerLaserDist += f;
+            }
+           
+        }
+    }
+
     private void Update()
     {
         if (lasering)
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit))
-                laserTargetObject.transform.position = hit.point;
-            myPlayerController.currentWeapon.SetLaser(laserTargetObject);
+            if (myPlayerController.myInputManager.controllerIndex < 0)
+            {
+                if (!hinput.gamepad[myPlayerController.myInputManager.playerIndex].isConnected)
+                {
+                    RaycastHit hit;
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    if (Physics.Raycast(ray, out hit))
+                        laserTargetObject.transform.position = hit.point;
+                    myPlayerController.currentWeapon.SetLaser(laserTargetObject);
+                }
+
+            }
+            else if (myPlayerController.myInputManager.controllerIndex >= 0)
+            {
+                if (hinput.gamepad[myPlayerController.myInputManager.controllerIndex].isConnected)
+                {
+                    laserTargetObject.transform.position = myPlayer.transform.position + myPlayer.transform.forward * controllerLaserDist;
+                    myPlayerController.currentWeapon.SetLaser(laserTargetObject);
+                }
+
+            }
+           
 
         }
        

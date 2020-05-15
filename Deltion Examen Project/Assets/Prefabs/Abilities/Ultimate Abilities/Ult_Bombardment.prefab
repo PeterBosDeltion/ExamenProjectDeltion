@@ -53,9 +53,9 @@ MonoBehaviour:
   onCooldown: 0
   active: 0
   cooldownTime: 0
-  duration: 25
+  duration: 20
   currentUltCharge: 0
-  ultChargeIncrement: 0.5
+  ultChargeIncrement: 50
   deployableRadius: 0
   deployableGhost: {fileID: 0}
   canDeployMaterial: {fileID: 0}
@@ -63,6 +63,9 @@ MonoBehaviour:
   deployLineMaterial: {fileID: 0}
   deployableOffset: {x: 0, y: 0, z: 0}
   returned: 0
+  controllerLaserStartDist: 5
+  controllerLaserMaxDist: 10
+  controllerLaserMinDist: 3
   myDeployType: 2
   shipShadowPrefab: {fileID: 8149729823325184602, guid: eb5305806edc89d45a1e2398d906641b,
     type: 3}
