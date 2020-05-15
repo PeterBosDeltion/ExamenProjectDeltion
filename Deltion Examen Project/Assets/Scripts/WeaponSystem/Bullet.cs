@@ -102,7 +102,10 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-
+        if (other.GetComponent<Collider>().isTrigger)
+        {
+            return;
+        }
         if (!isPiercing)
             GetComponent<Rigidbody>().velocity = Vector3.zero;
         if (impactSound)
