@@ -104,8 +104,6 @@ public class UIManager : MonoBehaviour
                 currentOpenMenu = profileMenu;
                 break;
           
-              
-                break;
             default:
                 Debug.LogError("Button input string not recognized");
                 break;
