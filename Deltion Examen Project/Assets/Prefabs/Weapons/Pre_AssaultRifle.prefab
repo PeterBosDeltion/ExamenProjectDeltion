@@ -693,6 +693,7 @@ MonoBehaviour:
   handPosition: {x: 0, y: 0, z: 0}
   handRotation: {x: -77.98, y: 0, z: 98}
   bolt: 0
+  muzzleFlashSystem: {fileID: 7477370039639475323}
 --- !u!82 &4397667167730644312
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2791,6 +2792,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pre_GunBulletSpawn
       objectReference: {fileID: 0}
+    - target: {fileID: 496094463204127087, guid: f331d6789ada1c841a2b8864ec750a4d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 496094463204127087, guid: f331d6789ada1c841a2b8864ec750a4d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 496094463204127087, guid: f331d6789ada1c841a2b8864ec750a4d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 496094463204127087, guid: f331d6789ada1c841a2b8864ec750a4d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.334
+      objectReference: {fileID: 0}
+    - target: {fileID: 496094463204420943, guid: f331d6789ada1c841a2b8864ec750a4d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6501970847180747093, guid: f331d6789ada1c841a2b8864ec750a4d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2857,6 +2883,12 @@ GameObject:
 --- !u!4 &4259608304947107937 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6501970847180747093, guid: f331d6789ada1c841a2b8864ec750a4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7000440064241723700}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7477370039639475323 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 496094463204420943, guid: f331d6789ada1c841a2b8864ec750a4d,
     type: 3}
   m_PrefabInstance: {fileID: 7000440064241723700}
   m_PrefabAsset: {fileID: 0}

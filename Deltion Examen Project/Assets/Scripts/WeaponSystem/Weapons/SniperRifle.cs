@@ -41,6 +41,8 @@ public class SniperRifle : Weapon
 
             if (magazineAmmo <= 0 && !reloading)
             {
+                if (muzzleFlashSystem.isPlaying)
+                    muzzleFlashSystem.Stop();
                 audioSource.clip = emptyMagazine;
                 AudioClipManager.instance.PlayClipOneShotWithSource(myPlayer.mySource, AudioClipManager.instance.GetRandomNoAmmoVL(myPlayer));
                 if (!audioSource.isPlaying)

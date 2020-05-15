@@ -23,7 +23,7 @@ MonoBehaviour:
   boltTime: 1
   minSpreadAngle: 0
   maxSpreadAngle: 0
-  totalAmmo: 25
+  totalAmmo: 6
   ammoDrain: 1
   uiIcon: {fileID: 21300000, guid: 4ac78563e39847d4b87d1ae6f46ab18e, type: 3}
   myFireType: 2

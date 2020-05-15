@@ -37,6 +37,9 @@ public class Weapon : MonoBehaviour
     private GameObject laserEndPos;
     public bool bolt;
     private bool wait;
+    private bool waitFlash;
+    private Coroutine flashRoutine;
+    public ParticleSystem muzzleFlashSystem;
     private void Start()
     {
         tutorialInit = false;
@@ -56,6 +59,7 @@ public class Weapon : MonoBehaviour
     {
         myPlayer = GetComponentInParent<Player>();
         laserTarget = GetComponentInChildren<LineRenderer>();
+        muzzleFlashSystem = GetComponentInChildren<ParticleSystem>();
         if (laserTarget)
         {
             laserTarget.positionCount = 0;
@@ -86,6 +90,7 @@ public class Weapon : MonoBehaviour
                 break;
         }
          myPlayerController.myInputManager.leftMouseButtonUpEvent += ResetShotsFired;
+         myPlayerController.myInputManager.leftMouseButtonUpEvent += ResetFlash;
          myPlayerController.myInputManager.reloadEvent += Reload;
 
         //cakeslice.Outline[] lines = GetComponentsInChildren<Outline>(); Doesn't look great on most weapons, but may be considered later
@@ -115,12 +120,28 @@ public class Weapon : MonoBehaviour
         laserEndPos = null;
     }
 
+    private void ResetFlash()
+    {
+        if(gameObject.activeSelf && !waitFlash)
+            flashRoutine = StartCoroutine(ResetFlashCoroutine());
+    }
+
+    private IEnumerator ResetFlashCoroutine()
+    {
+        waitFlash = true;
+        yield return new WaitForSeconds(.15F);
+        muzzleFlashSystem.Stop();
+        waitFlash = false;
+    }
+
     private void OnDestroy()
     {
          myPlayerController.myInputManager.leftMouseButtonEvent -= Shoot;
          myPlayerController.myInputManager.leftMouseButtonHoldEvent -= Shoot;
          myPlayerController.myInputManager.leftMouseButtonUpEvent -= ResetShotsFired;
          myPlayerController.myInputManager.reloadEvent -= Reload;
+        myPlayerController.myInputManager.leftMouseButtonUpEvent -= ResetFlash;
+
     }
 
     protected virtual void Shoot()
@@ -150,6 +171,8 @@ public class Weapon : MonoBehaviour
 
             if (magazineAmmo <= 0 && !reloading)
             {
+                if (muzzleFlashSystem.isPlaying)
+                    muzzleFlashSystem.Stop();
                 audioSource.clip = emptyMagazine;
                 AudioClipManager.instance.PlayClipOneShotWithSource(myPlayer.mySource, AudioClipManager.instance.GetRandomNoAmmoVL(myPlayer));
                 if (!audioSource.isPlaying)
@@ -171,7 +194,8 @@ public class Weapon : MonoBehaviour
     {
         if (gameObject.activeSelf)
         {
-            if(myWeapon.myFireType == WeaponScriptable.FireType.Bolt)
+
+            if (myWeapon.myFireType == WeaponScriptable.FireType.Bolt)
             {
                 bolt = true;
                 if (!wait)
@@ -180,8 +204,20 @@ public class Weapon : MonoBehaviour
             magazineAmmo -= myWeapon.ammoDrain;
             audioSource.clip = gunShot;
             audioSource.PlayOneShot(gunShot);
+            if (!muzzleFlashSystem.isPlaying)
+            {
+                if(flashRoutine != null)
+                    StopCoroutine(flashRoutine);
+                waitFlash = false;
+                muzzleFlashSystem.Play();
+                ResetFlash();
+            }
+
+
             if (canShoot)
             {
+               
+                   
                 float refireTime = 60 / myWeapon.firerate;
                 LimitFirerateCoroutine = StartCoroutine(LimitFireRate(refireTime));
                 if (!activeCoroutines.Contains(LimitFirerateCoroutine))
@@ -197,6 +233,7 @@ public class Weapon : MonoBehaviour
         {
             if (!reloading && magazineAmmo < totalAmmo && !bolt)
             {
+                muzzleFlashSystem.Stop();
                 ReloadCoroutine = StartCoroutine(ReloadInSeconds(myWeapon.reloadSpeed));
                 if (!activeCoroutines.Contains(ReloadCoroutine))
                     activeCoroutines.Add(ReloadCoroutine);
