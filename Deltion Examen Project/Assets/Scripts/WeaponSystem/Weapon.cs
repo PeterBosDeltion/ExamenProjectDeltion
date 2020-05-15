@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using cakeslice;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,6 +35,8 @@ public class Weapon : MonoBehaviour
     private List<Coroutine> activeCoroutines = new List<Coroutine>();
     private LineRenderer laserTarget;
     private GameObject laserEndPos;
+    public bool bolt;
+    private bool wait;
     private void Start()
     {
         tutorialInit = false;
@@ -84,6 +87,12 @@ public class Weapon : MonoBehaviour
         }
          myPlayerController.myInputManager.leftMouseButtonUpEvent += ResetShotsFired;
          myPlayerController.myInputManager.reloadEvent += Reload;
+
+        //cakeslice.Outline[] lines = GetComponentsInChildren<Outline>(); Doesn't look great on most weapons, but may be considered later
+        //foreach (Outline l in lines)
+        //{
+        //    l.color = myPlayerController.playerNumber;
+        //}
     }
 
     public void SetLaser(GameObject target)
@@ -162,6 +171,12 @@ public class Weapon : MonoBehaviour
     {
         if (gameObject.activeSelf)
         {
+            if(myWeapon.myFireType == WeaponScriptable.FireType.Bolt)
+            {
+                bolt = true;
+                if (!wait)
+                    StartCoroutine(ResetBolt());
+            }
             magazineAmmo -= myWeapon.ammoDrain;
             audioSource.clip = gunShot;
             audioSource.PlayOneShot(gunShot);
@@ -180,19 +195,31 @@ public class Weapon : MonoBehaviour
     {
         if (gameObject.activeSelf)
         {
-            if (!reloading && magazineAmmo < totalAmmo)
+            if (!reloading && magazineAmmo < totalAmmo && !bolt)
             {
                 ReloadCoroutine = StartCoroutine(ReloadInSeconds(myWeapon.reloadSpeed));
                 if (!activeCoroutines.Contains(ReloadCoroutine))
                     activeCoroutines.Add(ReloadCoroutine);
                 audioSource.clip = reload;
                 audioSource.Play();
+               
                 AudioClipManager.instance.HardResetSourcePlayable(myPlayer.mySource);
                 AudioClipManager.instance.PlayClipOneShotWithSource(myPlayer.mySource, AudioClipManager.instance.GetRandomReloadVL(myPlayer));
+               
 
             }
         }
       
+    }
+
+    private IEnumerator ResetBolt()
+    {
+        wait = true;
+        myPlayerController.myInputManager.reloadEvent.Invoke();
+        yield return new WaitForSeconds(myWeapon.boltTime);
+        bolt = false;
+        canShoot = true;
+        wait = false;
     }
 
     protected virtual void ResetShotsFired()
@@ -205,7 +232,8 @@ public class Weapon : MonoBehaviour
         yield return new WaitForSeconds(refireTime);
         if (activeCoroutines.Contains(LimitFirerateCoroutine))
             activeCoroutines.Remove(LimitFirerateCoroutine);
-        canShoot = true;
+        if(!bolt)
+            canShoot = true;
     }
 
     private IEnumerator ReloadInSeconds(float seconds)

@@ -18,8 +18,9 @@ public class Bullet : MonoBehaviour
     public GameObject bloodParticle;
 
     public AudioClip impactSound;
+    private bool isPiercing;
 
-    public void Initialize(float newDamage, float minDrop, float maxDrop, Vector3 originPosition, Entity damagingEntity, float aoeRadius = 0)
+    public void Initialize(float newDamage, float minDrop, float maxDrop, Vector3 originPosition, Entity damagingEntity, float aoeRadius = 0, bool piercing = false)
     {
         startDamage = newDamage;
         damage = startDamage;
@@ -32,6 +33,9 @@ public class Bullet : MonoBehaviour
         {
             myAoeRadius = aoeRadius;
         }
+
+        isPiercing = piercing;
+
     }
     private void Update()
     {
@@ -49,12 +53,21 @@ public class Bullet : MonoBehaviour
         }
 
     }
+
     private void OnCollisionEnter(Collision collision)
     {
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+        if (!isPiercing)
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+        if (impactSound)
+        {
+            PlayImpactSound();
+        }
+
         if (collision.transform.gameObject.GetComponent<Entity>())
         {
-            if(myAoeRadius <= 0)
+           
+            if (myAoeRadius <= 0)
             {
                 Entity entity = collision.transform.gameObject.GetComponent<Entity>();
                 entity.TakeDamage(damage, myEnt);
@@ -67,6 +80,7 @@ public class Bullet : MonoBehaviour
                 {
                     Instantiate(bloodParticle, hit.point, Quaternion.LookRotation(collision.GetContact(0).point, transform.up - collision.transform.position));
                 }
+
             }
             else
             {
@@ -75,18 +89,71 @@ public class Bullet : MonoBehaviour
                     Explode();
                 }
             }
-           
+
+            if(!isPiercing)
+                Destroy(this.gameObject);
+
         }
 
+        
+
+        if(!collision.transform.gameObject.GetComponent<Entity>() && !collision.transform.gameObject.GetComponentInParent<Entity>() && !collision.transform.gameObject.GetComponentInChildren<Entity>())
+            Destroy(this.gameObject);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (!isPiercing)
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
         if (impactSound)
         {
             PlayImpactSound();
         }
 
-        Destroy(this.gameObject);
+        if (other.transform.gameObject.GetComponent<Entity>() || other.transform.gameObject.GetComponentInParent<Entity>() || other.transform.gameObject.GetComponentInChildren<Entity>())
+        {
+
+            if (myAoeRadius <= 0)
+            {
+                Entity entity = null;
+                if (other.transform.gameObject.GetComponent<Entity>())
+                       entity = other.transform.gameObject.GetComponent<Entity>();
+                if (other.transform.gameObject.GetComponentInParent<Entity>())
+                    entity = other.transform.gameObject.GetComponentInParent<Entity>();
+                if (other.transform.gameObject.GetComponentInChildren<Entity>())
+                    entity = other.transform.gameObject.GetComponentInChildren<Entity>();
+                entity.TakeDamage(damage, myEnt);
+                Vector3 bulletTrajectory = other.transform.position - transform.position;
+                bulletTrajectory.z = 1;
+                Ray newRay = new Ray(transform.position, bulletTrajectory);
+
+
+                if (Physics.Raycast(newRay, out hit))
+                {
+                    Instantiate(bloodParticle, hit.point, Quaternion.LookRotation(transform.position, transform.up - other.transform.position));
+                }
+
+            }
+            else
+            {
+                if (!exploded)
+                {
+                    Explode();
+                }
+            }
+
+            if (!isPiercing)
+                Destroy(this.gameObject);
+
+        }
+
+
+
+        if (!other.transform.gameObject.GetComponent<Entity>() && !other.transform.gameObject.GetComponentInParent<Entity>() && !other.transform.gameObject.GetComponentInChildren<Entity>())
+            Destroy(this.gameObject);
     }
 
-    private void PlayImpactSound()
+        private void PlayImpactSound()
     {
             AudioSource.PlayClipAtPoint(impactSound, transform.position);
     }

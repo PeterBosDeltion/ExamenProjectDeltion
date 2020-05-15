@@ -1,0 +1,28 @@
+# Blender MTL File: 'StudioTestRender3.blend'
+# Material Count: 2
+
+newmtl CannonMetal.001
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.109462 0.215861 0.327778
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump D:\\SubstancePainter\\SciFi Gun\\Texture Export 3.0\\CannonMetal_Normal_OpenGL.png
+map_Ns D:\\SubstancePainter\\SciFi Gun\\Texture Export 3.0\\CannonMetal_Roughness.png
+refl D:\\SubstancePainter\\SciFi Gun\\Texture Export 3.0\\CannonMetal_Metallic.png
+
+newmtl PaintMaterial.001
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.042311 0.496933 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump D:\\SubstancePainter\\SciFi Gun\\Texture Export 3.0\\PaintMaterial_Normal.png
+map_Ns D:\\SubstancePainter\\SciFi Gun\\Texture Export 4K 2.0\\PaintMaterial_Roughness.png
+refl D:\\SubstancePainter\\SciFi Gun\\Texture Export 3.0\\PaintMaterial_Metallic.png

@@ -384,6 +384,7 @@
     <Compile Include="Assets\Scripts\WeaponSystem\Weapons\BeamLaserRifle.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\Weapons\ExplosiveRifle.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\Weapons\SideArm.cs" />
+    <Compile Include="Assets\Scripts\WeaponSystem\Weapons\SniperRifle.cs" />
     <Compile Include="Assets\Scripts\[PH]\IncrementalEnemySpawner.cs" />
     <Compile Include="Assets\Scripts\[PH]\Spiderspawner.cs" />
     <Compile Include="Assets\Scripts\[PH]\TestPlayer.cs" />

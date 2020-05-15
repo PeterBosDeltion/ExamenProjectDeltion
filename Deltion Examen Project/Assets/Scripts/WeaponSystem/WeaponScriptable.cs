@@ -13,6 +13,7 @@ public class WeaponScriptable : ScriptableObject
     public float projectileVelocity;
     public float damage;
     public float firerate;
+    public float boltTime;
     public float minSpreadAngle;
     public float maxSpreadAngle;
     public float totalAmmo;

@@ -692,6 +692,7 @@ MonoBehaviour:
   tutorialInit: 1
   handPosition: {x: 0, y: 0, z: 0}
   handRotation: {x: -77.98, y: 0, z: 98}
+  bolt: 0
 --- !u!82 &4397667167730644312
 AudioSource:
   m_ObjectHideFlags: 0

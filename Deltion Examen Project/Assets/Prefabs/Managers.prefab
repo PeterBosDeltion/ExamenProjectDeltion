@@ -201,6 +201,7 @@ MonoBehaviour:
   allPrimaryWeapons:
   - {fileID: 8027315701895015475, guid: 838ff704af4d6074fb3bb4995b45b964, type: 3}
   - {fileID: 3892689550765515434, guid: e5bd1637ff9737d40b50461696f3d017, type: 3}
+  - {fileID: 6661178223137950823, guid: 375487d0fa7e2f64ab3e82cd1bf00347, type: 3}
   allSecondaryWeapons:
   - {fileID: 77380491323076597, guid: b43595dbb7045204b9829d270b97d2f4, type: 3}
   allAbilities:
@@ -264,6 +265,7 @@ MonoBehaviour:
   playerTwo: {fileID: 0}
   playerThree: {fileID: 0}
   playerFour: {fileID: 0}
+  mouseKeyboardPlayer: 0
   activePlayers: []
   playerColors:
   - {r: 0, g: 0.3971982, b: 1, a: 1}

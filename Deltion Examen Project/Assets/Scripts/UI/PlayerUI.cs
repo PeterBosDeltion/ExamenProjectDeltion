@@ -300,7 +300,7 @@ public class PlayerUI : MonoBehaviour
 
     private void ReloadEvent()
     {
-        if (myPlayer.currentWeapon.magazineAmmo < myPlayer.currentWeapon.totalAmmo)
+        if (myPlayer.currentWeapon.magazineAmmo < myPlayer.currentWeapon.totalAmmo || myPlayer.currentWeapon.bolt)
         {
             if (!reloading)
             {
@@ -339,8 +339,15 @@ public class PlayerUI : MonoBehaviour
     public void AnimateReload(Weapon w)
     {
         time += Time.deltaTime;
-        weaponImage.fillAmount = time / w.myWeapon.reloadSpeed;
-        if(weaponImage.fillAmount >= 1)
+        if (!myPlayer.currentWeapon.bolt)
+        {
+            weaponImage.fillAmount = time / w.myWeapon.reloadSpeed;
+        }
+        else
+        {
+            weaponImage.fillAmount = time / w.myWeapon.boltTime;
+        }
+        if (weaponImage.fillAmount >= 1)
         {
             reloading = false;
             weaponImage.fillAmount = 1;

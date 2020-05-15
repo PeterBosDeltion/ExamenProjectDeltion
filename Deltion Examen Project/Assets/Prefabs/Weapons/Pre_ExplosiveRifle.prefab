@@ -61,6 +61,7 @@ MonoBehaviour:
   tutorialInit: 0
   handPosition: {x: -0.06500001, y: 0.07259985, z: 0.03050006}
   handRotation: {x: -77.98, y: 0, z: 98}
+  bolt: 0
   explosionAOE: 3.25
   explosionParticle: {fileID: 1337198075554910, guid: 25c7aa9ad705fe143a4d71c1c8deb7d4,
     type: 3}
