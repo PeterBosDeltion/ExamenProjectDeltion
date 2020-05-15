@@ -118,7 +118,8 @@ public class LevelManager : MonoBehaviour
                     spawner.timeBetweenSpawns = timeBetweenIndividualSpawns;
                 }
             }
-            StartCoroutine(SpawnTick(3));
+
+            StartCoroutine(SpawnTick(spawnTickTime));
         }
         if (GameObject.FindObjectOfType<DestroyObjective>())
         {
@@ -248,6 +249,7 @@ public class LevelManager : MonoBehaviour
         int spawnsPerSpawner = Mathf.CeilToInt((float)currentWaveEntitys.Count / closestSpawners.Count);
         List<GameObject> wave = new List<GameObject>();
         wave.AddRange(currentWaveEntitys);
+        Debug.Log(wave.Count + " Enemys");
 
         foreach(EntitySpawner spawner in closestSpawners)
         {
@@ -262,6 +264,9 @@ public class LevelManager : MonoBehaviour
             }
         }
 
+        spawnTickTime *= 1.8f;
+        spawnTickTime = Mathf.RoundToInt(spawnTickTime);
+        Debug.Log(spawnTickTime);
         StartCoroutine(SpawnTick(spawnTickTime));
     }
 
@@ -279,7 +284,7 @@ public class LevelManager : MonoBehaviour
     private void GetNearbySpawners(int spawnerSpread)
     {
         closestSpawners.Clear();
-        Debug.Log(spawnerSpread);
+        Debug.Log(spawnerSpread + " Spawners");
         int neededSpawners = spawnerSpread;
 
         while (neededSpawners != 0)

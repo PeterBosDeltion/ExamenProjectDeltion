@@ -45,12 +45,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 3669613515331608540, guid: d9b859690e90e0e4388c154575858d1d,
     type: 3}
-  playerSpawnPositions: []
+  playerSpawnPositions:
+  - {x: 354, y: 1.55, z: 241}
+  - {x: 351.5, y: 1.55, z: 244.2}
+  - {x: 356.5, y: 1.55, z: 239.2}
+  - {x: 356.5, y: 1.55, z: 244.2}
   Levelobjectives: []
   enemyTypes:
   - {fileID: 227615046000823840, guid: 2fb16e5a959a41844bc859c48f3e81cb, type: 3}
+  curentWave: 0
   minimumSpawnerSpread: 3
-  timeBetweenIndividualSpawns: 3
-  spawnTickTime: 10
+  timeBetweenIndividualSpawns: 5
+  spawnTickTime: 5
+  timer: {fileID: 0}
+  NoSpawnsDistance: 3
   healthModifier: 1
   damageModifier: 1
