@@ -13,6 +13,8 @@ public class Player : Entity
     public TextMeshPro uxText;
     private bool waiting;
     private Coroutine resetting;
+    public ParticleSystem hitParticle;
+    private bool particleUsed;
 
 
     protected override void Awake()
@@ -52,6 +54,13 @@ public class Player : Entity
 
         if (!mySource.isPlaying)
             AudioClipManager.instance.PlayClipOneShotWithSource(mySource, AudioClipManager.instance.clips.voiceHurt);
+
+        if(!particleUsed)
+        {
+            hitParticle.Play();
+            particleUsed = true;
+            StartCoroutine(HitParticleCooldown());
+        }
     }
 
     public void EmptyHpEvent()
@@ -104,5 +113,11 @@ public class Player : Entity
         yield return new WaitForSeconds(2);
         uxText.text = "";
         waiting = false;
+    }
+
+    private IEnumerator HitParticleCooldown()
+    {
+        yield return new WaitForSeconds(2);
+        particleUsed = false;
     }
 }

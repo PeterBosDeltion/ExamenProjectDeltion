@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour
     private List<EntitySpawner> closestSpawners = new List<EntitySpawner>();
 
     //objectiveList
-    public List<DestroyObjective> Levelobjectives = new List<DestroyObjective>();
+    private List<DestroyObjective> Levelobjectives = new List<DestroyObjective>();
 
     //Wave values
     [Tooltip("Fill from easy to hard for increased difficulty in later waves")]
