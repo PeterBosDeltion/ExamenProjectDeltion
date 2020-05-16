@@ -16,6 +16,7 @@ public class Bullet : MonoBehaviour
     public Entity myEnt;
     private RaycastHit hit;
     public GameObject bloodParticle;
+    public GameObject DebrisParticle;
 
     public AudioClip impactSound;
     private bool isPiercing;
@@ -69,16 +70,25 @@ public class Bullet : MonoBehaviour
            
             if (myAoeRadius <= 0)
             {
+
                 Entity entity = collision.transform.gameObject.GetComponent<Entity>();
                 entity.TakeDamage(damage, myEnt);
-                Vector3 bulletTrajectory = collision.transform.position - collision.GetContact(0).point;
-                bulletTrajectory.z = 1;
-                Ray newRay = new Ray(collision.GetContact(0).point, bulletTrajectory);
 
-
-                if (Physics.Raycast(newRay, out hit))
+                if(collision.gameObject.GetComponent<Enemy>())
                 {
-                    Instantiate(bloodParticle, hit.point, Quaternion.LookRotation(collision.GetContact(0).point, transform.up - collision.transform.position));
+                    Vector3 bulletTrajectory = collision.transform.position - collision.GetContact(0).point;
+                    bulletTrajectory.z = 1;
+                    Ray newRay = new Ray(collision.GetContact(0).point, bulletTrajectory);
+
+
+                    if (Physics.Raycast(newRay, out hit))
+                    {
+                        Instantiate(bloodParticle, hit.point, Quaternion.LookRotation(collision.GetContact(0).point, transform.up - collision.transform.position));
+                    }
+                }
+                else
+                {
+                    Instantiate(DebrisParticle, transform.position, Quaternion.LookRotation(collision.GetContact(0).point, transform.up - collision.transform.position));
                 }
 
             }
