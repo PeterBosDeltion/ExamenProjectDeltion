@@ -377,7 +377,8 @@ MonoBehaviour:
   lowHealthVoiceThreshold: 600
   mySource: {fileID: 4734839736015168692}
   uxText: {fileID: 544025577}
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 2013368048729483743, guid: 62c8b3e92a300784a814b49be7d9fc88,
+    type: 3}
 --- !u!114 &5178922821371636702
 MonoBehaviour:
   m_ObjectHideFlags: 0
