@@ -203,6 +203,7 @@ MonoBehaviour:
   - {fileID: 3892689550765515434, guid: e5bd1637ff9737d40b50461696f3d017, type: 3}
   - {fileID: 6661178223137950823, guid: 375487d0fa7e2f64ab3e82cd1bf00347, type: 3}
   - {fileID: 298080505750988964, guid: d783b0782c83fe9418c095ebe5a84a91, type: 3}
+  - {fileID: 2552865078747690850, guid: 6199987fd157b6f49afd5faaa50e25f6, type: 3}
   allSecondaryWeapons:
   - {fileID: 77380491323076597, guid: b43595dbb7045204b9829d270b97d2f4, type: 3}
   allAbilities:
@@ -215,6 +216,7 @@ MonoBehaviour:
   allUltimateAbilities:
   - {fileID: 6665942228256468776, guid: a9a382d942de5ea4eb1f9a9179fef135, type: 3}
   - {fileID: 8003800308146019379, guid: e9271c6d71d339c4da70f067010eb537, type: 3}
+  - {fileID: 6314919839957286940, guid: f5a685a4f453e9e4daac292d28fb4c78, type: 3}
 --- !u!1 &8531780636136589659
 GameObject:
   m_ObjectHideFlags: 0
