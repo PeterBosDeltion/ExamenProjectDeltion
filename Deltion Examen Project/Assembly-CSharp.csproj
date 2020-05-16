@@ -416,6 +416,7 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Multiply Soft.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\PolygonSciFiSpace\Shaders\SyntyStudios_Asteroid.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\NoisePainter.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Terrain\BuiltinRP_Lambert_4Splats.shader" />
     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Multiply Soft Scroll.shader" />
@@ -434,6 +435,7 @@
     <None Include="Assets\JMO Assets\WarFX\_Effects\MuzzleFlashes\!MuzzleFlash Differences.txt" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\PathPainter.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Terrain\BuiltinRP_PBR_VertexColor.shader" />
+    <None Include="Assets\PolygonSciFiSpace\Shaders\POLYGON_Triplanar.shader" />
     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Alpha-Specular TintColor.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\InteractiveGrassVectorField.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\ChannelToGrayscale.shader" />
@@ -462,6 +464,7 @@
     <None Include="Assets\JMO Assets\WarFX\_Effects (Mobile)\MuzzleFlashes\!MuzzleFlash Differences.txt" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\PainterCursorProjector.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\FoliageRemover.shader" />
+    <None Include="Assets\PolygonSciFiSpace\Shaders\SyntyStudios_Triplanar_ObjectSpace.shader" />
     <None Include="Assets\Art\3D Assets\Enviorment\Low Poly Water GPU\LowPolyWaterv2\Shaders\LPWLite.cginc" />
     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Particle Add A8.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\SmoothnessPainter.shader" />
@@ -501,6 +504,7 @@
     <None Include="Assets\Art\3D Assets\Enviorment\Low Poly Water GPU\LowPolyWaterv2\Shaders\LPWShoreBlend.cginc" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\SubDivisionVisualizer.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\BillboardCreatorNormal.shader" />
+    <None Include="Assets\PolygonSciFiSpace\Shaders\SyntyStudios_Planet.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Terrain\BuiltinRP_BlinnPhong_4Splats4Normals.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\TerracePainter.shader" />
@@ -509,6 +513,7 @@
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Terrain\BuiltinRP_BlinnPhong_8Splats.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\BillboardCreatorAtlas.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\GeometricalHeightmapRenderer.shader" />
+    <None Include="Assets\PolygonSciFiSpace\Shaders\SyntyStudios_Planet_Lines.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\Wireframe.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\BlendMapGenerator.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\MetallicPainter.shader" />
@@ -521,6 +526,7 @@
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\Stamper.shader" />
     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Particle AddSoft A8.shader" />
     <None Include="Assets\JMO Assets\WarFX\!WarFX Readme.txt" />
+    <None Include="Assets\PolygonSciFiSpace\Shaders\POLYGON_SpaceShip_Rim.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Terrain\BuiltinRP_Lambert_GradientLookup.shader" />
     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Alpha-Diffuse TintColor.shader" />
