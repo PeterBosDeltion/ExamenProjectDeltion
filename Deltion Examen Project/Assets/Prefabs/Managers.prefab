@@ -214,6 +214,7 @@ MonoBehaviour:
   - {fileID: 6810601224955051797, guid: f5e395721fc52d240a0954194530e50e, type: 3}
   allUltimateAbilities:
   - {fileID: 6665942228256468776, guid: a9a382d942de5ea4eb1f9a9179fef135, type: 3}
+  - {fileID: 8003800308146019379, guid: e9271c6d71d339c4da70f067010eb537, type: 3}
 --- !u!1 &8531780636136589659
 GameObject:
   m_ObjectHideFlags: 0

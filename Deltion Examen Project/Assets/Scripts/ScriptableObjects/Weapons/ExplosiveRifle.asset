@@ -21,14 +21,15 @@ MonoBehaviour:
     Somehow this was deemed safe to use and introduced to the
     space marine arsenal.'
   requiredLevel: 0
-  minFallOff: 20
-  maxFallOff: 60
+  minFallOff: 7.5
+  maxFallOff: 30
   projectileVelocity: 1500
   damage: 50
   firerate: 120
+  boltTime: 0
   minSpreadAngle: 0
   maxSpreadAngle: 0
-  totalAmmo: 30
+  totalAmmo: 20
   ammoDrain: 1
   uiIcon: {fileID: 21300000, guid: 6ee826df63e0d8e4e8ab44a7af7d3268, type: 3}
   myFireType: 0

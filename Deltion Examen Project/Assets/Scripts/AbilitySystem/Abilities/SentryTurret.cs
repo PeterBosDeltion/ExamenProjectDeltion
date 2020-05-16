@@ -19,7 +19,7 @@ public class SentryTurret : Entity
     public float RotSpeed;
 
     private Entity target;
-    private Player myPlayer;
+    public Player myPlayer;
 
     private float myMaxAmmo;
     //private float currentAmmo;

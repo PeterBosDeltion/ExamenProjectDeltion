@@ -58,6 +58,16 @@ public class PlayerLoadoutMenu : MonoBehaviour
         primaryWeaponDropDown.AddOptions(primaryOptions);
         secondaryWeaponDropDown.AddOptions(secondaryOptions);
 
+        primaryWeaponDropDown.value = LoudoutManager.instance.playerLoadouts[playerNumber].primaryID;
+        secondaryWeaponDropDown.value = LoudoutManager.instance.playerLoadouts[playerNumber].secondaryID;
+
+        abilityOneImg.sprite = IDManager.instance.GetAbilityByID(LoudoutManager.instance.playerLoadouts[playerNumber].abilityOneID).uiIcon;
+        abilityTwoImg.sprite = IDManager.instance.GetAbilityByID(LoudoutManager.instance.playerLoadouts[playerNumber].abilityTwoID).uiIcon;
+        abilityThreeImg.sprite = IDManager.instance.GetAbilityByID(LoudoutManager.instance.playerLoadouts[playerNumber].abilityThreeID).uiIcon;
+        abilityFourImg.sprite = IDManager.instance.GetAbilityByID(LoudoutManager.instance.playerLoadouts[playerNumber].abilityFourID).uiIcon;
+
+        ultImg.sprite = IDManager.instance.GetUltimateAbilityByID(LoudoutManager.instance.playerLoadouts[playerNumber].ultimateID).uiIcon;
+
     }
 
     public void SetPrimary(int i)

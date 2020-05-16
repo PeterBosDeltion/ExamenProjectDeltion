@@ -61,7 +61,7 @@ public class LoudoutManager : MonoBehaviour
 
     private void SetDefaultLoadout(int playerID)
     {
-        SetPlayerLoadoutPrimary(playerID, IDManager.instance.GetPrimaryWeaponByID(0));
+        SetPlayerLoadoutPrimary(playerID, IDManager.instance.GetPrimaryWeaponByID(1));
         SetPlayerLoadoutSecondary(playerID, IDManager.instance.GetSecondaryWeaponByID(0));
 
         SetPlayerLoadoutAbility(playerID, 0, IDManager.instance.GetAbilityByID(0));
@@ -69,7 +69,7 @@ public class LoudoutManager : MonoBehaviour
         SetPlayerLoadoutAbility(playerID, 2, IDManager.instance.GetAbilityByID(2));
         SetPlayerLoadoutAbility(playerID, 3, IDManager.instance.GetAbilityByID(3));
 
-        SetPlayerLoadoutUltimate(playerID, IDManager.instance.GetUltimateAbilityByID(0));
+        SetPlayerLoadoutUltimate(playerID, IDManager.instance.GetUltimateAbilityByID(1));
 
     }
 
