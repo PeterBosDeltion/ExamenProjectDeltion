@@ -413,8 +413,8 @@ public abstract class Ability : MonoBehaviour
             deploying = true;
             lineRenderer.enabled = true;
             lineRenderer.material = deployLineMaterial;
-            lineRenderer.startWidth = 0.25F;
-            lineRenderer.endWidth = 0.25F;
+            //lineRenderer.startWidth = 0.25F;
+            //lineRenderer.endWidth = 0.25F;
             lineRenderer.positionCount = numSegments + 1;
             lineRenderer.useWorldSpace = false;
 

@@ -71,21 +71,26 @@ public class Bullet : MonoBehaviour
             if (myAoeRadius <= 0)
             {
                 Entity entity = collision.transform.gameObject.GetComponent<Entity>();
-                entity.TakeDamage(damage, myEnt);
-                if(entity.GetHp() <= 0 && !incremented)
+                if(entity.GetHp() > 0)
                 {
-                    if (myEnt.GetComponent<PlayerController>())
+                    entity.TakeDamage(damage, myEnt);
+                    if (entity.GetHp() <= 0 && !incremented)
                     {
-                        myEnt.GetComponent<PlayerController>().ultimateAbility.IncrementUltCharge();
-                        incremented = true;
-                    }
+                        if (myEnt.GetComponent<PlayerController>())
+                        {
+                            myEnt.GetComponent<PlayerController>().ultimateAbility.IncrementUltCharge();
+                            incremented = true;
+                        }
 
-                    if (myEnt.GetComponent<SentryTurret>())
-                    {
-                        myEnt.GetComponent<SentryTurret>().myPlayer.GetComponent<PlayerController>().ultimateAbility.IncrementUltCharge();
-                        incremented = true;
+                        if (myEnt.GetComponent<SentryTurret>())
+                        {
+                            myEnt.GetComponent<SentryTurret>().myPlayer.GetComponent<PlayerController>().ultimateAbility.IncrementUltCharge();
+                            incremented = true;
+                        }
                     }
+                  
                 }
+
                 Vector3 bulletTrajectory = collision.transform.position - collision.GetContact(0).point;
                 bulletTrajectory.z = 1;
                 Ray newRay = new Ray(collision.GetContact(0).point, bulletTrajectory);
@@ -95,7 +100,6 @@ public class Bullet : MonoBehaviour
                 {
                     Instantiate(bloodParticle, hit.point, Quaternion.LookRotation(collision.GetContact(0).point, transform.up - collision.transform.position));
                 }
-
             }
             else
             {
@@ -140,7 +144,21 @@ public class Bullet : MonoBehaviour
                     entity = other.transform.gameObject.GetComponentInParent<Entity>();
                 if (other.transform.gameObject.GetComponentInChildren<Entity>())
                     entity = other.transform.gameObject.GetComponentInChildren<Entity>();
-                entity.TakeDamage(damage, myEnt);
+
+                if(entity.GetHp() > 0)
+                {
+                    entity.TakeDamage(damage, myEnt);
+
+                    if (entity.GetHp() <= 0 && !incremented)
+                    {
+                        if (myEnt.GetComponent<PlayerController>())
+                        {
+                            myEnt.GetComponent<PlayerController>().ultimateAbility.IncrementUltCharge();
+                            incremented = true;
+                        }
+                    }
+                }
+              
                 Vector3 bulletTrajectory = other.transform.position - transform.position;
                 bulletTrajectory.z = 1;
                 Ray newRay = new Ray(transform.position, bulletTrajectory);
@@ -186,12 +204,16 @@ public class Bullet : MonoBehaviour
         {
             if (col.GetComponent<Entity>())
             {
-                col.GetComponent<Entity>().TakeDamage(damage, myEnt);
-                if(col.GetComponent<Entity>().GetHp() <= 0 && !incrementedEnts.Contains(col.GetComponent<Entity>()))
+                if(col.GetComponent<Entity>().GetHp() > 0)
                 {
-                    myEnt.GetComponent<PlayerController>().ultimateAbility.IncrementUltCharge();
-                    incrementedEnts.Add(col.GetComponent<Entity>());
+                    col.GetComponent<Entity>().TakeDamage(damage, myEnt);
+                    if (col.GetComponent<Entity>().GetHp() <= 0 && !incrementedEnts.Contains(col.GetComponent<Entity>()))
+                    {
+                        myEnt.GetComponent<PlayerController>().ultimateAbility.IncrementUltCharge();
+                        incrementedEnts.Add(col.GetComponent<Entity>());
+                    }
                 }
+               
             }
         }
 

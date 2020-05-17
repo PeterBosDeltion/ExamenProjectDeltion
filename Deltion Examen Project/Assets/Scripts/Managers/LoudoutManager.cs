@@ -67,7 +67,7 @@ public class LoudoutManager : MonoBehaviour
         SetPlayerLoadoutAbility(playerID, 0, IDManager.instance.GetAbilityByID(0));
         SetPlayerLoadoutAbility(playerID, 1, IDManager.instance.GetAbilityByID(1));
         SetPlayerLoadoutAbility(playerID, 2, IDManager.instance.GetAbilityByID(2));
-        SetPlayerLoadoutAbility(playerID, 3, IDManager.instance.GetAbilityByID(3));
+        SetPlayerLoadoutAbility(playerID, 3, IDManager.instance.GetAbilityByID(6));
 
         SetPlayerLoadoutUltimate(playerID, IDManager.instance.GetUltimateAbilityByID(1));
 

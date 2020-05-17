@@ -434,6 +434,7 @@ MonoBehaviour:
   currentSecondary: {fileID: 0}
   myInputManager: {fileID: 0}
   playerMeshRenderer: {fileID: 211081558447890682}
+  canSwitch: 1
 --- !u!114 &3275903919972861520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -690,7 +691,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.1086998
+        value: 0.155056
         inSlope: 0
         outSlope: 0
         tangentMode: 0

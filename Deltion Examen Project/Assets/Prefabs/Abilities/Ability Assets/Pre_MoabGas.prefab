@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 19900000}
   - component: {fileID: 6697011331583347648}
   - component: {fileID: 1655989620165297642}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pre_MoabGas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4658,7 +4658,7 @@ GameObject:
   - component: {fileID: 400002}
   - component: {fileID: 19800002}
   - component: {fileID: 19900002}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}

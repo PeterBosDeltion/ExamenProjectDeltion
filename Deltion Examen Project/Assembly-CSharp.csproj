@@ -312,6 +312,8 @@
     <Compile Include="Assets\JMO Assets\WarFX\Spawn System\CFX_SpawnSystem.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\DeployableShield.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\DeployableShieldAbility.cs" />
+    <Compile Include="Assets\Scripts\AbilitySystem\Abilities\DeployedSlowField.cs" />
+    <Compile Include="Assets\Scripts\AbilitySystem\Abilities\DeployedSlowFieldAbility.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\FlamePulse.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\FlamePulseAbility.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\KamikazeDrone.cs" />
