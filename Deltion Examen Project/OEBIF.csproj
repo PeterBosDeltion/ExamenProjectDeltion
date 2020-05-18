@@ -74,10 +74,10 @@
     <None Include="Assets\Art\Shaders\Outline-Effect-master\Outline-Effect-master\OutlineEffect.asmdef" />
     <None Include="Assets\Art\Shaders\Outline-Effect-master\Outline-Effect-master\OutlineEffect\Resources\OutlineShader.shader" />
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/UnityProjects/ExamenDeltion/Deltion Examen Project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/UnityProjects/ExamenProjectDeltion/Deltion Examen Project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/UnityProjects/ExamenDeltion/Deltion Examen Project/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/UnityProjects/ExamenProjectDeltion/Deltion Examen Project/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f3/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -272,7 +272,7 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="XInputDotNetPure">
-      <HintPath>D:/UnityProjects/ExamenDeltion/Deltion Examen Project/Assets/hinput/XInput/XInputDotNetPure.dll</HintPath>
+      <HintPath>D:/UnityProjects/ExamenProjectDeltion/Deltion Examen Project/Assets/hinput/XInput/XInputDotNetPure.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f3/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
