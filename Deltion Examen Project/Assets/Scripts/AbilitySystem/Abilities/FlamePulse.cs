@@ -21,6 +21,8 @@ public class FlamePulse : MonoBehaviour
             if (!hitEnemies.Contains(enemy))
             {
                 enemy.TakeDamage(myDamage, myPlayer);
+                if (enemy.GetHp() <= 0)
+                    myPlayer.GetComponent<PlayerController>().ultimateAbility.IncrementUltCharge();
                 hitEnemies.Add(enemy);
             }
         }

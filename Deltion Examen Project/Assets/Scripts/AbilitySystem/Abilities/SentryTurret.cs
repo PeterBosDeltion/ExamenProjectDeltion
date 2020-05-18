@@ -19,7 +19,7 @@ public class SentryTurret : Entity
     public float RotSpeed;
 
     private Entity target;
-    private Player myPlayer;
+    public Player myPlayer;
 
     private float myMaxAmmo;
     //private float currentAmmo;
@@ -57,6 +57,9 @@ public class SentryTurret : Entity
         //ammoImg.gameObject.SetActive(false);
         currentDuration = myAbility.duration;
         EntityManager.instance.AddPlayerOrAbility(this);
+        myAbility.active = true;
+        myAbility.afterDurCoroutine = StartCoroutine(myAbility.AfterDuration());
+
     }
 
     private void FixedUpdate()

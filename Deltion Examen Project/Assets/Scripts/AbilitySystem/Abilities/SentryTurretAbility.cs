@@ -21,10 +21,9 @@ public class SentryTurretAbility : Ability
             spawnedTurret = Instantiate(turretPrefab, (Vector3)mPos, (Quaternion)deployRotation);
             turret = spawnedTurret.GetComponent<SentryTurret>();
             turret.Initialize(range, damage, aggroRadius, myPlayer, bulletforce, maxAmmo, reloadTime, fireRate, this);
-            active = true;
     }
 
-    protected override IEnumerator AfterDuration()
+    public override IEnumerator AfterDuration()
     {
         yield return new WaitForSeconds(duration);
         turret.TriggerDeathEvents();

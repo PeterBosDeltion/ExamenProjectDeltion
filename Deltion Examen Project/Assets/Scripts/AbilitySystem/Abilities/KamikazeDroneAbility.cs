@@ -56,7 +56,7 @@ public class KamikazeDroneAbility : Ability
         staggering = false;
     }
 
-    protected override IEnumerator AfterDuration()
+    public override IEnumerator AfterDuration()
     {
         yield return new WaitForSeconds(duration);
         foreach (KamikazeDrone drone in spawnedDrones)

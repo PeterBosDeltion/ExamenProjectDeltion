@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6380424282216847342
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6136200613020688387}
+  - component: {fileID: 6146903393931294789}
+  m_Layer: 0
+  m_Name: AB_DeployedSlowField
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6136200613020688387
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6380424282216847342}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6146903393931294789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6380424282216847342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8a5d4585d8cb2649bdd94f06e9edfe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myPlayer: {fileID: 0}
+  myPlayerController: {fileID: 0}
+  name: Deployable slowing field
+  description: 
+  uiIcon: {fileID: 21300000, guid: a44d71db642ab3f4a998fec1cdbda96e, type: 3}
+  requiredLevel: 0
+  ultimate: 0
+  onCooldown: 0
+  active: 0
+  cooldownTime: 15
+  duration: 20
+  currentUltCharge: 0
+  ultChargeIncrement: 0
+  deployableRadius: 5
+  deployableGhost: {fileID: 7653232426516615239, guid: 0ad4108eb9224ed40b29acfaae7230dc,
+    type: 3}
+  canDeployMaterial: {fileID: 2100000, guid: 8170a1c3a7258b44490e3ba734b9603b, type: 2}
+  cannotDeployMaterial: {fileID: 2100000, guid: f2b0403cd2fa28143a4aec7a1f053f95,
+    type: 2}
+  deployLineMaterial: {fileID: 2100000, guid: 506f93c84d622fc41b612177dc6ecf73, type: 2}
+  deployableOffset: {x: 0, y: 0, z: 0}
+  returned: 0
+  controllerLaserStartDist: 5
+  controllerLaserMaxDist: 12.5
+  controllerLaserMinDist: 3
+  myDeployType: 1
+  slowFieldPrefab: {fileID: 6993081157728620379, guid: f42fa4f6bfc608f488c0d50c1aac7e77,
+    type: 3}
+  slowPercentage: 50
+  fieldRadius: 7.5

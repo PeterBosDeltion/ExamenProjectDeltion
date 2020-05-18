@@ -168,13 +168,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 257255575268007804}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.68235296, g: 0.8745099, b: 0.97647065, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -450,10 +450,11 @@ MonoBehaviour:
   bulletSpawnOne: {fileID: 8457416206999500647}
   bulletSpawnTwo: {fileID: 6595884746344637219}
   RotSpeed: 10
+  myPlayer: {fileID: 0}
   healthBar: {fileID: 335460013100056993}
   flashFrom: {r: 1, g: 1, b: 1, a: 1}
   flashTo: {r: 1, g: 0, b: 0, a: 1}
-  timerImg: {fileID: 1202360787643978722}
+  timerImg: {fileID: 1321945595507609428}
 --- !u!65 &2098321639
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -899,13 +900,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.68235296, g: 0.8745099, b: 0.97647065, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 9776fd35409a00b408c0cdbcdd25ab2a, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4

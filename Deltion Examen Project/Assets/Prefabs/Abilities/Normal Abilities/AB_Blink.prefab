@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &912119120468768419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 75299400188936526}
+  - component: {fileID: 7208874735312067256}
+  m_Layer: 0
+  m_Name: AB_Blink
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &75299400188936526
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912119120468768419}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.611102, y: -9.7386984e-18, z: 2.19296}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7208874735312067256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912119120468768419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eb41bb68efdaf9498f051ba2905df13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myPlayer: {fileID: 0}
+  myPlayerController: {fileID: 0}
+  name: Blink
+  description: 
+  uiIcon: {fileID: 21300000, guid: ac670fc40f831ca4cb14825d95073299, type: 3}
+  requiredLevel: 0
+  ultimate: 0
+  onCooldown: 0
+  active: 0
+  cooldownTime: 10
+  duration: 0
+  currentUltCharge: 0
+  ultChargeIncrement: 0
+  deployableRadius: 5
+  deployableGhost: {fileID: 0}
+  canDeployMaterial: {fileID: 0}
+  cannotDeployMaterial: {fileID: 0}
+  deployLineMaterial: {fileID: 0}
+  deployableOffset: {x: 0, y: 0, z: 0}
+  returned: 0
+  controllerLaserStartDist: 5
+  controllerLaserMaxDist: 12.5
+  controllerLaserMinDist: 3
+  myDeployType: 0
+  blinkDistance: 6
+  floor:
+    serializedVersion: 2
+    m_Bits: 256

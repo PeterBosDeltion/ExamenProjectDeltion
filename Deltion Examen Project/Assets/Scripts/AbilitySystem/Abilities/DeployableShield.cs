@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class DeployableShield : MonoBehaviour
 {
-    private float myMaxHp;
-    private float currentHp;
+  
     private DeployableShieldAbility myAbility;
-    public void Initialize(float hp, DeployableShieldAbility ability)
+    public void Initialize(DeployableShieldAbility ability)
     {
-        myMaxHp = hp;
-        currentHp = myMaxHp;
+        myAbility = ability;
+        myAbility.active = true;
+        myAbility.afterDurCoroutine = StartCoroutine(myAbility.AfterDuration());
     }
 
-    public void OnDeath()
-    {
-        myAbility.ShieldDestroyed();
-    }
+
 }

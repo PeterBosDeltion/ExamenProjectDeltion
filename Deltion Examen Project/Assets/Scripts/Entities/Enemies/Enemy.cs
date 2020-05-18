@@ -31,14 +31,6 @@ public class Enemy : Entity
             myAI.SetTarget(Attacker);
             myAI.SetAndPlayAudioClipOnce(myAI.hitClip,0.1f);
         }
-        if (Attacker)
-        {
-            if (Attacker.GetComponent<PlayerController>())
-            {
-                Attacker.GetComponent<PlayerController>().ultimateAbility.IncrementUltCharge();
-            }
-        }
-       
     }
 
     protected override void Death()

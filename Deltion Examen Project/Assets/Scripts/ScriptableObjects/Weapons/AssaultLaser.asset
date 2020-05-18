@@ -25,6 +25,6 @@ MonoBehaviour:
   maxSpreadAngle: 4
   totalAmmo: 30
   ammoDrain: 1
-  uiIcon: {fileID: 21300000, guid: d6f7378fa66a76c409fb4e4045f60dfe, type: 3}
+  uiIcon: {fileID: 21300000, guid: 418a288c66e51bb458b6c0f55d6c0554, type: 3}
   myFireType: 0
   reloadSpeed: 3

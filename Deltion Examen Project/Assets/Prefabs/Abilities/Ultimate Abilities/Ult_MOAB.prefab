@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7327385878925591013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7499585487850239496}
+  - component: {fileID: 8003800308146019379}
+  m_Layer: 0
+  m_Name: Ult_MOAB
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7499585487850239496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7327385878925591013}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8003800308146019379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7327385878925591013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bef2bfcb783a464ea9d7e2365073370, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myPlayer: {fileID: 0}
+  myPlayerController: {fileID: 0}
+  name: M.O.A.B
+  description: 
+  uiIcon: {fileID: 21300000, guid: 8e6d649a53be3e14592f185bd092ca30, type: 3}
+  requiredLevel: 0
+  ultimate: 1
+  onCooldown: 0
+  active: 0
+  cooldownTime: 0
+  duration: 20
+  currentUltCharge: 0
+  ultChargeIncrement: 3.75
+  deployableRadius: 0
+  deployableGhost: {fileID: 0}
+  canDeployMaterial: {fileID: 0}
+  cannotDeployMaterial: {fileID: 0}
+  deployLineMaterial: {fileID: 0}
+  deployableOffset: {x: 0, y: 20, z: 0}
+  returned: 0
+  controllerLaserStartDist: 5
+  controllerLaserMaxDist: 12.5
+  controllerLaserMinDist: 3
+  myDeployType: 2
+  bombPrefab: {fileID: 344985801273358897, guid: 575fb1ccb3413b048863c47e16b46195,
+    type: 3}
+  damageRadius: 10
+  damage: 500
+  aoeDamage: 75
+  aoeRadius: 8
+  bombDownForce: 200
+  spawnedAOE: {fileID: 0}

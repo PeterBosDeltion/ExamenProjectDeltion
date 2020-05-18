@@ -15,7 +15,7 @@ public class FlamePulseAbility : Ability
         active = true;
     }
 
-    protected override IEnumerator AfterDuration()
+    public override IEnumerator AfterDuration()
     {
         yield return new WaitForSeconds(duration);
         Destroy(spawnedParticles);

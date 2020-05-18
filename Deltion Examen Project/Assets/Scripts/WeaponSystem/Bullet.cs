@@ -20,6 +20,7 @@ public class Bullet : MonoBehaviour
 
     public AudioClip impactSound;
     private bool isPiercing;
+    private bool incremented;
 
     public void Initialize(float newDamage, float minDrop, float maxDrop, Vector3 originPosition, Entity damagingEntity, float aoeRadius = 0, bool piercing = false)
     {
@@ -72,10 +73,33 @@ public class Bullet : MonoBehaviour
             {
 
                 Entity entity = collision.transform.gameObject.GetComponent<Entity>();
-                entity.TakeDamage(damage, myEnt);
 
                 if(collision.gameObject.GetComponent<Enemy>())
                 {
+                    if(entity.GetHp() > 0)
+                    {
+                        entity.TakeDamage(damage, myEnt);
+                        if (entity.GetHp() <= 0 && !incremented)
+                        {
+                            if (myEnt.GetComponent<PlayerController>())
+                            {
+                                myEnt.GetComponent<PlayerController>().ultimateAbility.IncrementUltCharge();
+                                incremented = true;
+                            }
+
+                            if (myEnt.GetComponent<SentryTurret>())
+                            {
+                                myEnt.GetComponent<SentryTurret>().myPlayer.GetComponent<PlayerController>().ultimateAbility.IncrementUltCharge();
+                                incremented = true;
+                            }
+                        }
+                    
+                    }
+                    
+                    Vector3 bulletTrajectory = collision.transform.position - collision.GetContact(0).point;
+                    bulletTrajectory.z = 1;
+                    Ray newRay = new Ray(collision.GetContact(0).point, bulletTrajectory);
+        
                     Vector3 bulletTrajectory = collision.transform.position - collision.GetContact(0).point;
                     bulletTrajectory.z = 1;
                     Ray newRay = new Ray(collision.GetContact(0).point, bulletTrajectory);
@@ -88,9 +112,12 @@ public class Bullet : MonoBehaviour
                 }
                 else
                 {
+                    if(entity.GetHp() > 0)
+                        entity.TakeDamage(damage, myEnt);
+                        
                     Instantiate(DebrisParticle, transform.position, Quaternion.LookRotation(collision.GetContact(0).point, transform.up - collision.transform.position));
-                }
 
+                }
             }
             else
             {
@@ -135,7 +162,21 @@ public class Bullet : MonoBehaviour
                     entity = other.transform.gameObject.GetComponentInParent<Entity>();
                 if (other.transform.gameObject.GetComponentInChildren<Entity>())
                     entity = other.transform.gameObject.GetComponentInChildren<Entity>();
-                entity.TakeDamage(damage, myEnt);
+
+                if(entity.GetHp() > 0)
+                {
+                    entity.TakeDamage(damage, myEnt);
+
+                    if (entity.GetHp() <= 0 && !incremented)
+                    {
+                        if (myEnt.GetComponent<PlayerController>())
+                        {
+                            myEnt.GetComponent<PlayerController>().ultimateAbility.IncrementUltCharge();
+                            incremented = true;
+                        }
+                    }
+                }
+              
                 Vector3 bulletTrajectory = other.transform.position - transform.position;
                 bulletTrajectory.z = 1;
                 Ray newRay = new Ray(transform.position, bulletTrajectory);
@@ -174,13 +215,23 @@ public class Bullet : MonoBehaviour
     private void Explode()
     {
         exploded = true;
-       
+        List<Entity> incrementedEnts = new List<Entity>();
+        incrementedEnts.Clear();
         Collider[] overlaps = Physics.OverlapSphere(transform.position, myAoeRadius);
         foreach (var col in overlaps)
         {
             if (col.GetComponent<Entity>())
             {
-                col.GetComponent<Entity>().TakeDamage(damage, myEnt);
+                if(col.GetComponent<Entity>().GetHp() > 0)
+                {
+                    col.GetComponent<Entity>().TakeDamage(damage, myEnt);
+                    if (col.GetComponent<Entity>().GetHp() <= 0 && !incrementedEnts.Contains(col.GetComponent<Entity>()))
+                    {
+                        myEnt.GetComponent<PlayerController>().ultimateAbility.IncrementUltCharge();
+                        incrementedEnts.Add(col.GetComponent<Entity>());
+                    }
+                }
+               
             }
         }
 
