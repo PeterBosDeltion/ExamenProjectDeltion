@@ -317,6 +317,15 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        foreach(Vector3 position in playerSpawnPositions)
+        {
+            Gizmos.DrawSphere(position, 1);
+        }
+    }
+
     private IEnumerator SpawnTick(float time)
     {
         timer.SetTimerValues(time, curentWave);
