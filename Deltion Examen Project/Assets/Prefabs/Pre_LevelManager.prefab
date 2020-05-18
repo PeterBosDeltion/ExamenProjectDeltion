@@ -55,7 +55,7 @@ MonoBehaviour:
   - {fileID: 227615046000823840, guid: 2fb16e5a959a41844bc859c48f3e81cb, type: 3}
   curentWave: 0
   minimumSpawnerSpread: 3
-  timeBetweenIndividualSpawns: 5
+  timeBetweenIndividualSpawns: 2
   spawnTickTime: 5
   timer: {fileID: 0}
   NoSpawnsDistance: 3

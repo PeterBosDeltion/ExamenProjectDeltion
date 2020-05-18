@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3394316}
   - component: {fileID: 2310830}
   - component: {fileID: -8056048217034772499}
+  - component: {fileID: 1251646564}
+  - component: {fileID: 1251646565}
   m_Layer: 2
   m_Name: Rock_Sharp_D
   m_TagString: Untagged
@@ -28,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 176982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.233034, y: 0.0050666234, z: 5.041943}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -89,8 +91,34 @@ MeshCollider:
   m_GameObject: {fileID: 176982}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300006, guid: 8314f526bc5cf614eaeb6f104c8f34c8, type: 3}
+--- !u!65 &1251646564
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176982}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.3106713, y: 3.1969085, z: 1.7583742}
+  m_Center: {x: 0.85913205, y: 1.5984542, z: 1.9937654}
+--- !u!65 &1251646565
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176982}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.0289307, y: 3.1969085, z: 3.9860039}
+  m_Center: {x: 0.0000023841858, y: 1.5984542, z: -0.87994957}
