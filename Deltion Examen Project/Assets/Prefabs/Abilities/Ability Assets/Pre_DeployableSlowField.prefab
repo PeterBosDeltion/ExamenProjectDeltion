@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3244302838568392786}
   - component: {fileID: 6253126737573192578}
   - component: {fileID: 5453725341228510988}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pre_DeployableSlowField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,6 +164,10 @@ PrefabInstance:
     - target: {fileID: 1335963906264486, guid: eb66ad65eb8ce2f4ba081ecbd8099a51, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Light_Small_08
+      objectReference: {fileID: 0}
+    - target: {fileID: 1335963906264486, guid: eb66ad65eb8ce2f4ba081ecbd8099a51, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4608174180656258, guid: eb66ad65eb8ce2f4ba081ecbd8099a51, type: 3}
       propertyPath: m_LocalPosition.x

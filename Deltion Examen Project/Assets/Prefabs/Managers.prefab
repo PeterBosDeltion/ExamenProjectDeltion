@@ -214,6 +214,7 @@ MonoBehaviour:
   - {fileID: 775777898474889986, guid: de075ae0ff15d2c428b06d480045b3df, type: 3}
   - {fileID: 6810601224955051797, guid: f5e395721fc52d240a0954194530e50e, type: 3}
   - {fileID: 6146903393931294789, guid: 945a4b7239d7ab64db28313643a5d039, type: 3}
+  - {fileID: 7208874735312067256, guid: bf12dd5ce1d86854aada1ebe7569d0d9, type: 3}
   allUltimateAbilities:
   - {fileID: 6665942228256468776, guid: a9a382d942de5ea4eb1f9a9179fef135, type: 3}
   - {fileID: 8003800308146019379, guid: e9271c6d71d339c4da70f067010eb537, type: 3}

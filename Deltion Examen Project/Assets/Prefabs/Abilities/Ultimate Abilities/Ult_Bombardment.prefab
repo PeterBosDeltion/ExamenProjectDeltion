@@ -47,7 +47,7 @@ MonoBehaviour:
   myPlayerController: {fileID: 0}
   name: Orbital Bombardment
   description: 
-  uiIcon: {fileID: 21300000, guid: a12170eab4a60374393dbdd4d05d107d, type: 3}
+  uiIcon: {fileID: 21300000, guid: 6150f9e5d064fb74cbad9e179230768c, type: 3}
   requiredLevel: 0
   ultimate: 1
   onCooldown: 0

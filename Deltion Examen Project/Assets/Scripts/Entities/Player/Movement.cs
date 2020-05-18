@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
 
     private Vector3 forward;
     private Vector3 right;
+    public Vector3 moveDirection;
 
     private Vector3 lastRecordedPosition;
     public float distanceTillRetarget;
@@ -32,6 +33,7 @@ public class Movement : MonoBehaviour
         Vector3 rightMovement = right * Time.deltaTime * xAxis;
         Vector3 upMovement = forward * Time.deltaTime * yAxis;
         Vector3 toMove = Vector3.ClampMagnitude(rightMovement + upMovement, 0.1f) * movementSpeed;
+        moveDirection = rightMovement + upMovement;
         transform.position += toMove;
 
     }

@@ -47,7 +47,7 @@ MonoBehaviour:
   myPlayerController: {fileID: 0}
   name: Ion Cannon
   description: 
-  uiIcon: {fileID: 21300000, guid: d6f7378fa66a76c409fb4e4045f60dfe, type: 3}
+  uiIcon: {fileID: 21300000, guid: a98ba6c19412b1a40aeecdd233901e30, type: 3}
   requiredLevel: 0
   ultimate: 1
   onCooldown: 0
