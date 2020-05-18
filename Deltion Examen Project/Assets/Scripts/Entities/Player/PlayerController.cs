@@ -33,26 +33,6 @@ public class PlayerController : MonoBehaviour
 
     public bool canSwitch = true;
 
-    //Assigning the Player scripts to the controller(There is no reason for the PlayerController to be anywhere else than on the Player so no need for a Gameobject reference)
-    private void Awake()
-    {
-        myInputManager = GetComponent<InputManager>();
-        player = GetComponent<Player>();
-        movement = GetComponent<Movement>();
-        triggerAbility = GetComponent<TriggerAbility>();
-        playerAnimator = GetComponentInChildren<Animator>();
-        loadout = GetComponent<Loadout>();
-
-       
-
-        if(!player || !movement || !triggerAbility)
-        {
-            Debug.LogError("Not all player scripts have been asigned to the targeted object");
-        }
-
-        //mySource = GetComponent<AudioSource>();
-    }
-
     public void InitializeLoadout()
     {
         if (!inTutorial)
@@ -143,6 +123,20 @@ public class PlayerController : MonoBehaviour
     public void Initialize()
     {
         GetComponentInChildren<Outline>().color = playerNumber;
+
+        myInputManager = GetComponent<InputManager>();
+        player = GetComponent<Player>();
+        movement = GetComponent<Movement>();
+        triggerAbility = GetComponent<TriggerAbility>();
+        playerAnimator = GetComponentInChildren<Animator>();
+        loadout = GetComponent<Loadout>();
+
+
+
+        if (!player || !movement || !triggerAbility)
+        {
+            Debug.LogError("Not all player scripts have been asigned to the targeted object");
+        }
 
         if (!inTutorial)
         {

@@ -22,14 +22,14 @@ public class EntitySpawner : MonoBehaviour
 
     private void Start()
     {
-        if(!objectiveSpawner)
+        if (!objectiveSpawner)
             GetComponent<SphereCollider>().radius = LevelManager.instance.NoSpawnsDistance;
     }
 
     public void AddToSpawnQue(GameObject entity)
     {
         que.Add(entity);
-        if(!spawning)
+        if (!spawning)
         {
             spawning = true;
             StartCoroutine(EntitySpawning(que[0]));
@@ -75,7 +75,7 @@ public class EntitySpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<Entity>())
+        if (other.GetComponent<Entity>())
         {
             if (!EntityToClose)
                 EntityToClose = true;

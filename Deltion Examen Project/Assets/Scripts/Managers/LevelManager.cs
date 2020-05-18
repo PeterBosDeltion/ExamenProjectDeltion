@@ -84,7 +84,7 @@ public class LevelManager : MonoBehaviour
                     break;
             }
 
-            if(!pc.inTutorial)
+            if (!pc.inTutorial)
                 pc.Initialize();
         }
 
@@ -132,7 +132,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        if(playerSpawnPositions.Count <= 0)
+        if (playerSpawnPositions.Count <= 0)
         {
             Debug.LogError("Please assign 4 spawnpositions for players in this levels LevelManager");
             return;
@@ -142,14 +142,14 @@ public class LevelManager : MonoBehaviour
         {
             StartCoroutine(WaitForLoadoutInit());
         }
-      
+
     }
 
     public void CheckObjectives()
     {
         bool victory = true;
 
-        foreach(DestroyObjective objective in Levelobjectives)
+        foreach (DestroyObjective objective in Levelobjectives)
         {
             if (objective.ObjectiveDone && !advancedObjectives.Contains(objective))
             {
@@ -234,7 +234,7 @@ public class LevelManager : MonoBehaviour
         float timeToSpawnAllEnemys;
         timeToSpawnAllEnemys = timeBetweenIndividualSpawns * (currentWaveEntitys.Count - 1) / minimumSpawnerSpread;
 
-        if(spawnTickTime * 0.5f > timeToSpawnAllEnemys || minimumSpawnerSpread == allAvailableSpawners.Count)
+        if (spawnTickTime * 0.5f > timeToSpawnAllEnemys || minimumSpawnerSpread == allAvailableSpawners.Count)
         {
             GetNearbySpawners(minimumSpawnerSpread);
         }
@@ -251,9 +251,9 @@ public class LevelManager : MonoBehaviour
         wave.AddRange(currentWaveEntitys);
         Debug.Log(wave.Count + " Enemys");
 
-        foreach(EntitySpawner spawner in closestSpawners)
+        foreach (EntitySpawner spawner in closestSpawners)
         {
-            for(int i = 0; i < spawnsPerSpawner; i++)
+            for (int i = 0; i < spawnsPerSpawner; i++)
             {
                 if (wave.Count != 0)
                 {
@@ -291,7 +291,7 @@ public class LevelManager : MonoBehaviour
         {
             for (int i = 0; i < GameManager.instance.amountOfPlayers; i++)
             {
-                if(neededSpawners != 0)
+                if (neededSpawners != 0)
                 {
                     float distance = Mathf.Infinity;
                     EntitySpawner closestSpawner = allAvailableSpawners[0];
