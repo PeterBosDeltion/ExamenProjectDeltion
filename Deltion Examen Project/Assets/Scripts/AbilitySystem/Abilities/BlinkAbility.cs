@@ -6,40 +6,11 @@ public class BlinkAbility : Ability
 {
     public float blinkDistance;
     public LayerMask floor;
-
+    private bool blinked;
     protected override void AbilityMechanic(Vector3? mPos = null, Quaternion? deployRotation = null)
     {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-        Vector3 dir = new Vector3();
-
-        if (x > 0)
-        {
-            dir.x = 0.5F;
-        }
-        else if(x < 0)
-        {
-            dir.x = -0.5F;
-        }
-        else
-        {
-            dir.x = 0;
-        }
-
-        if (z > 0)
-        {
-            dir.z = 0.5F;
-        }
-        else if (z < 0)
-        {
-            dir.z = -0.5F;
-        }
-        else
-        {
-            dir.z = 0;
-        }
-
-        Vector3 pos = myPlayer.transform.position + -dir * blinkDistance;
+        blinked = false;
+        Vector3 pos = myPlayer.transform.position + myPlayer.transform.forward * blinkDistance;
         Collider[] hitColliders = Physics.OverlapSphere(pos + new Vector3(0, .5F, 0), .25F);
         List<Collider> actualhitColliders = new List<Collider>();
         RaycastHit hit = new RaycastHit();
@@ -64,19 +35,28 @@ public class BlinkAbility : Ability
                 if (actualhitColliders.Count <= 0)
                 {
                     myPlayer.transform.position = pos;
+                    blinked = true;
+                    active = true;
                 }
+                else
+                {
+                    blinked = false;
+                    returned = true;
+                }
+
+            }
+            else if(hit.transform == null)
+            {
+                blinked = false;
+                returned = true;
             }
         }
-       
-
-
-
-        active = true;
     }
 
     public override IEnumerator AfterDuration()
     {
         yield return new WaitForSeconds(duration);
-        StartCooldown();
+        if(blinked)
+            StartCooldown();
     }
 }
