@@ -70,6 +70,7 @@ public class UIManager : MonoBehaviour
         }
         tutorialReminderWindow.GetComponent<TutorialReminderWindow>().manager = this;
 
+        profileMenu.GetComponent<ProfileMenu>().UpdateUI();
 
 
     }

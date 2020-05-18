@@ -44,23 +44,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myPlayer: {fileID: 0}
+  myPlayerController: {fileID: 0}
   name: Kamikaze drone swarm
   description: The suicide [REDACTED] drone swarm provides an excellent way of clearing
     lots of aliens quickly. By flying into the nearest opponent and exploding in
     a large radius the drones are guaranteed to provide you with an opening to establish
     a perimiter or an escape route.
   uiIcon: {fileID: 21300000, guid: 91dc360e0e7b70c4a90a8a9751f87465, type: 3}
-  requiredLevel: 0
+  requiredLevel: 5
   ultimate: 0
   onCooldown: 0
   active: 0
   cooldownTime: 20
   duration: 10
+  currentUltCharge: 0
+  ultChargeIncrement: 0
   deployableRadius: 7.5
   deployableGhost: {fileID: 0}
   canDeployMaterial: {fileID: 0}
   cannotDeployMaterial: {fileID: 0}
+  deployLineMaterial: {fileID: 0}
+  deployableOffset: {x: 0, y: 0, z: 0}
   returned: 0
+  controllerLaserStartDist: 5
+  controllerLaserMaxDist: 12.5
+  controllerLaserMinDist: 3
   myDeployType: 0
   dronePrefab: {fileID: 4505367871833862156, guid: 5a6129d49599a4c4bb1a53cbede0643d,
     type: 3}

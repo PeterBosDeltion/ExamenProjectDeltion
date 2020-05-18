@@ -39,18 +39,25 @@ public class PlayerLoadoutMenu : MonoBehaviour
 
         foreach (var pw in IDManager.instance.allPrimaryWeapons)
         {
-            TMP_Dropdown.OptionData data = new TMP_Dropdown.OptionData();
-            data.text = pw.myWeapon.name;
-            if (!primaryOptions.Contains(data))
-                primaryOptions.Add(data);
+            if(pw.myWeapon.requiredLevel <= PlayerProfile.instance.level)
+            {
+                TMP_Dropdown.OptionData data = new TMP_Dropdown.OptionData();
+                data.text = pw.myWeapon.name;
+                if (!primaryOptions.Contains(data))
+                    primaryOptions.Add(data);
+            }
+           
         }
           
         foreach (var sw in IDManager.instance.allSecondaryWeapons)
         {
-            TMP_Dropdown.OptionData data = new TMP_Dropdown.OptionData();
-            data.text = sw.myWeapon.name;
-            if (!secondaryOptions.Contains(data))
-                secondaryOptions.Add(data);
+            if (sw.myWeapon.requiredLevel <= PlayerProfile.instance.level)
+            {
+                TMP_Dropdown.OptionData data = new TMP_Dropdown.OptionData();
+                data.text = sw.myWeapon.name;
+                if (!secondaryOptions.Contains(data))
+                    secondaryOptions.Add(data);
+            }
         }
 
 
@@ -90,20 +97,23 @@ public class PlayerLoadoutMenu : MonoBehaviour
         }
         foreach (Ability ability in IDManager.instance.allAbilities)
         {
-            LoadoutTemplate template = LoudoutManager.instance.playerLoadouts[playerNumber];
-            Ability one = IDManager.instance.GetAbilityByID(template.abilityOneID);
-            Ability two = IDManager.instance.GetAbilityByID(template.abilityTwoID);
-            Ability three = IDManager.instance.GetAbilityByID(template.abilityThreeID);
-            Ability four = IDManager.instance.GetAbilityByID(template.abilityFourID);
-
-            GameObject buttonObj = Instantiate(loadoutSelectablePrefab, abilityScrollContent.transform);
-            LoudoutSelectableButton button = buttonObj.GetComponent<LoudoutSelectableButton>();
-
-            button.MenuInitialize(this, abilityIndex, playerNumber, null, ability, false);
-
-            if (one == ability || two == ability || three == ability || four == ability)
+            if(ability.requiredLevel <= PlayerProfile.instance.level)
             {
-                button.DisabledButton();
+                LoadoutTemplate template = LoudoutManager.instance.playerLoadouts[playerNumber];
+                Ability one = IDManager.instance.GetAbilityByID(template.abilityOneID);
+                Ability two = IDManager.instance.GetAbilityByID(template.abilityTwoID);
+                Ability three = IDManager.instance.GetAbilityByID(template.abilityThreeID);
+                Ability four = IDManager.instance.GetAbilityByID(template.abilityFourID);
+
+                GameObject buttonObj = Instantiate(loadoutSelectablePrefab, abilityScrollContent.transform);
+                LoudoutSelectableButton button = buttonObj.GetComponent<LoudoutSelectableButton>();
+
+                button.MenuInitialize(this, abilityIndex, playerNumber, null, ability, false);
+
+                if (one == ability || two == ability || three == ability || four == ability)
+                {
+                    button.DisabledButton();
+                }
             }
         }
 
@@ -119,10 +129,13 @@ public class PlayerLoadoutMenu : MonoBehaviour
         }
         foreach (Ability ultimate in IDManager.instance.allUltimateAbilities)
         {
-            GameObject buttonObj = Instantiate(loadoutSelectablePrefab, ultimateScrollContent.transform);
-            LoudoutSelectableButton button = buttonObj.GetComponent<LoudoutSelectableButton>();
+            if (ultimate.requiredLevel <= PlayerProfile.instance.level)
+            {
+                GameObject buttonObj = Instantiate(loadoutSelectablePrefab, ultimateScrollContent.transform);
+                LoudoutSelectableButton button = buttonObj.GetComponent<LoudoutSelectableButton>();
 
-            button.MenuInitialize(this, 5, playerNumber, null, ultimate, false);
+                button.MenuInitialize(this, 5, playerNumber, null, ultimate, false);
+            }
         }
 
     }

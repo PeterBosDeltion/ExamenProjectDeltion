@@ -44,18 +44,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myPlayer: {fileID: 0}
+  myPlayerController: {fileID: 0}
   name: Sentry turret
   description: This standard-issue field deployable sentry turret is always a staple
     of any space marines kit. By providing the user with an automated gun with seemingly
     infinite bullets, it usually creates enough cover to get whatever you're doing
     done.
   uiIcon: {fileID: 21300000, guid: b71305f048c12b340b0071dfb47dccd8, type: 3}
-  requiredLevel: 0
+  requiredLevel: 9
   ultimate: 0
   onCooldown: 0
   active: 0
   cooldownTime: 25
   duration: 30
+  currentUltCharge: 0
+  ultChargeIncrement: 0
   deployableRadius: 7.5
   deployableGhost: {fileID: 502973584255789111, guid: 956b186b560e7b94496a3aaf467eb3c3,
     type: 3}
@@ -63,7 +66,11 @@ MonoBehaviour:
   cannotDeployMaterial: {fileID: 2100000, guid: f2b0403cd2fa28143a4aec7a1f053f95,
     type: 2}
   deployLineMaterial: {fileID: 2100000, guid: 506f93c84d622fc41b612177dc6ecf73, type: 2}
+  deployableOffset: {x: 0, y: 0, z: 0}
   returned: 0
+  controllerLaserStartDist: 5
+  controllerLaserMaxDist: 12.5
+  controllerLaserMinDist: 3
   myDeployType: 1
   turretPrefab: {fileID: 4535447932574800939, guid: c77ffe5fdc24d284482204add1c81a36,
     type: 3}

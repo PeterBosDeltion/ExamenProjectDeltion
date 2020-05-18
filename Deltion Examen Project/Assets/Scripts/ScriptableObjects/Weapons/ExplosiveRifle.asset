@@ -20,7 +20,7 @@ MonoBehaviour:
 
     Somehow this was deemed safe to use and introduced to the
     space marine arsenal.'
-  requiredLevel: 0
+  requiredLevel: 4
   minFallOff: 7.5
   maxFallOff: 30
   projectileVelocity: 1500

@@ -18,6 +18,8 @@ public class Entity : MonoBehaviour
     [HideInInspector]
     public bool death;
 
+    public float xpWhenKilled = 0;
+
     protected virtual void Awake()
     {
         deathEvent += EmptyDeathEvent;
@@ -96,6 +98,7 @@ public class Entity : MonoBehaviour
     protected virtual void Death()
     {
         TriggerDeathEvents();
+        ExperienceManager.instance.AwardExp(xpWhenKilled);
         //Add score when script is made
     }
 

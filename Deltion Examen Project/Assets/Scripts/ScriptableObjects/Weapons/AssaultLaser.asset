@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Assault laser
   description: A slower firing & heavier hitting laser variant of the assault rifle.
-  requiredLevel: 0
+  requiredLevel: 2
   minFallOff: 20
   maxFallOff: 60
   projectileVelocity: 1750

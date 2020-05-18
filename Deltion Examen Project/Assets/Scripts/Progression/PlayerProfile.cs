@@ -8,7 +8,8 @@ public class PlayerProfile : MonoBehaviour
 {
     public PlayerTemplate template;
 	private string filePath;
-
+    public int level;
+    public Dictionary<int, float> levelExpDictionary = new Dictionary<int, float>();
     public static PlayerProfile instance;
     private void Awake()
     {
@@ -24,14 +25,50 @@ public class PlayerProfile : MonoBehaviour
 
     private void Start()
     {
-		filePath = Path.Combine(Application.persistentDataPath, "profile.txt");
+		filePath = Application.persistentDataPath;
         Initialize();
+    }
+
+    public void SetUserName(string newUsername)
+    {
+        template.username = newUsername;
+        SaveToDisk(template, filePath);
+    }
+
+    private void SetLevelsRequiredExp()
+    {
+        float requiredExp = 1000;
+        for (int i = 0; i < 51; i++)
+        {
+            levelExpDictionary.Add(i, requiredExp);
+            requiredExp += 1000;
+        }
+    }
+
+    public void RecieveExp(float amount)
+    {
+        template.xp += amount;
+        SaveToDisk(template, filePath);
+        SetLevel();
+    }
+
+    private void SetLevel()
+    {
+        float xp = template.xp;
+        foreach (var kvp in levelExpDictionary)
+        {
+            if(xp >= kvp.Value)
+            {
+                level = kvp.Key;
+            }
+        }
     }
 
     private void Initialize()
     {
-        string path = filePath + @"\" + "profile.txt";
-        if (!File.Exists(path))
+        SetLevelsRequiredExp();
+        filePath = filePath + @"\" + "profile.txt";
+        if (!File.Exists(filePath))
         {
             template.xp = 0;
             template.doneTutorial = false;
@@ -40,7 +77,9 @@ public class PlayerProfile : MonoBehaviour
         }
         else
         {
-            LoadFromDisk(path);
+            LoadFromDisk(filePath);
+            SetLevel();
+            Debug.Log(level);
         }
 
     }
@@ -69,7 +108,7 @@ public class PlayerProfile : MonoBehaviour
 public class PlayerTemplate
 {
     //public int level;
-    public int xp;
+    public float xp;
     public string username;
     public bool doneTutorial;
 }

@@ -26,13 +26,22 @@ public class ProfileUnlockUI : MonoBehaviour
 
     public void Initialize()
     {
+        
         if (weaponUnlock && !abilityUnlockPrefab)
         {
+            if(PlayerProfile.instance.level >= weaponUnlock.requiredLevel)
+            {
+                unlocked = true;
+            }
             nameText.text = weaponUnlock.name;
             icon.sprite = weaponUnlock.uiIcon;
         }
         else if (abilityUnlockPrefab && !weaponUnlock)
         {
+            if (PlayerProfile.instance.level >= abilityUnlockPrefab.GetComponent<Ability>().requiredLevel)
+            {
+                unlocked = true;
+            }
             nameText.text = abilityUnlockPrefab.GetComponent<Ability>().name;
             icon.sprite = abilityUnlockPrefab.GetComponent<Ability>().uiIcon;
         }

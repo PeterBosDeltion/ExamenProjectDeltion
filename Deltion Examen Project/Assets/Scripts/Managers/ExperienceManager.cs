@@ -19,11 +19,6 @@ public class ExperienceManager : MonoBehaviour
 
     public void AwardExp(float amount)
     {
-
-    }
-
-    public void LevelUp()
-    {
-
+        PlayerProfile.instance.RecieveExp(amount);
     }
 }

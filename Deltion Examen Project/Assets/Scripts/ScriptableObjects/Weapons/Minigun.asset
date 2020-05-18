@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Minigun
   description: 
-  requiredLevel: 0
+  requiredLevel: 8
   minFallOff: 2.5
   maxFallOff: 15
   projectileVelocity: 1750
