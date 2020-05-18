@@ -42,31 +42,39 @@ public class BlinkAbility : Ability
         Vector3 pos = myPlayer.transform.position + -dir * blinkDistance;
         Collider[] hitColliders = Physics.OverlapSphere(pos + new Vector3(0, .5F, 0), .25F);
         List<Collider> actualhitColliders = new List<Collider>();
-        foreach (var item in hitColliders)
+        RaycastHit hit = new RaycastHit();
+        if(Physics.Raycast(pos + new Vector3(0, .5F, 0), Vector3.down, out hit, Mathf.Infinity))
         {
-            if (!actualhitColliders.Contains(item))
+            if(hit.transform != null)
             {
-                if (item.transform.gameObject.layer != floor)
+                foreach (var item in hitColliders)
                 {
-                    if (!item.isTrigger)
+                    if (!actualhitColliders.Contains(item))
                     {
-                        actualhitColliders.Add(item);
-                        Debug.Log(item.transform.name);
+                        if (item.transform.gameObject.layer != floor)
+                        {
+                            if (!item.isTrigger)
+                            {
+                                actualhitColliders.Add(item);
+                                Debug.Log(item.transform.name);
+                            }
+                        }
                     }
+                }
+                if (actualhitColliders.Count <= 0)
+                {
+                    myPlayer.transform.position = pos;
                 }
             }
         }
-        if (actualhitColliders.Count <= 0)
-        {
-            myPlayer.transform.position = pos;
-        }
+       
 
 
 
         active = true;
     }
 
-    protected override IEnumerator AfterDuration()
+    public override IEnumerator AfterDuration()
     {
         yield return new WaitForSeconds(duration);
         StartCooldown();

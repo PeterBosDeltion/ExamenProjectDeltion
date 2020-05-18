@@ -9,16 +9,21 @@ public class DeployedSlowField : MonoBehaviour
     private float myRadius;
     private Dictionary<Enemy, float> enemies = new Dictionary<Enemy, float>();
     private LineRenderer myLineRenderer;
-
+    private DeployedSlowFieldAbility myAbility;
     [Range(3, 256)]
     private int nSegments = 128;
-    public void Initialize(float slowPercentage, float radius)
+    public void Initialize(float slowPercentage, float radius, DeployedSlowFieldAbility ability)
     {
+        myAbility = ability;
         slowPercent = slowPercentage;
         myRadius = radius;
         GetComponent<SphereCollider>().radius = radius;
         myLineRenderer = GetComponent<LineRenderer>();
         DrawRangeCircle();
+        myAbility.active = true;
+        myAbility.afterDurCoroutine = StartCoroutine(myAbility.AfterDuration());
+
+
     }
     private void DrawRangeCircle()
     {

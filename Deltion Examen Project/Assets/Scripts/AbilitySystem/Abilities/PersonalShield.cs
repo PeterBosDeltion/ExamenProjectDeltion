@@ -45,7 +45,7 @@ public class PersonalShield : Ability
         }
     }
 
-    protected override IEnumerator AfterDuration()
+    public override IEnumerator AfterDuration()
     {
         yield return new WaitForSeconds(duration);
         activeShields.Clear();

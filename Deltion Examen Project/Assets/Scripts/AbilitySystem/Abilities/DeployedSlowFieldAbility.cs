@@ -11,11 +11,10 @@ public class DeployedSlowFieldAbility : Ability
     protected override void AbilityMechanic(Vector3? mPos, Quaternion? deployRotation)
     {
         spawnedField = Instantiate(slowFieldPrefab, (Vector3)mPos, (Quaternion)deployRotation);
-        spawnedField.GetComponent<DeployedSlowField>().Initialize(slowPercentage, fieldRadius);
-        active = true;
+        spawnedField.GetComponent<DeployedSlowField>().Initialize(slowPercentage, fieldRadius, this);
     }
 
-    protected override IEnumerator AfterDuration()
+    public override IEnumerator AfterDuration()
     {
         yield return new WaitForSeconds(duration);
         spawnedField.GetComponent<DeployedSlowField>().ResetValues();

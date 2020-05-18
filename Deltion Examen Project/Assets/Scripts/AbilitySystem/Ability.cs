@@ -49,7 +49,7 @@ public abstract class Ability : MonoBehaviour
     }
     public DeployType myDeployType;
 
-    protected Coroutine afterDurCoroutine;
+    public Coroutine afterDurCoroutine;
     private GameObject laserTargetObject;
     private bool lasering;
 
@@ -116,7 +116,8 @@ public abstract class Ability : MonoBehaviour
             //    checkUltCharged = false;
             //}
 
-            afterDurCoroutine = StartCoroutine(AfterDuration());
+            if(myDeployType != DeployType.Deployed) //Deployables need to call this manually in the deployed object's Initialize function
+                afterDurCoroutine = StartCoroutine(AfterDuration());
         }
        
     }
@@ -228,17 +229,27 @@ public abstract class Ability : MonoBehaviour
 
                         if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor") && mPos.y - deployableOffset.y <= myPlayer.transform.position.y + 0.1F && mPos.y - deployableOffset.y >= myPlayer.transform.position.y - 0.1F)
                         {
-                            if (activeGhost.GetComponentInChildren<Renderer>().material != canDeployMaterial)
+                            Renderer[] rends = activeGhost.GetComponentsInChildren<Renderer>();
+                            foreach (Renderer r in rends)
                             {
-                                activeGhost.GetComponentInChildren<Renderer>().material = canDeployMaterial;
+                                if (r.material != canDeployMaterial)
+                                {
+                                    r.material = canDeployMaterial;
+                                }
                             }
+                           
                         }
                         else
                         {
-                            if (activeGhost.GetComponentInChildren<Renderer>().material != cannotDeployMaterial)
+                            Renderer[] rends = activeGhost.GetComponentsInChildren<Renderer>();
+                            foreach (Renderer r in rends)
                             {
-                                activeGhost.GetComponentInChildren<Renderer>().material = cannotDeployMaterial;
+                                if (r.material != cannotDeployMaterial)
+                                {
+                                    r.material = cannotDeployMaterial;
+                                }
                             }
+                           
                         }
 
                         float radius = deployableRadius;
@@ -271,16 +282,25 @@ public abstract class Ability : MonoBehaviour
                     {
                         if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor") && gPos.y - deployableOffset.y <= myPlayer.transform.position.y + 0.1F && gPos.y - deployableOffset.y >= myPlayer.transform.position.y - 0.1F)
                         {
-                            if (activeGhost.GetComponentInChildren<Renderer>().material != canDeployMaterial)
+                            Renderer[] rends = activeGhost.GetComponentsInChildren<Renderer>();
+                            foreach (Renderer r in rends)
                             {
-                                activeGhost.GetComponentInChildren<Renderer>().material = canDeployMaterial;
+                                if (r.material != canDeployMaterial)
+                                {
+                                    r.material = canDeployMaterial;
+                                }
                             }
+                              
                         }
                         else
                         {
-                            if (activeGhost.GetComponentInChildren<Renderer>().material != cannotDeployMaterial)
+                            Renderer[] rends = activeGhost.GetComponentsInChildren<Renderer>();
+                            foreach (Renderer r in rends)
                             {
-                                activeGhost.GetComponentInChildren<Renderer>().material = cannotDeployMaterial;
+                                if (r.material != cannotDeployMaterial)
+                                {
+                                    r.material = cannotDeployMaterial;
+                                }
                             }
                         }
 
@@ -457,7 +477,7 @@ public abstract class Ability : MonoBehaviour
         }
     }
 
-    protected abstract IEnumerator AfterDuration();
+    public abstract IEnumerator AfterDuration();
 
     public void IncrementUltCharge()
     {

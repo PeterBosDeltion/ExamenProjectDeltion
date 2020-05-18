@@ -58,7 +58,7 @@ MonoBehaviour:
   currentUltCharge: 0
   ultChargeIncrement: 0
   deployableRadius: 5
-  deployableGhost: {fileID: 2071833340662389407, guid: 6508bb96e4e007f409ef6bc72e190a28,
+  deployableGhost: {fileID: 4856252107743165389, guid: 90c3a82381898b84ebdc17307d9b0d3e,
     type: 3}
   canDeployMaterial: {fileID: 2100000, guid: 8170a1c3a7258b44490e3ba734b9603b, type: 2}
   cannotDeployMaterial: {fileID: 2100000, guid: f2b0403cd2fa28143a4aec7a1f053f95,
@@ -70,6 +70,6 @@ MonoBehaviour:
   controllerLaserMaxDist: 12.5
   controllerLaserMinDist: 3
   myDeployType: 1
-  deployableShieldPrefab: {fileID: 5216071941014158327, guid: 16fc520cbf24e0b48a1da459897bf1b8,
+  deployableShieldPrefab: {fileID: 3328323576500023062, guid: 92a9b794eee72ee4f8797ad823f2ff92,
     type: 3}
   shieldHp: 200

@@ -57,6 +57,9 @@ public class SentryTurret : Entity
         //ammoImg.gameObject.SetActive(false);
         currentDuration = myAbility.duration;
         EntityManager.instance.AddPlayerOrAbility(this);
+        myAbility.active = true;
+        myAbility.afterDurCoroutine = StartCoroutine(myAbility.AfterDuration());
+
     }
 
     private void FixedUpdate()

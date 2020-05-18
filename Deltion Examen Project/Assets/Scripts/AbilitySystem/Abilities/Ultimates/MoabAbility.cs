@@ -29,7 +29,7 @@ public class MoabAbility : Ability
 
     }
 
-    protected override IEnumerator AfterDuration()
+    public override IEnumerator AfterDuration()
     {
         yield return new WaitForSeconds(duration);
         Destroy(spawnedAOE);
