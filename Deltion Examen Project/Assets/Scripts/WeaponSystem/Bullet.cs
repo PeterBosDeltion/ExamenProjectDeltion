@@ -99,6 +99,11 @@ public class Bullet : MonoBehaviour
                     Vector3 bulletTrajectory = collision.transform.position - collision.GetContact(0).point;
                     bulletTrajectory.z = 1;
                     Ray newRay = new Ray(collision.GetContact(0).point, bulletTrajectory);
+        
+                    Vector3 bulletTrajectory = collision.transform.position - collision.GetContact(0).point;
+                    bulletTrajectory.z = 1;
+                    Ray newRay = new Ray(collision.GetContact(0).point, bulletTrajectory);
+
 
                     if (Physics.Raycast(newRay, out hit))
                     {
