@@ -48,7 +48,7 @@ MonoBehaviour:
   name: Deployable slowing field
   description: 
   uiIcon: {fileID: 21300000, guid: a44d71db642ab3f4a998fec1cdbda96e, type: 3}
-  requiredLevel: 0
+  requiredLevel: 1
   ultimate: 0
   onCooldown: 0
   active: 0

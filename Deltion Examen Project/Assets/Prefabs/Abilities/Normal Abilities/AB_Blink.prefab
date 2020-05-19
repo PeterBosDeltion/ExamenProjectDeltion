@@ -48,7 +48,7 @@ MonoBehaviour:
   name: Blink
   description: 
   uiIcon: {fileID: 21300000, guid: ac670fc40f831ca4cb14825d95073299, type: 3}
-  requiredLevel: 0
+  requiredLevel: 11
   ultimate: 0
   onCooldown: 0
   active: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Sniper Rifle
   description: 
-  requiredLevel: 0
+  requiredLevel: 6
   minFallOff: Infinity
   maxFallOff: Infinity
   projectileVelocity: 2000

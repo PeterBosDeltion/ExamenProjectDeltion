@@ -187,14 +187,11 @@ public abstract class Ability : MonoBehaviour
         {
             if (myPlayerController.myInputManager.controllerIndex < 0)
             {
-                if (!hinput.gamepad[myPlayerController.myInputManager.playerIndex].isConnected)
-                {
                     RaycastHit hit;
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     if (Physics.Raycast(ray, out hit))
                         laserTargetObject.transform.position = hit.point;
                     myPlayerController.currentWeapon.SetLaser(laserTargetObject);
-                }
 
             }
             else if (myPlayerController.myInputManager.controllerIndex >= 0)
@@ -215,7 +212,7 @@ public abstract class Ability : MonoBehaviour
             if (activeGhost)
             {
                 RaycastHit hit;
-                if (!hinput.gamepad[myPlayerController.playerNumber].isConnected)
+                if (myPlayerController.myInputManager.mouseKeyBoard)
                 {
                     if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
                     {
@@ -266,11 +263,11 @@ public abstract class Ability : MonoBehaviour
                 }
                 else
                 {
-                    joy.x += -myPlayerController.myInputManager.padRSAxisY / 1.5F;
-                    joy.z += myPlayerController.myInputManager.padRSAxisX / 1.5F;
+                    joy.x += -myPlayerController.myInputManager.padRSAxisX / 1.5F;
+                    joy.z += -myPlayerController.myInputManager.padRSAxisY / 1.5F;
 
 
-                    Vector3 gPos = myPlayer.transform.position + joy;
+                    Vector3 gPos = myPlayer.transform.position + (joy + deployableOffset);
                     activeGhost.transform.position = gPos;
                     ghostRotation = Quaternion.LookRotation(activeGhost.transform.position - myPlayer.transform.position);
                     activeGhost.transform.rotation = ghostRotation;
@@ -306,14 +303,23 @@ public abstract class Ability : MonoBehaviour
 
                         float radius = deployableRadius;
                         Vector3 centerPosition = myPlayer.transform.position; //center of *black circle*
-                        float distance = Vector3.Distance(gPos, centerPosition); //distance from ~green object~ to *black circle*
+                        float distance = Vector3.Distance(gPos - deployableOffset, centerPosition); //distance from ~green object~ to *black circle*
 
                         if (distance > radius) //If the distance is less than the radius, it is already within the circle.
                         {
-                            Vector3 fromOriginToObject = gPos - centerPosition; //~GreenPosition~ - *BlackCenter*
+                            Vector3 fromOriginToObject = (gPos - deployableOffset) - centerPosition; //~GreenPosition~ - *BlackCenter*
                             fromOriginToObject *= radius / distance; //Multiply by radius //Divide by Distance
                             activeGhost.transform.position = centerPosition + fromOriginToObject; //*BlackCenter* + all that Math
                             joy = activeGhost.transform.position - myPlayer.transform.position;
+
+                            Renderer[] rends = activeGhost.GetComponentsInChildren<Renderer>();
+                            foreach (Renderer r in rends)
+                            {
+                                if (r.material != cannotDeployMaterial)
+                                {
+                                    r.material = cannotDeployMaterial;
+                                }
+                            }
                         }
                     }
                   
@@ -333,7 +339,7 @@ public abstract class Ability : MonoBehaviour
             }
             RaycastHit hit;
             Vector3 center = myPlayer.transform.position;
-            if (!hinput.gamepad[myPlayerController.playerNumber].isConnected)
+            if (myPlayerController.myInputManager.mouseKeyBoard)
             {
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
                 {

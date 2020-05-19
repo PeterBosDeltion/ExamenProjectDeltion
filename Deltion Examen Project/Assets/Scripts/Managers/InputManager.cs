@@ -167,12 +167,7 @@ public class InputManager : MonoBehaviour
 
     private void NormalInput()
     {
-        if (Input.GetMouseButtonDown(0))
-            LeftMouse();
-        if (Input.GetMouseButtonUp(0))
-            LeftMouseUp();
-        if (Input.GetMouseButton(0))
-            LeftMouseHold();
+       
         if (Input.GetMouseButtonDown(1))
             RightMouse();
         if (Input.GetButtonDown("Reload"))
@@ -211,12 +206,7 @@ public class InputManager : MonoBehaviour
         padRSAxisX = hinput.gamepad[controllerIndex].rightStick.horizontal;
         padRSAxisY = hinput.gamepad[controllerIndex].rightStick.vertical;
 
-        if (hinput.gamepad[controllerIndex].rightTrigger.justPressed)
-            LeftMouse();
-        if (hinput.gamepad[controllerIndex].rightTrigger.justReleased)
-            LeftMouseUp();
-        if (hinput.gamepad[controllerIndex].rightTrigger.pressed)
-            LeftMouseHold();
+       
         if (hinput.gamepad[controllerIndex].B.justPressed)
             RightMouse();
         if (hinput.gamepad[controllerIndex].X.justPressed)
@@ -294,6 +284,25 @@ public class InputManager : MonoBehaviour
                     Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
                     transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 10 * Time.deltaTime);
                 }
+            }
+
+            if (controllerIndex < 0 && mouseKeyBoard)
+            {
+                if (Input.GetMouseButtonDown(0))
+                    LeftMouse();
+                if (Input.GetMouseButtonUp(0))
+                    LeftMouseUp();
+                if (Input.GetMouseButton(0))
+                    LeftMouseHold();
+            }
+            else if (myGamepadState.IsConnected && !mouseKeyBoard)
+            {
+                if (hinput.gamepad[controllerIndex].rightTrigger.justPressed)
+                    LeftMouse();
+                if (hinput.gamepad[controllerIndex].rightTrigger.justReleased)
+                    LeftMouseUp();
+                if (hinput.gamepad[controllerIndex].rightTrigger.pressed)
+                    LeftMouseHold();
             }
 
         }
