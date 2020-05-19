@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
 
     private Vector3 forward;
     private Vector3 right;
-    public Vector3 moveDirection;
+    private Vector3 moveDirection;
 
     private Vector3 lastRecordedPosition;
     public float distanceTillRetarget;
@@ -36,7 +36,7 @@ public class Movement : MonoBehaviour
         moveDirection = rightMovement + upMovement;
 
         Debug.Log(toMove);
-        myRigidbody.velocity = toMove * Time.deltaTime * movementSpeed;
+        myRigidbody.velocity = toMove * Time.deltaTime * (movementSpeed * 1000);
         //transform.position += toMove;
 
     }

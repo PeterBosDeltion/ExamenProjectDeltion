@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d362c7f9149f4d40967b976a8f09c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10000
+  movementSpeed: 12
   rotationSpeed: 10
   moveDirection: {x: 0, y: 0, z: 0}
   distanceTillRetarget: 1
