@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class Ability : MonoBehaviour
 {
+    [HideInInspector]
+    public bool cantUse;
     public Player myPlayer;
     public PlayerController myPlayerController;
     public new string name;
@@ -74,6 +76,8 @@ public abstract class Ability : MonoBehaviour
     }
     public void UseAbility()
     {
+        if (cantUse)
+            return;
         if(ultimate && currentUltCharge < 100)
         {
             return;
