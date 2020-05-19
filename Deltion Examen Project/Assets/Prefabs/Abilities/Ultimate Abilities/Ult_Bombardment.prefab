@@ -67,7 +67,7 @@ MonoBehaviour:
   controllerLaserMaxDist: 10
   controllerLaserMinDist: 3
   myDeployType: 2
-  shipShadowPrefab: {fileID: 1095116060173382, guid: 06ad8f73e3a4e0941bb41ce2feb2272c,
+  shipShadowPrefab: {fileID: 8149729823325184602, guid: eb5305806edc89d45a1e2398d906641b,
     type: 3}
   targetingSprite: {fileID: 151126254533669130, guid: c26affb487b0a674e9bf87e2ecb2c62f,
     type: 3}
