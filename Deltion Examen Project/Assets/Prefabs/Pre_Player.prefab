@@ -372,7 +372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTempHp: 0
-  maxHp: 1500
+  maxHp: 2000
   death: 0
   xpWhenKilled: 0
   lowHealthVoiceThreshold: 600
