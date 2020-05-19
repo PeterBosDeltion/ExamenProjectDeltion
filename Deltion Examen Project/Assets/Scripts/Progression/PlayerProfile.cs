@@ -37,11 +37,11 @@ public class PlayerProfile : MonoBehaviour
 
     private void SetLevelsRequiredExp()
     {
-        float requiredExp = 1000;
+        float requiredExp = 0;
         for (int i = 0; i < 51; i++)
         {
             levelExpDictionary.Add(i, requiredExp);
-            requiredExp += 1000;
+            requiredExp += i * 1000;
         }
     }
 
@@ -54,10 +54,11 @@ public class PlayerProfile : MonoBehaviour
 
     private void SetLevel()
     {
-        float xp = template.xp;
+        float currentExp = template.xp;
+
         foreach (var kvp in levelExpDictionary)
         {
-            if(xp >= kvp.Value)
+            if (currentExp >= kvp.Value)
             {
                 level = kvp.Key;
             }
@@ -71,6 +72,8 @@ public class PlayerProfile : MonoBehaviour
         if (!File.Exists(filePath))
         {
             template.xp = 0;
+            level = 1;
+            SetLevel();
             template.doneTutorial = false;
             template.username = "Username";
             SaveToDisk(template, filePath);

@@ -35,7 +35,7 @@ public class ProfileMenu : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Backslash))
             {
-                ExperienceManager.instance.AwardExp(500);
+                ExperienceManager.instance.AwardExp(100);
                 UpdateUI();
             }
         }
@@ -64,11 +64,22 @@ public class ProfileMenu : MonoBehaviour
                 nextLevelText.text = "Level " + nextLevel;
                 float currentExp = PlayerProfile.instance.template.xp;
                 float nextExp = PlayerProfile.instance.levelExpDictionary[PlayerProfile.instance.level + 1];
-                expbarText.text = currentExp + "/" + nextExp;
-                expBarFilledImage.fillAmount = currentExp / nextExp;
+                nextExp -= PlayerProfile.instance.levelExpDictionary[PlayerProfile.instance.level];
+            //float currentLvLExp = currentExp - PlayerProfile.instance.levelExpDictionary[PlayerProfile.instance.level];
+            float exp = 0;
+                for (int i = 0; i < PlayerProfile.instance.level; i++)
+                {
+                    exp += i * 1000;
+                    Debug.Log(exp);
+                }
 
-                bannerExpbarText.text = currentExp + "/" + nextExp;
-                bannerExpBarFilledImage.fillAmount = currentExp / nextExp;
+                float calculatedExp = currentExp - exp;
+
+                expbarText.text = calculatedExp + "/" + nextExp;
+                expBarFilledImage.fillAmount = calculatedExp / nextExp;
+
+                bannerExpbarText.text = calculatedExp + "/" + nextExp;
+                bannerExpBarFilledImage.fillAmount = calculatedExp / nextExp;
 
             }
             else
@@ -165,11 +176,23 @@ public class ProfileMenu : MonoBehaviour
             nextLevelText.text = "Level " + nextLevel;
             float currentExp = PlayerProfile.instance.template.xp;
             float nextExp = PlayerProfile.instance.levelExpDictionary[PlayerProfile.instance.level + 1];
-            expbarText.text = currentExp + "/" + nextExp;
-            expBarFilledImage.fillAmount = currentExp / nextExp;
+            nextExp -= PlayerProfile.instance.levelExpDictionary[PlayerProfile.instance.level];
 
-            bannerExpbarText.text = currentExp + "/" + nextExp;
-            bannerExpBarFilledImage.fillAmount = currentExp / nextExp;
+            // float currentLvLExp = currentExp - PlayerProfile.instance.levelExpDictionary[PlayerProfile.instance.level];
+            float exp = 0;
+            for (int i = 0; i < PlayerProfile.instance.level; i++)
+            {
+                exp += i * 1000;
+                Debug.Log(exp);
+            }
+
+            float calculatedExp = currentExp - exp;
+
+            expbarText.text = calculatedExp + "/" + nextExp;
+            expBarFilledImage.fillAmount = calculatedExp / nextExp;
+
+            bannerExpbarText.text = calculatedExp + "/" + nextExp;
+            bannerExpBarFilledImage.fillAmount = calculatedExp / nextExp;
         }
         else
         {

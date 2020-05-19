@@ -24,6 +24,8 @@ public class EntitySpawner : MonoBehaviour
     {
         if(!objectiveSpawner)
             GetComponent<SphereCollider>().radius = LevelManager.instance.NoSpawnsDistance;
+
+        spawnParticle = GetComponentInChildren<ParticleSystem>();
     }
 
     public void AddToSpawnQue(GameObject entity)
