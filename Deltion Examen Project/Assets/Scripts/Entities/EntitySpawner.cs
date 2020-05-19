@@ -18,6 +18,8 @@ public class EntitySpawner : MonoBehaviour
 
     private int amountOfEntitysToClose;
 
+    public ParticleSystem spawnParticle;
+
     private void Start()
     {
         if(!objectiveSpawner)
@@ -40,6 +42,10 @@ public class EntitySpawner : MonoBehaviour
         GizmoColor = Color.cyan;
 
         yield return new WaitForSeconds(timeBetweenSpawns);
+
+        spawnParticle.Play();
+
+        yield return new WaitForSeconds(1);
 
         if (!EntityToClose)
             Instantiate(entity, transform.position, Quaternion.identity);
@@ -84,7 +90,7 @@ public class EntitySpawner : MonoBehaviour
         {
             amountOfEntitysToClose--;
 
-            if (amountOfEntitysToClose == 0 && !EntityToClose)
+            if (amountOfEntitysToClose == 0 && EntityToClose)
                 EntityToClose = false;
         }
     }

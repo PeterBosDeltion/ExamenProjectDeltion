@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 435760}
   - component: {fileID: 3391570}
   - component: {fileID: 2379326}
+  - component: {fileID: 490039869}
+  - component: {fileID: 490039870}
+  - component: {fileID: 490039871}
   m_Layer: 2
   m_Name: Cliff_K_child
   m_TagString: Untagged
@@ -79,6 +82,45 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &490039869
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118566}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.2093225, y: 3.3927064, z: 7.502041}
+  m_Center: {x: 0, y: 3.6258657, z: 0}
+--- !u!65 &490039870
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118566}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.2093225, y: 5.322219, z: 3.2374115}
+  m_Center: {x: 0, y: 2.6611094, z: 2.1444778}
+--- !u!65 &490039871
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118566}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.2093225, y: 5.322219, z: 2.7204723}
+  m_Center: {x: 0, y: 2.6611094, z: -2.3907843}
 --- !u!1 &163416
 GameObject:
   m_ObjectHideFlags: 0

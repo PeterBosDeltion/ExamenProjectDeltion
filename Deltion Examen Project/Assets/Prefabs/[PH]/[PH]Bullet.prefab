@@ -128,6 +128,7 @@ MonoBehaviour:
   myEnt: {fileID: 0}
   bloodParticle: {fileID: 1816239454339412339, guid: 9a435218ade96b34392e8b450117f51a,
     type: 3}
+  DebrisParticle: {fileID: 100002, guid: 99c73c92ac40473459640b165473206f, type: 3}
   impactSound: {fileID: 0}
 --- !u!96 &3523682788062803738
 TrailRenderer:
