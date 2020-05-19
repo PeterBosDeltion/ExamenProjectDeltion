@@ -8,10 +8,12 @@ public class MechUltimate : Entity
     private MechUltimateAbility myAbility;
     private Movement movement;
     private Animator anim;
+    private Rigidbody rigidbody;
 
     public void Initialize(float mechHp, float damage, MechUltimateAbility ability)
     {
         Debug.LogError("Ability not implemented");
+        rigidbody = GetComponent<Rigidbody>();
         return;
         //maxHp = mechHp;
         //hp = maxHp;
@@ -43,7 +45,7 @@ public class MechUltimate : Entity
 
     public void Move(float xAxis, float yAxis)
     {
-        movement.Move(xAxis, yAxis);
+        movement.Move(xAxis, yAxis, rigidbody);
         anim.SetFloat("X", xAxis);
         anim.SetFloat("Y", yAxis);
     }

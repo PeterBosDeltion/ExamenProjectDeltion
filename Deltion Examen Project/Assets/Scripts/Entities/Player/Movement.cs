@@ -28,13 +28,16 @@ public class Movement : MonoBehaviour
         CheckIfMoved();
     }
 
-    public void Move(float xAxis, float yAxis)
+    public void Move(float xAxis, float yAxis, Rigidbody myRigidbody)
     {
         Vector3 rightMovement = right * Time.deltaTime * xAxis;
         Vector3 upMovement = forward * Time.deltaTime * yAxis;
-        Vector3 toMove = Vector3.ClampMagnitude(rightMovement + upMovement, 0.1f) * movementSpeed;
+        Vector3 toMove = Vector3.ClampMagnitude(rightMovement + upMovement, 0.1f);
         moveDirection = rightMovement + upMovement;
-        transform.position += toMove;
+
+        Debug.Log(toMove);
+        myRigidbody.velocity = toMove * Time.deltaTime * movementSpeed;
+        //transform.position += toMove;
 
     }
 

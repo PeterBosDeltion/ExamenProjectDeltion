@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
 
     public bool canSwitch = true;
 
+    public Rigidbody myRigidbody;
+
     //Assigning the Player scripts to the controller(There is no reason for the PlayerController to be anywhere else than on the Player so no need for a Gameobject reference)
     private void Awake()
     {
@@ -42,7 +44,7 @@ public class PlayerController : MonoBehaviour
         triggerAbility = GetComponent<TriggerAbility>();
         playerAnimator = GetComponentInChildren<Animator>();
         loadout = GetComponent<Loadout>();
-
+        myRigidbody = GetComponent<Rigidbody>();
        
 
         if(!player || !movement || !triggerAbility)
@@ -294,7 +296,7 @@ public class PlayerController : MonoBehaviour
 
     public void Move(float xAxis, float yAxis)
     {
-        movement.Move(xAxis, yAxis);
+        movement.Move(xAxis, yAxis, myRigidbody);
 
         float diffrenceAngle = transform.rotation.eulerAngles.y - Camera.main.transform.rotation.y;
         Vector3 animatedAxis = Quaternion.Euler(0,diffrenceAngle,0) * new Vector3(xAxis, 0, yAxis);
