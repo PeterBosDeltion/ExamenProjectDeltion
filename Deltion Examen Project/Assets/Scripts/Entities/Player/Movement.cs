@@ -35,7 +35,6 @@ public class Movement : MonoBehaviour
         Vector3 toMove = Vector3.ClampMagnitude(rightMovement + upMovement, 0.1f);
         moveDirection = rightMovement + upMovement;
 
-        Debug.Log(toMove);
         myRigidbody.velocity = toMove * Time.deltaTime * (movementSpeed * 1000);
         //transform.position += toMove;
 
