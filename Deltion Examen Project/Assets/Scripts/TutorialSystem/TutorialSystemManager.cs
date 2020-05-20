@@ -49,7 +49,8 @@ public class TutorialSystemManager : MonoBehaviour
     {
         waiting = true;
         yield return new WaitForSeconds(betweenStepsTime);
-        steps[currentStep].StartStep();
+        if(currentStep < steps.Count)
+            steps[currentStep].StartStep();
         waiting = false;
     }
 

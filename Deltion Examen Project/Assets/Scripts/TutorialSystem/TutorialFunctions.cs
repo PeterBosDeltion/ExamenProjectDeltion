@@ -16,6 +16,9 @@ public class TutorialFunctions : MonoBehaviour
     public bool reloaded;
     public bool switched;
     public bool healed;
+    public bool abilityUsed;
+    public bool abilityUsedAgain;
+    public bool ultUsed;
 
     public void AssignDelegates()
     {
@@ -24,6 +27,8 @@ public class TutorialFunctions : MonoBehaviour
         player.myInputManager.reloadEvent += Reload;
         player.myInputManager.LastWeaponEvent += Switch;
         player.myInputManager.scrollEvent += SwitchScroll;
+        player.myInputManager.abilityEvent += AbilityUsed;
+        player.canSwitch = false;
         DisableAbilities();
         TutorialSystemManager.instance.steps[0].StartStep();
 
@@ -44,7 +49,7 @@ public class TutorialFunctions : MonoBehaviour
 
             }
         }
-        else if(TutorialSystemManager.instance.currentStep != 1)
+        else if(TutorialSystemManager.instance.currentStep != 1 && !gunEmpty)
         {
             if (player)
             {
@@ -55,6 +60,8 @@ public class TutorialFunctions : MonoBehaviour
         if (reloaded && TutorialSystemManager.instance.currentStep == 2)
         {
             TutorialSystemManager.instance.CompleteCurrentStep();
+            player.canSwitch = true;
+
         }
         if (switched && TutorialSystemManager.instance.currentStep == 3)
         {
@@ -69,6 +76,27 @@ public class TutorialFunctions : MonoBehaviour
 
             }
         }
+        if (abilityUsed && TutorialSystemManager.instance.currentStep == 5)
+        {
+            TutorialSystemManager.instance.CompleteCurrentStep();
+        }
+        if (abilityUsedAgain && TutorialSystemManager.instance.currentStep == 6)
+        {
+            TutorialSystemManager.instance.CompleteCurrentStep();
+            for (int i = 0; i < 100; i++)
+            {
+                player.ultimateAbility.IncrementUltCharge();
+            }
+        }
+        if (ultUsed && TutorialSystemManager.instance.currentStep == 7)
+        {
+            TutorialSystemManager.instance.CompleteCurrentStep();
+        }
+        else if(!ultUsed && TutorialSystemManager.instance.currentStep == 7)
+        {
+            if (player.ultimateAbility.active)
+                ultUsed = true;
+        }
     }
 
     private void OnDestroy()
@@ -77,6 +105,7 @@ public class TutorialFunctions : MonoBehaviour
         player.myInputManager.reloadEvent -= Reload;
         player.myInputManager.LastWeaponEvent -= Switch;
         player.myInputManager.scrollEvent -= SwitchScroll;
+        player.myInputManager.abilityEvent -= AbilityUsed;
     }
 
     private void SwitchScroll(float f)
@@ -134,6 +163,7 @@ public class TutorialFunctions : MonoBehaviour
     {
         player.currentPrimary.canShoot = true;
         player.currentSecondary.canShoot = true;
+        player.currentWeapon.canShoot = true;
     }
 
     public void DisableAbilities()
@@ -142,13 +172,44 @@ public class TutorialFunctions : MonoBehaviour
         {
             a.cantUse = true;
         }
+
+        player.ultimateAbility.cantUse = true;
     }
 
     public void EnableAbilities()
     {
-        foreach (Ability a in player.abilities)
+        if(TutorialSystemManager.instance.currentStep == 4)
         {
-            a.cantUse = false;
+            player.abilities[0].cantUse = false;
+        }
+        else if(TutorialSystemManager.instance.currentStep == 5)
+        {
+            player.abilities[3].cantUse = false;
+        }
+        else
+        {
+            foreach (Ability a in player.abilities)
+            {
+                a.cantUse = false;
+            }
+        }
+        
+    }
+
+    public void EnableUlt()
+    {
+        player.ultimateAbility.cantUse = false;
+    }
+
+    public void AbilityUsed(int ability)
+    {
+        if(ability == 0 && TutorialSystemManager.instance.currentStep == 5)
+        {
+            abilityUsed = true;
+        }
+        if (ability == 3 && TutorialSystemManager.instance.currentStep == 6)
+        {
+            abilityUsedAgain = true;
         }
     }
 }
