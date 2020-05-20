@@ -247,6 +247,7 @@ MonoBehaviour:
   - {fileID: 6661178223137950823, guid: 375487d0fa7e2f64ab3e82cd1bf00347, type: 3}
   - {fileID: 298080505750988964, guid: d783b0782c83fe9418c095ebe5a84a91, type: 3}
   - {fileID: 2552865078747690850, guid: 6199987fd157b6f49afd5faaa50e25f6, type: 3}
+  - {fileID: 7017879462880399916, guid: 13b82c11f2d063247bd7e4e7410a5467, type: 3}
   allSecondaryWeapons:
   - {fileID: 77380491323076597, guid: b43595dbb7045204b9829d270b97d2f4, type: 3}
   allAbilities:

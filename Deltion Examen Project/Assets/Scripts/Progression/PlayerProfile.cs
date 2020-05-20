@@ -45,6 +45,13 @@ public class PlayerProfile : MonoBehaviour
         }
     }
 
+    public void SetDoneTutorial(bool value)
+    {
+        template.doneTutorial = value;
+        SaveToDisk(template, filePath);
+
+    }
+
     public void RecieveExp(float amount)
     {
         template.xp += amount;

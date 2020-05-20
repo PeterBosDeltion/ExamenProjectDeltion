@@ -10,6 +10,7 @@ public class TutorialFunctions : MonoBehaviour
     private bool aPressed;
     private bool sPressed;
     private bool dPressed;
+    private GameObject objective;
 
     public bool allDirectionsPressed;
     public bool gunEmpty;
@@ -20,6 +21,8 @@ public class TutorialFunctions : MonoBehaviour
     public bool abilityUsedAgain;
     public bool ultUsed;
 
+    public bool nearObjective;
+
     public void AssignDelegates()
     {
         player = FindObjectOfType<PlayerController>();
@@ -29,6 +32,7 @@ public class TutorialFunctions : MonoBehaviour
         player.myInputManager.scrollEvent += SwitchScroll;
         player.myInputManager.abilityEvent += AbilityUsed;
         player.canSwitch = false;
+        objective = FindObjectOfType<DestroyObjective>().gameObject;
         DisableAbilities();
         TutorialSystemManager.instance.steps[0].StartStep();
 
@@ -96,6 +100,15 @@ public class TutorialFunctions : MonoBehaviour
         {
             if (player.ultimateAbility.active)
                 ultUsed = true;
+        }
+        if (!nearObjective && TutorialSystemManager.instance.currentStep == 8)
+        {
+            if (Vector3.Distance(player.transform.position, objective.transform.position) <= 15)
+                nearObjective = true;
+        }
+        else if (nearObjective && TutorialSystemManager.instance.currentStep == 8)
+        {
+            TutorialSystemManager.instance.CompleteCurrentStep();
         }
     }
 
@@ -211,5 +224,10 @@ public class TutorialFunctions : MonoBehaviour
         {
             abilityUsedAgain = true;
         }
+    }
+
+    public void SaveDoneTutorialTrue()
+    {
+        PlayerProfile.instance.SetDoneTutorial(true);
     }
 }
