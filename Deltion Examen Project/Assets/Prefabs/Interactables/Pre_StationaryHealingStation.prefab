@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 0
 --- !u!224 &374217782
 RectTransform:
@@ -110,7 +110,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &2052759616
 RectTransform:
@@ -207,7 +207,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7646750473158010327
 Transform:
@@ -255,7 +255,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &8100598975098010592
 RectTransform:
@@ -430,7 +430,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &2495147228048151043
 RectTransform:
@@ -504,7 +504,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &2495147228431224652
 RectTransform:
@@ -598,13 +598,12 @@ GameObject:
   - component: {fileID: 2495147228665920062}
   - component: {fileID: 2495147228665920060}
   - component: {fileID: 2495147228665920063}
-  - component: {fileID: 8323889741977580357}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Pre_StationaryHealingStation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2495147228665920062
 Transform:
@@ -659,19 +658,19 @@ MonoBehaviour:
   aoeImg: {fileID: 374217778}
   aoeAnim: {fileID: 374217779}
   healthCylinder: {fileID: 7107284058248952465}
---- !u!65 &8323889741977580357
+--- !u!65 &5502890447323626277
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2495147228665920057}
+  m_GameObject: {fileID: 5873087785850781870}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.25, y: 3, z: 1.25}
-  m_Center: {x: 0, y: 1.5, z: 0}
+  m_Size: {x: 0.33, y: 0.8, z: 0.33}
+  m_Center: {x: 0, y: 0.442, z: 0}
 --- !u!1001 &2495147227616188839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -679,6 +678,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2495147228665920062}
     m_Modifications:
+    - target: {fileID: -9189135882791876361, guid: 2911a610ad653c54c95ecfd27eb428f6,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: -4610931620610530506, guid: 2911a610ad653c54c95ecfd27eb428f6,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2911a610ad653c54c95ecfd27eb428f6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -759,6 +768,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: TankFBX
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 2911a610ad653c54c95ecfd27eb428f6,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1124338253878075225, guid: 2911a610ad653c54c95ecfd27eb428f6,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 1200794067570204211, guid: 2911a610ad653c54c95ecfd27eb428f6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -798,6 +817,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2495147227616188839}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5873087785850781870 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 2911a610ad653c54c95ecfd27eb428f6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2495147227616188839}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7893150355617923449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -808,6 +833,10 @@ PrefabInstance:
     - target: {fileID: 1847502669122932, guid: 887c60ae89da98342b21e1d47325c5ae, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Roof_Exterior_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1847502669122932, guid: 887c60ae89da98342b21e1d47325c5ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4026410500600512, guid: 887c60ae89da98342b21e1d47325c5ae, type: 3}
       propertyPath: m_LocalPosition.x
@@ -932,6 +961,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pre_MinimapIcon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6133233482666063618, guid: b4522b8b3d0e4584f8fff7461c9fccb3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4522b8b3d0e4584f8fff7461c9fccb3, type: 3}

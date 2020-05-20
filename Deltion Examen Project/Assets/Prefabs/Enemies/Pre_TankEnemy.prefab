@@ -168,7 +168,7 @@ MonoBehaviour:
   xpWhenKilled: 0
   myAI: {fileID: 0}
   anim: {fileID: 0}
-  speed: 3.2
+  speed: 4.2
   damage: 400
   attackRange: 4
 --- !u!195 &7468812039799073516
