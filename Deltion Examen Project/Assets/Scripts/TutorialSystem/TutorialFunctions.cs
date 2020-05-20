@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutorialFunctions : MonoBehaviour
 {
@@ -22,10 +23,13 @@ public class TutorialFunctions : MonoBehaviour
     public bool ultUsed;
 
     public bool nearObjective;
-
+    public Toggle doneStepToggle;
+    private TriggerHurt hurt;
     public void AssignDelegates()
     {
         player = FindObjectOfType<PlayerController>();
+        doneStepToggle = FindObjectOfType<Toggle>();
+        hurt = FindObjectOfType<TriggerHurt>();
         player.myInputManager.MovingEvent += DetectMovement;
         player.myInputManager.reloadEvent += Reload;
         player.myInputManager.LastWeaponEvent += Switch;
@@ -40,6 +44,7 @@ public class TutorialFunctions : MonoBehaviour
 
     private void Update()
     {
+        
         if (allDirectionsPressed && TutorialSystemManager.instance.currentStep == 0)
         {
             TutorialSystemManager.instance.CompleteCurrentStep();
@@ -49,6 +54,8 @@ public class TutorialFunctions : MonoBehaviour
             if (player.currentWeapon.magazineAmmo <= 0)
             {
                 gunEmpty = true;
+                doneStepToggle.isOn = true;
+
                 TutorialSystemManager.instance.CompleteCurrentStep();
 
             }
@@ -73,9 +80,11 @@ public class TutorialFunctions : MonoBehaviour
         }
         if (!healed && TutorialSystemManager.instance.currentStep == 4)
         {
-            if(player.GetComponent<Player>().GetHp() >= player.GetComponent<Player>().maxHp)
+            if(player.GetComponent<Player>().GetHp() >= player.GetComponent<Player>().maxHp && hurt.damagedOnce)
             {
                 healed = true;
+                doneStepToggle.isOn = true;
+
                 TutorialSystemManager.instance.CompleteCurrentStep();
 
             }
@@ -99,12 +108,20 @@ public class TutorialFunctions : MonoBehaviour
         else if(!ultUsed && TutorialSystemManager.instance.currentStep == 7)
         {
             if (player.ultimateAbility.active)
+            {
+                doneStepToggle.isOn = true;
                 ultUsed = true;
+
+            }
         }
         if (!nearObjective && TutorialSystemManager.instance.currentStep == 8)
         {
             if (Vector3.Distance(player.transform.position, objective.transform.position) <= 15)
+            {
+                doneStepToggle.isOn = true;
                 nearObjective = true;
+
+            }
         }
         else if (nearObjective && TutorialSystemManager.instance.currentStep == 8)
         {
@@ -129,15 +146,17 @@ public class TutorialFunctions : MonoBehaviour
     private void Switch()
     {
         if (!switched && TutorialSystemManager.instance.currentStep == 3)
+        {
+            doneStepToggle.isOn = true;
             switched = true;
+        }
 
     }
     private void Reload()
     {
-        Debug.Log("reached 1");
         if (!reloaded && TutorialSystemManager.instance.currentStep == 2)
         {
-            Debug.Log("reached 2");
+            doneStepToggle.isOn = true;
             reloaded = true;
         }
 
@@ -159,7 +178,11 @@ public class TutorialFunctions : MonoBehaviour
                 aPressed = true;
 
             if (wPressed && aPressed && sPressed && dPressed)
+            {
+                doneStepToggle.isOn = true;
                 allDirectionsPressed = true;
+
+            }
         }
         else
         {
@@ -219,10 +242,14 @@ public class TutorialFunctions : MonoBehaviour
         if(ability == 0 && TutorialSystemManager.instance.currentStep == 5)
         {
             abilityUsed = true;
+            doneStepToggle.isOn = true;
+
         }
         if (ability == 3 && TutorialSystemManager.instance.currentStep == 6)
         {
             abilityUsedAgain = true;
+            doneStepToggle.isOn = true;
+
         }
     }
 

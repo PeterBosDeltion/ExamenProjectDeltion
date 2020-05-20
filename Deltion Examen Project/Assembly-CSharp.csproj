@@ -379,6 +379,7 @@
     <Compile Include="Assets\Scripts\ProfileUnlockUI.cs" />
     <Compile Include="Assets\Scripts\Progression\PlayerProfile.cs" />
     <Compile Include="Assets\Scripts\TeleportTrigger.cs" />
+    <Compile Include="Assets\Scripts\TriggerHurt.cs" />
     <Compile Include="Assets\Scripts\TutorialInteractable.cs" />
     <Compile Include="Assets\Scripts\TutorialMatrix.cs" />
     <Compile Include="Assets\Scripts\TutorialReminderWindow.cs" />

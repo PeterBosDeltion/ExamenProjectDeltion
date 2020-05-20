@@ -46,11 +46,11 @@ public class MinimapIcon : MonoBehaviour
                 icon.color = EnemyColor;
                 break;
             case IconType.Objective:
-                transform.localScale = new Vector3(10F, 10F, 10F);
+                transform.localScale = new Vector3(8, 8, 8);
                 icon.color = ObjectiveColor;
                 break;
             case IconType.Interactable:
-                transform.localScale = new Vector3(5, 5, 5);
+                transform.localScale = new Vector3(2.5F, 2.5F, 2.5F);
                 icon.color = interactableColor;
                 break;
             case IconType.Deployable:

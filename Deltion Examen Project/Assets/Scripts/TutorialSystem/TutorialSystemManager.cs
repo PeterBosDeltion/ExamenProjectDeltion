@@ -50,7 +50,10 @@ public class TutorialSystemManager : MonoBehaviour
         waiting = true;
         yield return new WaitForSeconds(betweenStepsTime);
         if(currentStep < steps.Count)
+        {
             steps[currentStep].StartStep();
+            functions.doneStepToggle.isOn = false;
+        }
         waiting = false;
     }
 
