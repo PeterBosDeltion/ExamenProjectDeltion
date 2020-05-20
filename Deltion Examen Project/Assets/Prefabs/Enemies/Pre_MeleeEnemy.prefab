@@ -61,7 +61,7 @@ Transform:
   m_GameObject: {fileID: 227615046000823840}
   m_LocalRotation: {x: -0, y: -0.99989784, z: 0, w: -0.014293508}
   m_LocalPosition: {x: 1.084, y: 2.35, z: 1.423}
-  m_LocalScale: {x: 1.0003978, y: 1, z: 0.99955595}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 1928915937106685076}
   - {fileID: 2061903643}
@@ -80,8 +80,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.4, y: 2.526463, z: 2.65}
-  m_Center: {x: -3.995011e-10, y: 1.2632332, z: -0.16999999}
+  m_Size: {x: 3.4, y: 5.9562736, z: 2.65}
+  m_Center: {x: -5.8043614e-10, y: 2.9781463, z: -0.17}
 --- !u!114 &2038239845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,6 +118,7 @@ MonoBehaviour:
   maxTempHp: 0
   maxHp: 200
   death: 0
+  xpWhenKilled: 0
   myAI: {fileID: 0}
   anim: {fileID: 0}
   speed: 6.2
