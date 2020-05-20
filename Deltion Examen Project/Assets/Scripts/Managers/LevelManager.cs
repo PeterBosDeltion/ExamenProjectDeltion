@@ -119,7 +119,8 @@ public class LevelManager : MonoBehaviour
                 }
             }
 
-            StartCoroutine(SpawnTick(spawnTickTime));
+            if(allAvailableSpawners.Count != 0)
+                StartCoroutine(SpawnTick(spawnTickTime));
         }
         if (GameObject.FindObjectOfType<DestroyObjective>())
         {
