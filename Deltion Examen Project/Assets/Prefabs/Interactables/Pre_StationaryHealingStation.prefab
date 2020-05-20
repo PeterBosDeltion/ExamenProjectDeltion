@@ -881,7 +881,7 @@ PrefabInstance:
     - target: {fileID: 3893579598690299289, guid: b4522b8b3d0e4584f8fff7461c9fccb3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3893579598690299289, guid: b4522b8b3d0e4584f8fff7461c9fccb3,
         type: 3}
@@ -933,6 +933,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pre_MinimapIcon
       objectReference: {fileID: 0}
+    - target: {fileID: 6624736751813277937, guid: b4522b8b3d0e4584f8fff7461c9fccb3,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 71596ae43d27b1c4280fe97f12d3e691,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4522b8b3d0e4584f8fff7461c9fccb3, type: 3}
 --- !u!4 &5314383801671745461 stripped
