@@ -1496,7 +1496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4660784718858138, guid: c473ddc8c27cd5844a39f065961816d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.11
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4660784718858138, guid: c473ddc8c27cd5844a39f065961816d0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6997,6 +6997,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 271476835443764934, guid: 2fb16e5a959a41844bc859c48f3e81cb,
+        type: 3}
+      propertyPath: m_Speed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 561379639565331470, guid: 2fb16e5a959a41844bc859c48f3e81cb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8106,7 +8111,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4660784718858138, guid: c473ddc8c27cd5844a39f065961816d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1
+      value: -0.040000003
       objectReference: {fileID: 0}
     - target: {fileID: 4660784718858138, guid: c473ddc8c27cd5844a39f065961816d0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10173,15 +10178,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4773739357033516, guid: ba9d1375e004e824ba0ff6ece8e863d7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 27.74
+      value: 16.830002
       objectReference: {fileID: 0}
     - target: {fileID: 4773739357033516, guid: ba9d1375e004e824ba0ff6ece8e863d7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.02925542
+      value: 0.02925539
       objectReference: {fileID: 0}
     - target: {fileID: 4773739357033516, guid: ba9d1375e004e824ba0ff6ece8e863d7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.11
+      value: -12.650002
       objectReference: {fileID: 0}
     - target: {fileID: 4773739357033516, guid: ba9d1375e004e824ba0ff6ece8e863d7, type: 3}
       propertyPath: m_LocalRotation.x
@@ -10189,7 +10194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4773739357033516, guid: ba9d1375e004e824ba0ff6ece8e863d7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.92387956
+      value: -0.38268387
       objectReference: {fileID: 0}
     - target: {fileID: 4773739357033516, guid: ba9d1375e004e824ba0ff6ece8e863d7, type: 3}
       propertyPath: m_LocalRotation.z
@@ -10197,7 +10202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4773739357033516, guid: ba9d1375e004e824ba0ff6ece8e863d7, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.38268343
+      value: -0.9238794
       objectReference: {fileID: 0}
     - target: {fileID: 4773739357033516, guid: ba9d1375e004e824ba0ff6ece8e863d7, type: 3}
       propertyPath: m_RootOrder
@@ -10209,7 +10214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4773739357033516, guid: ba9d1375e004e824ba0ff6ece8e863d7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -135
+      value: -315
       objectReference: {fileID: 0}
     - target: {fileID: 4773739357033516, guid: ba9d1375e004e824ba0ff6ece8e863d7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -15931,7 +15936,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4660784718858138, guid: c473ddc8c27cd5844a39f065961816d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1
+      value: -0.040000003
       objectReference: {fileID: 0}
     - target: {fileID: 4660784718858138, guid: c473ddc8c27cd5844a39f065961816d0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18178,7 +18183,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4660784718858138, guid: c473ddc8c27cd5844a39f065961816d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1
+      value: -0.040000003
       objectReference: {fileID: 0}
     - target: {fileID: 4660784718858138, guid: c473ddc8c27cd5844a39f065961816d0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18342,11 +18347,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30.896997
+      value: 30.541
       objectReference: {fileID: 0}
     - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.81266
+      value: 0.813
       objectReference: {fileID: 0}
     - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18383,6 +18388,10 @@ PrefabInstance:
     - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.929
       objectReference: {fileID: 0}
     - target: {fileID: 23919025084750442, guid: 9a0b50ddb0002a047a3c8cefb24da0c5,
         type: 3}
@@ -19531,6 +19540,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a861479889b1514291f9570dd69ac35, type: 3}
+--- !u!84 &608590409
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 3
+  m_Width: 1920
+  m_Height: 1080
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 1
+  m_ColorFormat: 8
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1001 &608681096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22497,41 +22541,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755027346}
   m_Mesh: {fileID: -5731547941117289742, guid: 465125e316c377848874927a85240922, type: 3}
---- !u!84 &755186614
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  serializedVersion: 3
-  m_Width: 1920
-  m_Height: 1080
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 1
-  m_ColorFormat: 8
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!4 &756094648 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4203310101477330, guid: 0064841a1e2884b40804207eacfcf1ae,
@@ -26014,14 +26023,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentStep: 0
-  betweenStepsTime: 6
+  betweenStepsTime: 10
   steps:
   - completed: 0
     activatedObjects:
     - {fileID: 1863593037}
-    stepTextDescription: Welcome to the tutorial marine! Press WASD or use the left
-      analog stick to move around. Look around by moving the mouse or the right analog
-      stick.
+    stepTextDescription: "Welcome to the tutorial marine! \n\nPress WASD or use the
+      left analog stick to move around. \n\nLook around by moving the mouse or the
+      right analog stick."
     stepDoneDescription: Great job! Now please advance to the next room.
     textObject: {fileID: 1593878923}
     CalledUponCompletion:
@@ -26041,37 +26050,47 @@ MonoBehaviour:
   - completed: 0
     activatedObjects: []
     stepTextDescription: Shoot the practice enemy for as long as you can by looking
-      at it and pressing left mouse button or the right trigger.
+      at it and holding the left mouse button or the right trigger.
     stepDoneDescription: Great job!
     textObject: {fileID: 1593878923}
     CalledUponCompletion: []
   - completed: 0
     activatedObjects: []
-    stepTextDescription: As you can see in the bottom-left of the screen, you need
-      to reload your weapon because the magazine is empty. To do this press "R" on
-      your keyboard or "X" on your controller.
+    stepTextDescription: 'As you can see in the bottom-left of the screen, you need
+      to reload your weapon because the magazine is empty.
+
+
+      To do this press
+      "R" on your keyboard or "X" on your controller.'
     stepDoneDescription: Make sure to reload often!
     textObject: {fileID: 1593878923}
     CalledUponCompletion: []
   - completed: 0
     activatedObjects:
     - {fileID: 386044989}
-    stepTextDescription: If you run out of ammunition and can't reload, don't worry!
-      By scrolling or pressing "Q" on your keyboard or the Right Bumper on your controller,
-      you can switch to your sidearm! Try switching now.
-    stepDoneDescription: Great! Make sure to always remember your sidearm if you're
-      cornered! Now please advance to the next room.
+    stepTextDescription: "If you run out of ammunition and can't reload, don't worry!\n\nBy
+      scrolling or pressing \"Q\" on your keyboard or the Right Bumper on your controller,
+      you can switch to your sidearm! \n\nTry switching now."
+    stepDoneDescription: "Great! Make sure to always remember your sidearm if you're
+      cornered! \n\nNow please advance to the next room."
     textObject: {fileID: 1593878923}
     CalledUponCompletion: []
   - completed: 0
     activatedObjects:
     - {fileID: 2115186162}
-    stepTextDescription: Your health is shown as the green bar on the bottom-left
-      of the screen. Looks like you've taken some damage! Damage can be healed by
-      certain abilities, or by interacting with a object like the one in the center
-      of the room. Hold "E" on keyboard or "A" on a controller to interact.
-    stepDoneDescription: If your health reaches 0, you will fail the mission. When
-      playing co-op you can be revived however! Please advance to the next room.
+    stepTextDescription: "Your health is shown as the green bar on the bottom-left
+      of the screen. \n\nLooks like you've taken some damage! \n\nDamage can be healed
+      by certain abilities. \nIt can also be healed by interacting with a object
+      like the one in the center of the room.\n \nStand next to it and Hold \"E\"
+      on keyboard or \"A\" on a controller to interact."
+    stepDoneDescription: 'If your health reaches 0, you will fail the mission.
+
+
+      Interactables
+      can be found throughout levels, when playing co-op you can be revived at a
+      interactable called a revive tower.
+
+'
     textObject: {fileID: 1593878923}
     CalledUponCompletion:
     - m_PersistentCalls:
@@ -26089,9 +26108,15 @@ MonoBehaviour:
           m_CallState: 2
   - completed: 0
     activatedObjects: []
-    stepTextDescription: Besides your weapon, you are also armed with powerful abilities!
-      Press 1,2,3,4 to use them on a keyboard or the D-pad on a controller. Try using
-      your first ability!
+    stepTextDescription: 'Besides your weapon, you are also armed with powerful abilities!
+
+
+      Press
+      1,2,3,4 to use them on a keyboard or the D-pad on a controller.
+
+
+      Try
+      using your first ability!'
     stepDoneDescription: Your abilities give you powerful effects, so remember to
       use them!
     textObject: {fileID: 1593878923}
@@ -26112,9 +26137,9 @@ MonoBehaviour:
   - completed: 0
     activatedObjects:
     - {fileID: 812291873}
-    stepTextDescription: When you use a ability, it goes on cooldown. You can keep
-      track of your cooldowns in the bottom left of the screen. If a ability is not
-      greyed out, it is ready to use again! Try using your 4th ability.
+    stepTextDescription: "When you use a ability, it goes on cooldown. \n\nYou can
+      keep track of your cooldowns in the bottom left of the screen.\n \nIf a ability
+      is not greyed out, it is ready to be uses again! \n\nTry using your 4th ability."
     stepDoneDescription: Very good! Please advance to the next room.
     textObject: {fileID: 1593878923}
     CalledUponCompletion:
@@ -26145,21 +26170,23 @@ MonoBehaviour:
   - completed: 0
     activatedObjects:
     - {fileID: 1685581832}
-    stepTextDescription: You also have a ultimate ability that normally needs to
-      be charged by killing enemies. But for the purposes of this tutorial we've
-      charged it for you! Activate it by pressing "F" or "5" on keyboard or "Y" on
-      controller. You will need to target the laser with the mouse or with LB/RB.
-      Press the Left mouse or right trigger to deploy it!
-    stepDoneDescription: Your ultimate takes some effort to charge, but can have
-      devestating effects. Use them wisely! Please proceed through the door at the
-      end of the hall.
+    stepTextDescription: "You also have a ultimate ability that normally needs to
+      be charged by killing enemies.\n\nBut for the purposes of this tutorial we've
+      charged it for you!\n\nActivate it by pressing \"F\" or \"5\" on keyboard or
+      \"Y\" on controller.\n \nYou will need to target the laser with the mouse or
+      with LB/RB. \nPress the Left mouse or right trigger to deploy it!"
+    stepDoneDescription: 'Ultimates are extremely powerful!
+
+
+      Please proceed
+      through the door at the end of the hall.'
     textObject: {fileID: 1593878923}
     CalledUponCompletion: []
   - completed: 0
     activatedObjects: []
-    stepTextDescription: You can hold TAB or left trigger to display your current
-      objective and to interact with the minimap. Follow the line on the minimap
-      to the closest objective.
+    stepTextDescription: "You can hold TAB or left trigger to display your current
+      objective and to interact with the minimap.\n \nFollow the line on the minimap
+      to the closest objective."
     stepDoneDescription: Great! You can also move/zoom the minimap with the mouse
       or the left and right analog stick.
     textObject: {fileID: 1593878923}
@@ -31738,11 +31765,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.8972
+      value: 5.653
       objectReference: {fileID: 0}
     - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.81266
+      value: 0.813
       objectReference: {fileID: 0}
     - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -31779,6 +31806,10 @@ PrefabInstance:
     - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.951
       objectReference: {fileID: 0}
     - target: {fileID: 23919025084750442, guid: 9a0b50ddb0002a047a3c8cefb24da0c5,
         type: 3}
@@ -34867,11 +34898,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.81266
+      value: 0.813
       objectReference: {fileID: 0}
     - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.255949
+      value: -23.534
       objectReference: {fileID: 0}
     - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
       propertyPath: m_LocalRotation.x
@@ -34904,6 +34935,10 @@ PrefabInstance:
     - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.944
       objectReference: {fileID: 0}
     - target: {fileID: 23919025084750442, guid: 9a0b50ddb0002a047a3c8cefb24da0c5,
         type: 3}
@@ -38789,7 +38824,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4660784718858138, guid: c473ddc8c27cd5844a39f065961816d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1
+      value: -0.040000003
       objectReference: {fileID: 0}
     - target: {fileID: 4660784718858138, guid: c473ddc8c27cd5844a39f065961816d0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -42066,7 +42101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.794032
+      value: 6.364
       objectReference: {fileID: 0}
     - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -42107,6 +42142,10 @@ PrefabInstance:
     - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.914
       objectReference: {fileID: 0}
     - target: {fileID: 23919025084750442, guid: 9a0b50ddb0002a047a3c8cefb24da0c5,
         type: 3}
@@ -43314,15 +43353,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4773739357033516, guid: ba9d1375e004e824ba0ff6ece8e863d7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.83
+      value: 27.74
       objectReference: {fileID: 0}
     - target: {fileID: 4773739357033516, guid: ba9d1375e004e824ba0ff6ece8e863d7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.02925542
+      value: 0.02925539
       objectReference: {fileID: 0}
     - target: {fileID: 4773739357033516, guid: ba9d1375e004e824ba0ff6ece8e863d7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.11
+      value: -12.65
       objectReference: {fileID: 0}
     - target: {fileID: 4773739357033516, guid: ba9d1375e004e824ba0ff6ece8e863d7, type: 3}
       propertyPath: m_LocalRotation.x
@@ -43330,7 +43369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4773739357033516, guid: ba9d1375e004e824ba0ff6ece8e863d7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9238796
+      value: -0.38268274
       objectReference: {fileID: 0}
     - target: {fileID: 4773739357033516, guid: ba9d1375e004e824ba0ff6ece8e863d7, type: 3}
       propertyPath: m_LocalRotation.z
@@ -43338,7 +43377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4773739357033516, guid: ba9d1375e004e824ba0ff6ece8e863d7, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.38268328
+      value: 0.9238798
       objectReference: {fileID: 0}
     - target: {fileID: 4773739357033516, guid: ba9d1375e004e824ba0ff6ece8e863d7, type: 3}
       propertyPath: m_RootOrder
@@ -43350,7 +43389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4773739357033516, guid: ba9d1375e004e824ba0ff6ece8e863d7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 135
+      value: -45.000004
       objectReference: {fileID: 0}
     - target: {fileID: 4773739357033516, guid: ba9d1375e004e824ba0ff6ece8e863d7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -44075,7 +44114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4660784718858138, guid: c473ddc8c27cd5844a39f065961816d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1
+      value: -0.040000003
       objectReference: {fileID: 0}
     - target: {fileID: 4660784718858138, guid: c473ddc8c27cd5844a39f065961816d0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -47522,7 +47561,7 @@ PrefabInstance:
     - target: {fileID: 1626288948, guid: 59f753e01985f424ab6bfcc9256ac205, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1795463644}
+      objectReference: {fileID: 608590409}
     - target: {fileID: 4098096561687781402, guid: 59f753e01985f424ab6bfcc9256ac205,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -48156,8 +48195,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -49817,7 +49856,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.81266
+      value: 0.813
       objectReference: {fileID: 0}
     - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -49854,6 +49893,10 @@ PrefabInstance:
     - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.939
       objectReference: {fileID: 0}
     - target: {fileID: 23919025084750442, guid: 9a0b50ddb0002a047a3c8cefb24da0c5,
         type: 3}
@@ -53040,41 +53083,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1791893535}
   m_Mesh: {fileID: 6255687079079774844, guid: 465125e316c377848874927a85240922, type: 3}
---- !u!84 &1795463644
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  serializedVersion: 3
-  m_Width: 1920
-  m_Height: 1080
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 1
-  m_ColorFormat: 8
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1803666524
 GameObject:
   m_ObjectHideFlags: 0
@@ -53831,7 +53839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4660784718858138, guid: c473ddc8c27cd5844a39f065961816d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1
+      value: -0.040000003
       objectReference: {fileID: 0}
     - target: {fileID: 4660784718858138, guid: c473ddc8c27cd5844a39f065961816d0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -56452,6 +56460,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.924
+      objectReference: {fileID: 0}
     - target: {fileID: 23919025084750442, guid: 9a0b50ddb0002a047a3c8cefb24da0c5,
         type: 3}
       propertyPath: m_CastShadows
@@ -56522,6 +56534,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fe57cbe887da074aa8887f594f75243, type: 3}
+--- !u!84 &1940259272
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 3
+  m_Width: 1920
+  m_Height: 1080
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 1
+  m_ColorFormat: 8
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1001 &1940262032
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57874,11 +57921,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.81266
+      value: 0.813
       objectReference: {fileID: 0}
     - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.25598
+      value: -23.617
       objectReference: {fileID: 0}
     - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
       propertyPath: m_LocalRotation.x
@@ -57911,6 +57958,10 @@ PrefabInstance:
     - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645002640809266, guid: 9a0b50ddb0002a047a3c8cefb24da0c5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.928
       objectReference: {fileID: 0}
     - target: {fileID: 23919025084750442, guid: 9a0b50ddb0002a047a3c8cefb24da0c5,
         type: 3}
@@ -58226,7 +58277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4660784718858138, guid: c473ddc8c27cd5844a39f065961816d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.11
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4660784718858138, guid: c473ddc8c27cd5844a39f065961816d0, type: 3}
       propertyPath: m_LocalPosition.z

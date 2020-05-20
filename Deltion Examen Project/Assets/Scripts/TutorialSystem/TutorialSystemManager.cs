@@ -63,8 +63,9 @@ public class TutorialStep
 {
     public bool completed = false;
     public List<GameObject> activatedObjects = new List<GameObject>();
-
+    [TextArea]
     public string stepTextDescription;
+    [TextArea]
     public string stepDoneDescription;
 
     public TextMeshProUGUI textObject;
