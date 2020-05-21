@@ -9,6 +9,9 @@ public class DestroyObjective : Entity
 
     private EntitySpawner[] spawners;
     public List<GameObject> enemiesToSpawn = new List<GameObject>();
+    public GameObject queen;
+    public GameObject tank;
+    bool queenSpawned;
 
     private bool spawnTimer = false;
     public float spawnCooldown;
@@ -33,22 +36,35 @@ public class DestroyObjective : Entity
         {
             spawnTimer = true;
 
-            int spawnsPerSpawner = Mathf.CeilToInt((float)enemiesToSpawn.Count / spawners.Length);
+            int spawnsPerSpawner = Mathf.CeilToInt((float)enemiesToSpawn.Count / spawners.Length - 1);
             if (spawnsPerSpawner == 0)
                 spawnsPerSpawner = 1;
 
             List<GameObject> wave = new List<GameObject>();
             wave.AddRange(enemiesToSpawn);
 
+            if(!queenSpawned)
+            {
+                spawners[0].AddToSpawnQue(queen);
+                queenSpawned = true;
+            }
+            else
+            {
+                spawners[0].AddToSpawnQue(tank);
+            }
+
             foreach (EntitySpawner spawner in spawners)
             {
-                if(wave.Count != 0)
+                if(spawner != spawners[0])
                 {
-                    for (int i = 0; i < spawnsPerSpawner; i++)
+                    if(wave.Count != 0)
                     {
-                        int randomEntity = Random.Range(0, wave.Count - 1);
-                        spawner.AddToSpawnQue(wave[randomEntity]);
-                        wave.Remove(wave[randomEntity]);
+                        for (int i = 0; i < spawnsPerSpawner; i++)
+                        {
+                            int randomEntity = Random.Range(0, wave.Count - 1);
+                            spawner.AddToSpawnQue(wave[randomEntity]);
+                            wave.Remove(wave[randomEntity]);
+                        }
                     }
                 }
             }

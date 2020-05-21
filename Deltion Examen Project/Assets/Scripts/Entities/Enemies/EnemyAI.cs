@@ -98,7 +98,7 @@ public abstract class EnemyAI : MonoBehaviour
         else
             mainAudioSource.Stop();
     }
-    private void OnDestroy()
+    public virtual void OnDestroy()
     {
         entityManager.RemoveEnemy(myStats);
         if(myTarget != null)
