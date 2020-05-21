@@ -343,6 +343,7 @@
     <Compile Include="Assets\Scripts\Entities\Enemies\Enemy.cs" />
     <Compile Include="Assets\Scripts\Entities\Enemies\EnemyAI.cs" />
     <Compile Include="Assets\Scripts\Entities\Enemies\IndividualEnemyTypes\MeleeEnemy.cs" />
+    <Compile Include="Assets\Scripts\Entities\Enemies\IndividualEnemyTypes\QueenAI.cs" />
     <Compile Include="Assets\Scripts\Entities\Entity.cs" />
     <Compile Include="Assets\Scripts\Entities\EntitySpawner.cs" />
     <Compile Include="Assets\Scripts\Entities\Player\CameraMovement.cs" />
