@@ -171,6 +171,8 @@ MonoBehaviour:
   speed: 4.2
   damage: 400
   attackRange: 4
+  myRenderer: {fileID: 4206886029109638267}
+  emmisiveMaterial: {fileID: 2100000, guid: a820951eac3c97b419a3197a9dec7905, type: 2}
 --- !u!195 &7468812039799073516
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1035,6 +1037,12 @@ Transform:
 --- !u!1 &1290177959158447166 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6180343461911412838, guid: 18677d8ae68d7564dbf6829972ed5de5,
+    type: 3}
+  m_PrefabInstance: {fileID: 4313498849012466596}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &4206886029109638267 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -9097978419998361633, guid: 18677d8ae68d7564dbf6829972ed5de5,
     type: 3}
   m_PrefabInstance: {fileID: 4313498849012466596}
   m_PrefabAsset: {fileID: 0}

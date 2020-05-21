@@ -124,6 +124,8 @@ MonoBehaviour:
   speed: 6.2
   damage: 100
   attackRange: 3
+  myRenderer: {fileID: 6774305308154998865}
+  emmisiveMaterial: {fileID: 2100000, guid: a820951eac3c97b419a3197a9dec7905, type: 2}
 --- !u!195 &271476835443764934
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -383,6 +385,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 561379639565331470}
     m_Modifications:
+    - target: {fileID: -9097978419998361633, guid: 18677d8ae68d7564dbf6829972ed5de5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d0ff096c6c1f51c4d8b6ec28558b854b, type: 2}
     - target: {fileID: -9048517947679542951, guid: 18677d8ae68d7564dbf6829972ed5de5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1030,6 +1037,12 @@ Transform:
 --- !u!1 &8468267310133573652 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6180343461911412838, guid: 18677d8ae68d7564dbf6829972ed5de5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6899046364706817934}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &6774305308154998865 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -9097978419998361633, guid: 18677d8ae68d7564dbf6829972ed5de5,
     type: 3}
   m_PrefabInstance: {fileID: 6899046364706817934}
   m_PrefabAsset: {fileID: 0}

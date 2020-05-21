@@ -1104,11 +1104,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3270825147772861786}
     m_Modifications:
-    - target: {fileID: 1507679123970806680, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1614415758301244679, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
         type: 3}
       propertyPath: objectiveSpawner
@@ -1118,11 +1113,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EntitySpawner (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5134735037807060856, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6096058327966511245, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
         type: 3}
@@ -1179,16 +1169,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8055198083047277647, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 8056723604021117693, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59dc2acb3ea603d47923f9dd5c0a865b, type: 3}
 --- !u!4 &5255920361706022946 stripped
@@ -1204,11 +1184,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3270825147772861786}
     m_Modifications:
-    - target: {fileID: 1507679123970806680, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1614415758301244679, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
         type: 3}
       propertyPath: objectiveSpawner
@@ -1218,11 +1193,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EntitySpawner (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5134735037807060856, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6096058327966511245, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
         type: 3}
@@ -1279,16 +1249,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8055198083047277647, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 8056723604021117693, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59dc2acb3ea603d47923f9dd5c0a865b, type: 3}
 --- !u!4 &5402941378625712315 stripped
@@ -1304,11 +1264,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3270825147772861786}
     m_Modifications:
-    - target: {fileID: 1507679123970806680, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1614415758301244679, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
         type: 3}
       propertyPath: objectiveSpawner
@@ -1318,11 +1273,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EntitySpawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 5134735037807060856, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6096058327966511245, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
         type: 3}
@@ -1378,16 +1328,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8055198083047277647, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 8056723604021117693, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59dc2acb3ea603d47923f9dd5c0a865b, type: 3}
@@ -1529,11 +1469,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3270825147772861786}
     m_Modifications:
-    - target: {fileID: 1507679123970806680, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1614415758301244679, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
         type: 3}
       propertyPath: objectiveSpawner
@@ -1543,11 +1478,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EntitySpawner (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5134735037807060856, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6096058327966511245, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
         type: 3}
@@ -1604,16 +1534,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8055198083047277647, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 8056723604021117693, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59dc2acb3ea603d47923f9dd5c0a865b, type: 3}
 --- !u!4 &3913957436938971770 stripped
@@ -1629,11 +1549,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3270825147772861786}
     m_Modifications:
-    - target: {fileID: 1507679123970806680, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1614415758301244679, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
         type: 3}
       propertyPath: objectiveSpawner
@@ -1643,11 +1558,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EntitySpawner (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5134735037807060856, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6096058327966511245, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
         type: 3}
@@ -1703,16 +1613,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8055198083047277647, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 8056723604021117693, guid: 59dc2acb3ea603d47923f9dd5c0a865b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59dc2acb3ea603d47923f9dd5c0a865b, type: 3}

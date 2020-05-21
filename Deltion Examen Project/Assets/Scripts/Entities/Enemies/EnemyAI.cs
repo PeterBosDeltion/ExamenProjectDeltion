@@ -46,6 +46,11 @@ public abstract class EnemyAI : MonoBehaviour
         entityManager = EntityManager.instance;
         entityManager.AddEnemy(myStats);
         SetTarget();
+        UpdateAgentSpeed();
+    }
+
+    public void UpdateAgentSpeed()
+    {
         agent.speed = myStats.speed;
     }
 

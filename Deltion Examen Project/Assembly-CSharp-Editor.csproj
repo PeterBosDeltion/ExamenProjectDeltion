@@ -745,10 +745,6 @@
       <Project>{82812160-098F-DC71-6C40-208354CBA4F6}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
-    <ProjectReference Include="OEBIF.csproj">
-      <Project>{3AE1A9AA-3FFC-2FD0-3D2A-98449A67FB5C}</Project>
-      <Name>OEBIF</Name>
-    </ProjectReference>
     <ProjectReference Include="NavMeshComponentsEditor.csproj">
       <Project>{18D70B0B-0561-7C71-692C-522F42DC47F5}</Project>
       <Name>NavMeshComponentsEditor</Name>
@@ -756,6 +752,10 @@
     <ProjectReference Include="NavMeshComponents.csproj">
       <Project>{A59CE110-7DA1-DC80-0C5A-7B0490C1E7BF}</Project>
       <Name>NavMeshComponents</Name>
+    </ProjectReference>
+    <ProjectReference Include="OEBIF.csproj">
+      <Project>{3AE1A9AA-3FFC-2FD0-3D2A-98449A67FB5C}</Project>
+      <Name>OEBIF</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

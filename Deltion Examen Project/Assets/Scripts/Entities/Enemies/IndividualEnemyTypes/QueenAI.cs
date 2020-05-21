@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class QueenAI : MeleeEnemy
 {
-    // Start is called before the first frame update
-    void Start()
+    [Space]
+    [Tooltip("This multipleir will be aplied onto the enemies speed and damage")]
+    public float BuffModifier;
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.GetComponent<Enemy>())
+        {
+            other.GetComponent<Enemy>().SetTemporaryBuffValue(BuffModifier, false);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit(Collider other)
     {
-        
+        if (other.GetComponent<Enemy>())
+        {
+            other.GetComponent<Enemy>().SetTemporaryBuffValue(BuffModifier, true);
+        }
     }
 }
