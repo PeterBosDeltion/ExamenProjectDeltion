@@ -14,6 +14,8 @@ public class Enemy : Entity
     public Material emmisiveMaterial;
     private Material OriginalMaterial;
 
+    public ParticleSystem deathParticle;
+
     protected override void Awake()
     {
         base.Awake();
@@ -62,6 +64,8 @@ public class Enemy : Entity
 
         if (myAI)
             myAI.SetState(EnemyAI.AIState.Dead);
+
+        deathParticle.Play();
 
         GetComponent<Collider>().enabled = false;
         StartCoroutine(DestroyEnemy());
