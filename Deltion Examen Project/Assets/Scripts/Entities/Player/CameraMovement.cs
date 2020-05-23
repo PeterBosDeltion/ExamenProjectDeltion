@@ -18,6 +18,7 @@ public class CameraMovement : MonoBehaviour
     private bool canMove;
     public float cameraResetRadius = 10;
     //public float maxDistanceRadiusFromCenter;
+    private int deadPlayers;
 
     private void Start()
     {
@@ -29,6 +30,9 @@ public class CameraMovement : MonoBehaviour
         {
             playingCoop = true;
             canMove = true;
+            deadPlayers = 0;
+           
+
         }
     }
 
@@ -43,8 +47,25 @@ public class CameraMovement : MonoBehaviour
         Vector3 newOffset = Camera.main.transform.forward * -distanceOffset;
         newOffset += Camera.main.transform.up * heightOfset;
         transform.position = target.position + newOffset;
+
+        foreach (var player in GameManager.instance.activePlayers)
+        {
+            player.GetComponent<Player>().deathEvent += PlayerDeath;
+        }
     }
 
+    public void FindAlivePlayer()
+    {
+        foreach (PlayerController player in GameManager.instance.GetPlayers())
+        {
+            if (!player.GetIfDeath())
+                target = player.transform;
+        }
+
+        //Vector3 newOffset = Camera.main.transform.forward * -distanceOffset;
+        //newOffset += Camera.main.transform.up * heightOfset;
+        //transform.position = target.position + newOffset;
+    }
     //Either late or fixed update CAN work with this.
     private void FixedUpdate()
     {
@@ -56,7 +77,8 @@ public class CameraMovement : MonoBehaviour
         {
             if(canMove)
                 MoveAfterCenterpoint();
-            KeepPlayersInDistance();
+            if (deadPlayers < GameManager.instance.activePlayers.Count - 1)
+                KeepPlayersInDistance();
         }
     }
 
@@ -77,17 +99,49 @@ public class CameraMovement : MonoBehaviour
     void MoveAfterCenterpoint()
     {
         if(GameManager.instance.activePlayers.Count > 0)
-            bounds = new Bounds(GameManager.instance.activePlayers[0].transform.position, Vector3.zero);
-        for (int i = 0; i < GameManager.instance.activePlayers.Count; i++)
         {
-            bounds.Encapsulate(GameManager.instance.activePlayers[i].transform.position);
-        }
-        Vector3 newOffset = Camera.main.transform.forward * -distanceOffset;
-        newOffset += Camera.main.transform.up * heightOfset;
-        Vector3 targetPos = bounds.center + newOffset;
-        Vector3 smoothedPos = Vector3.Lerp(transform.position, targetPos, smoothness * Time.deltaTime);
+            if (deadPlayers >= GameManager.instance.activePlayers.Count - 1)
+            {
+                if (!target)
+                {
+                    FindAlivePlayer();
+                }
+                if (target)
+                {
+                    Vector3 newOffset = Camera.main.transform.forward * -distanceOffset;
+                    newOffset += Camera.main.transform.up * heightOfset;
+                    Vector3 targetPos = target.position + newOffset;
+                    Vector3 smoothedPos = Vector3.Lerp(transform.position, targetPos, smoothness * Time.deltaTime);
 
-            transform.localPosition = smoothedPos;
+                    transform.localPosition = smoothedPos;
+                }
+            }
+            else
+            {
+                if (GameManager.instance.activePlayers.Count > 0)
+                    bounds = new Bounds(GameManager.instance.activePlayers[0].transform.position, Vector3.zero);
+                for (int i = 0; i < GameManager.instance.activePlayers.Count; i++)
+                {
+                    bounds.Encapsulate(GameManager.instance.activePlayers[i].transform.position);
+                }
+                Vector3 newOffset = Camera.main.transform.forward * -distanceOffset;
+                newOffset += Camera.main.transform.up * heightOfset;
+                Vector3 targetPos = bounds.center + newOffset;
+                Vector3 smoothedPos = Vector3.Lerp(transform.position, targetPos, smoothness * Time.deltaTime);
+
+                transform.localPosition = smoothedPos;
+            }
+        }
+      
+       
+    }
+
+    private void PlayerDeath()
+    {
+        if (deadPlayers < GameManager.instance.activePlayers.Count)
+            deadPlayers++;
+        if (deadPlayers >= GameManager.instance.activePlayers.Count - 1)
+            target = null;
     }
 
     void KeepPlayersInDistance()

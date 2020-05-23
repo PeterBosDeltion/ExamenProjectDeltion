@@ -69,16 +69,22 @@ public class Player : Entity
 
     protected override void Death()
     {
+        base.Death();
         GameManager.instance.CheckGameOver();
 
-        if(GameManager.instance.curentState != GameManager.GameState.GameOver)
+        if(GameManager.instance.curentState != GameManager.GameState.GameOver && gameObject.activeSelf)
             WipePlayer();
     }
 
     private void WipePlayer()
     {
         gameObject.SetActive(false);
-        ResetPlayer();
+        MinimapIcon minimapIcon = GetComponentInChildren<MinimapIcon>();
+        if (minimapIcon.rendPlayer)
+        {
+            minimapIcon.SetLineRendererNextAlive();
+        }
+        //ResetPlayer();
     }
 
     private void ResetPlayer()
@@ -86,25 +92,25 @@ public class Player : Entity
         hp = maxHp;
         //Reset Loadout
         //Reset ability's cooldown & ult charge
-        MinimapIcon minimapIcon = GetComponentInChildren<MinimapIcon>();
-        if (minimapIcon.rendPlayer)
-        {
-            minimapIcon.SetLineRendererNextAlive();
-        }
+     
     }
 
     public void SetUxText(string newText)
     {
-        if (waiting)
+        if (!death)
         {
-            StopCoroutine(resetting);
-            waiting = false;
+            if (waiting)
+            {
+                StopCoroutine(resetting);
+                waiting = false;
+            }
+            uxText.text = newText;
+            if (!waiting)
+            {
+                resetting = StartCoroutine(ResetUxText());
+            }
         }
-        uxText.text = newText;
-        if (!waiting)
-        {
-            resetting = StartCoroutine(ResetUxText());
-        }
+      
     }
 
     private IEnumerator ResetUxText()
