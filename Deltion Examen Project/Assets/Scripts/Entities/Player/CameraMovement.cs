@@ -82,6 +82,11 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
+    public void RemoveDeadPlayer()
+    {
+        if(deadPlayers > 0)
+            deadPlayers--;
+    }
     //Camera follows player
     void MoveAfterPlayer()
     {
@@ -141,7 +146,10 @@ public class CameraMovement : MonoBehaviour
         if (deadPlayers < GameManager.instance.activePlayers.Count)
             deadPlayers++;
         if (deadPlayers >= GameManager.instance.activePlayers.Count - 1)
+        {
             target = null;
+            canMove = true;
+        }
     }
 
     void KeepPlayersInDistance()

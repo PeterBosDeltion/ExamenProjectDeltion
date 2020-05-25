@@ -35,10 +35,10 @@ public abstract class Ability : MonoBehaviour
     [HideInInspector]
     public bool returned;
 
-    private bool deploying;
+    public bool deploying;
     private LineRenderer lineRenderer;
-    private bool ultActive;
-    private bool checkUltCharged;
+    public bool ultActive;
+    public bool checkUltCharged;
     public float controllerLaserStartDist = 5;
     public float controllerLaserMaxDist = 12.5F;
     public float controllerLaserMinDist = 3F;
