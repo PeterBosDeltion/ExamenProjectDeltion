@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
             walkingSource.Stop();
         }
     }
-
+    
     public void Initialize()
     {
         GetComponentInChildren<Outline>().color = playerNumber;

@@ -53,6 +53,8 @@ public class PlayerUI : MonoBehaviour
 
     private Animator ani;
     private bool aniInit;
+    public GameObject deadUI;
+    public GameObject abilitiesParent;
     //private bool waiting;
     public void GetMyPlayer()
     {
@@ -106,6 +108,8 @@ public class PlayerUI : MonoBehaviour
         myPlayer.myInputManager.LastWeaponEvent += LastSwapEvent;
 
         myPlayer.GetComponent<Player>().takeDamageEvent += TakeDamage;
+        myPlayer.GetComponent<Player>().deathEvent += PlayerDeath;
+        myPlayer.GetComponent<Player>().reviveEvent += PlayerRevive;
 
         foreach (Image img in playerMainColoredImages)
         {
@@ -140,8 +144,10 @@ public class PlayerUI : MonoBehaviour
             myPlayer.myInputManager.reloadEvent -= ReloadEvent;
             myPlayer.myInputManager.scrollEvent -= SwapEvent;
             myPlayer.myInputManager.LastWeaponEvent -= LastSwapEvent;
+            myPlayer.GetComponent<Player>().deathEvent -= PlayerDeath;
+            myPlayer.GetComponent<Player>().reviveEvent -= PlayerRevive;
         }
-      
+
     }
 
     private void TakeDamage()
@@ -150,6 +156,29 @@ public class PlayerUI : MonoBehaviour
             ani.SetTrigger("Damaged");
     }
 
+    private void PlayerDeath()
+    {
+        deadUI.SetActive(true);
+        abilitiesParent.SetActive(false);
+    }
+
+    private void PlayerRevive()
+    {
+        deadUI.SetActive(false);
+        abilitiesParent.SetActive(true);
+
+        abilityOneCDImg.fillAmount = 0;
+        abilityOneHotkeyText.enabled = true;
+
+         abilityTwoCDImg.fillAmount = 0;
+        abilityTwoHotkeyText.enabled = true;
+
+        abilityThreeCDImg.fillAmount = 0;
+        abilityThreeHotkeyText.enabled = true;
+
+        abilityFourCDImg.fillAmount = 0;
+        abilityFourHotkeyText.enabled = true;
+    }
     public void AbilityUsed(int f)
     {
             switch (f)

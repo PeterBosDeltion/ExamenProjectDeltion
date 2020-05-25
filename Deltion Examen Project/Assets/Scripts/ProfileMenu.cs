@@ -35,7 +35,7 @@ public class ProfileMenu : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Backslash))
             {
-                ExperienceManager.instance.AwardExp(100);
+                ExperienceManager.instance.AwardExp(2000);
                 UpdateUI();
             }
         }

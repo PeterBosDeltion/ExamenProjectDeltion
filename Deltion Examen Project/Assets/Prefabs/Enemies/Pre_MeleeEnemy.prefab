@@ -118,6 +118,7 @@ MonoBehaviour:
   maxTempHp: 0
   maxHp: 200
   death: 0
+  xpWhenKilled: 0
   myAI: {fileID: 0}
   anim: {fileID: 0}
   speed: 6.2
@@ -367,6 +368,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pre_MinimapIcon
       objectReference: {fileID: 0}
+    - target: {fileID: 6624736751813277937, guid: b4522b8b3d0e4584f8fff7461c9fccb3,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 54a589c1167183240b1acbd38c406bf8,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4522b8b3d0e4584f8fff7461c9fccb3, type: 3}
 --- !u!4 &7456856067071361824 stripped

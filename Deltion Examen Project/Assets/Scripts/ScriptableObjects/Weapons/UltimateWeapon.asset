@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4070fe8b458becf4b9866a45a0ce4ff2, type: 3}
+  m_Name: UltimateWeapon
+  m_EditorClassIdentifier: 
+  name: Ultimate Weapon
+  description: 'This marvel of engineering has existed for centuries, yet no one
+    has ever been able to improve upon it''s absolutely flawless and perfect design.
+
+'
+  requiredLevel: 50
+  minFallOff: Infinity
+  maxFallOff: Infinity
+  projectileVelocity: 3000
+  damage: 1000
+  firerate: 50000
+  boltTime: 0
+  minSpreadAngle: 0
+  maxSpreadAngle: 0
+  totalAmmo: 999
+  ammoDrain: 1
+  uiIcon: {fileID: 21300000, guid: bba6ed03c46f67140bb7d951b1303276, type: 3}
+  myFireType: 0
+  reloadSpeed: 2

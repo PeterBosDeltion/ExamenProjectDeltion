@@ -77,16 +77,11 @@ public class MinimapCamera : MonoBehaviour
         {
             if (controllingPlayer.myInputManager.controllerIndex < 0 )
             {
-                if (!hinput.gamepad[controllingPlayer.myInputManager.playerIndex].isConnected)
-                {
                     float x = Input.GetAxis("Mouse X");
                     float z = Input.GetAxis("Mouse Y");
 
-
-
                     Vector3 movement = new Vector3(-x, 0, -z);
                     transform.position = transform.position + movement * 120 * Time.deltaTime;
-                }
                
             }
             else if (controllingPlayer.myInputManager.controllerIndex >= 0)

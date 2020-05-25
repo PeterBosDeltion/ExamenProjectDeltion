@@ -331,8 +331,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 0.3
-  m_fontSizeBase: 0.3
+  m_fontSize: 0.5
+  m_fontSizeBase: 0.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -377,7 +377,7 @@ MonoBehaviour:
     spaceCount: 1
     wordCount: 2
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -873,6 +873,21 @@ PrefabInstance:
       propertyPath: myIconType
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 376590004401973753, guid: b4522b8b3d0e4584f8fff7461c9fccb3,
+        type: 3}
+      propertyPath: overrideScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 376590004401973753, guid: b4522b8b3d0e4584f8fff7461c9fccb3,
+        type: 3}
+      propertyPath: overrideScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 376590004401973753, guid: b4522b8b3d0e4584f8fff7461c9fccb3,
+        type: 3}
+      propertyPath: overrideScale.z
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3893579598690299289, guid: b4522b8b3d0e4584f8fff7461c9fccb3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -881,7 +896,7 @@ PrefabInstance:
     - target: {fileID: 3893579598690299289, guid: b4522b8b3d0e4584f8fff7461c9fccb3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3893579598690299289, guid: b4522b8b3d0e4584f8fff7461c9fccb3,
         type: 3}
@@ -933,6 +948,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pre_MinimapIcon
       objectReference: {fileID: 0}
+    - target: {fileID: 6624736751813277937, guid: b4522b8b3d0e4584f8fff7461c9fccb3,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 71596ae43d27b1c4280fe97f12d3e691,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4522b8b3d0e4584f8fff7461c9fccb3, type: 3}
 --- !u!4 &5314383801671745461 stripped

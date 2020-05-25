@@ -25,6 +25,7 @@ public class MinimapIcon : MonoBehaviour
 
     public IconType myIconType;
     private SpriteRenderer icon;
+    public Vector3 overrideScale;
     void Start()
     {
         icon = GetComponent<SpriteRenderer>();
@@ -33,7 +34,14 @@ public class MinimapIcon : MonoBehaviour
         switch (myIconType)
         {
             case IconType.Player:
-                transform.localScale = new Vector3(0.3F, 0.3F, 0.3F);
+                if(overrideScale == Vector3.zero)
+                {
+                    transform.localScale = new Vector3(0.4F, 0.4F, 0.4F);
+                }
+                else
+                {
+                    transform.localScale = overrideScale;
+                }
                 icon.color = playerColor;
                 if (transform.parent.GetComponentInParent<PlayerController>().playerNumber == 0)
                 {
@@ -42,19 +50,47 @@ public class MinimapIcon : MonoBehaviour
                 }
                 break;
             case IconType.Enemy:
-                transform.localScale = new Vector3(0.3F, 0.3F, 0.3F);
+                if (overrideScale == Vector3.zero)
+                {
+                    transform.localScale = new Vector3(0.4F, 0.4F, 0.4F);
+                }
+                else
+                {
+                    transform.localScale = overrideScale;
+                }
                 icon.color = EnemyColor;
                 break;
             case IconType.Objective:
-                transform.localScale = new Vector3(1.0F, 1.0F, 1.0F);
+                if (overrideScale == Vector3.zero)
+                {
+                    transform.localScale = new Vector3(8F, 8F, 8F);
+                }
+                else
+                {
+                    transform.localScale = overrideScale;
+                }
                 icon.color = ObjectiveColor;
                 break;
             case IconType.Interactable:
-                transform.localScale = new Vector3(0.5F, 0.5F, 0.5F);
+                if (overrideScale == Vector3.zero)
+                {
+                    transform.localScale = new Vector3(2.5F, 2.5F, 2.5F);
+                }
+                else
+                {
+                    transform.localScale = overrideScale;
+                }
                 icon.color = interactableColor;
                 break;
             case IconType.Deployable:
-                transform.localScale = new Vector3(0.3F, 0.3F, 0.3F);
+                if (overrideScale == Vector3.zero)
+                {
+                    transform.localScale = new Vector3(0.3F, 0.3F, 0.3F);
+                }
+                else
+                {
+                    transform.localScale = overrideScale;
+                }
                 icon.color = deployableColor;
                 break;
         }

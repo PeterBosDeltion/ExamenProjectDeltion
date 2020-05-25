@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TutorialReminderWindow : MonoBehaviour
 {
-    public bool remindme = true; //Implement saving
     public GameObject yesButton;
     [HideInInspector]
     public UIManager manager;
@@ -24,6 +23,6 @@ public class TutorialReminderWindow : MonoBehaviour
     {
         gameObject.SetActive(false);
         manager.SetSelectedObject(manager.playButton);
-        remindme = false; //Implement saving
+        PlayerProfile.instance.SetDoneTutorial(true);
     }
 }

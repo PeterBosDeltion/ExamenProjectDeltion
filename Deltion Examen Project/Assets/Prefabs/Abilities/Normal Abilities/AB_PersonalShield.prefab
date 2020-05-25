@@ -43,7 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e59ff382d916fe54b94031d764e0aa1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cantUse: 0
   myPlayer: {fileID: 0}
+  myPlayerController: {fileID: 0}
   name: Personal shield
   description: This personal forcefield covers the user after activation and provides
     temporary protection from incoming damage.
@@ -54,13 +56,20 @@ MonoBehaviour:
   active: 0
   cooldownTime: 40
   duration: 20
+  currentUltCharge: 0
+  ultChargeIncrement: 0
   deployableRadius: 7.5
   deployableGhost: {fileID: 0}
   canDeployMaterial: {fileID: 0}
   cannotDeployMaterial: {fileID: 0}
+  deployLineMaterial: {fileID: 0}
+  deployableOffset: {x: 0, y: 0, z: 0}
   returned: 0
+  controllerLaserStartDist: 5
+  controllerLaserMaxDist: 12.5
+  controllerLaserMinDist: 3
   myDeployType: 0
-  tempHP: 500
+  tempHP: 750
   shieldEffectPrefab: {fileID: 1246149216655738807, guid: ffb7a5254255d37408fd2aff453840f1,
     type: 3}
   spawnOffset: {x: 0, y: 1, z: 0}
