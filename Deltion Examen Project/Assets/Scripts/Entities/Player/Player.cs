@@ -38,7 +38,6 @@ public class Player : Entity
     protected override void OnDestroy()
     {
         base.OnDestroy();
-
         zeroTempHp -= EmptyHpEvent;
     }
 

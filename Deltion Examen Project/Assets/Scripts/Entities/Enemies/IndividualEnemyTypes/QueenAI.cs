@@ -8,7 +8,7 @@ public class QueenAI : MeleeEnemy
     [Tooltip("This multipleir will be aplied onto the enemies speed and damage")]
     public float BuffModifier;
 
-    public List<Enemy> allBuffedEnemies = new List<Enemy>();
+    private List<Enemy> allBuffedEnemies = new List<Enemy>();
 
     private void OnTriggerEnter(Collider other)
     {
@@ -30,11 +30,11 @@ public class QueenAI : MeleeEnemy
 
     public override void OnDestroy()
     {
-        base.OnDestroy();
-
         foreach(Enemy enemy in allBuffedEnemies)
         {
             enemy.SetTemporaryBuffValue(BuffModifier, true);
         }
+
+        base.OnDestroy();
     }
 }

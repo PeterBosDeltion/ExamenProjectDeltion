@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTempHp: 0
-  maxHp: 200
+  maxHp: 100
   death: 0
   xpWhenKilled: 0
   myAI: {fileID: 0}

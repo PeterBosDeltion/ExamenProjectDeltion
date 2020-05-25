@@ -80,7 +80,7 @@ Transform:
   m_GameObject: {fileID: 3670594343875086394}
   m_LocalRotation: {x: -0, y: -0.99989784, z: 0, w: -0.014293508}
   m_LocalPosition: {x: 349.49, y: 1.5, z: 246.13}
-  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 3106593573190445710}
   - {fileID: 3591678661225636097}
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTempHp: 0
-  maxHp: 1000
+  maxHp: 1250
   death: 0
   xpWhenKilled: 0
   myAI: {fileID: 0}
@@ -274,7 +274,6 @@ MonoBehaviour:
     type: 3}
   timeBeforeDamage: 0.1
   BuffModifier: 1.5
-  allBuffedEnemies: []
 --- !u!1 &4106189655116259850
 GameObject:
   m_ObjectHideFlags: 0

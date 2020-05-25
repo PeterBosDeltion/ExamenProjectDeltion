@@ -145,6 +145,8 @@ public abstract class EnemyAI : MonoBehaviour
                 else
                 {
                     myTarget.deathEvent += TargetDied;
+                    myStats.deathEvent += myTarget.EnemyOnMeDied;
+                    myTarget.enemiesOnTarget++;
                 }
                 SetState(AIState.ClosingIn);
             }
@@ -266,5 +268,19 @@ public abstract class EnemyAI : MonoBehaviour
         Focused = true;
         yield return new WaitForSeconds(AttantionTime);
         Focused = false;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.GetComponent<Entity>())
+        {
+            if(entityManager.AllPlayersAndAbilities.Contains(other.GetComponent<Entity>()))
+            {
+                if(Focused)
+                {
+                    SetTarget(other.GetComponent<Entity>());
+                }
+            }
+        }
     }
 }
