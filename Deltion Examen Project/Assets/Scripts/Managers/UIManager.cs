@@ -58,7 +58,7 @@ public class UIManager : MonoBehaviour
         }
 
         //if not done tutorial
-        if (tutorialReminderWindow.GetComponent<TutorialReminderWindow>().remindme)
+        if (!PlayerProfile.instance.template.doneTutorial)
         {
             tutorialReminderWindow.SetActive(true);
             SetSelectedObject(tutorialReminderWindow.GetComponent<TutorialReminderWindow>().yesButton);

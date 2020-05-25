@@ -190,6 +190,13 @@ public class Weapon : MonoBehaviour
         reloading = false;
     }
 
+    public void FullResetValues()
+    {
+        ResetShotsFired();
+        magazineAmmo = totalAmmo;
+        canShoot = true;
+        reloading = false;
+    }
     protected void DrainAmmo()
     {
         if (gameObject.activeSelf)

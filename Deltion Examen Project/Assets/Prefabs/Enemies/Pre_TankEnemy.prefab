@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 7468812039799073516}
   - component: {fileID: 7233614727149243135}
   - component: {fileID: 743258876511387992}
+  - component: {fileID: 8041653887308182201}
   m_Layer: 2
   m_Name: Pre_TankEnemy
   m_TagString: Untagged
@@ -167,6 +168,7 @@ MonoBehaviour:
   maxHp: 1000
   death: 0
   xpWhenKilled: 0
+  enemiesOnTarget: 0
   myAI: {fileID: 0}
   anim: {fileID: 0}
   speed: 4.2
@@ -300,6 +302,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!135 &8041653887308182201
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7442850297742150154}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 4
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3825283783433185939
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -25,7 +25,10 @@ public class PlayerLoadoutMenu : MonoBehaviour
     public GameObject scrollBarAbilities;
     public GameObject scrollBarUltimates;
 
-    private void Start()
+    public Image inputMethodImg;
+    public Sprite controllerIcon;
+    public Sprite mkIcon;
+    private void OnEnable()
     {
         Initialize();
     }
@@ -74,6 +77,15 @@ public class PlayerLoadoutMenu : MonoBehaviour
         abilityFourImg.sprite = IDManager.instance.GetAbilityByID(LoudoutManager.instance.playerLoadouts[playerNumber].abilityFourID).uiIcon;
 
         ultImg.sprite = IDManager.instance.GetUltimateAbilityByID(LoudoutManager.instance.playerLoadouts[playerNumber].ultimateID).uiIcon;
+
+        if(GameManager.instance.mouseKeyboardPlayer == playerNumber)
+        {
+            inputMethodImg.sprite = mkIcon;
+        }
+        else
+        {
+            inputMethodImg.sprite = controllerIcon;
+        }
 
     }
 
@@ -152,4 +164,5 @@ public class PlayerLoadoutMenu : MonoBehaviour
         ultimateScrollObject.SetActive(false);
     }
 
+   
 }

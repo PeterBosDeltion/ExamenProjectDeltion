@@ -375,6 +375,7 @@ MonoBehaviour:
   maxHp: 2000
   death: 0
   xpWhenKilled: 0
+  enemiesOnTarget: 0
   lowHealthVoiceThreshold: 600
   mySource: {fileID: 4734839736015168692}
   uxText: {fileID: 544025577}
@@ -393,7 +394,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 12
   rotationSpeed: 10
-  moveDirection: {x: 0, y: 0, z: 0}
   distanceTillRetarget: 1
 --- !u!114 &9046485464598935474
 MonoBehaviour:

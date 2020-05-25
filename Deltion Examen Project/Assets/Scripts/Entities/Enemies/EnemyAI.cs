@@ -107,7 +107,7 @@ public abstract class EnemyAI : MonoBehaviour
         }
     }
 
-    private void TargetDied()
+    protected void TargetDied()
     {
         //Temporary null check untill I find out why enemys dont remove themselfs from the delegate
         if(this != null)
@@ -272,13 +272,17 @@ public abstract class EnemyAI : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.GetComponent<Entity>())
+        if(!GetComponent<QueenAI>())
         {
-            if(entityManager.AllPlayersAndAbilities.Contains(other.GetComponent<Entity>()))
+            if(other.GetComponent<Entity>())
             {
-                if(Focused)
+                if(entityManager.AllPlayersAndAbilities.Contains(other.GetComponent<Entity>()))
                 {
-                    SetTarget(other.GetComponent<Entity>());
+                    if(!Focused)
+                    {
+                        if(myTarget != other.GetComponent<Entity>())
+                            SetTarget(other.GetComponent<Entity>());
+                    }
                 }
             }
         }

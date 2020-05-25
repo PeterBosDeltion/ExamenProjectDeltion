@@ -91,6 +91,9 @@ public class LevelManager : MonoBehaviour
         FindObjectOfType<CameraMovement>().FindPlayerOne();
         mainCanvas.SetUIPlayers();
         playerOne = GameManager.instance.playerOne.GetComponent<Player>();
+
+        if (TutorialSystemManager.instance != null)
+            TutorialSystemManager.instance.functions.AssignDelegates();
     }
 
     private IEnumerator WaitForLoadoutInit()
@@ -329,7 +332,8 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator SpawnTick(float time)
     {
-        timer.SetTimerValues(time, curentWave);
+        if(timer)
+            timer.SetTimerValues(time, curentWave);
         yield return new WaitForSeconds(time);
         SetupWave();
     }

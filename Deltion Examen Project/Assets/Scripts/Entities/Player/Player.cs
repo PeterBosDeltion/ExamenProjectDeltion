@@ -6,7 +6,8 @@ using TMPro;
 public class Player : Entity
 {
     public delegate void HpEvent();
-
+    public delegate void ReviveEvent();
+    public ReviveEvent reviveEvent;
     public HpEvent zeroTempHp;
     public float lowHealthVoiceThreshold = 300;
     public AudioSource mySource;
@@ -23,6 +24,8 @@ public class Player : Entity
 
         hp = maxHp;
         zeroTempHp += EmptyHpEvent;
+        reviveEvent += EmptyHpEvent;
+        reviveEvent += ResetPlayer;
     }
 
     protected override void Start()
@@ -39,6 +42,8 @@ public class Player : Entity
     {
         base.OnDestroy();
         zeroTempHp -= EmptyHpEvent;
+        reviveEvent -= EmptyHpEvent;
+        reviveEvent -= ResetPlayer;
     }
 
     protected override void DamageEvent(Entity Attacker)
@@ -54,7 +59,7 @@ public class Player : Entity
         if (!mySource.isPlaying)
             AudioClipManager.instance.PlayClipOneShotWithSource(mySource, AudioClipManager.instance.clips.voiceHurt);
 
-        if(!particleUsed)
+        if(!particleUsed && gameObject.activeSelf)
         {
             hitParticle.Play();
             particleUsed = true;
@@ -68,42 +73,64 @@ public class Player : Entity
 
     protected override void Death()
     {
+        base.Death();
         GameManager.instance.CheckGameOver();
 
-        if(GameManager.instance.curentState != GameManager.GameState.GameOver)
+        if(GameManager.instance.curentState != GameManager.GameState.GameOver && gameObject.activeSelf)
             WipePlayer();
     }
 
     private void WipePlayer()
     {
         gameObject.SetActive(false);
-        ResetPlayer();
-    }
-
-    private void ResetPlayer()
-    {
-        hp = maxHp;
-        //Reset Loadout
-        //Reset ability's cooldown & ult charge
         MinimapIcon minimapIcon = GetComponentInChildren<MinimapIcon>();
         if (minimapIcon.rendPlayer)
         {
             minimapIcon.SetLineRendererNextAlive();
         }
+        //ResetPlayer();
+    }
+
+    private void ResetPlayer()
+    {
+        hp = maxHp;
+        PlayerController controller = GetComponent<PlayerController>();
+        controller.currentPrimary.FullResetValues();
+        controller.currentSecondary.FullResetValues();
+        controller.ultimateAbility.currentUltCharge = 0;
+        controller.ultimateAbility.checkUltCharged = false;
+        controller.ultimateAbility.active = false;
+        controller.ultimateAbility.ultActive = false;
+        controller.ultimateAbility.onCooldown = false;
+        controller.ultimateAbility.deploying = false;
+
+        foreach (Ability a in controller.abilities)
+        {
+            a.active = false;
+            a.onCooldown = false;
+            a.deploying = false;
+        }
+
+        death = false;
+        SetUxText("");
     }
 
     public void SetUxText(string newText)
     {
-        if (waiting)
+        if (!death)
         {
-            StopCoroutine(resetting);
-            waiting = false;
+            if (waiting)
+            {
+                StopCoroutine(resetting);
+                waiting = false;
+            }
+            uxText.text = newText;
+            if (!waiting)
+            {
+                resetting = StartCoroutine(ResetUxText());
+            }
         }
-        uxText.text = newText;
-        if (!waiting)
-        {
-            resetting = StartCoroutine(ResetUxText());
-        }
+      
     }
 
     private IEnumerator ResetUxText()

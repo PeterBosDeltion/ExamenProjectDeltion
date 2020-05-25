@@ -379,9 +379,15 @@
     <Compile Include="Assets\Scripts\ProfileMenu.cs" />
     <Compile Include="Assets\Scripts\ProfileUnlockUI.cs" />
     <Compile Include="Assets\Scripts\Progression\PlayerProfile.cs" />
+    <Compile Include="Assets\Scripts\RevivePosition.cs" />
+    <Compile Include="Assets\Scripts\ReviveTower.cs" />
+    <Compile Include="Assets\Scripts\TeleportTrigger.cs" />
+    <Compile Include="Assets\Scripts\TriggerHurt.cs" />
     <Compile Include="Assets\Scripts\TutorialInteractable.cs" />
     <Compile Include="Assets\Scripts\TutorialMatrix.cs" />
     <Compile Include="Assets\Scripts\TutorialReminderWindow.cs" />
+    <Compile Include="Assets\Scripts\TutorialSystem\TutorialFunctions.cs" />
+    <Compile Include="Assets\Scripts\TutorialSystem\TutorialSystemManager.cs" />
     <Compile Include="Assets\Scripts\UI\GameOverScreen.cs" />
     <Compile Include="Assets\Scripts\UI\MainCanvas.cs" />
     <Compile Include="Assets\Scripts\UI\PauseMenu.cs" />
@@ -424,6 +430,7 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Multiply Soft.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\Art\Shaders\dissolve.shader" />
     <None Include="Assets\PolygonSciFiSpace\Shaders\SyntyStudios_Asteroid.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\Internal\NoisePainter.shader" />
     <None Include="Assets\Griffin - PolarisV2\Shaders\BuiltinRP\Terrain\BuiltinRP_Lambert_4Splats.shader" />
