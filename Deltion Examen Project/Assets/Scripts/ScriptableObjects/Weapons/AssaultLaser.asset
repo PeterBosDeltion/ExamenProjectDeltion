@@ -19,7 +19,7 @@ MonoBehaviour:
   maxFallOff: 60
   projectileVelocity: 1750
   damage: 35
-  firerate: 200
+  firerate: 250
   boltTime: 0
   minSpreadAngle: -4
   maxSpreadAngle: 4

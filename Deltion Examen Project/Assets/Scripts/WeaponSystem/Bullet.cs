@@ -207,23 +207,37 @@ public class Bullet : MonoBehaviour
     {
         exploded = true;
         List<Entity> incrementedEnts = new List<Entity>();
+        List<Entity> damagedEnts = new List<Entity>();
         incrementedEnts.Clear();
+        damagedEnts.Clear();
         Collider[] overlaps = Physics.OverlapSphere(transform.position, myAoeRadius);
         foreach (var col in overlaps)
         {
-            if (col.GetComponent<Entity>())
+            Entity targetEnt = null;
+            if (col.transform.gameObject.GetComponent<Entity>())
+                targetEnt = col.transform.gameObject.GetComponent<Entity>();
+            if (col.transform.gameObject.GetComponentInParent<Entity>())
+                targetEnt = col.transform.gameObject.GetComponentInParent<Entity>();
+            if (col.transform.gameObject.GetComponentInChildren<Entity>())
+                targetEnt = col.transform.gameObject.GetComponentInChildren<Entity>();
+
+            if (targetEnt)
             {
-                if(col.GetComponent<Entity>().GetHp() > 0)
+                if (targetEnt.GetHp() > 0)
                 {
-                    col.GetComponent<Entity>().TakeDamage(damage, myEnt);
-                    if (col.GetComponent<Entity>().GetHp() <= 0 && !incrementedEnts.Contains(col.GetComponent<Entity>()))
+                    if (!damagedEnts.Contains(targetEnt))
+                    {
+                        targetEnt.TakeDamage(damage, myEnt);
+                        damagedEnts.Add(targetEnt);
+                    }
+                    if (targetEnt.GetHp() <= 0 && !incrementedEnts.Contains(targetEnt))
                     {
                         myEnt.GetComponent<PlayerController>().ultimateAbility.IncrementUltCharge();
-                        incrementedEnts.Add(col.GetComponent<Entity>());
+                        incrementedEnts.Add(targetEnt);
                     }
                 }
-               
             }
+          
         }
 
         RaycastHit hit;
