@@ -112,8 +112,8 @@ public class Entity : MonoBehaviour
 
     public virtual void TriggerDeathEvents()
     {
-        deathEvent.Invoke();
         death = true;
+        deathEvent.Invoke();
     }
 
     public void RemoveTempHP()
