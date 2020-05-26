@@ -149,4 +149,10 @@ public class UIManager : MonoBehaviour
     {
         GameManager.instance.CloseGame();
     }
+
+    public void OnEnable()
+    {
+        GameManager.instance.activePlayers.Clear();
+        GameManager.instance.amountOfPlayers = 1;
+    }
 }

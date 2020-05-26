@@ -18,7 +18,7 @@ MonoBehaviour:
   minFallOff: Infinity
   maxFallOff: Infinity
   projectileVelocity: 2000
-  damage: 100
+  damage: 150
   firerate: 150
   boltTime: 1
   minSpreadAngle: 0
