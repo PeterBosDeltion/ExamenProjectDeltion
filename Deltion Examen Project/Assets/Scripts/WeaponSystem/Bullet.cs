@@ -22,7 +22,11 @@ public class Bullet : MonoBehaviour
     private bool isPiercing;
     private bool incremented;
 
-    public void Initialize(float newDamage, float minDrop, float maxDrop, Vector3 originPosition, Entity damagingEntity, float aoeRadius = 0, bool piercing = false)
+    private int maxPierce;
+    private int currentPierce;
+    private float pierceDivisionValue;
+    private List<Entity> piercedEnts = new List<Entity>();
+    public void Initialize(float newDamage, float minDrop, float maxDrop, Vector3 originPosition, Entity damagingEntity, float aoeRadius = 0, bool piercing = false, int maxPierceAmount = 0, float pierceDivision = 0)
     {
         startDamage = newDamage;
         damage = startDamage;
@@ -37,7 +41,10 @@ public class Bullet : MonoBehaviour
         }
 
         isPiercing = piercing;
-
+        maxPierce = maxPierceAmount;
+        pierceDivisionValue = pierceDivision;
+        currentPierce = 0;
+        piercedEnts.Clear();
     }
     private void Update()
     {
@@ -141,22 +148,27 @@ public class Bullet : MonoBehaviour
             PlayImpactSound();
         }
 
-        if (other.transform.gameObject.GetComponent<Entity>() || other.transform.gameObject.GetComponentInParent<Entity>() || other.transform.gameObject.GetComponentInChildren<Entity>())
+     
+
+        if (myAoeRadius <= 0)
         {
+            Entity entity = null;
+            if (other.transform.gameObject.GetComponent<Entity>())
+                    entity = other.transform.gameObject.GetComponent<Entity>();
+            if (other.transform.gameObject.GetComponentInParent<Entity>())
+                entity = other.transform.gameObject.GetComponentInParent<Entity>();
+            if (other.transform.gameObject.GetComponentInChildren<Entity>())
+                entity = other.transform.gameObject.GetComponentInChildren<Entity>();
 
-            if (myAoeRadius <= 0)
+            if (entity)
             {
-                Entity entity = null;
-                if (other.transform.gameObject.GetComponent<Entity>())
-                       entity = other.transform.gameObject.GetComponent<Entity>();
-                if (other.transform.gameObject.GetComponentInParent<Entity>())
-                    entity = other.transform.gameObject.GetComponentInParent<Entity>();
-                if (other.transform.gameObject.GetComponentInChildren<Entity>())
-                    entity = other.transform.gameObject.GetComponentInChildren<Entity>();
-
-                if(entity.GetHp() > 0)
+                if (entity.GetHp() > 0)
                 {
-                    entity.TakeDamage(damage, myEnt);
+                    if (!piercedEnts.Contains(entity))
+                    {
+                        entity.TakeDamage(damage, myEnt);
+                        piercedEnts.Add(entity);
+                    }
 
                     if (entity.GetHp() <= 0 && !incremented)
                     {
@@ -167,7 +179,7 @@ public class Bullet : MonoBehaviour
                         }
                     }
                 }
-              
+
                 Vector3 bulletTrajectory = other.transform.position - transform.position;
                 bulletTrajectory.z = 1;
                 Ray newRay = new Ray(transform.position, bulletTrajectory);
@@ -177,25 +189,35 @@ public class Bullet : MonoBehaviour
                 {
                     Instantiate(bloodParticle, hit.point, Quaternion.LookRotation(transform.position, transform.up - other.transform.position));
                 }
-
             }
-            else
+        }
+        else
+        {
+            if (!exploded)
             {
-                if (!exploded)
-                {
-                    Explode();
-                }
+                Explode();
             }
-
-            if (!isPiercing)
-                Destroy(this.gameObject);
-
         }
 
-
-
-        if (!other.transform.gameObject.GetComponent<Entity>() && !other.transform.gameObject.GetComponentInParent<Entity>() && !other.transform.gameObject.GetComponentInChildren<Entity>())
+        if (!isPiercing)
+        {
             Destroy(this.gameObject);
+        }
+        else
+        {
+            if (currentPierce < maxPierce)
+            {
+                currentPierce++;
+                damage /= pierceDivisionValue;
+            }
+            else if (currentPierce >= maxPierce)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+
+    if (!other.transform.gameObject.GetComponent<Entity>() && !other.transform.gameObject.GetComponentInParent<Entity>() && !other.transform.gameObject.GetComponentInChildren<Entity>())
+        Destroy(this.gameObject);
     }
 
         private void PlayImpactSound()

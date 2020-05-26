@@ -116,6 +116,20 @@ public class Player : Entity
         SetUxText("");
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            AudioClipManager.instance.PlayClipOneShotWithSource(mySource, AudioClipManager.instance.clips.voiceAffirmative);
+            SetUxText("Affirmative!");
+        }
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            AudioClipManager.instance.PlayClipOneShotWithSource(mySource, AudioClipManager.instance.clips.voiceNegative);
+            SetUxText("Negative!");
+        }
+    }
+
     public void SetUxText(string newText)
     {
         if (!death)

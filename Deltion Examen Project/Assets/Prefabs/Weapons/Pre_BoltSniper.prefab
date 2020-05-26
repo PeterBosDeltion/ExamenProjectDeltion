@@ -63,6 +63,9 @@ MonoBehaviour:
   handRotation: {x: -79.534, y: 13.266, z: 79.805}
   bolt: 0
   muzzleFlashSystem: {fileID: 0}
+  maxPierceAmount: 5
+  pierceDamageDivision: 1.5
+  minEnemyDistance: 4.5
 --- !u!82 &1833726680540084606
 AudioSource:
   m_ObjectHideFlags: 0
