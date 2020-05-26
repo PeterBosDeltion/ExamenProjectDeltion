@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTempHp: 0
-  maxHp: 2000
+  maxHp: 3000
   death: 0
   xpWhenKilled: 0
   enemiesOnTarget: 0
