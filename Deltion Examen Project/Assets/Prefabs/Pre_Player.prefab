@@ -375,6 +375,7 @@ MonoBehaviour:
   maxHp: 2000
   death: 0
   xpWhenKilled: 0
+  enemiesOnTarget: 0
   lowHealthVoiceThreshold: 600
   mySource: {fileID: 4734839736015168692}
   uxText: {fileID: 544025577}

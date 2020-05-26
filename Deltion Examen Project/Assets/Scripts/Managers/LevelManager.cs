@@ -218,7 +218,7 @@ public class LevelManager : MonoBehaviour
     {
         curentWave++;
 
-        int amount = enemiesToAdd * Mathf.FloorToInt(curentWave / (curentType + 1));
+        int amount = enemiesToAdd / (curentType + 1);
 
         for (int i = 0; i < amount; i++)
         {

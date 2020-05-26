@@ -46,6 +46,11 @@ public abstract class EnemyAI : MonoBehaviour
         entityManager = EntityManager.instance;
         entityManager.AddEnemy(myStats);
         SetTarget();
+        UpdateAgentSpeed();
+    }
+
+    public void UpdateAgentSpeed()
+    {
         agent.speed = myStats.speed;
     }
 
@@ -93,7 +98,7 @@ public abstract class EnemyAI : MonoBehaviour
         else
             mainAudioSource.Stop();
     }
-    private void OnDestroy()
+    public virtual void OnDestroy()
     {
         entityManager.RemoveEnemy(myStats);
         if(myTarget != null)
@@ -140,6 +145,8 @@ public abstract class EnemyAI : MonoBehaviour
                 else
                 {
                     myTarget.deathEvent += TargetDied;
+                    myStats.deathEvent += myTarget.EnemyOnMeDied;
+                    myTarget.enemiesOnTarget++;
                 }
                 SetState(AIState.ClosingIn);
             }
@@ -261,5 +268,23 @@ public abstract class EnemyAI : MonoBehaviour
         Focused = true;
         yield return new WaitForSeconds(AttantionTime);
         Focused = false;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(!GetComponent<QueenAI>())
+        {
+            if(other.GetComponent<Entity>())
+            {
+                if(entityManager.AllPlayersAndAbilities.Contains(other.GetComponent<Entity>()))
+                {
+                    if(!Focused)
+                    {
+                        if(myTarget != other.GetComponent<Entity>())
+                            SetTarget(other.GetComponent<Entity>());
+                    }
+                }
+            }
+        }
     }
 }

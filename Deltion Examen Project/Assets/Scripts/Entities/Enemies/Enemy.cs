@@ -10,10 +10,17 @@ public class Enemy : Entity
     public float damage;
     public float attackRange;
 
+    public SkinnedMeshRenderer myRenderer;
+    public Material emmisiveMaterial;
+    private Material OriginalMaterial;
+
+    public ParticleSystem deathParticle;
+
     protected override void Awake()
     {
         base.Awake();
 
+        OriginalMaterial = myRenderer.material;
         anim = GetComponentInChildren<Animator>();
     }
 
@@ -22,6 +29,24 @@ public class Enemy : Entity
         maxHp *= LevelManager.instance.healthModifier;
         damage *= LevelManager.instance.damageModifier;
         base.SetEntityValues();
+    }
+
+    public void SetTemporaryBuffValue(float buffModifier, bool removeBuff)
+    {
+        if (!removeBuff)
+        {
+            myRenderer.material = emmisiveMaterial;
+            damage *= buffModifier;
+            speed *= buffModifier;
+            myAI.UpdateAgentSpeed();
+        }
+        else
+        {
+            myRenderer.material = OriginalMaterial;
+            damage /= buffModifier;
+            speed /= buffModifier;
+            myAI.UpdateAgentSpeed();
+        }
     }
 
     protected override void DamageEvent(Entity Attacker)
@@ -39,6 +64,8 @@ public class Enemy : Entity
 
         if (myAI)
             myAI.SetState(EnemyAI.AIState.Dead);
+
+        deathParticle.Play();
 
         GetComponent<Collider>().enabled = false;
         StartCoroutine(DestroyEnemy());

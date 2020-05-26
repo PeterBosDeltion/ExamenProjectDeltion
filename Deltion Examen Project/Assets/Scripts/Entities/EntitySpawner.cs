@@ -24,23 +24,11 @@ public class EntitySpawner : MonoBehaviour
 
     private void Start()
     {
-        if(!objectiveSpawner)
-        {
-            float distance = LevelManager.instance.NoSpawnsDistance;
-            GetComponent<SphereCollider>().radius = distance;
-            distance *= 1.5f;
-            blockCollider = GetComponent<BoxCollider>();
-            blockCollider.size = new Vector3(distance, distance, distance);
-        }
-        else
-        {
-            float distance = LevelManager.instance.NoSpawnsDistance;
-            GetComponent<SphereCollider>().radius = distance;
-            distance *= 1.5f;
-            blockCollider = GetComponent<BoxCollider>();
-            blockCollider.size = new Vector3(distance, distance, distance);
-        }
-
+        float distance = LevelManager.instance.NoSpawnsDistance;
+        GetComponent<SphereCollider>().radius = distance;
+        distance *= 1.5f;
+        blockCollider = GetComponent<BoxCollider>();
+        blockCollider.size = new Vector3(distance, distance, distance);
         spawnParticle = GetComponentInChildren<ParticleSystem>();
     }
 

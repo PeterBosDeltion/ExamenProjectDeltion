@@ -19,6 +19,7 @@ public class Entity : MonoBehaviour
     public bool death;
 
     public float xpWhenKilled = 0;
+    public int enemiesOnTarget;
 
     protected virtual void Awake()
     {
@@ -34,6 +35,7 @@ public class Entity : MonoBehaviour
     protected virtual void OnDestroy()
     {
         EntityManager.instance.RemovePlayerOrAbility(this);
+        enemiesOnTarget = 0;
         deathEvent = null;
         takeDamageEvent = null;
     }
@@ -87,6 +89,12 @@ public class Entity : MonoBehaviour
         }
     }
 
+    public void EnemyOnMeDied()
+    {
+        enemiesOnTarget--;
+    }
+
+
     protected virtual void DamageEvent(Entity Attacker)
     {
     }
@@ -104,8 +112,8 @@ public class Entity : MonoBehaviour
 
     public virtual void TriggerDeathEvents()
     {
-        deathEvent.Invoke();
         death = true;
+        deathEvent.Invoke();
     }
 
     public void RemoveTempHP()
