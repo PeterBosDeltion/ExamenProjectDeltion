@@ -54,15 +54,15 @@ MonoBehaviour:
   - {fileID: 227615046000823840, guid: 2fb16e5a959a41844bc859c48f3e81cb, type: 3}
   - {fileID: 7442850297742150154, guid: 86b11090d8715f5409b0459ca5cd0ddf, type: 3}
   enemyTypeSpawnAmount:
-  - 5
+  - 4
   - 1
   queenEnemy: {fileID: 3670594343875086394, guid: 97b98540e1ef4e24ebb35d015c5b8bb6,
     type: 3}
   curentWave: 0
   minimumSpawnerSpread: 3
   timeBetweenIndividualSpawns: 2
-  spawnTickTime: 5
-  spawnTickTimeModifier: 1.6
+  spawnTickTime: 8
+  spawnTickTimeModifier: 1.8
   timer: {fileID: 0}
   NoSpawnsDistance: 3
   healthModifier: 1
