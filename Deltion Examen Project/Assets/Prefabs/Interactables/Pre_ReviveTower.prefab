@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 2666969301235096917}
   - component: {fileID: 7441480773586931059}
   - component: {fileID: 8246080419113474718}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: RevivePosition (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 1256447001017788008}
   - component: {fileID: 1849489423459060228}
   - component: {fileID: 739001106698925265}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: RevivePosition (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 3250439141740997282}
   - component: {fileID: 6686249559506416156}
   - component: {fileID: 7178029203530135340}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: RevivePosition (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -803,7 +803,7 @@ GameObject:
   - component: {fileID: 275696499359350817}
   - component: {fileID: 410496959450024001}
   - component: {fileID: 5902783822126110600}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: RevivePosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
