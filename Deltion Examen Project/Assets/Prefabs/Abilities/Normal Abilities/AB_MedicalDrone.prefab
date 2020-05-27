@@ -43,7 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7ced7539bc5484890bf2a234df141f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cantUse: 0
   myPlayer: {fileID: 0}
+  myPlayerController: {fileID: 0}
   name: Medical drone
   description: 'Man''s best friend isn''t a lifeless drone that injects you with
     rapidly healing medication. But it''s a close second.
@@ -57,14 +59,24 @@ MonoBehaviour:
   active: 0
   cooldownTime: 20
   duration: 25
+  currentUltCharge: 0
+  ultChargeIncrement: 0
   deployableRadius: 7.5
   deployableGhost: {fileID: 0}
   canDeployMaterial: {fileID: 0}
   cannotDeployMaterial: {fileID: 0}
+  deployLineMaterial: {fileID: 0}
+  deployableOffset: {x: 0, y: 0, z: 0}
   returned: 0
+  deploying: 0
+  ultActive: 0
+  checkUltCharged: 0
+  controllerLaserStartDist: 5
+  controllerLaserMaxDist: 12.5
+  controllerLaserMinDist: 3
   myDeployType: 0
-  healPool: 500
+  healPool: 750
   reloadSpeed: 4.5
-  healRate: 1
+  healRate: 4
   dronePrefab: {fileID: 3205243633361089554, guid: fed00dd1f0b2bbf4da2fa06d600f9156,
     type: 3}

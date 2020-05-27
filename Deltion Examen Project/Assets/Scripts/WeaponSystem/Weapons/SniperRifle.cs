@@ -96,12 +96,16 @@ public class SniperRifle : Weapon
             float rangeToClosest = Mathf.Infinity;
             foreach (Entity entity in EntityManager.instance.AllEnemys)
             {
-                float newDistance = Vector3.Distance(transform.position, entity.transform.position);
-                if (rangeToClosest > newDistance && entity.enabled && !entity.death)
+                if(entity != null)
                 {
-                    rangeToClosest = newDistance;
-                    closestEntity = entity;
+                    float newDistance = Vector3.Distance(transform.position, entity.transform.position);
+                    if (rangeToClosest > newDistance && entity.enabled && !entity.death)
+                    {
+                        rangeToClosest = newDistance;
+                        closestEntity = entity;
+                    }
                 }
+              
             }
 
             return closestEntity;

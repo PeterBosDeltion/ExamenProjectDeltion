@@ -48,11 +48,16 @@ public class GameManager : MonoBehaviour
     public List<Color> playerColors = new List<Color>();
     public List<Color> darkPlayerColors = new List<Color>();
 
+    public int target = 244;
+    public int screenMode;
     private void Awake()
     {
         if(!instance)
         {
             instance = this;
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = target;
+
         }
         else if(instance != this)
         {
@@ -60,6 +65,12 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(transform.root.gameObject);
+    }
+
+    private void Update()
+    {
+        if (Application.targetFrameRate != target)
+            Application.targetFrameRate = target;
     }
 
     public void SetCursorState(CursorState state)
@@ -142,6 +153,11 @@ public class GameManager : MonoBehaviour
     public void SetMouseAndKeyboardPlayer(int index)
     {
         mouseKeyboardPlayer = index;
+    }
+
+    public void SetDifficulty(int i)
+    {
+        difficulty = i;
     }
 
     public void CloseGame()

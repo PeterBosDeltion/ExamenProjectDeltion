@@ -18,7 +18,7 @@ public class MouseCursorFunctionality : MonoBehaviour
 
     private void Start()
     {
-        Cursor.visible = false;
+        //Cursor.visible = false;
         cursorImage = GetComponent<Image>();
         GameManager.cursorEvent += UpdateCursorArt;
         UpdateCursorArt();
@@ -43,19 +43,24 @@ public class MouseCursorFunctionality : MonoBehaviour
         switch (GameManager.instance.curentCursorState)
         {
             case GameManager.CursorState.Cursor:
-                cursorImage.gameObject.SetActive(true);
-                cursorImage.sprite = cursor;
-                cursorImage.color = cursorColor;
-                cursorActive = true;
+                Cursor.visible = true;
+                cursorImage.enabled = false;
+                //cursorImage.gameObject.SetActive(true);
+                //cursorImage.sprite = cursor;
+                //cursorImage.color = cursorColor;
+                //cursorActive = true;
                 break;
             case GameManager.CursorState.Crosshair:
-                cursorImage.gameObject.SetActive(true);
+                Cursor.visible = false;
+                cursorImage.enabled = true;
+                //cursorImage.gameObject.SetActive(true);
                 cursorImage.sprite = crosshair;
                 cursorImage.color = croshairColor;
                 cursorActive = false;
                 break;
             case GameManager.CursorState.Empty:
-                cursorImage.gameObject.SetActive(false);
+                //cursorImage.gameObject.SetActive(false);
+                Cursor.visible = false;
                 break;
         }
     }
