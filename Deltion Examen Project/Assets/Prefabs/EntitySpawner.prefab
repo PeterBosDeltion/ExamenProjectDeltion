@@ -50,6 +50,7 @@ MonoBehaviour:
   timeBetweenSpawns: 0
   EntityToClose: 0
   spawnParticle: {fileID: 7857184746236669305}
+  blockCollider: {fileID: 489412657024732679}
 --- !u!135 &1507679123970806680
 SphereCollider:
   m_ObjectHideFlags: 0
