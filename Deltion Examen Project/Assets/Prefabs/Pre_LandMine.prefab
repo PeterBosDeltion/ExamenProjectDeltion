@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 565936603058576983}
   - component: {fileID: 2794501541696349279}
   - component: {fileID: 3360507551264616851}
-  m_Layer: 2
+  m_Layer: 14
   m_Name: Pre_LandMine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: fb61dfe32ffa8d644bc568cefb0c1af6,
         type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb61dfe32ffa8d644bc568cefb0c1af6, type: 3}
