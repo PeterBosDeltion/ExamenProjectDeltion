@@ -94,9 +94,16 @@ public class GameManager : MonoBehaviour
         SetGameState(GameState.Playing);
 
         if (index != 0)
+        {
             SetCursorState(CursorState.Crosshair);
+        }
         else
+        {
             SetCursorState(CursorState.Cursor);
+            GameManager.instance.amountOfPlayers = 1;
+        }
+
+        activePlayers.Clear();
 
         cursorEvent = null;
         SceneManager.LoadScene(index);
