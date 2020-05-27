@@ -51,7 +51,7 @@ public class ExplosiveProp : MonoBehaviour
         Explode();
     }
 
-    private void Explode()
+    public void Explode()
     {
         Collider[] hitEnts = Physics.OverlapSphere(transform.position, damageRadius);
         foreach (var hit in hitEnts)

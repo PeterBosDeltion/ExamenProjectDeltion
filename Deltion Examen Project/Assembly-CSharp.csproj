@@ -326,6 +326,7 @@
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\SentryTurretAbility.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\Ultimates\IonCannon.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\Ultimates\IonCannonUltimateAbility.cs" />
+    <Compile Include="Assets\Scripts\AbilitySystem\Abilities\Ultimates\MinefieldUltimate.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\Ultimates\Moab.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\Ultimates\MoabAbility.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\Ultimates\MoabGas.cs" />

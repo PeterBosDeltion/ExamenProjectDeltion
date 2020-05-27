@@ -41341,6 +41341,7 @@ MonoBehaviour:
   masterMixer: {fileID: 24100000, guid: b8406d183869f1c40a3c0d34b209850d, type: 2}
   resolutionDropdown: {fileID: 611842830}
   qualityDropdown: {fileID: 1602531194}
+  screenmodeDropdown: {fileID: 1870975555}
   difficultyDropdown: {fileID: 819362359}
   mkDropdown: {fileID: 195859895}
   volumeSlider: {fileID: 1882022551}
