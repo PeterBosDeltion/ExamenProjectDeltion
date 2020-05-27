@@ -91,12 +91,26 @@ public class PlayerLoadoutMenu : MonoBehaviour
 
     public void SetPrimary(int i)
     {
-        LoudoutManager.instance.SetPlayerLoadoutPrimary(playerNumber, IDManager.instance.GetPrimaryWeaponByID(i));
+        string name = primaryWeaponDropDown.options[i].text;
+        for (int q = 0; q < IDManager.instance.allPrimaryWeapons.Count; q++)
+        {
+            if(IDManager.instance.allPrimaryWeapons[q].myWeapon.name == name)
+            {
+                LoudoutManager.instance.SetPlayerLoadoutPrimary(playerNumber, IDManager.instance.GetPrimaryWeaponByID(q));
+            }
+        }
     }
 
     public void SetSecondary(int i)
     {
-        LoudoutManager.instance.SetPlayerLoadoutSecondary(playerNumber, IDManager.instance.GetSecondaryWeaponByID(i));
+        string name = secondaryWeaponDropDown.options[i].text;
+        for (int q = 0; q < IDManager.instance.allSecondaryWeapons.Count; q++)
+        {
+            if (IDManager.instance.allSecondaryWeapons[q].myWeapon.name == name)
+            {
+                LoudoutManager.instance.SetPlayerLoadoutSecondary(playerNumber, IDManager.instance.GetSecondaryWeaponByID(q));
+            }
+        }
     }
 
     public void OpenAbilitySelect(int abilityIndex)
