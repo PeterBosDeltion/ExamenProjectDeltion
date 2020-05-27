@@ -598,8 +598,7 @@ GameObject:
   - component: {fileID: 2495147228665920062}
   - component: {fileID: 2495147228665920060}
   - component: {fileID: 2495147228665920063}
-  - component: {fileID: 8323889741977580357}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Pre_StationaryHealingStation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -659,19 +658,19 @@ MonoBehaviour:
   aoeImg: {fileID: 374217778}
   aoeAnim: {fileID: 374217779}
   healthCylinder: {fileID: 7107284058248952465}
---- !u!65 &8323889741977580357
+--- !u!65 &3048849446922562132
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2495147228665920057}
+  m_GameObject: {fileID: 5873087785850781870}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.25, y: 3, z: 1.25}
-  m_Center: {x: 0, y: 1.5, z: 0}
+  m_Size: {x: 0.32349396, y: 0.7039983, z: 0.35450745}
+  m_Center: {x: -0.0033187866, y: 0.38357842, z: -0.0017089844}
 --- !u!1001 &2495147227616188839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -795,6 +794,12 @@ GameObject:
 --- !u!4 &7483363968673952445 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 2911a610ad653c54c95ecfd27eb428f6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2495147227616188839}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5873087785850781870 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 2911a610ad653c54c95ecfd27eb428f6,
     type: 3}
   m_PrefabInstance: {fileID: 2495147227616188839}
   m_PrefabAsset: {fileID: 0}
