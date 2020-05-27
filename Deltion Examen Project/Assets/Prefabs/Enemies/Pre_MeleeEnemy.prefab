@@ -164,8 +164,9 @@ MonoBehaviour:
   maxTempHp: 0
   maxHp: 100
   death: 0
-  xpWhenKilled: 50
+  xpWhenKilled: 10
   enemiesOnTarget: 0
+  maxEnemies: 0
   myAI: {fileID: 0}
   anim: {fileID: 0}
   speed: 6.2
