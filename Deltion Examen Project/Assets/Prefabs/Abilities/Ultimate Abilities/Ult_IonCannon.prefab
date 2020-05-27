@@ -54,9 +54,9 @@ MonoBehaviour:
   onCooldown: 0
   active: 0
   cooldownTime: 0
-  duration: 20
+  duration: 23
   currentUltCharge: 0
-  ultChargeIncrement: 3.75
+  ultChargeIncrement: 2.75
   deployableRadius: 5
   deployableGhost: {fileID: 0}
   canDeployMaterial: {fileID: 0}
@@ -74,4 +74,4 @@ MonoBehaviour:
   ionCannonPrefab: {fileID: 2812923675688817442, guid: 226c488c21bb32948b69dd02a16be073,
     type: 3}
   damage: 150
-  damageTickInterval: 1
+  damageTickInterval: 0.7

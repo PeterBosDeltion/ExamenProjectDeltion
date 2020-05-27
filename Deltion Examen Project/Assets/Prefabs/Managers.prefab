@@ -312,7 +312,7 @@ MonoBehaviour:
   playersSpawned: 0
   curentState: 0
   curentCursorState: 0
-  difficulty: 2
+  difficulty: 1
   amountOfPlayers: 1
   playerOne: {fileID: 0}
   playerTwo: {fileID: 0}

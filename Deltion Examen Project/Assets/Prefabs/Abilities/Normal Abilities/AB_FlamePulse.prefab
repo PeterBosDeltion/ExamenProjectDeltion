@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6f8f286a297d75409463aaa40f557d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cantUse: 0
   myPlayer: {fileID: 0}
   myPlayerController: {fileID: 0}
   name: Flame Pulse
@@ -54,7 +55,7 @@ MonoBehaviour:
   ultimate: 0
   onCooldown: 0
   active: 0
-  cooldownTime: 15
+  cooldownTime: 25
   duration: 2.5
   currentUltCharge: 0
   ultChargeIncrement: 0
@@ -65,6 +66,12 @@ MonoBehaviour:
   deployLineMaterial: {fileID: 0}
   deployableOffset: {x: 0, y: 0, z: 0}
   returned: 0
+  deploying: 0
+  ultActive: 0
+  checkUltCharged: 0
+  controllerLaserStartDist: 5
+  controllerLaserMaxDist: 12.5
+  controllerLaserMinDist: 3
   myDeployType: 0
   damage: 160
   particlePrefab: {fileID: 2703199356868903259, guid: 16eb29accb05275419c1ff448b026eed,

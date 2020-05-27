@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bef2bfcb783a464ea9d7e2365073370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cantUse: 0
   myPlayer: {fileID: 0}
   myPlayerController: {fileID: 0}
   name: M.O.A.B
@@ -55,7 +56,7 @@ MonoBehaviour:
   cooldownTime: 0
   duration: 20
   currentUltCharge: 0
-  ultChargeIncrement: 3.75
+  ultChargeIncrement: 2.75
   deployableRadius: 0
   deployableGhost: {fileID: 0}
   canDeployMaterial: {fileID: 0}
@@ -63,6 +64,9 @@ MonoBehaviour:
   deployLineMaterial: {fileID: 0}
   deployableOffset: {x: 0, y: 20, z: 0}
   returned: 0
+  deploying: 0
+  ultActive: 0
+  checkUltCharged: 0
   controllerLaserStartDist: 5
   controllerLaserMaxDist: 12.5
   controllerLaserMinDist: 3
