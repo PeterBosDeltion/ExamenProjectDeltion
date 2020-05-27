@@ -159,17 +159,46 @@ public abstract class EnemyAI : MonoBehaviour
         if (entityManager.AllPlayersAndAbilities.Count != 0)
         {
             Entity closestEntity = null;
-            float rangeToClosest = Mathf.Infinity;
+            List<Entity> viablePicks = new List<Entity>();
+
             foreach (Entity entity in entityManager.AllPlayersAndAbilities)
             {
-                float newDistance = Vector3.Distance(transform.position, entity.transform.position);
-                if (rangeToClosest > newDistance && entity.enabled && !entity.death)
+                if (entity.enemiesOnTarget < entity.maxEnemies)
                 {
-                    rangeToClosest = newDistance;
-                    closestEntity = entity;
+                    viablePicks.Add(entity);
                 }
             }
 
+            if(viablePicks.Count == 1)
+            {
+                closestEntity = viablePicks[0];
+            }
+            else if(viablePicks.Count != 0)
+            {
+                float rangeToClosest = Mathf.Infinity;
+                foreach (Entity entity in viablePicks)
+                {
+                    float newDistance = Vector3.Distance(transform.position, entity.transform.position);
+                    if (rangeToClosest > newDistance && entity.enabled && !entity.death)
+                    {
+                        rangeToClosest = newDistance;
+                        closestEntity = entity;
+                    }
+                }
+            }
+            else
+            {
+                float rangeToClosest = Mathf.Infinity;
+                foreach (Entity entity in entityManager.AllPlayersAndAbilities)
+                {
+                    float newDistance = Vector3.Distance(transform.position, entity.transform.position);
+                    if (rangeToClosest > newDistance && entity.enabled && !entity.death)
+                    {
+                        rangeToClosest = newDistance;
+                        closestEntity = entity;
+                    }
+                }
+            }
             return closestEntity;
         }
         else

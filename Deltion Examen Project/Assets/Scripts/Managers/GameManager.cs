@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public GameState curentState;
     public CursorState curentCursorState;
 
-    public int difficulty = 2;
+    public int difficulty = 1;
     public int amountOfPlayers = 1;
 
     public PlayerController[] GetPlayers()

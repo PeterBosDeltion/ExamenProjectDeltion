@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54a9e76ea9fef5d4bbc6e1d533df61c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xpGained: 0
 --- !u!1 &6443715300631969843
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AllPlayersAndAbilities: []
   AllEnemys: []
+  killedEnemies: 0
 --- !u!1 &8531780637188613758
 GameObject:
   m_ObjectHideFlags: 0

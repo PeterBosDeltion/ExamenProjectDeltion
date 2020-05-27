@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EntityManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class EntityManager : MonoBehaviour
 
     public List<Entity> AllPlayersAndAbilities = new List<Entity>();
     public List<Entity> AllEnemys = new List<Entity>();
+
+    public float killedEnemies;
 
     private void Awake()
     {
@@ -19,6 +22,8 @@ public class EntityManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     public void AddEnemy(Entity toAdd)
@@ -33,6 +38,7 @@ public class EntityManager : MonoBehaviour
     public void RemoveEnemy(Entity toRemove)
     {
         AllEnemys.Remove(toRemove);
+        killedEnemies++;
     }
     public void RemovePlayerOrAbility(Entity toRemove)
     {
@@ -45,5 +51,17 @@ public class EntityManager : MonoBehaviour
         {
             enemy.myAI.UpdateDestination();
         }
+    }
+
+    private void WipeValues()
+    {
+        killedEnemies = 0;
+        AllPlayersAndAbilities.Clear();
+        AllEnemys.Clear();
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        WipeValues();
     }
 }
