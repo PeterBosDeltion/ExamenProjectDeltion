@@ -185,35 +185,35 @@ public class LevelManager : MonoBehaviour
     {
         switch (difficulty)
         {
-            case 1:
+            case 0:
                 enemiesToAddModifier = 0.5f;
                 break;
-            case 2:
-                healthModifier = 1;
-                damageModifier = 1;
+            case 1:
                 enemiesToAddModifier = 1;
                 break;
-            case 3:
+            case 2:
                 enemiesToAddModifier = 2;
+                healthModifier = 1.5f;
+                damageModifier = 1.5f;
                 break;
         }
         switch (GameManager.instance.amountOfPlayers)
         {
             case 1:
-                healthModifier *= 1;
-                damageModifier *= 1;
+                enemiesToAddModifier *= 1;
                 break;
             case 2:
-                healthModifier *= 1.5f;
-                damageModifier *= 1.5f;
+                enemiesToAddModifier *= 2;
                 break;
             case 3:
-                healthModifier *= 2;
-                damageModifier *= 2;
+                healthModifier += 1.5f;
+                damageModifier += 1.5f;
+                enemiesToAddModifier *= 3;
                 break;
             case 4:
-                healthModifier *= 3;
-                damageModifier *= 3;
+                healthModifier += 2;
+                damageModifier += 2;
+                enemiesToAddModifier *= 4;
                 break;
 
             default:
