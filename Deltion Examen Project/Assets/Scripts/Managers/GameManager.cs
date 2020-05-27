@@ -55,8 +55,8 @@ public class GameManager : MonoBehaviour
         if(!instance)
         {
             instance = this;
-            QualitySettings.vSyncCount = 0;
-            Application.targetFrameRate = target;
+            //QualitySettings.vSyncCount = 0;
+            //Application.targetFrameRate = target;
 
         }
         else if(instance != this)
@@ -69,8 +69,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Application.targetFrameRate != target)
-            Application.targetFrameRate = target;
+        //if (Application.targetFrameRate != target)
+        //    Application.targetFrameRate = target;
     }
 
     public void SetCursorState(CursorState state)
