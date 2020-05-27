@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: SniperRifle
   m_EditorClassIdentifier: 
   name: Sniper Rifle
-  description: 
+  description: This powerful bolt-action sniper rifle deals massive damage at long
+    ranges, but is unable to fire if enemies are too close.
   requiredLevel: 6
   minFallOff: Infinity
   maxFallOff: Infinity

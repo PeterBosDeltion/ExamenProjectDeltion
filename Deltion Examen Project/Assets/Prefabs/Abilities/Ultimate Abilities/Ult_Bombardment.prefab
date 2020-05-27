@@ -47,7 +47,11 @@ MonoBehaviour:
   myPlayer: {fileID: 0}
   myPlayerController: {fileID: 0}
   name: Orbital Bombardment
-  description: 
+  description: 'Don''t like something? Bomb it from orbit!
+
+    When activated a
+    ship from the nearest fleet will warp into orbit and start bombarding the target
+    area with powerful explosive shells.'
   uiIcon: {fileID: 21300000, guid: 6150f9e5d064fb74cbad9e179230768c, type: 3}
   requiredLevel: 15
   ultimate: 1

@@ -13,7 +13,16 @@ MonoBehaviour:
   m_Name: MachinePistol
   m_EditorClassIdentifier: 
   name: Machine Pistol
-  description: 
+  description: 'Consumer reviews for this weapon usually state things such as "1/5
+    Terrible ammo economy", "2/5 Alright gun, terrible ammo management". Because
+    of these reviews the weapon''s price has plummeted to such low levels, that it
+    was introduced to the space marine arsenal "Just because".
+
+
+    It boasts an
+    impressive firerate, at the cost of damage, stability and magazine size. Even
+    though it suffers these issues, it is still a very capable *very* short-range
+    bug killing machine.'
   requiredLevel: 10
   minFallOff: 10
   maxFallOff: 12.5

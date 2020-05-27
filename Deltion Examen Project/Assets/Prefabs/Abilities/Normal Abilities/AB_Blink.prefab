@@ -47,7 +47,18 @@ MonoBehaviour:
   myPlayer: {fileID: 0}
   myPlayerController: {fileID: 0}
   name: Blink
-  description: 
+  description: 'Are you here?
+
+    Do you want to be over there?
+
+
+    With one simple
+    press of the button you can be there instead of here!
+
+
+    This advanced personal
+    teleportation device teleports the user a short distance in the direction they''re
+    facing, as long as there is enough free space at the destination point.'
   uiIcon: {fileID: 21300000, guid: ac670fc40f831ca4cb14825d95073299, type: 3}
   requiredLevel: 11
   ultimate: 0

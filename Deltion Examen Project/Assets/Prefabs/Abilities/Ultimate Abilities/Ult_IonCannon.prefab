@@ -47,7 +47,11 @@ MonoBehaviour:
   myPlayer: {fileID: 0}
   myPlayerController: {fileID: 0}
   name: Ion Cannon
-  description: 
+  description: 'Do you just hate that one bug in particular? Call in a Ion strike
+    on it!
+
+    This space laser deals massive damage to a single target, and moves
+    on to it''s next victim if the target dies.'
   uiIcon: {fileID: 21300000, guid: a98ba6c19412b1a40aeecdd233901e30, type: 3}
   requiredLevel: 7
   ultimate: 1

@@ -47,7 +47,11 @@ MonoBehaviour:
   myPlayer: {fileID: 0}
   myPlayerController: {fileID: 0}
   name: Mine field
-  description: 
+  description: 'Airdropped mine fields are probably the space marines #1 cause of
+    friendly fire. While dangerous to space marines, mines are even more dangerous
+    to dumb bugs that do not know they explode.
+
+'
   uiIcon: {fileID: 21300000, guid: b82751464cb17334bac87cbc8f869966, type: 3}
   requiredLevel: 13
   ultimate: 1

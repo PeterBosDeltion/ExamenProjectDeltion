@@ -47,7 +47,16 @@ MonoBehaviour:
   myPlayer: {fileID: 0}
   myPlayerController: {fileID: 0}
   name: M.O.A.B
-  description: 
+  description: 'The oldest superweapon that mankind has ever made. This ancient tech
+    is still highly effective at eradicating organic lifeforms with extreme efficiency.
+
+    When
+    deployed, the bomb explodes and instantly kills most living matter in the blast
+    zone.
+
+    But just in case that isn''t enough, this modified model leaves a
+    toxic radioactive cloud that lingers for a short time after impact, killing anything
+    that still remains after the initial blast.'
   uiIcon: {fileID: 21300000, guid: 8e6d649a53be3e14592f185bd092ca30, type: 3}
   requiredLevel: 0
   ultimate: 1
