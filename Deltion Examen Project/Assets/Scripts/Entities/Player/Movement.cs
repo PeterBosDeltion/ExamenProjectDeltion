@@ -33,11 +33,10 @@ public class Movement : MonoBehaviour
         Vector3 rightMovement = right * Time.deltaTime * xAxis;
         Vector3 upMovement = forward * Time.deltaTime * yAxis;
         Vector3 toMove = Vector3.ClampMagnitude(rightMovement + upMovement, 0.1f);
-        moveDirection = rightMovement + upMovement;
 
-        myRigidbody.velocity = toMove * Time.deltaTime * (movementSpeed * 1000);
-        //transform.position += toMove;
+        toMove *= Time.deltaTime * (movementSpeed * 1000);
 
+        myRigidbody.velocity = new Vector3(toMove.x, myRigidbody.velocity.y, toMove.z);
     }
 
     public void Rotate(float xAxis, float zAxis)

@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameOverScreen : MonoBehaviour
 {
     public TextMeshProUGUI GameOverStatusText;
-    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI experienceText;
     public TextMeshProUGUI killsText;
 
     public void ActivateUI(bool victory)
@@ -24,6 +24,9 @@ public class GameOverScreen : MonoBehaviour
             GameOverStatusText.text = "Victory!";
         else
             GameOverStatusText.text = "Mission Failed";
+
+        experienceText.text = ExperienceManager.instance.xpGained.ToString();
+        killsText.text = EntityManager.instance.killedEnemies.ToString();
     }
 
     public void CloseGame()

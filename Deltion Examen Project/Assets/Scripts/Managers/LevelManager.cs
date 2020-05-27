@@ -22,14 +22,19 @@ public class LevelManager : MonoBehaviour
     //Wave values
     [Tooltip("Fill from easy to hard for increased difficulty in later waves")]
     public List<GameObject> enemyTypes = new List<GameObject>();
+    [Tooltip("Linked to the enemyType list (index 0 in this list will be the amount of enemys spawned of index 0 of enemyTypes)")]
+    public List<float> enemyTypeSpawnAmount = new List<float>();
+    public GameObject queenEnemy;
     private List<GameObject> currentWaveEntitys = new List<GameObject>();
     [HideInInspector]
     public int curentWave;
     private int curentType;
-    private int enemiesToAdd;
+    private int queenWaveCounter;
+    private float enemiesToAddModifier;
     public int minimumSpawnerSpread;
     public float timeBetweenIndividualSpawns;
     public float spawnTickTime;
+    public float spawnTickTimeModifier;
 
     public WaveTimer timer;
 
@@ -180,33 +185,35 @@ public class LevelManager : MonoBehaviour
     {
         switch (difficulty)
         {
+            case 0:
+                enemiesToAddModifier = 0.5f;
+                break;
             case 1:
+                enemiesToAddModifier = 1;
                 break;
             case 2:
-                healthModifier = 1;
-                damageModifier = 1;
-                enemiesToAdd = 2;
-                break;
-            case 3:
+                enemiesToAddModifier = 2;
+                healthModifier = 1.5f;
+                damageModifier = 1.5f;
                 break;
         }
         switch (GameManager.instance.amountOfPlayers)
         {
             case 1:
-                healthModifier *= 1;
-                damageModifier *= 1;
+                enemiesToAddModifier *= 1;
                 break;
             case 2:
-                healthModifier *= 1.5f;
-                damageModifier *= 1.5f;
+                enemiesToAddModifier *= 2;
                 break;
             case 3:
-                healthModifier *= 2;
-                damageModifier *= 2;
+                healthModifier += 1.5f;
+                damageModifier += 1.5f;
+                enemiesToAddModifier *= 3;
                 break;
             case 4:
-                healthModifier *= 3;
-                damageModifier *= 3;
+                healthModifier += 2;
+                damageModifier += 2;
+                enemiesToAddModifier *= 4;
                 break;
 
             default:
@@ -217,8 +224,11 @@ public class LevelManager : MonoBehaviour
     private void SetupWave()
     {
         curentWave++;
+        queenWaveCounter++;
 
-        int amount = enemiesToAdd / (curentType + 1);
+        float waveModifier = Mathf.Floor(1 + curentWave / 10);
+
+        int amount = Mathf.RoundToInt((enemiesToAddModifier * enemyTypeSpawnAmount[curentType]) * waveModifier);
 
         for (int i = 0; i < amount; i++)
         {
@@ -229,6 +239,13 @@ public class LevelManager : MonoBehaviour
             curentType = 0;
         else
             curentType++;
+
+
+        if(queenWaveCounter == 10)
+        {
+            queenWaveCounter = 0;
+            currentWaveEntitys.Add(queenEnemy);
+        }
 
         SpawnWave();
     }
@@ -268,7 +285,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        spawnTickTime *= 1.8f;
+        spawnTickTime *= spawnTickTimeModifier;
         spawnTickTime = Mathf.RoundToInt(spawnTickTime);
         Debug.Log(spawnTickTime);
         StartCoroutine(SpawnTick(spawnTickTime));

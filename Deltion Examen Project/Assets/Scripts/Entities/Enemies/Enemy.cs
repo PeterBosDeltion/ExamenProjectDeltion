@@ -33,19 +33,22 @@ public class Enemy : Entity
 
     public void SetTemporaryBuffValue(float buffModifier, bool removeBuff)
     {
-        if (!removeBuff)
+        if(!death)
         {
-            myRenderer.material = emmisiveMaterial;
-            damage *= buffModifier;
-            speed *= buffModifier;
-            myAI.UpdateAgentSpeed();
-        }
-        else
-        {
-            myRenderer.material = OriginalMaterial;
-            damage /= buffModifier;
-            speed /= buffModifier;
-            myAI.UpdateAgentSpeed();
+            if (!removeBuff)
+            {
+                myRenderer.material = emmisiveMaterial;
+                damage *= buffModifier;
+                speed *= buffModifier;
+                myAI.UpdateAgentSpeed();
+            }
+            else
+            {
+                myRenderer.material = OriginalMaterial;
+                damage /= buffModifier;
+                speed /= buffModifier;
+                myAI.UpdateAgentSpeed();
+            }
         }
     }
 

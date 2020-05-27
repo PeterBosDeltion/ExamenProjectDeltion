@@ -19,7 +19,10 @@ public class Entity : MonoBehaviour
     public bool death;
 
     public float xpWhenKilled = 0;
+    [HideInInspector]
     public int enemiesOnTarget;
+    [Tooltip("The amount of enemies on a target till a new enemy redirects its attention")]
+    public int maxEnemies;
 
     protected virtual void Awake()
     {
