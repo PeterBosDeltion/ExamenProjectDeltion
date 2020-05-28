@@ -55,6 +55,7 @@ public abstract class Ability : MonoBehaviour
     private GameObject laserTargetObject;
     private bool lasering;
 
+    private Vector3 deployableCenter = new Vector3();
     private void Start()
     {
         lineRenderer = myPlayer.gameObject.GetComponent<LineRenderer>();
@@ -213,6 +214,7 @@ public abstract class Ability : MonoBehaviour
        
         if (deploying && !active)
         {
+            deployableCenter = myPlayer.transform.position;
             if (activeGhost)
             {
                 RaycastHit hit;
@@ -342,7 +344,7 @@ public abstract class Ability : MonoBehaviour
                 myPlayer.GetComponent<PlayerController>().currentWeapon.canShoot = false;
             }
             RaycastHit hit;
-            Vector3 center = myPlayer.transform.position;
+            //Vector3 center = myPlayer.transform.position;
             if (myPlayerController.myInputManager.mouseKeyBoard)
             {
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
@@ -350,7 +352,7 @@ public abstract class Ability : MonoBehaviour
                     if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
                     {
                         Vector3 mPos = hit.point + deployableOffset;
-                        if (Vector3.Distance(mPos, center) <= deployableRadius && mPos.y - deployableOffset.y <= myPlayer.transform.position.y + 0.1F && mPos.y - deployableOffset.y >= myPlayer.transform.position.y - 0.1F)
+                        if (Vector3.Distance(mPos, deployableCenter) <= deployableRadius && mPos.y - deployableOffset.y <= myPlayer.transform.position.y + 0.1F && mPos.y - deployableOffset.y >= myPlayer.transform.position.y - 0.1F)
                         {
                             AbilityMechanic(mPos, new Quaternion(0, ghostRotation.y, 0, ghostRotation.w));
                             deploying = false;
@@ -383,7 +385,7 @@ public abstract class Ability : MonoBehaviour
                     if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
                     {
                         Vector3 mPos = hit.point + deployableOffset;
-                        if (Vector3.Distance(mPos, center) <= deployableRadius && mPos.y - deployableOffset.y <= myPlayer.transform.position.y + 0.1F && mPos.y - deployableOffset.y >= myPlayer.transform.position.y - 0.1F)
+                        if (Vector3.Distance(mPos, deployableCenter) <= deployableRadius && mPos.y - deployableOffset.y <= myPlayer.transform.position.y + 0.1F && mPos.y - deployableOffset.y >= myPlayer.transform.position.y - 0.1F)
                         {
                             AbilityMechanic(mPos, new Quaternion(0, ghostRotation.y, 0, ghostRotation.w));
                             deploying = false;
