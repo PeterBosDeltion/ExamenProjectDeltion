@@ -8,7 +8,11 @@ public class TeleportTrigger : MonoBehaviour
     public GameObject toActivate;
     public void OnTriggerEnter(Collider other)
     {
-        other.transform.position = targetPosition.position;
-        toActivate.SetActive(true);
+        if (other.GetComponent<Player>())
+        {
+            other.transform.position = targetPosition.position;
+            toActivate.SetActive(true);
+        }
+      
     }
 }

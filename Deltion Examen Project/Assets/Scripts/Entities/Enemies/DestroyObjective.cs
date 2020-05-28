@@ -12,6 +12,7 @@ public class DestroyObjective : Entity
     public GameObject queen;
     public GameObject tank;
     bool queenSpawned;
+    public bool shouldSpawnQueen = true; //False in tutorial
 
     private bool spawnTimer = false;
     public float spawnCooldown;
@@ -45,8 +46,12 @@ public class DestroyObjective : Entity
 
             if(!queenSpawned)
             {
-                spawners[0].AddToSpawnQue(queen);
-                queenSpawned = true;
+                if (shouldSpawnQueen)
+                {
+                    spawners[0].AddToSpawnQue(queen);
+                    queenSpawned = true;
+                }
+               
             }
             else
             {
