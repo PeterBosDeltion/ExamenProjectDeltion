@@ -14,6 +14,8 @@ public class MainCanvas : MonoBehaviour
 
     private bool waiting;
     private List<GameObject> objectives = new List<GameObject>();
+
+    public GameObject easterEggPrefab;
     void Start()
     {
         gameOverScreen = GetComponentInChildren<GameOverScreen>(true);
@@ -71,5 +73,11 @@ public class MainCanvas : MonoBehaviour
             //if() In case of multiple objectives, implement some way of checking which one to advance. Not supported at the moment
             bar.AdvanceDestroyObjective();
         }
+    }
+
+    public void EasterEgg()
+    {
+        GameObject g = Instantiate(easterEggPrefab, transform);
+        Destroy(g, 5.0F);
     }
 }

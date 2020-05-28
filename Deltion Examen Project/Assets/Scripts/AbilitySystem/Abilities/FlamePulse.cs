@@ -26,6 +26,11 @@ public class FlamePulse : MonoBehaviour
                 hitEnemies.Add(enemy);
             }
         }
+
+        if (other.GetComponent<ReviveTower>())
+        {
+            other.GetComponent<ReviveTower>().EasterEgg();
+        }
     }
 
     private void OnDestroy()

@@ -6,7 +6,7 @@ public class ReviveTower : Interactable
 {
     public GameObject dropPodPrefab;
     public List<GameObject> revivePositions = new List<GameObject>();
-
+    public ParticleSystem eastereggPart;
     private void Start()
     {
         if(GameManager.instance.amountOfPlayers <= 1)
@@ -17,6 +17,8 @@ public class ReviveTower : Interactable
         {
             gameObject.SetActive(true);
         }
+
+        eastereggPart = GetComponentInChildren<ParticleSystem>();
     }
     protected override void Interact()
     {
@@ -42,5 +44,11 @@ public class ReviveTower : Interactable
         }
 
 
+    }
+
+    public void EasterEgg()
+    {
+        eastereggPart.Play();
+        FindObjectOfType<MainCanvas>().EasterEgg();
     }
 }

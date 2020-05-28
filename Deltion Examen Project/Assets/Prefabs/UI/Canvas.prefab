@@ -7255,6 +7255,8 @@ MonoBehaviour:
   objectivesParent: {fileID: 4495270729962214292}
   objectivePrefab: {fileID: 8998699299530010864, guid: 0415edd63ff57db4cb2163ef526906f5,
     type: 3}
+  easterEggPrefab: {fileID: 6840822468151141333, guid: 927982b6f2630f74ab1934ebe95debbf,
+    type: 3}
 --- !u!1 &3292203082754028546
 GameObject:
   m_ObjectHideFlags: 0
