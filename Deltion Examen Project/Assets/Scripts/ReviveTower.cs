@@ -6,16 +6,13 @@ public class ReviveTower : Interactable
 {
     public GameObject dropPodPrefab;
     public List<GameObject> revivePositions = new List<GameObject>();
+    public Collider InteractionHitbox;
 
     private void Start()
     {
         if(GameManager.instance.amountOfPlayers <= 1)
         {
-            gameObject.SetActive(false);
-        }
-        else
-        {
-            gameObject.SetActive(true);
+            InteractionHitbox.enabled = false;
         }
     }
     protected override void Interact()
