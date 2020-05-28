@@ -47,6 +47,7 @@ public abstract class EnemyAI : MonoBehaviour
         entityManager.AddEnemy(myStats);
         SetTarget();
         UpdateAgentSpeed();
+        StartCoroutine(CheckTarget());
     }
 
     public void UpdateAgentSpeed()
@@ -291,14 +292,6 @@ public abstract class EnemyAI : MonoBehaviour
 
     protected abstract void Attack();
 
-    //This Coroutine is used as a timer for when a enemy can change their taget if they get hit
-    private IEnumerator LockedOnTimer()
-    {
-        Focused = true;
-        yield return new WaitForSeconds(AttantionTime);
-        Focused = false;
-    }
-
     private void OnTriggerStay(Collider other)
     {
         if(!GetComponent<QueenAI>())
@@ -315,5 +308,26 @@ public abstract class EnemyAI : MonoBehaviour
                 }
             }
         }
+    }
+
+    //This Coroutine is used as a timer for when a enemy can change their taget if they get hit
+    private IEnumerator LockedOnTimer()
+    {
+        Focused = true;
+        yield return new WaitForSeconds(AttantionTime);
+        Focused = false;
+    }
+
+    //Incase of a unforeseen bug with retargeting the enemie will check periodicly if its target exists and is not dead
+    private IEnumerator CheckTarget()
+    {
+        yield return new WaitForSeconds(5);
+
+        if(myTarget && myTarget.death)
+        {
+            SetTarget();
+        }
+
+        StartCoroutine(CheckTarget());
     }
 }
