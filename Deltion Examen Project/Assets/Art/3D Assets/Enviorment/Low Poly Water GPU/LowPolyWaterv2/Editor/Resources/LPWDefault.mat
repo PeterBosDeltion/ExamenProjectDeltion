@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: LPWDefault
   m_Shader: {fileID: 4800000, guid: 8165be4dd0b12774d80426d906df9c38, type: 3}
-  m_ShaderKeywords: WATER_REFLECTIVE _LIGHTABS_ON _SHADING_FLAT _WAVES_OFF
+  m_ShaderKeywords: _LIGHTABS_ON _SHADING_FLAT _WAVES_OFF
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -85,7 +85,7 @@ Material:
     - _Time_: 0
     - _TransformScale_: 2.5
     - _Waves: 0
-    - _ZWrite: 0
+    - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0, g: 0.5, b: 0.7, a: 1}
     - _DeepColor: {r: 0, g: 0, b: 0, a: 1}
