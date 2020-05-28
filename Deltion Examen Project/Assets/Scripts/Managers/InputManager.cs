@@ -161,8 +161,14 @@ public class InputManager : MonoBehaviour
             }
           
         }
-        if (Input.GetButtonDown("Escape") || hinput.gamepad[playerIndex].start.justPressed)
+        if (Input.GetButtonDown("Escape") && mouseKeyBoard)
+        {
             Escape();
+        }
+        else if (hinput.gamepad[playerIndex].start.justPressed)
+        {
+            Escape();
+        }
     }
 
     private void NormalInput()
