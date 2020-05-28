@@ -209,10 +209,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTempHp: 0
-  maxHp: 1000
+  maxHp: 750
   death: 0
   xpWhenKilled: 250
   enemiesOnTarget: 0
+  maxEnemies: 0
   myAI: {fileID: 0}
   anim: {fileID: 0}
   speed: 4.2

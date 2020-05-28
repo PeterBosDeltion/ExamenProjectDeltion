@@ -149,7 +149,7 @@ public class InputManager : MonoBehaviour
     private void Update()
     {
         //Generic input
-        if(GameManager.instance.curentState == GameManager.GameState.Playing)
+        if (GameManager.instance.curentState == GameManager.GameState.Playing)
         {
             if (controllerIndex < 0 && mouseKeyBoard)
             {
@@ -167,7 +167,13 @@ public class InputManager : MonoBehaviour
 
     private void NormalInput()
     {
-       
+
+        if (Input.GetMouseButtonDown(0))
+            LeftMouse();
+        if (Input.GetMouseButtonUp(0))
+            LeftMouseUp();
+        if (Input.GetMouseButton(0))
+            LeftMouseHold();
         if (Input.GetMouseButtonDown(1))
             RightMouse();
         if (Input.GetButtonDown("Reload"))
@@ -206,7 +212,12 @@ public class InputManager : MonoBehaviour
         padRSAxisX = hinput.gamepad[controllerIndex].rightStick.horizontal;
         padRSAxisY = hinput.gamepad[controllerIndex].rightStick.vertical;
 
-       
+        if (hinput.gamepad[controllerIndex].rightTrigger.justPressed)
+            LeftMouse();
+        if (hinput.gamepad[controllerIndex].rightTrigger.justReleased)
+            LeftMouseUp();
+        if (hinput.gamepad[controllerIndex].rightTrigger.pressed)
+            LeftMouseHold();
         if (hinput.gamepad[controllerIndex].B.justPressed)
             RightMouse();
         if (hinput.gamepad[controllerIndex].X.justPressed)
@@ -255,6 +266,7 @@ public class InputManager : MonoBehaviour
     //Fixed update for movementbased input to avoid physics problems
     private void FixedUpdate()
     {
+        
         if(GameManager.instance.curentState == GameManager.GameState.Playing)
         {
             //Movement input
@@ -285,26 +297,6 @@ public class InputManager : MonoBehaviour
                     transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 10 * Time.deltaTime);
                 }
             }
-
-            if (controllerIndex < 0 && mouseKeyBoard)
-            {
-                if (Input.GetMouseButtonDown(0))
-                    LeftMouse();
-                if (Input.GetMouseButtonUp(0))
-                    LeftMouseUp();
-                if (Input.GetMouseButton(0))
-                    LeftMouseHold();
-            }
-            else if (myGamepadState.IsConnected && !mouseKeyBoard)
-            {
-                if (hinput.gamepad[controllerIndex].rightTrigger.justPressed)
-                    LeftMouse();
-                if (hinput.gamepad[controllerIndex].rightTrigger.justReleased)
-                    LeftMouseUp();
-                if (hinput.gamepad[controllerIndex].rightTrigger.pressed)
-                    LeftMouseHold();
-            }
-
         }
     }
 
@@ -326,20 +318,16 @@ public class InputManager : MonoBehaviour
     }
     private void RightMouse()
     {
-        Debug.Log("Right mouse");
         rightMouseButtonEvent.Invoke();
     }
     private void Reload()
     {
-        Debug.Log("Reload");
         reloadEvent.Invoke();
     }
     private void Interact()
     {
-        Debug.Log("Interact");
         interactEvent.Invoke();
     }
-
     private void Tab()
     {
         holdingTab = true;
