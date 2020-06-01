@@ -135,7 +135,7 @@ MonoBehaviour:
   - {fileID: 3539107653091319370}
   - {fileID: 1848981344461721895}
   - {fileID: 6233849783157927215}
-  InteractionHitbox: {fileID: 0}
+  InteractionHitbox: {fileID: 7985932134706651926}
   eastereggPart: {fileID: 6310794181478544881}
 --- !u!65 &7985932134706651926
 BoxCollider:
