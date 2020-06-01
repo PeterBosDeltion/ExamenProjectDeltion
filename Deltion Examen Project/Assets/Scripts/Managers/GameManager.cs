@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -50,6 +51,8 @@ public class GameManager : MonoBehaviour
 
     public int target = 244;
     public int screenMode;
+
+    public AudioMixerGroup masterMixer;
     private void Awake()
     {
         if(!instance)
@@ -65,6 +68,15 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(transform.root.gameObject);
+    }
+
+    private void Start()
+    {
+        AudioSource[] staticsources = FindObjectsOfType<AudioSource>();
+        foreach (AudioSource source in staticsources)
+        {
+            source.outputAudioMixerGroup = masterMixer;
+        }
     }
 
     private void Update()

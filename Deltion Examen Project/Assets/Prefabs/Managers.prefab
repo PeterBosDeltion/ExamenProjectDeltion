@@ -332,6 +332,7 @@ MonoBehaviour:
   - {r: 0.30980393, g: 0, b: 0, a: 1}
   target: 244
   screenMode: 0
+  masterMixer: {fileID: 24300002, guid: b8406d183869f1c40a3c0d34b209850d, type: 2}
 --- !u!1 &8531780636332113929
 GameObject:
   m_ObjectHideFlags: 0

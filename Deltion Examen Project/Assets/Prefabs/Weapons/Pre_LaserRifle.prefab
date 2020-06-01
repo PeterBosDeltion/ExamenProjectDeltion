@@ -124,7 +124,8 @@ AudioSource:
   m_GameObject: {fileID: 2737896968927420187}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: b8406d183869f1c40a3c0d34b209850d,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.015
@@ -333,6 +334,8 @@ MonoBehaviour:
   tutorialInit: 0
   handPosition: {x: -0.205, y: 0.336, z: 0}
   handRotation: {x: -95.38, y: 89.99999, z: 0}
+  bolt: 0
+  muzzleFlashSystem: {fileID: 0}
   lineRend: {fileID: 1853621602}
 --- !u!1 &2955296537540316732
 GameObject:
