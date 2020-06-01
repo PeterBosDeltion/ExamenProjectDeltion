@@ -42,15 +42,18 @@ public class LevelManager : MonoBehaviour
     [Tooltip("The distance a player has to be away from the object to allow spawning")]
     public float NoSpawnsDistance;
 
-    //Enemy values
+    //Enemy & Objective values
     [HideInInspector]
     public float healthModifier;
     [HideInInspector]
     public float damageModifier;
+    [HideInInspector]
+    public float objectiveHealthModifier;
 
     private bool waiting;
     private MainCanvas mainCanvas;
     private List<DestroyObjective> advancedObjectives = new List<DestroyObjective>();
+    public bool playerDowned;
 
     private void Awake()
     {
@@ -62,6 +65,9 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        SetdifficultyVariables(GameManager.instance.difficulty);
+
     }
 
     private void SetupPlayers()
@@ -116,7 +122,6 @@ public class LevelManager : MonoBehaviour
         SetupPlayers();
         mainCanvas.GenerateDestroyObjective();
 
-        SetdifficultyVariables(GameManager.instance.difficulty);
         if (GameObject.FindObjectOfType<EntitySpawner>())
         {
             foreach (EntitySpawner spawner in GameObject.FindObjectsOfType<EntitySpawner>())
@@ -202,21 +207,24 @@ public class LevelManager : MonoBehaviour
         {
             case 1:
                 enemiesToAddModifier *= 1;
+                objectiveHealthModifier = 1;
                 break;
             case 2:
                 enemiesToAddModifier *= 2;
+                objectiveHealthModifier = 1.5f;
                 break;
             case 3:
                 healthModifier += 1.5f;
                 damageModifier += 1.5f;
                 enemiesToAddModifier *= 3;
+                objectiveHealthModifier = 2;
                 break;
             case 4:
                 healthModifier += 2;
                 damageModifier += 2;
                 enemiesToAddModifier *= 4;
+                objectiveHealthModifier = 3;
                 break;
-
             default:
                 break;
         }

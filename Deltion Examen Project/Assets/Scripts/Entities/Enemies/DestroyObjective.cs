@@ -77,6 +77,13 @@ public class DestroyObjective : Entity
         }
     }
 
+    public override void SetEntityValues()
+    {
+        maxHp *= LevelManager.instance.objectiveHealthModifier;
+
+        base.SetEntityValues();
+    }
+
     public IEnumerator SpawnerCooldown()
     {
         yield return new WaitForSeconds(spawnCooldown);
