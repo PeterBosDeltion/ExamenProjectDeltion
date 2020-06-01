@@ -23,7 +23,7 @@ public class ReviveTower : Interactable
 
     public void RevivePlayers()
     {
-
+        LevelManager.instance.playerDowned = false;
         List<PlayerController> toRevive = new List<PlayerController>();
         foreach (PlayerController player in GameManager.instance.activePlayers)
         {
@@ -37,8 +37,12 @@ public class ReviveTower : Interactable
             GameObject dropPod = Instantiate(dropPodPrefab, revivePositions[p.playerNumber].transform.position + new Vector3(0, 30, 0), Quaternion.identity);
             dropPod.GetComponent<Rigidbody>().AddForce(Vector3.down * Physics.gravity.y * 2);
         }
+    }
 
-
+    public override void OnTriggerStay(Collider other)
+    {
+        if(LevelManager.instance.playerDowned)
+            base.OnTriggerStay(other);
     }
 
     public void EasterEgg()

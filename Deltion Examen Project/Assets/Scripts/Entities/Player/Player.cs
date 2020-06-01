@@ -77,7 +77,11 @@ public class Player : Entity
         GameManager.instance.CheckGameOver();
 
         if(GameManager.instance.curentState != GameManager.GameState.GameOver && gameObject.activeSelf)
+        {
             WipePlayer();
+            if(!LevelManager.instance.playerDowned)
+                LevelManager.instance.playerDowned = true;
+        }
     }
 
     private void WipePlayer()

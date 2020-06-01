@@ -28,7 +28,7 @@ public abstract class Interactable : MonoBehaviour
 
         interactText.gameObject.SetActive(false);
     }
-    public void OnTriggerStay(Collider other)
+    public virtual void OnTriggerStay(Collider other)
     {
         if (canInteract)
         {
@@ -40,7 +40,6 @@ public abstract class Interactable : MonoBehaviour
                 {
                     interactText.gameObject.SetActive(false);
                     holdCircle.enabled = true;
-
                 }
                 if (!interacted)
                 {
