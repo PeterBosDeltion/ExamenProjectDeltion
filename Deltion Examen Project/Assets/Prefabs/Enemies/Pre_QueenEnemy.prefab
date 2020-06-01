@@ -10,7 +10,7 @@ Animator:
   m_GameObject: {fileID: 2109812995983005853}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 735c7dcaa01322246a093b979447ab88, type: 2}
+  m_Controller: {fileID: 9100000, guid: 77d29934c3a74e74893d1b5a6df7ac60, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -116,9 +116,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTempHp: 0
-  maxHp: 750
+  maxHp: 900
   death: 0
-  xpWhenKilled: 300
+  xpWhenKilled: 250
   enemiesOnTarget: 0
   maxEnemies: 0
   myAI: {fileID: 0}

@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa86d495c6c0894ab3557006501463d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cantUse: 0
   myPlayer: {fileID: 0}
   myPlayerController: {fileID: 0}
   name: Deployable Shield
@@ -66,10 +67,15 @@ MonoBehaviour:
   deployLineMaterial: {fileID: 2100000, guid: 506f93c84d622fc41b612177dc6ecf73, type: 2}
   deployableOffset: {x: 0, y: 1.5, z: 0}
   returned: 0
+  deploying: 0
+  ultActive: 0
+  checkUltCharged: 0
   controllerLaserStartDist: 5
   controllerLaserMaxDist: 12.5
   controllerLaserMinDist: 3
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 507703
   myDeployType: 1
   deployableShieldPrefab: {fileID: 3328323576500023062, guid: 92a9b794eee72ee4f8797ad823f2ff92,
     type: 3}
-  shieldHp: 200

@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTempHp: 0
-  maxHp: 3000
+  maxHp: 2500
   death: 0
   xpWhenKilled: 600
   enemiesOnTarget: 0
@@ -64,6 +64,7 @@ MonoBehaviour:
   - {fileID: 227615046000823840, guid: 2fb16e5a959a41844bc859c48f3e81cb, type: 3}
   queen: {fileID: 3670594343875086394, guid: 97b98540e1ef4e24ebb35d015c5b8bb6, type: 3}
   tank: {fileID: 7442850297742150154, guid: 86b11090d8715f5409b0459ca5cd0ddf, type: 3}
+  shouldSpawnQueen: 1
   spawnCooldown: 40
   ObjectiveDone: 0
 --- !u!208 &335422421405849581

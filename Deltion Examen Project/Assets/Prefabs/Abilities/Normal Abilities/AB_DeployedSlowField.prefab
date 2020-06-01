@@ -74,6 +74,9 @@ MonoBehaviour:
   controllerLaserStartDist: 5
   controllerLaserMaxDist: 12.5
   controllerLaserMinDist: 3
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 507703
   myDeployType: 1
   slowFieldPrefab: {fileID: 6993081157728620379, guid: f42fa4f6bfc608f488c0d50c1aac7e77,
     type: 3}

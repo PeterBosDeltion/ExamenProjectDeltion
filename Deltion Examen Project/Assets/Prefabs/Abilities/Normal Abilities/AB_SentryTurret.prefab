@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94bdfd1b8bc22d14e82e39a220e446ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cantUse: 0
   myPlayer: {fileID: 0}
   myPlayerController: {fileID: 0}
   name: Sentry turret
@@ -68,9 +69,15 @@ MonoBehaviour:
   deployLineMaterial: {fileID: 2100000, guid: 506f93c84d622fc41b612177dc6ecf73, type: 2}
   deployableOffset: {x: 0, y: 0, z: 0}
   returned: 0
+  deploying: 0
+  ultActive: 0
+  checkUltCharged: 0
   controllerLaserStartDist: 5
   controllerLaserMaxDist: 12.5
   controllerLaserMinDist: 3
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 507703
   myDeployType: 1
   turretPrefab: {fileID: 4535447932574800939, guid: c77ffe5fdc24d284482204add1c81a36,
     type: 3}

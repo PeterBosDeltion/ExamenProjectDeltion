@@ -81,6 +81,9 @@ MonoBehaviour:
   controllerLaserStartDist: 5
   controllerLaserMaxDist: 12.5
   controllerLaserMinDist: 3
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 507703
   myDeployType: 0
   blinkDistance: 6
   floor:

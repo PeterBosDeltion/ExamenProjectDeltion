@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1862293678008980346}
   - component: {fileID: 7418333733031904516}
   - component: {fileID: 4520411162135075630}
-  m_Layer: 2
+  m_Layer: 15
   m_Name: Cliff_O
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,8 +93,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.201627, y: 13.684981, z: 3.6966834}
-  m_Center: {x: -0.000007644744, y: 6.8424907, z: -3.6769133}
+  m_Size: {x: 6.201627, y: 6.3033056, z: 3.6966834}
+  m_Center: {x: -0.000007644744, y: 3.1516528, z: -3.6769133}
 --- !u!65 &7418333733031904516
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -106,8 +106,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.201627, y: 13.684981, z: 4.705077}
-  m_Center: {x: -0.0000076174465, y: 6.8424907, z: 3.1726563}
+  m_Size: {x: 6.201627, y: 6.6725492, z: 4.705077}
+  m_Center: {x: -0.0000076174465, y: 3.3362746, z: 3.1726563}
 --- !u!65 &4520411162135075630
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -119,5 +119,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.201627, y: 8.638711, z: 11.05045}
-  m_Center: {x: -0.0000076293945, y: 9.365625, z: -0.000030517576}
+  m_Size: {x: 6.201627, y: 1.3812866, z: 11.05045}
+  m_Center: {x: -0.0000076293945, y: 5.7369137, z: -0.000030517576}

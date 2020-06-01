@@ -121,11 +121,11 @@ public abstract class EnemyAI : MonoBehaviour
     //This function is used to set a new target
     public void SetTarget(Entity Attacker = null)
     {
-        StopAllCoroutines();
         if (state != AIState.Dead)
         {
-            if (!Focused && Attacker && Attacker.enabled && !Attacker.death)
+            if (!Focused && Attacker && Attacker.enabled && !Attacker.death && myTarget != Attacker)
             {
+                StopAllCoroutines();
                 myTarget = Attacker;
                 Attacker.deathEvent += TargetDied;
                 SetState(AIState.ClosingIn);
@@ -133,6 +133,7 @@ public abstract class EnemyAI : MonoBehaviour
             }
             else if (!myTarget || !myTarget.enabled)
             {
+                StopAllCoroutines();
                 myTarget = GetClosestTarget();
                 if (myTarget == null)
                 {
@@ -151,6 +152,10 @@ public abstract class EnemyAI : MonoBehaviour
                 }
                 SetState(AIState.ClosingIn);
             }
+        }
+        else
+        {
+            StopAllCoroutines();
         }
     }
 

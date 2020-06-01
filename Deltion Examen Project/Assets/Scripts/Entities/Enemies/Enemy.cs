@@ -40,6 +40,7 @@ public class Enemy : Entity
                 myRenderer.material = emmisiveMaterial;
                 damage *= buffModifier;
                 speed *= buffModifier;
+                anim.speed *= buffModifier;
                 myAI.UpdateAgentSpeed();
             }
             else
@@ -47,6 +48,7 @@ public class Enemy : Entity
                 myRenderer.material = OriginalMaterial;
                 damage /= buffModifier;
                 speed /= buffModifier;
+                anim.speed /= buffModifier;
                 myAI.UpdateAgentSpeed();
             }
         }

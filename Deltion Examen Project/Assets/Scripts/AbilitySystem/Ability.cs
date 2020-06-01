@@ -43,6 +43,8 @@ public abstract class Ability : MonoBehaviour
     public float controllerLaserMaxDist = 12.5F;
     public float controllerLaserMinDist = 3F;
     private float controllerLaserDist;
+
+    public LayerMask raycastMask;
     public enum DeployType
     {
         Instant,
@@ -220,7 +222,7 @@ public abstract class Ability : MonoBehaviour
                 RaycastHit hit;
                 if (myPlayerController.myInputManager.mouseKeyBoard)
                 {
-                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
+                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, raycastMask))
                     {
                         Vector3 mPos = hit.point + deployableOffset;
                         activeGhost.transform.position = mPos;

@@ -72,6 +72,9 @@ MonoBehaviour:
   controllerLaserStartDist: 5
   controllerLaserMaxDist: 12.5
   controllerLaserMinDist: 3
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 507703
   myDeployType: 0
   damage: 160
   particlePrefab: {fileID: 2703199356868903259, guid: 16eb29accb05275419c1ff448b026eed,

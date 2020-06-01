@@ -128,7 +128,7 @@ MonoBehaviour:
   myEnt: {fileID: 0}
   bloodParticle: {fileID: 1816239454339412339, guid: 9a435218ade96b34392e8b450117f51a,
     type: 3}
-  DebrisParticle: {fileID: 1816239454339412339, guid: 0c4a9afa6d0e7f6449862e380d2ab356,
+  DebrisParticle: {fileID: 3621283905080135181, guid: 0c4a9afa6d0e7f6449862e380d2ab356,
     type: 3}
   impactSound: {fileID: 0}
 --- !u!96 &3523682788062803738

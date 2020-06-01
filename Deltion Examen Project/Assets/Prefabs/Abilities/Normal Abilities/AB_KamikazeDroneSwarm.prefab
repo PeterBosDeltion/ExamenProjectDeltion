@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ff0139fcd97163498d80cde94168252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cantUse: 0
   myPlayer: {fileID: 0}
   myPlayerController: {fileID: 0}
   name: Kamikaze drone swarm
@@ -66,9 +67,15 @@ MonoBehaviour:
   deployLineMaterial: {fileID: 0}
   deployableOffset: {x: 0, y: 0, z: 0}
   returned: 0
+  deploying: 0
+  ultActive: 0
+  checkUltCharged: 0
   controllerLaserStartDist: 5
   controllerLaserMaxDist: 12.5
   controllerLaserMinDist: 3
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 507703
   myDeployType: 0
   dronePrefab: {fileID: 4505367871833862156, guid: 5a6129d49599a4c4bb1a53cbede0643d,
     type: 3}
