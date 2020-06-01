@@ -6,19 +6,14 @@ public class ReviveTower : Interactable
 {
     public GameObject dropPodPrefab;
     public List<GameObject> revivePositions = new List<GameObject>();
+    public Collider InteractionHitbox;
     public ParticleSystem eastereggPart;
     private void Start()
     {
         if(GameManager.instance.amountOfPlayers <= 1)
         {
-            gameObject.SetActive(false);
+            InteractionHitbox.enabled = false;
         }
-        else
-        {
-            gameObject.SetActive(true);
-        }
-
-        eastereggPart = GetComponentInChildren<ParticleSystem>();
     }
     protected override void Interact()
     {

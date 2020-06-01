@@ -116,9 +116,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTempHp: 0
-  maxHp: 1250
+  maxHp: 750
   death: 0
-  xpWhenKilled: 400
+  xpWhenKilled: 300
   enemiesOnTarget: 0
   maxEnemies: 0
   myAI: {fileID: 0}
@@ -275,7 +275,7 @@ MonoBehaviour:
   myAttack: {fileID: 6720303635017113406, guid: 18677d8ae68d7564dbf6829972ed5de5,
     type: 3}
   timeBeforeDamage: 0.1
-  BuffModifier: 1.5
+  BuffModifier: 1.35
 --- !u!1 &4106189655116259850
 GameObject:
   m_ObjectHideFlags: 0

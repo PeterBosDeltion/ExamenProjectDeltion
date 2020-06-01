@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTempHp: 0
-  maxHp: 750
+  maxHp: 500
   death: 0
   xpWhenKilled: 250
   enemiesOnTarget: 0
@@ -217,7 +217,7 @@ MonoBehaviour:
   myAI: {fileID: 0}
   anim: {fileID: 0}
   speed: 4.2
-  damage: 400
+  damage: 300
   attackRange: 4
   myRenderer: {fileID: 4206886029109638267}
   emmisiveMaterial: {fileID: 2100000, guid: a820951eac3c97b419a3197a9dec7905, type: 2}

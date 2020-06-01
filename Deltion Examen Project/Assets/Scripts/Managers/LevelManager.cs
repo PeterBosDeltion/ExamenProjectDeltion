@@ -33,8 +33,9 @@ public class LevelManager : MonoBehaviour
     private float enemiesToAddModifier;
     public int minimumSpawnerSpread;
     public float timeBetweenIndividualSpawns;
-    public float spawnTickTime;
+    [Tooltip("Time in seconds added to the wace timer every wave")]
     public float spawnTickTimeModifier;
+    private float spawnTickTime;
 
     public WaveTimer timer;
 
@@ -128,7 +129,7 @@ public class LevelManager : MonoBehaviour
             }
 
             if(allAvailableSpawners.Count != 0)
-                StartCoroutine(SpawnTick(spawnTickTime));
+                StartCoroutine(SpawnTick(5));
         }
         if (GameObject.FindObjectOfType<DestroyObjective>())
         {
@@ -285,7 +286,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        spawnTickTime *= spawnTickTimeModifier;
+        spawnTickTime += spawnTickTimeModifier;
         spawnTickTime = Mathf.RoundToInt(spawnTickTime);
         Debug.Log(spawnTickTime);
         StartCoroutine(SpawnTick(spawnTickTime));

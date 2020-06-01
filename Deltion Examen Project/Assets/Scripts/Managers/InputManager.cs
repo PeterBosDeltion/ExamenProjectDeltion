@@ -56,15 +56,6 @@ public class InputManager : MonoBehaviour
     //Asigning empty functions to the delegates to avoid Errors
     private void Awake()
     {
-        //if (!instance)
-        //{
-        //    instance = this;
-        //}
-        //else if (instance != this)
-        //{
-        //    Destroy(transform.root.gameObject);
-        //}
-
         leftMouseButtonEvent += Empty;
         leftMouseButtonHoldEvent += Empty;
         leftMouseButtonUpEvent += Empty;
