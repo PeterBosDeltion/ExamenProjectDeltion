@@ -52,6 +52,7 @@ public abstract class Interactable : MonoBehaviour
 
                 if ((other.GetComponent<PlayerController>().myInputManager.GetTimeInteractHeld() >= holdDuration && !interacted))
                 {
+                    holdCircle.fillAmount = 0;
                     Interact();
                 }
             }
